@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('answers', JSON.stringify(window.answers));
 
         try {
-            const response = await fetch('/api/form', {
+            const response = await fetch('/form', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
