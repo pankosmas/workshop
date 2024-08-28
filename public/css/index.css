@@ -124,7 +124,7 @@ footer a:hover {
 
 @media (min-width: 1280px) {
 	.logo { width: 5vw; }
-	.main-logo { max-width: 22vw; /* Adjust as needed */}
+	.main-logo { max-width: 20vw; /* Adjust as needed */}
 }
 @media (min-width: 880px) and (max-width: 1279px) {
 	.logo { width: 7vw; }
