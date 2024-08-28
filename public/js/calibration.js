@@ -235,9 +235,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Check the width and set the background image accordingly
       if (width < 1600) {
-          body.style.background = `url(${imageSmallScreen})`;
+          body.style.background = imageSmallScreen;
       } else {
-          body.style.background = `url(${imageLargeScreen})`;
+          body.style.background = imageLargeScreen;
       }
       
       console.log(`Η οθόνη της ελισάβετ έχει διαστάσεις ${window.innerWidth} και ${window.innerHeight}`);
