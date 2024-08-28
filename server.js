@@ -31,7 +31,7 @@ const formResponseSchema = new Schema({
 const FormResponse = mongoose.model('FormResponse', formResponseSchema);
 
 // API endpoint to save form responses
-app.post('/form', async (req, res) => {
+app.post('/api/form', async (req, res) => {
     const formResponse = new FormResponse(req.body);
     try {
         await formResponse.save();
