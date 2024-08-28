@@ -239,9 +239,9 @@ footer a:hover {
 	.nav-links a { margin: 0 10px;}
 	footer { font-size: 0.75em; }
 	.content h1 { font-size: 3vw; }
-	.instruction p { font-size: 0.5em;}
+	.instruction p { font-size: 0.5em; width: 60%;}
 	.instruction-number { font-size: 0.5em; }
-	.instructions-container  { width: 85vw;}
+	.instructions-container  { width: 55vw;}
 	.explanation-container  { font-size: 0.75em;}
 	.nav-button { font-size: 0.8em; }
 	.emoji-container { font-size: 0.5em; }
