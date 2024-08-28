@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const body = document.body;
 
       // Check the width and set the background image accordingly
-      if (width < 1500) {
+      if (width < 1600) {
           body.style.background = `url(${imageSmallScreen})`;
       } else {
           body.style.background = `url(${imageLargeScreen})`;
