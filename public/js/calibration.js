@@ -220,3 +220,27 @@ function changePositionWithTransform(element, top, right, bottom, left, transfor
 function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  function updateBackgroundImage() {
+      // Define the URLs for the background images
+      const imageSmallScreen = 'url(../images/small-image.png)';
+      const imageLargeScreen = 'url(../images/calibration-resized.png)';
+
+      // Get the width of the window
+      const width = window.innerWidth;
+
+      // Select the body element (or any other element where you want to set the background)
+      const body = document.body;
+
+      // Check the width and set the background image accordingly
+      if (width < 1500) {
+          body.style.backgroundImage = `url(${imageSmallScreen})`;
+      } else {
+          body.style.backgroundImage = `url(${imageLargeScreen})`;
+      }
+  }
+
+  // Call the function to set the correct background image on load
+  updateBackgroundImage();
+});
