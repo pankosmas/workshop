@@ -212,7 +212,7 @@ footer a:hover {
 	.content h1 { font-size: 3vw; }
 	.instruction p { font-size: 0.75em;}
 	.instruction-number { font-size: 0.75em; }
-	.instructions-container  { width: 75vw;}
+	.instructions-container  { width: 55vw;}
 	.explanation-container  { font-size: 1.25em; }
 	.nav-button { font-size: 0.8em; }
 	.emoji-container { font-size: 0.75em; }
@@ -224,7 +224,7 @@ footer a:hover {
 	.nav-links { font-size: 0.75em; }
 	footer { font-size: 0.75em; }
 	.content h1 { font-size: 3vw; }
-	.instructions-container  { width: 75vw;}
+	.instructions-container  { width: 65vw;}
 	.explanation-container  { font-size: 1em; }
 	.nav-button { font-size: 0.8em; }
 	.instruction p { font-size: 0.7em;}
