@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
           body.style.background = imageLargeScreen;
       }
       
-      console.log(`Η οθόνη της ελισάβετ έχει διαστάσεις ${window.innerWidth} και ${window.innerHeight}`);
+      console.log(`Η οθόνη της ελισάβετ έχει διαστάσεις ${window.innerWidth} και ${window.innerHeight} !!`);
   }
 
   // Call the function to set the correct background image on load
