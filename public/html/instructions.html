@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruction Page</title>
+    <link rel="stylesheet" href="../css/instructions.css">
+	<link rel="icon" href="../images/logo.png" type="image/x-icon">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">
+            <img src="../images/nav-logo.png" alt="Logo" class="logo">
+        </a>
+        <div class="nav-links">
+            <a href="index.html" style="color: #fff">Home</a>
+            <a href="https://imedius.gr/en/" target="_blank">Project</a>
+            <a href="https://imedius.gr/en/about/" target="_blank">About</a>
+            <a href="https://imedius.gr/en/people/" target="_blank">Team</a>
+        </div>
+		<div style="margin-right: 100px;"></div>
+    </nav>
+
+    <div class="content">
+	
+		<h1 id="h1">Follow the instructions below carefully!</h1>
+		
+        <div class="instructions-container" id="instructions-container">
+            <div class="instruction" id="instruction1">
+                <span class="instruction-number">Instruction&nbsp;1</span>
+				<p> Ensure a sufficiently <strong>bright</strong> environment.</p>
+				<span class="emoji-container">🔆&nbsp;☀️</span>
+                <input type="checkbox" onchange="handleCheckboxChange(1, 2)">
+            </div>
+            <div class="instruction" id="instruction2" style="display: none;">
+				<span class="instruction-number">Instruction&nbsp;2</span>
+				<p> Choose and sit in a position that feels <strong>comfortable.</strong></p>
+				<span class="emoji-container">🤗&nbsp;&nbsp;👌</span>
+                <input type="checkbox" onchange="handleCheckboxChange(2, 3)">
+            </div>
+            <div class="instruction" id="instruction3" style="display: none;">
+				<span class="instruction-number">Instruction&nbsp;3</span>
+				<p> Sit at a <strong>distance of about 50cm.</strong> from your screen.</p>
+				<span class="emoji-container">📐&nbsp;🖥️</span>
+                <input type="checkbox" onchange="handleCheckboxChange(3, 4)">
+            </div>
+            <div class="instruction" id="instruction4" style="display: none;">
+				<span class="instruction-number">Instruction&nbsp;4.</span>
+				<p> Maintain a <strong>neutral expression</strong> by avoiding grimaces.</p>
+				<span class="emoji-container">😐&nbsp;😶</span>
+                <input type="checkbox" onchange="handleCheckboxChange(4, 5)">
+            </div>
+            <div class="instruction" id="instruction5" style="display: none;">
+                <span class="instruction-number">Instruction&nbsp;5.</span>
+				<p> Maintain your <strong>focus</strong> and limit distractions.</p>
+				<span class="emoji-container">🧐&nbsp;&nbsp;❗&nbsp;</span>
+                <input type="checkbox" onchange="handleCheckboxChange(5, 6)">
+            </div>
+			<div class="instruction" id="instruction6" style="display: none;">
+                <span class="instruction-number">Instruction&nbsp;6.</span>
+				<p> If you wear eyeglasses, make sure they are <strong>clean</strong>.</p>
+				<span class="emoji-container">🧼&nbsp;👓</span>
+                <input type="checkbox" onchange="handleCheckboxChange(6, 7)">
+            </div>
+			<div class="instruction" id="instruction7" style="display: none;">
+                <span class="instruction-number">Instruction&nbsp;7.</span>
+				<p> Check for a <strong>stable internet connection</strong> without interruptions.</p>
+				<span class="emoji-container">📶&nbsp;✅</span>
+                <input type="checkbox" onchange="handleCheckboxChange(7)">
+            </div>
+        </div>
+		
+		<div id="tip1" class="explanation-container invisible">
+			<p>During calibration, make sure your face is <strong>centered</strong> on the screen and your head is relatively <strong>stable</strong>.</p>
+			<img src="../images/pos3.png" alt="Head Position Example" class="explanation1-image">
+		</div>
+		
+		<div id="tip2" class="explanation-container invisible">
+			<p>On the next page, you will see a <strong>fake</strong> image!<br>The small pin <img class="bounce" src="../images/red_pin.png" style="width: 2vw; margin-top: 20px;"> will help you locate some points on the page.<br><br><strong>Focus</strong> your gaze on them and <strong>click on them</strong> until the calibration process is complete.</p>
+		</div>
+		
+		<button id="nextButton" class="nav-button invisible" onclick="loadCalibrationPage()">Proceed</button>
+		
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Eye Tracking Page. Developed with the aid of <a href="https://webgazer.cs.brown.edu/" target="_blank">Webgazer.js</a></p>
+    </footer>
+
+    <script src="../js/instructions.js"></script>
+</body>
+</html>

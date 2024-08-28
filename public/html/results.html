@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Submissions Page</title>
+    <link rel="stylesheet" href="css/results.css">
+    <link rel="icon" href="../images/logo.png" type="image/x-icon">
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/heatmap.js@2.0.5"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/heatmap.js@2.0.5"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/heatmap.js/2.0.5/heatmap.min.js"></script>
+    <script src="https://unpkg.com/simpleheat/simpleheat.js"></script>
+    <script src="/js/visualizations.js"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <select id="dropdown">
+            <option value="option1">Step 1</option>
+            <option value="option2">Step 2</option>
+            <option value="option3">Step 3</option>
+            <option value="option4">Step 4</option>
+            <option value="option5">Step 5</option>
+            <option value="option6">Step 6</option>
+            <option value="option7">Step 7</option>
+            <option value="option8">Step 8</option>
+        </select>
+        <!-- New element for submission count -->
+        <div class="global-timer" id="global-timer">Average Response Time: </div>
+        <div class="submission-count" id="submission-count">Total Submissions: 0</div>
+        <select id="dropdown2">
+            <option value="option1">Gaze Data</option>
+            <option value="option2">Mouse Data</option>
+        </select>
+        <select id="dropdown3">
+            <option value="option1">Data Points</option>
+            <option value="option2">Scanpath</option>
+            <option value="option3">Fixation Map</option>
+            <option value="option4">Heatmap</option>
+            <option value="option5">Areas of Interest</option>
+        </select>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="left">
+            <div>
+                <canvas id="pie-chart"></canvas>
+            </div>
+            <div>
+                <canvas id="bar-chart"></canvas>
+            </div>
+        </div>
+        <div class="right">
+            <div class="heatmap-container">
+                <canvas id="heatmap"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/result_functions.js"></script>
+    <script src="/js/results.js"></script>
+
+</body>
+</html>

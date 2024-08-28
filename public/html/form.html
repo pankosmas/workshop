@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Page</title>
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="icon" href="../images/logo.png" type="image/x-icon">
+    <script src="../js/webgazer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">
+            <img src="../images/nav-logo.png" alt="Logo" class="logo">
+        </a>
+        <div class="nav-links">
+            <a href="index.html" style="color: #fff">Home</a>
+            <a href="https://imedius.gr/en/" target="_blank">Project</a>
+            <a href="https://imedius.gr/en/about/" target="_blank">About</a>
+            <a href="https://imedius.gr/en/people/" target="_blank">Team</a>
+        </div>
+        <div class="progress-div">
+            <div class="progress-text">Progress: </div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progressBar">0%</div>
+            </div>
+        </div>
+    </nav>
+
+    <button id="backToTests">X</button>
+
+    <div class="content">
+        <h1 id="h1" class="invisible">How to Tell an Image is Authentic or Not</h1>
+
+        <div class="initial-container">
+            <h2>Step 1: A challenge to Identify Real vs. Fake Images</h2>
+            <img id="initial-image" src="../images/step1.png" alt="Image Here">
+            <button id="initialFullScreenImage" onclick="showFullImage()">Inspect in Full-Size</button>
+        </div>
+
+        <div id="form-container" class="container invisible">
+            <div id="left-div" class="image">
+                <p class="partIndicator">Step 1: A challenge to Identify Real vs. Fake Images</p>
+                <hr>
+                <img id="form-image" src="../images/step1.png" alt="Form Image">
+                <button id="fullscreenImage" class="image-button" onclick="showFullImage();">Not sure? Click here to inspect the image in full-size again!</button>
+            </div>
+            <div class="question">
+                <form id="form">
+                    <label for="image-reality">1. This Image is: </label>
+                    <div class="radio-group" required>
+                        <label for="Real">
+                            <input type="radio" id="Real" name="image-reality" value="Real" required>
+                            Authentic (Real)
+                        </label>
+                        <label for="Tampered">
+                            <input type="radio" id="Tampered" name="image-reality" value="Tampered" required>
+                            Tampered (Digitally Manipulated)
+                        </label>
+                        <label for="Deepfake">
+                            <input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required>
+                            Deepfake (AI Generated)
+                        </label>
+                    </div>
+            
+                    <label for="details">2. What specific details lead you to make this decision?</label>
+                    <div class="checkbox-group" required>
+                        <label for="Anomalies">
+                            <input type="checkbox" id="Anomalies" name="details" value="Anomalies">
+                            Anomalies and Artifacts: There are noticeable anomalies or artifacts, such as distortions or mismatched elements.
+                        </label>
+                        <label for="Lighting">
+                            <input type="checkbox" id="Lighting" name="details" value="Lighting">
+                            Lighting and Shadows: The lighting and shadows in the image appear inconsistent with the environment.
+                        </label>
+                        <label for="Semantic">
+                            <input type="checkbox" id="Semantic" name="details" value="Semantic">
+                            Semantic Inaccuracy: The content of the image is logically inconsistent with known facts or events.
+                        </label>
+                        <label for="Context">
+                            <input type="checkbox" id="Context" name="details" value="Context">
+                            Contextual Relevance: The context in which the image is presented is inappropriate.
+                        </label>
+                        <label for="Edges">
+                            <input type="checkbox" id="Edges" name="details" value="Edges">
+                            Edges and Blending: The edges around objects in the image look poorly blended.
+                        </label>
+                        <label for="Source">
+                            <input type="checkbox" id="Source" name="details" value="Source">
+                            Source Trustworthiness: The source of the image is suspicious.
+                        </label>
+                    </div>
+            
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        
+        <div id="gaze"></div>
+
+        <canvas id="plotting_canvas" width="0" height="0" style="display:none;"></canvas>
+    </div>
+    
+    
+
+    <!-- Include jQuery (necessary for Select2) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#reasons').select2({
+                placeholder: "Select reasons",
+                allowClear: true
+            });
+        });
+
+        const img = document.getElementById('form-image');
+        const leftdiv = document.getElementById('left-div');
+        const questiondiv = document.querySelector('.question');
+        img.onload = function() {
+            const container = document.getElementById('form-container');
+            if (img.naturalHeight > img.naturalWidth) {
+                container.classList.add('left-image');
+            } else {
+                container.classList.add('left-image');
+                leftdiv.style.maxWidth = "35%";
+                img.style.maxWidth = "90%";
+            }
+        }
+
+        function validateForm(event) {
+            var checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
+            var isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+            if (!isChecked) {
+                alert("Please select at least one option in the second question.");
+                event.preventDefault();  // Prevent form submission
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('form').addEventListener('submit', validateForm);
+        });
+    </script>
+    <script src="../js/form.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/mouse.js"></script>
+</body>
+</html>

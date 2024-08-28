@@ -1,0 +1,304 @@
+body {
+    font-family: Roboto, Open Sans, Arial, sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: url('../images/pixels.png') repeat fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body covers entire viewport height */
+    overflow: hidden;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    position: fixed; /* Fixed position keeps it visible */
+    width: 100%;
+	min-height: 6vh;
+}
+.nav-links {
+    margin-left: 175px;
+    display: flex;
+	font-size: 1em;
+    align-items: center;
+}
+.nav-links a {
+    color: #7A7A7A;
+    margin: 0 20px;
+	text-decoration: none;
+}
+.nav-links a:hover {
+    color: #fff;
+}
+.nav-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+	font-size: 1em;
+}
+.nav-button:hover {
+    background-color: #45a049;
+}
+.navoff {
+	width: calc(100% - 240px);
+	margin-left: 240px;
+}
+.progress-div {
+    display: flex; 
+    align-items: center; 
+    padding: 0px 5px;
+}
+.progress-text {
+    margin: 0px 20px; 
+    color: #fff;
+}
+.progress {
+    display: -ms-flexbox;
+    display: flex;
+    height: 1.5rem;
+    overflow: hidden;
+    font-size: 1rem;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+    width: 10vw;
+  }
+.progress-bar {
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0px 5px;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-image: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
+    transition: width 0.6s ease;
+  }
+.logo {
+	width: 5vw;
+}
+.content {
+    text-align: center;
+    width: 100vw; /* Adjust as needed */
+    height: 100vh; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.content h1 {
+    font-size: 2vw;
+    margin: 90px 0px 50px 0px;
+}
+.initial-container {
+    margin: 100px 0px 50px 0px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #16c7a6;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%; /* Limits the maximum width to 90% of the viewport width */
+    max-height: 90%; /* Limits the maximum height to 90% of the viewport height */
+    box-sizing: border-box; /* Ensures padding is included in the div�s total width */
+}
+.initial-container h2 {
+    margin-bottom: 20px;
+}
+.initial-container img {
+    max-width: 100%;
+    max-height: 70vh;
+    height: auto;
+    display: block; /* Ensures the image takes up its own line */
+    margin-bottom: 20px; /* Adds space between the image and the button */
+}
+.initial-container button {
+    padding: 10px 20px;
+    border: none;
+    background: linear-gradient(120deg, #10cc9d 0%, #14cba0 25%, #1fb3af 50%, #0995e6 75%, #11819b 100%);
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
+    overflow: visible; /* Ensure that any overflow is visible */
+    cursor: pointer;
+    font-size: 1rem;
+}
+.initial-container button:hover {
+    background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    border: none;
+    border-radius: 5px;
+    max-width: 75vw;
+    height: auto;
+    padding: 10px;
+    background: white;
+    box-shadow: 5px 5px 10px #16c7a6;
+    margin: 5px 0 30px 0;
+}
+#left-div {
+    flex: 1 1 auto;
+    max-width: 35%;
+    padding: 0;
+}
+.question {
+    flex: 1 1 auto; /* Allows question to grow and fit content */
+    padding: 20px; /* Adjust as necessary */
+    border: none;
+    min-width: 0; /* Prevents shrinking beyond content size */
+}
+form {
+    max-width: 100%;
+    height: auto;
+    margin: 30px 0 0 0;
+    padding: 20px;
+    /*border: 1px solid gray;
+    border-style: solid;*/
+    border: none; /* Remove the solid border */
+    border-radius: 5px; /* Add rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to create a floating effect */
+    background-color: white; /* Ensure the form has a background color */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add a transition for smooth effects */
+}
+
+.container img {
+    max-width: 80%;
+    height: auto;
+    margin-left: 1rem;
+}
+
+#white-space {
+    margin-top: 50px;
+}
+.left-image {
+    border-right: 1px solid #ccc;
+    flex-basis: auto; /* The item will take up the space of its content */
+    padding: 20px;
+}
+.image {
+    text-align: left;
+}
+.image-button {
+    display: block;
+    background: white;
+    border: none;
+    color: #0995e6;
+    margin-left: 0.5rem;
+}
+.image-button:hover {
+    color: #094c74;
+    cursor: pointer;
+}
+
+.partIndicator {
+    margin-left: 1rem;
+    font-size: 1rem;
+    display: flex;
+    font-weight: bold;
+}
+hr {
+    margin-left: 1rem;
+    border-top: 1px solid gray;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 20px;
+}
+.radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+.radio-group input, .checkbox-group input {
+    margin-right: 10px;
+}
+.radio-group label, .checkbox-group label {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+.checkbox-group label {
+    font-weight: normal;
+}
+
+
+input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(120deg, #10cc9d 0%, #14cba0 25%, #1fb3af 50%, #0995e6 75%, #11819b 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
+    overflow: visible; /* Ensure that any overflow is visible */
+    font-size: 1rem;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
+}
+#backToTests {
+    display: none;
+    align-items: center;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
+    overflow: visible; /* Ensure that any overflow is visible */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+#backToTests:hover {
+    background: linear-gradient(120deg, #10cc9d 0%, #14cba0 25%, #1fb3af 50%, #0995e6 75%, #11819b 100%);
+}
+#gaze {
+	display: block;
+	z-index: 100;
+	opacity: 0.7;
+	position: fixed;
+	left: 0;
+	top: 0;
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+    background-color: lightgreen; /* Set background color */
+    border: 2px solid green; /* Add green border */
+    border-radius: 50%; /* Make it circular */
+    pointer-events: none; /* Ensure it doesn't interfere with other elements */
+    transition: transform 0.3s ease-out; /* Smooth movement */
+    will-change: transform; /* Hint the browser to optimize for this property */
+}
+#webgazerVideoContainer {
+    display: none !important;
+}
+.invisible {
+    display: none;
+}

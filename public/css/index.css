@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Open Sans, Arial, sans-serif;
+    font-size: 16px;
+	background: #fff;
+	background: url('../images/pixels.png') repeat fixed; 
+    background-size: cover;
+    min-height: 100vh; /* Ensure body covers entire viewport height */
+	display: flex;
+    flex-direction: column;
+	overflow: hidden;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    position: fixed; /* Fixed position keeps it visible */
+    width: 100%;
+	max-height: 6vh;
+}
+.navoff {
+    width: calc(100% - 240px);
+	margin-left: 240px;
+}
+.nav-links {
+    display: flex;
+	font-size: 1em;
+    align-items: center;
+}
+.nav-links a {
+    color: #7A7A7A;
+    margin: 0 20px;
+	text-decoration: none;
+}
+.nav-links a:hover {
+    color: #fff;
+}
+.nav-button {
+    background: linear-gradient(120deg, #10cc9d 0%, #14cba0 25%, #1fb3af 50%, #0995e6 75%, #11819b 100%);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
+    overflow: visible; /* Ensure that any overflow is visible */
+    font-size: 1em;
+}
+.nav-button:hover {
+    background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
+}
+.logo {
+	width: 5vw;
+}
+.main-logo {
+	max-width: 22vw; /* Adjust as needed */
+	user-select: none; /* Standard property */
+	-webkit-user-select: none; /* Chrome, Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+}
+.content {
+    text-align: center;
+    width: 100vw; /* Adjust as needed */
+    height: 100vh; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.text-container {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto; /* Center horizontally */
+    flex: 1; /* Take up remaining vertical space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+}
+.text-container h1 {
+	font-size: 2vw;
+    margin-top: 50px; /* Add margin to create space below the logo */
+}
+.text-container p {
+    margin-top: 30px; /* Add margin to create space below the logo */
+}
+.gradient-text {
+    font-size: 3vw; /* Responsive font size */
+    font-weight: bold;
+    background: linear-gradient(90deg, #0999e1, #1ba0a7, #16c7a6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+hr {
+    margin: 60px -10px -10px 0px;
+    border: 0;
+    border-top: 1px solid #999;
+	z-index:2;
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+	position: fixed; /* Fixed position keeps it visible */
+	left: 0%;
+	width: 100%;
+	bottom: 0%;
+	font-size: 1em;
+    margin-top: auto; /* Push footer to the bottom */
+}
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 1280px) {
+	.logo { width: 5vw; }
+	.main-logo { max-width: 22vw; /* Adjust as needed */}
+}
+@media (min-width: 880px) and (max-width: 1279px) {
+	.logo { width: 7vw; }
+	.text-container h1 { font-size: 3vw; }
+	.main-logo { max-width: 22vw; /* Adjust as needed */}
+	footer { font-size: 0.75em; }
+	.nav-button { padding: 10px 10px; font-size: 0.75em;}
+}
+@media (min-width: 736px) and (max-width: 879px) {
+	.logo { width: 8vw; }
+	.nav-links { font-size: 0.75em; }
+	.main-logo { max-width: 25vw; /* Adjust as needed */}
+	.text-container h1 { font-size: 3vw; }
+	.gradient-text { font-size: 3vw; }
+	footer { font-size: 0.75em; }
+	.nav-button { padding: 10px 10px; font-size: 0.75em;}
+}
+@media (min-width: 480px) and (max-width: 735px) {
+	.logo { width: 10vw; }
+	.nav-links { font-size: 0.75em; }
+	.nav-links a { margin: 0 10px;}
+	.main-logo { max-width: 30vw; /* Adjust as needed */}
+	.text-container h1 { font-size: 3vw; }
+	.gradient-text { font-size: 3vw; }
+	footer { font-size: 0.75em; }
+	.nav-button { padding: 5px 5px; font-size: 0.75em;}
+}
+@media (max-width: 479px) {
+	.logo { width: 11vw; }
+	.nav-links { font-size: 0.5em; }
+	.nav-links a { margin: 0 10px;}
+	.main-logo { max-width: 40vw; /* Adjust as needed */}
+	.text-container h1 { font-size: 5vw; }
+	.gradient-text { font-size: 5vw; }
+	footer { font-size: 0.5em; }
+	.nav-button { padding: 5px 5px; font-size: 0.5em;}
+}
+@media (max-height: 1024px) {
+	.navbar { max-height: 33vh; }
+}

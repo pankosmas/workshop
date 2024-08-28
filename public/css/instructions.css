@@ -1,0 +1,273 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Open Sans, Arial, sans-serif;
+    font-size: 16px;
+	background: #fff;
+	background: url('../images/pixels.png') repeat fixed;
+    background-size: cover; 
+    min-height: 100vh; /* Ensure body covers entire viewport height */
+	display: flex;
+    flex-direction: column;
+	/* overflow: hidden; */
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    position: fixed; /* Fixed position keeps it visible */
+    width: 100%;
+	min-height: 6vh;
+}
+.nav-links {
+    display: flex;
+	font-size: 1em;
+    align-items: center;
+}
+.nav-links a {
+    color: #7A7A7A;
+    margin: 0 20px;
+	text-decoration: none;
+}
+.nav-links a:hover {
+    color: #fff;
+}
+.nav-button {
+	background: linear-gradient(120deg, #10cc9d 0%, #14cba0 25%, #1fb3af 50%, #0995e6 75%, #11819b 100%);
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
+	overflow: visible; /* Ensure that any overflow is visible */
+	font-size: 1em;
+}
+.nav-button:hover {
+	background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
+}
+.logo {
+	width: 5vw;
+}
+.content {
+    text-align: center;
+    width: 100vw; /* Adjust as needed */
+    height: 100vh; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.content h1 {
+	font-size: 2vw;
+	margin: 100px 0 25px 0;
+}
+.instructions-container {
+    width: 60vw;
+    margin: 20px 0 20px 0;
+    background-color: #f9f9f9; /*, #1ba0a7, #16c7a6); /*#f9f9f9;*/
+    /*box-shadow: 10px 20px 40px #16c7a6;*/
+    border-radius: 5px;
+}
+.instruction {
+	width: 100%;
+    display: flex;
+	align-items: center;
+	font-size: 1.5em;
+	margin: 15px 0px;
+	box-shadow: 5px 5px 10px #16c7a6;
+    border-radius: 5px;
+	/*border: 1px solid #0999e1;
+	border-radius: 5px;*/
+}
+
+.instruction p {
+	justify-content: center;
+	width: 65%;
+	margin: 0.6em 0px;
+	text-align: left;
+}
+
+.instruction-number {
+	font-style: italic;
+}
+
+.instruction input[type="checkbox"] {
+    transform: scale(1);
+}
+
+.emoji-container {
+	text-align: right;
+	width: 10%;
+}
+.explanation-container {
+	width: 75%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff; /*, #1ba0a7, #16c7a6); /*#f9f9f9;*/
+    box-shadow: 5px 5px 10px #16c7a6;
+	/*10px 20px 40px #0994e9;*/
+    border-radius: 5px;
+	font-size: 1.5em;
+}
+.explanation1-image {
+	width: 50%;
+}
+.bounce {
+  animation: bounce 2s infinite;
+}
+.invisible {
+	display: none;
+}
+
+#nextButton {
+	margin-top: 1%;
+}
+#tip2, #tip1 {
+	margin-top: 100px;
+}
+
+span {
+	font-weight: bold;
+	margin-left: 2%;
+	margin-right: 3%;
+}
+/* Custom styles for checkbox */
+input[type="checkbox"] {
+    appearance: none; /* Removes default checkbox appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none; /* Removes default focus style */
+    border: 2px solid #0999e1; /* Adds blue border */
+	border-radius: 3px;
+    width: 2em; /* Adjust as needed */
+    height: 2em; /* Adjust as needed */
+    margin-right: 40px; /* Optional: Space between checkbox and label */
+    vertical-align: middle; /* Aligns checkbox vertically with the label */
+}
+input[type="checkbox"]::after {
+    content: '\2713'; /* Unicode character for checkmark */
+    font-size: 2em; /* Adjust size of checkmark */
+    color: transparent; /* Initially transparent */
+    position: absolute; /* Position relative to checkbox */
+    top: 0;
+    left: 0; /* Adjust position as needed */
+    line-height: 1; /* Ensures vertical alignment */
+    transition: all 0.2s ease; /* Smooth transition for visibility */
+}
+input[type="checkbox"]:checked {
+    background-color: #fff; /* Cyan background when checked */
+}
+input[type="checkbox"]:checked::after {
+    color: #16c7a6; /* Blue checkmark when checked */
+    font-weight: bold; /* Optional: Make the tick bold */
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+	position: fixed; /* Fixed position keeps it visible */
+	left: 0%;
+	width: 100%;
+	bottom: 0%;
+	font-size: 1em;
+    margin-top: auto; /* Push footer to the bottom */
+}
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(10px);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (min-width: 1880px) {
+	.logo { width: 5vw; }
+}
+@media (min-width: 1380px) and (max-width: 1879px) {
+	.logo { width: 5vw; }
+	.instruction p { font-size: 0.9em;}
+	.instructions-container  { width: 70vw;}
+	footer { font-size: 0.85em; }
+}
+@media (min-width: 880px) and (max-width: 1379px) {
+	.logo { width: 7vw; }
+	footer { font-size: 0.75em; }
+	.content h1 { font-size: 3vw; }
+	.instruction p { font-size: 0.75em;}
+	.instruction-number { font-size: 0.75em; }
+	.instructions-container  { width: 75vw;}
+	.explanation-container  { font-size: 1.25em; }
+	.nav-button { font-size: 0.8em; }
+	.emoji-container { font-size: 0.75em; }
+	input[type="checkbox"] { width: 1.5em; height: 1.5em; /* Adjust as needed */}
+	input[type="checkbox"]::after { font-size: 1.5em; }
+}
+@media (min-width: 736px) and (max-width: 879px) {
+	.logo { width: 8vw; }
+	.nav-links { font-size: 0.75em; }
+	footer { font-size: 0.75em; }
+	.content h1 { font-size: 3vw; }
+	.instructions-container  { width: 75vw;}
+	.explanation-container  { font-size: 1em; }
+	.nav-button { font-size: 0.8em; }
+	.instruction p { font-size: 0.7em;}
+	.instruction-number { font-size: 0.7em; }
+	.emoji-container { font-size: 0.7em; }
+	input[type="checkbox"] { width: 1.25em; height: 1.25em; /* Adjust as needed */}
+	input[type="checkbox"]::after { font-size: 1.25em; }
+}
+@media (min-width: 480px) and (max-width: 735px) {
+	.logo { width: 10vw; }
+	.nav-links { font-size: 0.75em; }
+	.nav-links a { margin: 0 10px;}
+	footer { font-size: 0.75em; }
+	.content h1 { font-size: 3vw; }
+	.instruction p { font-size: 0.5em;}
+	.instruction-number { font-size: 0.5em; }
+	.instructions-container  { width: 85vw;}
+	.explanation-container  { font-size: 0.75em;}
+	.nav-button { font-size: 0.8em; }
+	.emoji-container { font-size: 0.5em; }
+	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */}
+	input[type="checkbox"]::after { font-size: 0.75em; }
+}
+@media (max-width: 479px) {
+	.logo { width: 11vw; }
+	.nav-links { font-size: 0.5em; }
+	.nav-links a { margin: 0 10px;}
+	footer { font-size: 0.5em; }
+	.content h1 { font-size: 5vw; }
+	.instruction p { font-size: 0.5em;}
+	.instruction-number { font-size: 0.5em; }
+	.emoji-container { font-size: 0.5em; }
+	.instructions-container  { width: 85vw;}
+	.explanation-container  { font-size: 0.5em;}
+	.nav-button { font-size: 0.8em; }
+	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */}
+	input[type="checkbox"]::after { font-size: 0.75em; }
+}
+@media (max-height: 760px) {
+	.instruction p { font-size: 0.5em;}
+	.instruction-number { font-size: 0.5em; }
+	.emoji-container { font-size: 0.5em; }
+	.instructions-container  { width: 85vw; margin: 5px 0px 5px 0px;}
+	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */ margin-right: 20px;}
+	input[type="checkbox"]::after { font-size: 0.75em; }
+}

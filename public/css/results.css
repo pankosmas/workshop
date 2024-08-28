@@ -1,0 +1,122 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar select {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 60px); /* Full viewport height minus navbar */
+    width: 100vw; /* Full viewport width */
+}
+.left {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ensure content fits within container */
+}
+
+.left > div {
+    flex: 1;
+    border: 1px solid #ddd;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent content overflow */
+}
+
+.right {
+    width: 65%;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent content overflow */
+}
+.right-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heatmap-container {
+    width: 100%;
+    height: 70%;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent content overflow */
+}
+canvas, #heatmap {
+    width: 100%;
+    height: 100%;
+    display: block; /* Ensure canvas takes up full container size */
+}
+
+#heatmap {
+    background: url(../images/step1.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.submission-count, .my-timer, .global-timer {
+    width: 9vw;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.my-timer {
+    width: 12vw;
+}
+.global-timer {
+    width: 17vw;
+}
+
+#dropdown, #dropdown2, #dropdown3 {
+    width: 10vw;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#answersDisplay p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+#answersDisplay strong {
+    color: #333;
+}

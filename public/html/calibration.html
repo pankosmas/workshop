@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calibration Page</title>
+    <link rel="stylesheet" type="text/css" href="../css/calibration.css">
+    <link rel="icon" href="../images/logo.png" type="image/x-icon">
+</head>
+
+<body lang="en-US" link="#0000ff" dir="LTR">
+    <canvas id="plotting_canvas" width="500" height="500" style="cursor:crosshair;"></canvas>
+
+    <script src="../js/sweetalert2.all.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/precision_store_points.js"></script>
+    <script src="../js/calibration.js"></script>
+    <script src="../js/precision_calculation.js"></script>
+
+    <nav class="navbar navoff">
+        <a href="index.html">
+            <img src="../images/nav-logo.png" alt="Logo" class="logo">
+        </a>
+        <div class="nav-links">
+            <!-- Accuracy -->
+            <a id="Accuracy">Not yet Calibrated</a>
+            <a onclick="Restart()" >Recalibrate</a>
+            <a id="helpBtn">Help</a>
+        </div>
+		<div style="margin-right: 180px;"></div>
+    </nav>
+
+    <div id="gaze"></div>
+    
+    <!-- Calibration points -->
+    <div class="calibrationDiv">
+        <input type="button" class="Calibration" id="Pt1">
+        <input type="button" class="Calibration" id="Pt2">
+        <input type="button" class="Calibration" id="Pt3">
+        <input type="button" class="Calibration" id="Pt4">
+        <input type="button" class="Calibration" id="Pt5">
+        <input type="button" class="Calibration" id="Pt6">
+        <input type="button" class="Calibration" id="Pt7">
+        <input type="button" class="Calibration" id="Pt8">
+        <input type="button" class="Calibration" id="Pt9">
+    </div>
+
+    <img src="../images/green_pin.png" class="bounce red-pin" id="P1">
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Help Information</h2>
+            <p style="font-weight: bold;">Tip 1</p>
+            <p>During calibration, make sure your face is <strong>centered</strong> on the camera and your head is relatively <strong>stable</strong>.</p>
+            <div class="modal-image"><img src="../images/pos3.png" alt="Head Position Example" class="explanation1-image"></div>
+            <p style="font-weight: bold;">Tip 2</p>
+            <!--<p>Observe the image. The small pin <img class="bounce red-pin" src="../images/red_pin.png"> will help you locate some points on the page. <strong>Focus</strong> your gaze and <strong>click on them</strong> until the calibration process is complete.</p>-->
+            <p>Find the calibration buttons within the image. <strong>Press</strong> each button 5 times while <strong>looking</strong> at it. Repeat until the Calibration process is completed.</p>
+            <div class="modal-image"><img src="../images/tip2.png" alt="Head Position Example" class="explanation1-image"></div>
+            <br><br><br><br><br><br>
+            <button id="calibrateButton" class="calibrate-btn">Start Calibration</button>
+        </div>
+    </div>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="../js/webgazer.js"></script>
+    <script src="../js/helpModal.js"></script>
+    <script src="../js/resize_canvas.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
