@@ -1,7 +1,7 @@
 async function fetchData() {
     try {
         activityStepValue = getActivityStepValue();
-        const response = await fetch(`http://localhost:3000/data?activityStep=${activityStepValue}`);
+        const response = await fetch(`/data?activityStep=${activityStepValue}`);
         const data = await response.json();
         processCharts(data);
         getVizType();
