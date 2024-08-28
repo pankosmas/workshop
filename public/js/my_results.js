@@ -3,8 +3,8 @@ async function fetchData() {
         activityStepValue = getActivityStepValue();
         // const response = await fetch(`/data?activityStep=${activityStepValue}`);
         // const data = await response.json();
-        //processPersonalCharts(data);
-        processPersonalCharts(data);
+        // processPersonalCharts(data);
+        processPersonalCharts();
         getVizType();
     } catch (error) {
         console.error('Error fetching data:', error);
