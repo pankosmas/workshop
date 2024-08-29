@@ -24,7 +24,7 @@ const question1_answer3 = document.querySelector('label[for="Deepfake"]');
 const question2 = document.querySelector('label[for="details"]');
 const question2_answer1 = document.querySelector('label[for="Normal"]');
 const question2_answer2 = document.querySelector('label[for="Awareness"]');
-const question2_answer3 = document.querySelector('label[for="Lighting and Shadow"]');
+const question2_answer3 = document.querySelector('label[for="Lighting"]');
 const question2_answer4 = document.querySelector('label[for="Blending"]');
 const question2_answer5 = document.querySelector('label[for="Context"]');
 
