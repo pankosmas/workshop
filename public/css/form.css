@@ -101,7 +101,7 @@ body {
     margin: 90px 0px 50px 0px;
 }
 .initial-container {
-    margin: 100px 0px 50px 0px;
+    /*margin: 100px 0px 50px 0px;*/
     background-color: white;
     padding: 20px;
     border-radius: 5px;
@@ -113,6 +113,10 @@ body {
     max-width: 90%; /* Limits the maximum width to 90% of the viewport width */
     max-height: 90%; /* Limits the maximum height to 90% of the viewport height */
     box-sizing: border-box; /* Ensures padding is included in the div�s total width */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .initial-container h2 {
     margin-bottom: 20px;

@@ -201,7 +201,7 @@ const visualizationDiv = document.getElementById('heatmap');
 // Add an event listener for the 'change' event
 dropdown.addEventListener('change', function() {
     // Get the selected option's text
-    activityStepValue = getActivityStepValue();
+    var activityStepValue = getActivityStepValue();
     // Set the canvas background to the image
     const heatmapCanvas = document.getElementById('heatmap');    
     heatmapCanvas.style.background = `url(../images/${activityStepValue}.png)`;
@@ -223,3 +223,20 @@ dropdown3.addEventListener('change', function () {
    // Fetch data again
    fetchData();
 });
+
+function getDetailsArray() {
+    // Get the selected option's text
+    var activityStepValue = getActivityStepValue();
+
+    const radio_choices = { Real: 0, Tampered: 0, Deepfake: 0 };
+
+    if (activityStepValue == 1) { return { 'Normal': radio_choices, 'Awareness': radio_choices, 'Lighting-Shadow Inconsistencies': radio_choices, 'Edges-Blending': radio_choices, 'Context': radio_choices }; }
+    else if (activityStepValue == 2) { return { 'Normal': radio_choices, 'Awareness': radio_choices, 'Heatmap': radio_choices, 'Spatial Inconsistencies': radio_choices, 'Colour Inconsistencies': radio_choices }; }
+    else if (activityStepValue == 3) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    else if (activityStepValue == 4) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    else if (activityStepValue == 5) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    else if (activityStepValue == 6) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    else if (activityStepValue == 7) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    else if (activityStepValue == 8) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    else { url = "../images/step8.png"; }
+}
