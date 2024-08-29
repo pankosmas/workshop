@@ -134,8 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
                 '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
                 '<input type="checkbox" id="Heatmap" name="details" value="Heatmap">  Heatmap areas of uniform color indicate that there is no processing.',
-                '<input type="checkbox" id="Spatial Inconsistencies" name="details" value="Spatial Inconsistencies"> Spatial inconsistencies are present in the image.',
-                '<input type="checkbox" id="Colour inconsistencies" name="details" value="Colour inconsistencies"> Colour inconsistencies present in the heatmap raise suspicions about the image.',
+                '<input type="checkbox" id="Spatial" name="details" value="Spatial"> Spatial inconsistencies are present in the image.',
+                '<input type="checkbox" id="Colour" name="details" value="Colour"> Colour inconsistencies present in the heatmap raise suspicions about the image.',
             );
             stepCounter = 2;
         }
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 '<input type="checkbox" id="Identical" name="details" value="Identical"> Search results point to a single identical image.',
                 '<input type="checkbox" id="Variants" name="details" value="Variants"> Search results revealed multiple variants of the image components.',
                 '<input type="checkbox" id="Context" name="details" value="Context"> The image and/or its variants have been used in different contexts.',
-                '<input type="checkbox" id="Already Fact Checked" name="details" value="Already Fact Checked"> Search results indicate that the image has been already fact checked.',
+                '<input type="checkbox" id="Fact Checked" name="details" value="Fact Checked"> Search results indicate that the image has been already fact checked.',
             );
             stepCounter = 4;
         }
