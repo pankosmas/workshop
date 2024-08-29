@@ -147,6 +147,7 @@ body {
     border: none;
     border-radius: 5px;
     max-width: 75vw;
+    width: 60%;
     height: auto;
     padding: 10px;
     background: white;
