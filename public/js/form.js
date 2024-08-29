@@ -27,7 +27,6 @@ const question2_answer2 = document.querySelector('label[for="Lighting"]');
 const question2_answer3 = document.querySelector('label[for="Semantic"]');
 const question2_answer4 = document.querySelector('label[for="Context"]');
 const question2_answer5 = document.querySelector('label[for="Edges"]');
-const question2_answer6 = document.querySelector('label[for="Source"]');
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form');
@@ -127,17 +126,16 @@ document.addEventListener('DOMContentLoaded', () => {
             editProgress(progressBar, 10);
             loadNextStep("../images/step2.png", 'Step 2: Uncover the Truth by using Forensic Heatmaps');
             changeFormContent('Step 2: Uncover the Truth by using Forensic Heatmaps', "../images/step2.png", 
-                '1. This Image is: ', 
+                '1. I believe this image is: ', 
                 '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)', 
                 '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
                 '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
-                '2. Which visual clues from the heatmaps were most helpful in determining your decision?', 
-                '<input type="checkbox" id="Anomalies" name="details" value="Anomalies"> Anomalies and Artifacts: There are noticeable anomalies or artifacts, such as distortions or mismatched elements.',
-                '<input type="checkbox" id="Lighting" name="details" value="Lighting"> Lighting and Shadows: The lighting and shadows in the image appear inconsistent with the environment.',
-                '<input type="checkbox" id="Semantic" name="details" value="Semantic"> Semantic Inaccuracy: The content of the image is logically inconsistent with known facts or events.',
-                '<input type="checkbox" id="Context" name="details" value="Context"> Contextual Relevance: The context in which the image is presented is inappropriate.',
-                '<input type="checkbox" id="Edges" name="details" value="Edges"> Edges and Blending: The edges around objects in the image look poorly blended.',
-                '<input type="checkbox" id="Source" name="details" value="Source"> Source Trustworthiness: The source of the image is suspicious.' 
+                '2. What led you to your decision?', 
+                '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
+                '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
+                '<input type="checkbox" id="Heatmap" name="details" value="Heatmap">  Heatmap areas of uniform color indicate that there is no processing.',
+                '<input type="checkbox" id="Spatial Inconsistencies" name="details" value="Spatial Inconsistencies"> Spatial inconsistencies are present in the image.',
+                '<input type="checkbox" id="Colour inconsistencies" name="details" value="Colour inconsistencies"> Colour inconsistencies present in the heatmap raise suspicions about the image.',
             );
             stepCounter = 2;
         }
@@ -146,17 +144,16 @@ document.addEventListener('DOMContentLoaded', () => {
             editProgress(progressBar, 20);
             loadNextStep("../images/step3.png", 'Step 3: Confirm your findings with Fusion (probability) mapping');
             changeFormContent('Step 3: Confirm your findings with Fusion (probability) mapping', "../images/step3.png",
-                '1. This Image is: ',
+                '1. I believe this image is: ',
                 '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
                 '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
                 '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
-                '2. Which visual clues from the heatmaps were most helpful in determining your decision?',
-                '<input type="checkbox" id="Anomalies" name="details" value="Anomalies"> Anomalies and Artifacts: There are noticeable anomalies or artifacts, such as distortions or mismatched elements.',
-                '<input type="checkbox" id="Lighting" name="details" value="Lighting"> Lighting and Shadows: The lighting and shadows in the image appear inconsistent with the environment.',
-                '<input type="checkbox" id="Semantic" name="details" value="Semantic"> Semantic Inaccuracy: The content of the image is logically inconsistent with known facts or events.',
-                '<input type="checkbox" id="Context" name="details" value="Context"> Contextual Relevance: The context in which the image is presented is inappropriate.',
-                '<input type="checkbox" id="Edges" name="details" value="Edges"> Edges and Blending: The edges around objects in the image look poorly blended.',
-                '<input type="checkbox" id="Source" name="details" value="Source"> Source Trustworthiness: The source of the image is suspicious.' 
+                '2. What led you to your decision?',
+                '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
+                '<input type="checkbox" id="Heatmap" name="details" value="Heatmap"> Visual inspection of image and heatmaps.',
+                '<input type="checkbox" id="Fusion map" name="details" value="Fusion map"> Visual inspection of fusion map.',
+                '<input type="checkbox" id="Forgery" name="details" value="Forgery"> The indicated forgery probability.',
+                '<input type="checkbox" id="Combination" name="details" value="Combination"> Combined inspection of image, heatmaps, fusion map and forgery probability.',
             );
             stepCounter = 3;
         }
@@ -165,17 +162,16 @@ document.addEventListener('DOMContentLoaded', () => {
             editProgress(progressBar, 30);
             loadNextStep("../images/step4.png", 'Step 4: Cross-check your findings with Reverse Image Search');
             changeFormContent('Step 4: Cross-check your findings with Reverse Image Search', "../images/step4.png", 
-                '1. This Image is: ',
+                '1. I believe this image is: ',
                 '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
                 '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
                 '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
-                '2. Which visual clues from the heatmaps were most helpful in determining your decision?',
-                '<input type="checkbox" id="Anomalies" name="details" value="Anomalies"> Anomalies and Artifacts: There are noticeable anomalies or artifacts, such as distortions or mismatched elements.',
-                '<input type="checkbox" id="Lighting" name="details" value="Lighting"> Lighting and Shadows: The lighting and shadows in the image appear inconsistent with the environment.',
-                '<input type="checkbox" id="Semantic" name="details" value="Semantic"> Semantic Inaccuracy: The content of the image is logically inconsistent with known facts or events.',
-                '<input type="checkbox" id="Context" name="details" value="Context"> Contextual Relevance: The context in which the image is presented is inappropriate.',
-                '<input type="checkbox" id="Edges" name="details" value="Edges"> Edges and Blending: The edges around objects in the image look poorly blended.',
-                '<input type="checkbox" id="Source" name="details" value="Source"> Source Trustworthiness: The source of the image is suspicious.' 
+                '2. What led you to your decision?',
+                '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
+                '<input type="checkbox" id="Identical" name="details" value="Identical"> Search results point to a single identical image.',
+                '<input type="checkbox" id="Variants" name="details" value="Variants"> Search results revealed multiple variants of the image components.',
+                '<input type="checkbox" id="Context" name="details" value="Context"> The image and/or its variants have been used in different contexts.',
+                '<input type="checkbox" id="Already Fact Checked" name="details" value="Already Fact Checked"> Search results indicate that the image has been already fact checked.',
             );
             stepCounter = 4;
         }
@@ -183,27 +179,80 @@ document.addEventListener('DOMContentLoaded', () => {
             // Experiment with the progress bar
             // Eisodos experiment 2
             editProgress(progressBar, 40);
+            loadNextStep("../images/step5.png", 'Step 5: Cross-check your findings with Reverse Image Search');
+            changeFormContent('Step 5: Cross-check your findings with Reverse Image Search', "../images/step5.png", 
+                '1. I believe this image is: ',
+                '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
+                '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
+                '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
+                '2. What led you to your decision?',
+                '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
+                '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
+                '<input type="checkbox" id="Lighting-Shadow Inconsistencies" name="details" value="Lighting-Shadow Inconsistencies"> Lighting and shadow inconsistencies are present.',
+                '<input type="checkbox" id="Edges-Blending" name="details" value="Edges-Blending"> Poor edges and blending around the objects are present.',
+                '<input type="checkbox" id="Context" name="details" value="Context"> The image context does not fit with the displayed persona.',
+            );
             activityCounter = 2;
             stepCounter = 1;
         }
         if (submitCounter == 5) {
             // Experiment with the progress bar
             editProgress(progressBar, 55);
+            loadNextStep("../images/step6.png", 'Step 6: Cross-check your findings with Reverse Image Search');
+            changeFormContent('Step 6: Cross-check your findings with Reverse Image Search', "../images/step6.png", 
+                '1. I believe this image is: ',
+                '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
+                '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
+                '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
+                '2. What led you to your decision?',
+                '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
+                '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
+                '<input type="checkbox" id="Heatmap" name="details" value="Heatmap"> Heatmap areas of uniform color indicate that there is no processing.',
+                '<input type="checkbox" id="Spatial Inconsistencies" name="details" value="Spatial Inconsistencies"> Spatial inconsistencies are present in the image.',
+                '<input type="checkbox" id="Colour Inconsistencies" name="details" value="Colour Inconsistencies"> Colour inconsistencies present in the heatmap raise suspicions about the image.',
+            );
             stepCounter = 2;
         }
         if (submitCounter == 6) {
             // Experiment with the progress bar
             editProgress(progressBar, 70);
+            loadNextStep("../images/step7.png", 'Step 7: Cross-check your findings with Reverse Image Search');
+            changeFormContent('Step 7: Cross-check your findings with Reverse Image Search', "../images/step7.png", 
+                '1. I believe this image is: ',
+                '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
+                '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
+                '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
+                '2. What led you to your decision?',
+                '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
+                '<input type="checkbox" id="Heatmap" name="details" value="Heatmap"> Visual inspection of image and heatmaps.',
+                '<input type="checkbox" id="Fusion map" name="details" value="Fusion map"> Visual inspection of fusion map.',
+                '<input type="checkbox" id="Forgery" name="details" value="Forgery"> The indicated forgery probability.',
+                '<input type="checkbox" id="Combination" name="details" value="Combination"> Combined inspection of image, heatmaps, fusion map and forgery probability.',
+            );
             activityCounter = 3;
             stepCounter = 1;
         }
         if (submitCounter == 7) {
             // Experiment with the progress bar
             editProgress(progressBar, 85);
+            loadNextStep("../images/step8.png", 'Step 8: Cross-check your findings with Reverse Image Search');
+            changeFormContent('Step 8: Cross-check your findings with Reverse Image Search', "../images/step8.png", 
+                '1. I believe this image is: ',
+                '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
+                '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
+                '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
+                '2. What led you to your decision?',
+                '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
+                '<input type="checkbox" id="Synthetically produced" name="details" value="Synthetically produced"> Search results pointed out the image has been synthetically produced by other documents.',
+                '<input type="checkbox" id="Variants" name="details" value="Variants"> Search results revealed multiple variants of the image components.',
+                '<input type="checkbox" id="Unique" name="details" value="Unique"> The image seems unique, like it has been created to serve a very specific purpose.',
+                '<input type="checkbox" id="DF Algorithms" name="details" value="DF Algorithms"> The deep fake detection algorithms points to an AI Generated image.',
+            );
             stepCounter = 2;
         }
         if (submitCounter == 8) {
             // Experiment with the progress bar
+            loadNextStep("../images/step9.png", 'Step 9: Cross-check your findings with Reverse Image Search');
             editProgress(progressBar, 100);
         }
 
@@ -221,7 +270,7 @@ function changeHeaderText (newHeaderText) {
     headerText.textContent = newHeaderText;
 }
 
-function changeFormContent (newtIndicator, imgSrc, q1, q1a1, q1a2, q1a3, q2, q2a1, q2a2, q2a3, q2a4, q2a5, q2a6) {
+function changeFormContent (newtIndicator, imgSrc, q1, q1a1, q1a2, q1a3, q2, q2a1, q2a2, q2a3, q2a4, q2a5) {
     partIndicator.textContent = newtIndicator;
     formImage.src = imgSrc;
     question1.innerHTML = q1;
@@ -234,7 +283,6 @@ function changeFormContent (newtIndicator, imgSrc, q1, q1a1, q1a2, q1a3, q2, q2a
     question2_answer3.innerHTML = q2a3; 
     question2_answer4.innerHTML = q2a4; 
     question2_answer5.innerHTML = q2a5; 
-    question2_answer6.innerHTML = q2a6; 
 }
 
 function showFullImage () {
