@@ -85,20 +85,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (submitCounter == 4) { 
                     Swal.fire({
                         title: 'Success!',
-                        text: `You completed 1st Activity!`,
-                        icon: 'success',
-                        confirmButtonText: 'Go Next'
-                    });
-                }
-                if (submitCounter == 6) { 
-                    Swal.fire({
-                        title: 'Success!',
-                        text: `You completed 2nd Activity!`,
+                        text: ``,
                         icon: 'success',
                         confirmButtonText: 'Go Next'
                     });
                 }
                 if (submitCounter == 8) { 
+                    Swal.fire({
+                        title: 'Success!',
+                        text: ``,
+                        icon: 'success',
+                        confirmButtonText: 'Go Next'
+                    });
+                }
+                if (submitCounter == 9) { 
                     Swal.fire({
                         title: 'Success!',
                         text: `You completed the Survey!`,
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (submitCounter == 5) {
             // Experiment with the progress bar
-            editProgress(progressBar, 55);
+            editProgress(progressBar, 50);
             loadNextStep("../images/step6.png", 'Step 6: Cross-check your findings with Reverse Image Search');
             changeFormContent('Step 6: Cross-check your findings with Reverse Image Search', "../images/step6.png", 
                 '1. I believe this image is: ',
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (submitCounter == 6) {
             // Experiment with the progress bar
-            editProgress(progressBar, 70);
+            editProgress(progressBar, 60);
             loadNextStep("../images/step7.png", 'Step 7: Cross-check your findings with Reverse Image Search');
             changeFormContent('Step 7: Cross-check your findings with Reverse Image Search', "../images/step7.png", 
                 '1. I believe this image is: ',
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (submitCounter == 7) {
             // Experiment with the progress bar
-            editProgress(progressBar, 85);
+            editProgress(progressBar, 70);
             loadNextStep("../images/step8.png", 'Step 8: Cross-check your findings with Reverse Image Search');
             changeFormContent('Step 8: Cross-check your findings with Reverse Image Search', "../images/step8.png", 
                 '1. I believe this image is: ',
@@ -253,9 +253,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (submitCounter == 8) {
             // Experiment with the progress bar
             loadNextStep("../images/step9.png", 'Step 9: Cross-check your findings with Reverse Image Search');
+            editProgress(progressBar, 80);
+        }
+        if (submitCounter == 9) {
+            // Experiment with the progress bar
             editProgress(progressBar, 100);
         }
-
     });
     
 });
