@@ -231,7 +231,7 @@ function getDetailsArray() {
     const radio_choices = { Real: 0, Tampered: 0, Deepfake: 0 };
 
     if (activityStepValue == 1) { return { 'Normal': radio_choices, 'Awareness': radio_choices, 'Lighting-Shadow Inconsistencies': radio_choices, 'Edges-Blending': radio_choices, 'Context': radio_choices }; }
-    else if (activityStepValue == 2) { return { 'Normal': radio_choices, 'Awareness': radio_choices, 'Heatmap': radio_choices, 'Spatial Inconsistencies': radio_choices, 'Colour Inconsistencies': radio_choices }; }
+    else if (activityStepValue == 2) { console.log('geia'); return { 'Normal': radio_choices, 'Awareness': radio_choices, 'Heatmap': radio_choices, 'Spatial Inconsistencies': radio_choices, 'Colour Inconsistencies': radio_choices }; }
     else if (activityStepValue == 3) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
     else if (activityStepValue == 4) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
     else if (activityStepValue == 5) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
