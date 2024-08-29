@@ -230,13 +230,13 @@ function getDetailsArray() {
 
     const radio_choices = { Real: 0, Tampered: 0, Deepfake: 0 };
 
-    if (activityStepValue == 1) { return { 'Normal': radio_choices, 'Awareness': radio_choices, 'Lighting-Shadow Inconsistencies': radio_choices, 'Edges-Blending': radio_choices, 'Context': radio_choices }; }
-    else if (activityStepValue == 2) { console.log('geia'); return { 'Normal': radio_choices, 'Awareness': radio_choices, 'Heatmap': radio_choices, 'Spatial Inconsistencies': radio_choices, 'Colour Inconsistencies': radio_choices }; }
-    else if (activityStepValue == 3) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
-    else if (activityStepValue == 4) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
-    else if (activityStepValue == 5) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
-    else if (activityStepValue == 6) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
-    else if (activityStepValue == 7) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
-    else if (activityStepValue == 8) { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    if (activityStepValue == 'step1') { return { 'Normal': radio_choices, 'Awareness': radio_choices, 'Lighting-Shadow Inconsistencies': radio_choices, 'Edges-Blending': radio_choices, 'Context': radio_choices }; }
+    else if (activityStepValue == 'step2') { return { 'Normal': radio_choices, 'Awareness': radio_choices, 'Heatmap': radio_choices, 'Spatial Inconsistencies': radio_choices, 'Colour Inconsistencies': radio_choices }; }
+    else if (activityStepValue == 'step3') { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    else if (activityStepValue == 'step4') { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    else if (activityStepValue == 'step5') { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    else if (activityStepValue == 'step6') { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    else if (activityStepValue == 'step7') { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
+    else if (activityStepValue == 'step8') { return { Normal: radio_choices, Awareness: radio_choices, Lighting: radio_choices, Blending: radio_choices, Context: radio_choices }; }
     else { url = "../images/step8.png"; }
 }
