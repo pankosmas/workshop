@@ -22,11 +22,11 @@ const question1_answer1 = document.querySelector('label[for="Real"]');
 const question1_answer2 = document.querySelector('label[for="Tampered"]');
 const question1_answer3 = document.querySelector('label[for="Deepfake"]');
 const question2 = document.querySelector('label[for="details"]');
-const question2_answer1 = document.querySelector('label[for="Anomalies"]');
-const question2_answer2 = document.querySelector('label[for="Lighting"]');
-const question2_answer3 = document.querySelector('label[for="Semantic"]');
-const question2_answer4 = document.querySelector('label[for="Context"]');
-const question2_answer5 = document.querySelector('label[for="Edges"]');
+const question2_answer1 = document.querySelector('label[for="Normal"]');
+const question2_answer2 = document.querySelector('label[for="Awareness"]');
+const question2_answer3 = document.querySelector('label[for="Lighting and Shadow"]');
+const question2_answer4 = document.querySelector('label[for="Blending"]');
+const question2_answer5 = document.querySelector('label[for="Context"]');
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form');

@@ -138,9 +138,6 @@ body {
 .initial-container button:hover {
     background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
 }
-.form-container {
-    width: 60%;
-}
 .container {
     display: flex;
     flex-wrap: wrap;
