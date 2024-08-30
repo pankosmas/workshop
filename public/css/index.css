@@ -141,3 +141,20 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+@media (min-width: 1919px) {
+	.text-container h1 { top: 60%; }
+    .gradient-text { top: 70%; }
+    .nav-button { font-size: 1.2; top: 82%; }
+    .nav-links { font-size: 1.4vw; }
+    footer { font-size: 1.2vw; }
+    .logo { width: 7vw; }
+}
+@media (min-width: 2159px) {
+	.text-container h1 { top: 60%; }
+    .gradient-text { top: 70%; }
+    .nav-button { font-size: 1.4; top: 82%; }
+    .main-logo { max-width: 22vw; }
+    footer { font-size: 1.4vw; }
+    .logo { width: 8vw; }
+}
