@@ -122,11 +122,15 @@ footer a:hover {
     text-decoration: underline;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1880px) {
 	.logo { width: 5vw; }
-	.main-logo { max-width: 20vw; /* Adjust as needed */}
+    .main-logo { max-width: 20vw; /* Adjust as needed */}
 }
-@media (min-width: 880px) and (max-width: 1279px) {
+@media (min-width: 1380px) and (max-width: 1879px) {
+	.logo { width: 5vw; }
+	footer { font-size: 0.85em; }
+}
+@media (min-width: 880px) and (max-width: 1379px) {
 	.logo { width: 7vw; }
 	.text-container h1 { font-size: 3vw; }
 	.main-logo { max-width: 22vw; /* Adjust as needed */}

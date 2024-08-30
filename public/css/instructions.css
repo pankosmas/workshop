@@ -203,7 +203,7 @@ footer a:hover {
 @media (min-width: 1380px) and (max-width: 1879px) {
 	.logo { width: 5vw; }
 	.instruction p { font-size: 0.9em;}
-	.instructions-container  { width: 55vw;}
+	.instructions-container  { width: 65vw;}
 	footer { font-size: 0.85em; }
 }
 @media (min-width: 880px) and (max-width: 1379px) {
@@ -212,7 +212,7 @@ footer a:hover {
 	.content h1 { font-size: 3vw; }
 	.instruction p { font-size: 0.75em;}
 	.instruction-number { font-size: 0.75em; }
-	.instructions-container  { width: 55vw;}
+	.instructions-container  { width: 65vw;}
 	.explanation-container  { font-size: 1.25em; }
 	.nav-button { font-size: 0.8em; }
 	.emoji-container { font-size: 0.75em; }
@@ -241,7 +241,7 @@ footer a:hover {
 	.content h1 { font-size: 3vw; }
 	.instruction p { font-size: 0.5em; width: 60%;}
 	.instruction-number { font-size: 0.5em; }
-	.instructions-container  { width: 55vw;}
+	.instructions-container  { width: 65vw;}
 	.explanation-container  { font-size: 0.75em;}
 	.nav-button { font-size: 0.8em; }
 	.emoji-container { font-size: 0.5em; }
@@ -257,7 +257,7 @@ footer a:hover {
 	.instruction p { font-size: 0.5em;}
 	.instruction-number { font-size: 0.5em; }
 	.emoji-container { font-size: 0.5em; }
-	.instructions-container  { width: 85vw;}
+	.instructions-container  { width: 65vw;}
 	.explanation-container  { font-size: 0.5em;}
 	.nav-button { font-size: 0.8em; }
 	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */}
@@ -267,7 +267,7 @@ footer a:hover {
 	.instruction p { font-size: 0.5em;}
 	.instruction-number { font-size: 0.5em; }
 	.emoji-container { font-size: 0.5em; }
-	.instructions-container  { width: 85vw; margin: 5px 0px 5px 0px;}
+	.instructions-container  { width: 65vw; margin: 5px 0px 5px 0px;}
 	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */ margin-right: 20px;}
 	input[type="checkbox"]::after { font-size: 0.75em; }
 }
