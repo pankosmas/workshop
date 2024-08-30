@@ -65,6 +65,7 @@ body {
     position: absolute;
     top: 30%;
     left: 50%;
+    transform: translate(-50%, -50%);
 	max-width: 20vw; /* Adjust as needed */
 	user-select: none; /* Standard property */
 	-webkit-user-select: none; /* Chrome, Safari */
