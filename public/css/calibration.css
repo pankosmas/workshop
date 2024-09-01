@@ -241,6 +241,6 @@ body {
 
 
 @media (min-width: 1919px) {
-	#webgazerVideoContainer { width: 360px; height: 270px; }
+	#webgazerVideoContainer { width: 360px !important; height: 270px !important; }
     .navoff { width: calc(100% - 360px); margin-left: 360px; }
 }
