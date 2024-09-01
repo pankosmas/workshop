@@ -172,7 +172,70 @@ footer a:hover {
     text-decoration: underline;
 }
 
-@media (min-width: 1919px) {
+@media (max-width: 479px) {
+	.logo { width: 11vw; }
+	.nav-links { font-size: 0.5em; }
+	.nav-links a { margin: 0 10px;}
+	footer { font-size: 0.5em; }
+	.content h1 { font-size: 5vw; }
+	.instruction p { font-size: 0.5em;}
+	.instruction-number { font-size: 0.5em; }
+	.emoji-container { font-size: 0.5em; }
+	.instructions-container  { width: 65vw;}
+	.explanation-container  { font-size: 0.5em;}
+	.nav-button { font-size: 0.8em; }
+	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */}
+	input[type="checkbox"]::after { font-size: 0.75em; }
+}
+@media (min-width: 480px) and (max-width: 735px) {
+	.logo { width: 10vw; }
+	.nav-links { font-size: 0.75em; }
+	.nav-links a { margin: 0 10px;}
+	footer { font-size: 0.75em; }
+	.content h1 { font-size: 3vw; }
+	.instruction p { font-size: 0.5em; width: 60%;}
+	.instruction-number { font-size: 0.5em; }
+	.instructions-container  { width: 65vw;}
+	.explanation-container  { font-size: 0.75em;}
+	.nav-button { font-size: 0.8em; }
+	.emoji-container { font-size: 0.5em; }
+	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */}
+	input[type="checkbox"]::after { font-size: 0.75em; }
+}
+@media (min-width: 736px) and (max-width: 879px) {
+	.logo { width: 8vw; }
+	.nav-links { font-size: 0.75em; }
+	footer { font-size: 0.75em; }
+	.content h1 { font-size: 3vw; }
+	.instructions-container  { width: 65vw;}
+	.explanation-container  { font-size: 1em; }
+	.nav-button { font-size: 0.8em; }
+	.instruction p { font-size: 0.7em;}
+	.instruction-number { font-size: 0.7em; }
+	.emoji-container { font-size: 0.7em; }
+	input[type="checkbox"] { width: 1.25em; height: 1.25em; /* Adjust as needed */}
+	input[type="checkbox"]::after { font-size: 1.25em; }
+}
+@media (min-width: 880px) and (max-width: 1379px) {
+	.logo { width: 7vw; }
+	footer { font-size: 0.75em; }
+	.content h1 { font-size: 3vw; }
+	.instruction p { font-size: 0.75em;}
+	.instruction-number { font-size: 0.75em; }
+	.instructions-container  { width: 65vw;}
+	.explanation-container  { font-size: 1.25em; }
+	.nav-button { font-size: 0.8em; }
+	.emoji-container { font-size: 0.75em; }
+	input[type="checkbox"] { width: 1.5em; height: 1.5em; /* Adjust as needed */}
+	input[type="checkbox"]::after { font-size: 1.5em; }
+}
+@media (min-width: 1380px) and (max-width: 1879px) {
+	.logo { width: 5vw; }
+	.instruction p { font-size: 0.9em;}
+	.instructions-container  { width: 65vw;}
+	footer { font-size: 0.85em; }
+}
+@media (min-width: 1880px) {
 	.logo { width: 5vw; }
 	.content h1 { margin: 150px 0 25px 0; font-size: 2.2vw; }
 	.instructions-container { font-size: 1.1em; }
@@ -183,4 +246,13 @@ footer a:hover {
 	.content h1 { margin: 200px 0 25px 0; font-size: 2.2vw; }
 	.instructions-container { font-size: 1.4em; }
 	.nav-button { margin-top: 2%; font-size: 1.6em;}
+}
+
+@media (max-height: 760px) {
+	.instruction p { font-size: 0.5em;}
+	.instruction-number { font-size: 0.5em; }
+	.emoji-container { font-size: 0.5em; }
+	.instructions-container  { width: 65vw; margin: 5px 0px 5px 0px;}
+	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */ margin-right: 20px;}
+	input[type="checkbox"]::after { font-size: 0.75em; }
 }
