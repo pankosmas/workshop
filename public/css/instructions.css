@@ -241,9 +241,21 @@ footer a:hover {
 }
 @media (min-width: 2159px) {
 	.content h1 { margin: 200px 0 25px 0; font-size: 2.2vw; }
-	.instructions-container { font-size: 1.4em; }
+	.instructions-container { font-size: 1.4em; width: 70vw; }
 	.nav-button { margin-top: 2%; font-size: 2em;}
 }
+@media (min-width: 2559px) {
+	.instructions-container { margin: 100px 0 20px 0; width: 70vw; }
+	.instruction { font-size: 1.7em;}
+	.nav-button { margin-top: 3%; font-size: 2.5em;}
+	.nav-links, footer { font-size: 1.5em; }
+}
+
+
+
+
+
+
 
 @media (max-height: 760px) {
 	.instruction p { font-size: 0.5em;}
