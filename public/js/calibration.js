@@ -237,7 +237,10 @@ document.addEventListener('DOMContentLoaded', function() {
       else if (width === 1920) { imageURL = 'url(../images/calibration/1920x1080.png)'; }
       else if (width === 2160) { imageURL = 'url(../images/calibration/2160x1440.png)'; }
       else if (width === 2304) { imageURL = 'url(../images/calibration/2304x1440.png)'; }
-      else if (width === 2560) { imageURL = 'url(../images/calibration/2560x1600.png)'; }
+      else if (width === 2560) { 
+        if (height === 1440) { imageURL = 'url(../images/calibration/2560x1440.png)'; }
+        else { imageURL = 'url(../images/calibration/2560x1600.png)'; }
+      }
       else if (width === 2880) { 
         if ( height === 1620) { imageURL = 'url(../images/calibration/2880x1620.png)'; }
         else { imageURL = 'url(../images/calibration/2880x1800.png)'; }

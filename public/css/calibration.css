@@ -105,21 +105,21 @@ body {
     z-index: 50;
 }
 #Pt1 {
-    top: 80px;
-    left: 110px;
+    top: 6vw;
+    left: 8vw;
     z-index: 2;
 }
 #Pt2 {
-    top: 70px;
+    top: 7vh;
     left: 50vw;
     margin-left: 340;
 }
 #Pt3 {
-    top: 70px;
-    right: 2vw;
+    top: 7vh;
+    right: 1vw;
 }
 #Pt4 {
-    top: 50vh;
+    top: 49vh;
     left: 2vw;
 }
 #Pt5 {
@@ -127,19 +127,19 @@ body {
     left: 50vw;
 }
 #Pt6 {
-    top: 50vh;
-    right: 2vw;
+    top: 49vh;
+    right: 1vw;
 }
 #Pt7 {
-    bottom: 1.5vh;
+    bottom: 1vh;
     left: 2vw;
 }
 #Pt8 {
-    bottom: 1.5vh;
-    left: 50vw;
+    bottom: 1vh;
+    left: 51vw;
 }
 #Pt9 {
-    bottom: 1.5vh;
+    bottom: 1vh;
     right: 2vw;
 }
 .red-pin {
