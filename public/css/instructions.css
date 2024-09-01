@@ -241,14 +241,19 @@ footer a:hover {
 }
 @media (min-width: 2159px) {
 	.content h1 { margin: 200px 0 25px 0; font-size: 2.2vw; }
-	.instructions-container { font-size: 1.4em; width: 70vw; }
+	.instructions-container { font-size: 1.4em; width: 68vw; }
 	.nav-button { margin-top: 2%; font-size: 2em;}
 }
 @media (min-width: 2559px) {
-	.instructions-container { margin: 100px 0 20px 0; width: 70vw; }
+	.instructions-container { margin: 100px 0 20px 0; }
 	.instruction { font-size: 1.7em;}
 	.nav-button { margin-top: 3%; font-size: 2.5em;}
 	.nav-links, footer { font-size: 1.5em; }
+}
+@media (min-width: 2879px) {
+	.nav-links, footer { font-size: 1.7em; }
+	.instruction input[type="checkbox"] { transform: scale(1.5); }
+	.nav-button { font-size: 3em; }
 }
 
 
