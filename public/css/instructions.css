@@ -197,8 +197,17 @@ footer a:hover {
   }
 }
 
-@media (min-width: 1880px) {
+@media (min-width: 2159px) {
+	.content h1 { position: absolute; top: 8%; left: 50%; transform: translate(-50%, -50%); }
+	.instructions-container { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); }
+	.nav-button { position: absolute; bottom: 30%; left: 50%; transform: translate(-50%, -50%); font-size: 1.4em;}
+}
+@media (min-width: 1919px) {
 	.logo { width: 5vw; }
+	.content h1 { position: absolute; top: 8%; left: 50%; transform: translate(-50%, -50%); }
+	.instructions-container { position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); }
+	.nav-button { position: absolute; bottom: 15%; left: 50%; transform: translate(-50%, -50%); font-size: 1.4em;}
+	.nav-links, footer { font-size: 1.4em; }
 }
 @media (min-width: 1380px) and (max-width: 1879px) {
 	.logo { width: 5vw; }
