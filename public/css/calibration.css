@@ -207,9 +207,12 @@ body {
     padding: 20px;
     border-radius: 5px;
     border: 1px solid #bbb;
-    width: 80%; /* Could be more or less, depending on screen size */
-    max-width: 600px; /* Maximum width */
-    position: relative;
+    width: 70%;
+    max-width: 650px;
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .modal-image {
