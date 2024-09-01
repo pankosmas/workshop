@@ -249,10 +249,10 @@ footer a:hover {
 	.instruction { font-size: 1.7em;}
 	.nav-button { margin-top: 3%; font-size: 2.5em;}
 	.nav-links, footer { font-size: 1.5em; }
+	.instruction input[type="checkbox"] { transform: scale(1.5); }
 }
 @media (min-width: 2879px) {
-	.nav-links, footer { font-size: 1.7em; }
-	.instruction input[type="checkbox"] { transform: scale(1.5); }
+	.nav-links, footer { font-size: 1.8em; }
 	.nav-button { font-size: 3em; }
 }
 
@@ -269,4 +269,9 @@ footer a:hover {
 	.instructions-container  { width: 65vw; margin: 5px 0px 5px 0px;}
 	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */ margin-right: 20px;}
 	input[type="checkbox"]::after { font-size: 0.75em; }
+}
+@media (max-height: 1799px) {
+	.content h1 { margin: 300px 0 25px 0; font-size: 2.4vw; }
+	.instructions-container { margin: 200px 0 20px 0; font-size: 1.6em;  }
+	.nav-button { margin-top: 6%; }
 }
