@@ -270,8 +270,17 @@ footer a:hover {
 	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */ margin-right: 20px;}
 	input[type="checkbox"]::after { font-size: 0.75em; }
 }
+@media (min-height: 1599px) {
+	.content h1 { margin: 220px 0 25px 0; font-size: 2.4vw; }
+	.instructions-container { margin: 120px 0 20px 0; font-size: 1.6em;  }
+	.nav-button { margin-top: 5%; }
+}
 @media (min-height: 1799px) {
-	.content h1 { margin: 300px 0 25px 0; font-size: 2.4vw; }
-	.instructions-container { margin: 200px 0 20px 0; font-size: 1.6em;  }
-	.nav-button { margin-top: 6%; }
+	.content h1 { margin: 260px 0 25px 0; font-size: 2.4vw; }
+	.instructions-container { margin: 140px 0 20px 0; font-size: 1.6em;  }
+	.nav-button { margin-top: 3%; }
+}
+@media (min-height: 1919px) {
+	.content h1 { margin: 260px 0 25px 0; font-size: 2.4vw; }
+	.instructions-container { margin: 140px 0 20px 0; font-size: 1.6em;  }
 }
