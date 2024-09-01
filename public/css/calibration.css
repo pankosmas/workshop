@@ -242,4 +242,5 @@ body {
 
 @media (min-width: 1919px) {
 	#webgazerVideoContainer { width: 360px; height: 270px; }
+    .navoff { width: calc(100% - 360px); margin-left: 360px; }
 }
