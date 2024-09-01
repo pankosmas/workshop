@@ -145,10 +145,10 @@ footer a:hover {
 @media (min-width: 1919px) {
 	.text-container h1 { top: 60%; }
     .gradient-text { top: 70%; }
-    .nav-button { font-size: 1.2vw; top: 82%; }
-    .nav-links { font-size: 1.4vw; }
-    footer { font-size: 1.2vw; }
-    .logo { width: 7vw; }
+    .nav-button { font-size: 1.1vw; top: 82%; }
+    .nav-links { font-size: 1.2vw; }
+    footer { font-size: 1.1vw; }
+    .logo { width: 6vw; }
 }
 @media (min-width: 2159px) {
 	.text-container h1 { top: 60%; }
