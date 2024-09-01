@@ -236,8 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // Check the width and set the background image accordingly
       if (width < 1600) {
           body.style.background = imageSmallScreen;
-          body.style.backgroundSize = 'cover'; /* Ensures the image covers the entire window */
-          body.style.backgroundPosition = 'contain'; /* Centers the image */
+          body.style.backgroundSize = 'contain'; /* Ensures the image covers the entire window */
+          body.style.backgroundPosition = 'center'; /* Centers the image */
           body.style.backgroundRepeat = 'no-repeat'; /* Prevents the image from repeating */
           body.style.backgroundAttachment = 'fixed'; /* Keeps the image fixed while content scrolls */
       } else {
