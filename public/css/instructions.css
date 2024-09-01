@@ -272,8 +272,8 @@ footer a:hover {
 }
 @media (min-height: 1599px) {
 	.content h1 { margin: 220px 0 25px 0; font-size: 2.4vw; }
-	.instructions-container { margin: 120px 0 20px 0; font-size: 1.6em;  }
-	.nav-button { margin-top: 5%; }
+	.instructions-container { margin: 120px 0 20px 0; font-size: 1.4em;  }
+	.nav-button { margin-top: 3%; }
 }
 @media (min-height: 1799px) {
 	.content h1 { margin: 260px 0 25px 0; font-size: 2.4vw; }
