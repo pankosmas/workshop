@@ -1,9 +1,10 @@
+/* ==================================================================== INDEX PAGE =================================================================================== */
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Open Sans, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 1em;
 	background: #fff;
 	background: url('../images/pixels.png') repeat fixed; 
     background-size: cover;
@@ -135,6 +136,122 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+/* ==================================================================== INSTRUCTIONS PAGE =================================================================================== */
+.content {
+    text-align: center;
+    width: 100vw; /* Adjust as needed */
+    height: 100vh; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.content h1 {
+	font-size: 2vw;
+	margin: 100px 0 25px 0;
+}
+.instructions-container {
+    width: 60vw;
+    margin: 20px 0 20px 0;
+    background-color: #f9f9f9; /*, #1ba0a7, #16c7a6); /*#f9f9f9;*/
+    /*box-shadow: 10px 20px 40px #16c7a6;*/
+    border-radius: 5px;
+}
+.instruction {
+	width: 100%;
+    display: flex;
+	align-items: center;
+	font-size: 1.5em;
+	margin: 15px 0px;
+	box-shadow: 5px 5px 10px #16c7a6;
+    border-radius: 5px;
+	/*border: 1px solid #0999e1;
+	border-radius: 5px;*/
+}
+
+.instruction p {
+	justify-content: center;
+	width: 65%;
+	margin: 0.6em 0px;
+	text-align: left;
+}
+
+.instruction-number {
+	font-style: italic;
+}
+
+.instruction input[type="checkbox"] {
+    transform: scale(1);
+}
+
+.emoji-container {
+	text-align: right;
+	width: 10%;
+}
+.explanation-container {
+	width: 75%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff; /*, #1ba0a7, #16c7a6); /*#f9f9f9;*/
+    box-shadow: 5px 5px 10px #16c7a6;
+	/*10px 20px 40px #0994e9;*/
+    border-radius: 5px;
+	font-size: 1.5em;
+}
+.explanation1-image {
+	width: 50%;
+}
+.bounce {
+  animation: bounce 2s infinite;
+}
+.invisible {
+	display: none;
+}
+
+#nextButton {
+	margin-top: 1%;
+}
+#tip2, #tip1 {
+	margin-top: 100px;
+}
+
+span {
+	font-weight: bold;
+	margin-left: 2%;
+	margin-right: 3%;
+}
+/* Custom styles for checkbox */
+input[type="checkbox"] {
+    appearance: none; /* Removes default checkbox appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none; /* Removes default focus style */
+    border: 2px solid #0999e1; /* Adds blue border */
+	border-radius: 3px;
+    width: 2em; /* Adjust as needed */
+    height: 2em; /* Adjust as needed */
+    margin-right: 40px; /* Optional: Space between checkbox and label */
+    vertical-align: middle; /* Aligns checkbox vertically with the label */
+}
+input[type="checkbox"]::after {
+    content: '\2713'; /* Unicode character for checkmark */
+    font-size: 2em; /* Adjust size of checkmark */
+    color: transparent; /* Initially transparent */
+    position: absolute; /* Position relative to checkbox */
+    top: 0;
+    left: 0; /* Adjust position as needed */
+    line-height: 1; /* Ensures vertical alignment */
+    transition: all 0.2s ease; /* Smooth transition for visibility */
+}
+input[type="checkbox"]:checked {
+    background-color: #fff; /* Cyan background when checked */
+}
+input[type="checkbox"]:checked::after {
+    color: #16c7a6; /* Blue checkmark when checked */
+    font-weight: bold; /* Optional: Make the tick bold */
+}
+
+/* ==================================================================== MEDIA QUERIES =================================================================================== */
 
 @media (min-width: 1919px) {
 	.text-container h1 { top: 60%; }
