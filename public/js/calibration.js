@@ -223,28 +223,37 @@ function sleep (time) {
 
 document.addEventListener('DOMContentLoaded', function() {
   function updateBackgroundImage() {
-      // Define the URLs for the background images
-      const imageSmallScreen = 'url(../images/small-image.png)';
-      const imageLargeScreen = 'url(../images/calibration-resized.png)';
-
       // Get the width of the window
       const width = window.innerWidth;
-
-      // Select the body element (or any other element where you want to set the background)
+      const height = window.innerHeight;
       const body = document.body;
+      var imageURL = null;
 
       // Check the width and set the background image accordingly
-      if (width < 1600) {
-          body.style.background = imageSmallScreen;
-          body.style.backgroundSize = 'contain'; /* Ensures the image covers the entire window */
-          body.style.backgroundPosition = 'center'; /* Centers the image */
-          body.style.backgroundRepeat = 'no-repeat'; /* Prevents the image from repeating */
-          body.style.backgroundAttachment = 'fixed'; /* Keeps the image fixed while content scrolls */
-      } else {
-          body.style.background = imageLargeScreen;
+      if (width === 1360) { imageURL = 'url(../images/calibration/1360x768.png)'; } 
+      else if (width === 1366) { imageURL = 'url(../images/calibration/1366x768.png)'; }
+      else if (width === 1440) { imageURL = 'url(../images/calibration/1440x900.png)'; }
+      else if (width === 1600) { imageURL = 'url(../images/calibration/1600x900.png)'; }
+      else if (width === 1920) { imageURL = 'url(../images/calibration/1920x1080.png)'; }
+      else if (width === 2160) { imageURL = 'url(../images/calibration/2160x1440.png)'; }
+      else if (width === 2304) { imageURL = 'url(../images/calibration/2304x1440.png)'; }
+      else if (width === 2560) { imageURL = 'url(../images/calibration/2560x1600.png)'; }
+      else if (width === 2880) { 
+        if ( height === 1620) { imageURL = 'url(../images/calibration/2880x1620.png)'; }
+        else { imageURL = 'url(../images/calibration/2880x1800.png)'; }
       }
-      
-      console.log(`Η οθόνη της ελισάβετ έχει διαστάσεις ${window.innerWidth} και ${window.innerHeight} !!`);
+      else if (width === 3000) { imageURL = 'url(../images/calibration/3000x2000.png)'; }
+      else if (width === 3072) { imageURL = 'url(../images/calibration/3072x1920.png)'; }
+      else if (width === 3200) { imageURL = 'url(../images/calibration/3200x1800.png)'; }
+      else if (width === 3840) { imageURL = 'url(../images/calibration/3840x2160.png)'; }
+      else { imageURL = 'url(../images/calibration/1360x768.png)'; }
+
+      body.style.background = imageURL;
+      body.style.backgroundSize = 'cover'; /* Ensures the image covers the entire window */
+      body.style.backgroundPosition = 'center'; /* Centers the image */
+      body.style.backgroundRepeat = 'no-repeat'; /* Prevents the image from repeating */
+      body.style.backgroundAttachment = 'fixed'; /* Keeps the image fixed while content scrolls */
+      console.log(`Η οθόνη έχει διαστάσεις ${window.innerWidth} και ${window.innerHeight} !!`);
   }
 
   // Call the function to set the correct background image on load

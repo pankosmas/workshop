@@ -4,7 +4,7 @@ body {
     box-sizing: border-box;
     font-family: Open Sans, Arial, sans-serif;
     font-size: 16px;
-    background: url('../images/calibration-resized.png');
+    background: url('../images/calibration/1360x768.png');
     background-size: cover; /* Ensures the image covers the entire window */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -14,7 +14,6 @@ body {
     flex-direction: column;
     overflow: hidden;
 }
-
 .navbar {
     display: flex;
     align-items: center;
@@ -26,28 +25,23 @@ body {
     width: 100%;
     min-height: 6vh;
 }
-
 .navoff {
     width: calc(100% - 240px);
     margin-left: 240px;
 }
-
 .nav-links {
     display: flex;
     font-size: 1em;
     align-items: center;
 }
-
-    .nav-links a {
-        color: #7A7A7A;
-        margin: 0 20px;
-        text-decoration: none;
-    }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
+.nav-links a {
+    color: #7A7A7A;
+    margin: 0 20px;
+    text-decoration: none;
+}
+.nav-links a:hover {
+    color: #fff;
+}
 .nav-button {
     background-color: #4CAF50;
     color: #fff;
@@ -59,15 +53,12 @@ body {
     overflow: visible; /* Ensure that any overflow is visible */
     font-size: 1em;
 }
-
-    .nav-button:hover {
-        background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
-    }
-
+.nav-button:hover {
+    background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
+}
 .logo {
     width: 5vw;
 }
-
 #Accuracy a {
     background-color: #222;
     color: #eee;
@@ -75,7 +66,6 @@ body {
     padding-left: 80px;
     padding-right: 40px;
 }
-
 #Accuracy {
     background-color: #222;
     padding-left: inherit;
@@ -114,63 +104,51 @@ body {
     left: 110px;
     z-index: 50;
 }
-
 #Pt1 {
     top: 80px;
     left: 110px;
     z-index: 2;
 }
-
 #Pt2 {
     top: 70px;
     left: 50vw;
     margin-left: 340;
 }
-
 #Pt3 {
     top: 70px;
     right: 2vw;
 }
-
 #Pt4 {
     top: 50vh;
     left: 2vw;
 }
-
 #Pt5 {
     top: 50vh;
     left: 50vw;
 }
-
 #Pt6 {
     top: 50vh;
     right: 2vw;
 }
-
 #Pt7 {
     bottom: 1.5vh;
     left: 2vw;
 }
-
 #Pt8 {
     bottom: 1.5vh;
     left: 50vw;
 }
-
 #Pt9 {
     bottom: 1.5vh;
     right: 2vw;
 }
-
 .red-pin {
     width: 25px;
     height: 25px;
 }
-
 .bounce {
     animation: bounce 2s infinite;
 }
-
 #gaze {
     display: none;
     z-index: 100;
@@ -186,8 +164,6 @@ body {
     pointer-events: none; /* Ensure it doesn't interfere with other elements */
     transition: transform 0.4s ease-out; /* Smooth movement */
 }
-
-/* Modal styles */
 .modal {
     display: none; /* Hidden by default */
     position: absolute; /* Stay in place */
@@ -200,7 +176,6 @@ body {
     overflow: hidden; /* Enable scroll if needed */
     background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
-/* Modal content box */
 .modal-content {
     background-color: #fff;
     margin: 10% auto; /* 15% from the top and centered */
@@ -214,25 +189,21 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 .modal-image {
     text-align: center;
 }
-/* Close button */
 .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
-/* Calibrate button */
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 .calibrate-btn {
     background: linear-gradient(120deg, #10cc9d 0%, #14cba0 25%, #1fb3af 50%, #0995e6 75%, #11819b 100%);
     color: white;
@@ -247,11 +218,9 @@ body {
     bottom: 20px;
     right: 20px;
 }
-
-    .calibrate-btn:hover {
-        background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
-    }
-
+.calibrate-btn:hover {
+    background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
+}
 .explanation1-image {
     width: 50%;
 }
