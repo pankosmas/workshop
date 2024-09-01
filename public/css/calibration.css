@@ -239,23 +239,7 @@ body {
     }
 }
 
-@media (max-width: 479px) {
-}
-@media (min-width: 480px) and (max-width: 735px) {
-}
-@media (min-width: 736px) and (max-width: 879px) {
-}
-@media (min-width: 880px) and (max-width: 1379px) {
-}
-@media (min-width: 1380px) and (max-width: 1879px) {
-}
-@media (min-width: 1880px) {
-}
-@media (min-width: 2159px) {
-}
-@media (min-width: 2302px) {
-}
-@media (min-width: 2559px) {
-}
-@media (min-width: 2879px) {
+
+@media (min-width: 1919px) {
+	#webgazerVideoContainer { width: 360px; height: 270px; }
 }
