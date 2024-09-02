@@ -169,6 +169,19 @@ function calPointClick(node) {
     }
 }
 
+// Function to Restart Calibration
+function restartCalibration() {
+  // use restart function to restart the calibration
+  document.getElementById("Accuracy").innerHTML = "<a>Not yet Calibrated</a>";
+  const pinElement = document.querySelector('.red-pin');
+  webgazer.clearData();
+  ClearCalibration();
+  ClearCanvas();
+  ShowCalibrationPoint();
+  changePositionWithTransform(pinElement, '3vw', null, null, '7.7vw'); 
+  changePositionLabel('speech-left', '4.5vw', null, null, '11.5vw', 'Click on the center of your webcam feed!');
+}
+
 /**
  * Load this function when the index page starts.
 * This function listens for button clicks on the html page
