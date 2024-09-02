@@ -165,6 +165,7 @@ function calPointClick(node) {
     const id = node.id;
     const pinElement = document.getElementById('P1');
     const width = String(window.innerWidth);
+    console.log(width);
 
     if (width === '2560') { 
       const height = String(window.innerHeight);
