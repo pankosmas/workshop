@@ -299,6 +299,7 @@ function changePosition(element, top, right, bottom, left, transformX, transform
 
 function changePositionWithTransform(element, top, right, bottom, left, transformX, transformY) {
   changePosition(element, top, right, bottom, left, transformX, transformY);
+  console.log('malaka pin');
 }
 
 function changePositionLabel(speech_class, top, right, bottom, left, text) {
@@ -314,6 +315,7 @@ function changePositionLabel(speech_class, top, right, bottom, left, text) {
   buttonLabel.style.bottom = bottom;
   buttonLabel.style.left = left;
   buttonLabel.innerHTML = text;
+  console.log('malaka speech');
 }
 
 // sleep function because java doesn't have one, sourced from http://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
