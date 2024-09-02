@@ -217,7 +217,7 @@ function changePositionWithTransform(element, top, right, bottom, left, transfor
   changePosition(element, top, right, bottom, left, transformX, transformY);
 }
 
-function changePositionLabel(speech_class, top, right, bottom, left) {
+function changePositionLabel(speech_class, top, right, bottom, left, text) {
   const buttonLabel = document.querySelector('.speech');
 
   if (! (buttonLabel.classList.contains(speech_class)) ){
@@ -225,19 +225,11 @@ function changePositionLabel(speech_class, top, right, bottom, left) {
     buttonLabel.classList.remove('speech-right');
     buttonLabel.classList.add(speech_class);
   }
-  if (! (top === null)) {
-    buttonLabel.style.top = top;
-  }
-  if (! (right === null)) {
-    buttonLabel.style.right = right;
-  }
-  if (! (bottom === null)) {
-    buttonLabel.style.bottom = bottom;
-  }
-  if (! (left === null)) {
-    buttonLabel.style.left = left;
-  }
-  
+  buttonLabel.style.top = top;
+  buttonLabel.style.right = right;
+  buttonLabel.style.bottom = bottom;
+  buttonLabel.style.left = left;
+  buttonLabel.innerHTML = text;
 }
 
 // sleep function because java doesn't have one, sourced from http://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
