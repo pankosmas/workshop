@@ -176,7 +176,7 @@ function calPointClick(node) {
         PointCalibrate++;
         // Change pin's position - Initial position
         changePositionWithTransform(pinElement, elemsCoords[width]['pin'][PointCalibrate]['top'], null, null, elemsCoords[width]['pin'][PointCalibrate]['left']); 
-        changePositionLabel(speechDirection[PointCalibrate], elemsCoords[width]['speech'][PointCalibrate]['top'], null, null, elemsCoords[width]['speech'][PointCalibrate]['left']);         
+        changePositionLabel(speechDirection[PointCalibrate], elemsCoords[width]['speech'][PointCalibrate]['top'], null, null, elemsCoords[width]['speech'][PointCalibrate]['left'], labelTexts[PointCalibrate]);         
     } else if (CalibrationPoints[id]<5){
         //Gradually increase the opacity of calibration points when click to give some indication to user.
         var opacity = 0.2*CalibrationPoints[id]+0.2;
