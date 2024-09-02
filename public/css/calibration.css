@@ -33,6 +33,7 @@ body {
     display: flex;
     font-size: 1em;
     align-items: center;
+    cursor: pointer;
 }
 .nav-links a {
     color: #7A7A7A;

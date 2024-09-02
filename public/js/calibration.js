@@ -1,6 +1,41 @@
 var PointCalibrate = 0;
 var CalibrationPoints={};
 
+const elemsCoords = {
+  "1360": { "pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "1366": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "1440": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "1600": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "1920": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "2160": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "2304": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "25601": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "25602": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "28801": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "28802": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "3000": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "3072": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "3200": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+  "3840": {"pin": [{ "top": '3vh', "left": '7.7vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '1vh', "left": '96.7vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '96.7vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '95.7vw' }, { "top": '45vh', "left": '49.5vw' }], 
+            "speech": [{ "top": '4vh', "left": '11.5vw' }, { "top": '3vh', "left": '53vw' }, { "top": '3vh', "left": '93vw' }, { "top": '47.5vh', "left": '5.5vw' }, { "top": '48vh', "left": '95vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '35.5vw' }, { "top": '94.5vh', "left": '75.5vw' }, { "top": '49vh', "left": '52.5vw' }]},
+}
+
+const labelTexts = ['Click on the center of your webcam feed!', 'Click on the "SUBSCRIBE" button!', 'Click on the Date!', 'Click on the No.3 listed news!', 'Click on the comments\' section!', 'Click on the iMEdD logo!', 'Click on the Copyright!', 'Click on the "Cookie Settings"!', 'Click on the middle point!'];
+const speechDirection = ['speech-left', 'speech-left', 'speech-right', 'speech-left', 'speech-right', 'speech-left', 'speech-left', 'speech-right', 'speech-left']
 // Find the help modal
 var helpModal;
 
@@ -115,6 +150,19 @@ function calcAccuracy() {
 function calPointClick(node) {
     const id = node.id;
     const pinElement = document.getElementById('P1');
+    const width = String(window.innerWidth);
+
+    if (width === '2560') { 
+      const height = String(window.innerHeight);
+      if (height === '1440') { width = '25601'; }
+      else { width = '25602'; } 
+    }
+
+    if (width === '2880') { 
+      const height = String(window.innerHeight);
+      if (height === '1800') { width = '28801'; }
+      else { width = '28802'; } 
+    }
 
     if (!CalibrationPoints[id]){ // initialises if not done
         CalibrationPoints[id]=0;
@@ -127,15 +175,9 @@ function calPointClick(node) {
         node.setAttribute('disabled', 'disabled');
         PointCalibrate++;
         // Change pin's position - Initial position
-        if (PointCalibrate == 0) { changePositionWithTransform(pinElement, '3vw', null, null, '7.7vw'); changePositionLabel('speech-left', '4.5vw', null, null, '11.5vw', 'Click on the center of your webcam feed!'); }
-        if (PointCalibrate == 1) { changePositionWithTransform(pinElement, '1vw', null, null, '49.7vw'); changePositionLabel('speech-left', '3.3vw', null, null, '53vw', 'Click on the "SUBSCRIBE" button!');}
-        if (PointCalibrate == 2) { changePositionWithTransform(pinElement, '1vw', null, null, '96.7vw'); changePositionLabel('speech-right', '3.2vw', '4vw', null, null, 'Click on the Date!');}
-        if (PointCalibrate == 3) { changePositionWithTransform(pinElement, '44vh', null, null, '1.7vw'); changePositionLabel('speech-left', '47.5vh', null, null, '5.5vw', 'Click on the No.3 listed news!');}
-        if (PointCalibrate == 4) { changePositionWithTransform(pinElement, '44vh', null, null, '96.7vw'); changePositionLabel('speech-right', '48vh', '4vw', null, null, 'Click on the comments\' section!');}
-        if (PointCalibrate == 5) { changePositionWithTransform(pinElement, '90.5vh', null, null, '1.7vw'); changePositionLabel('speech-left', '94.5vh', null, null, '5.5vw', 'Click on the iMEdD logo!');}
-        if (PointCalibrate == 6) { changePositionWithTransform(pinElement, '90.5vh', null, null, '50.7vw'); changePositionLabel('speech-right', '94.5vh', null, null, '35.5vw', 'Click on the Copyright!');}
-        if (PointCalibrate == 7) { changePositionWithTransform(pinElement, '90.5vh', null, null, '95.7vw'); changePositionLabel('speech-right', '94.5vh', '5vw', null, null, 'Click on the "Cookie Settings"!');}
-    }else if (CalibrationPoints[id]<5){
+        changePositionWithTransform(pinElement, elemsCoords[width]['pin'][PointCalibrate]['top'], null, null, elemsCoords[width]['pin'][PointCalibrate]['left']); 
+        changePositionLabel(speechDirection[PointCalibrate], elemsCoords[width]['speech'][PointCalibrate]['top'], null, null, elemsCoords[width]['speech'][PointCalibrate]['left']);         
+    } else if (CalibrationPoints[id]<5){
         //Gradually increase the opacity of calibration points when click to give some indication to user.
         var opacity = 0.2*CalibrationPoints[id]+0.2;
         node.style.setProperty('opacity', opacity);
@@ -144,8 +186,6 @@ function calPointClick(node) {
     //Show the middle calibration point after all other points have been clicked.
     if (PointCalibrate == 8){
         document.getElementById('Pt5').style.removeProperty('display');
-        changePositionWithTransform(pinElement, '45vh', null, null, '49.5vw');
-        changePositionLabel('speech-left', '49vh', null, null, '52.5vw', 'Click on the middle point!');
     }
 
     if (PointCalibrate >= 9){ // last point is calibrated
@@ -154,16 +194,13 @@ function calPointClick(node) {
         const speechElement = document.querySelector('.speech');
         pinElement.style.display = "none";
         speechElement.style.display = "none";
-
         document.querySelectorAll('.Calibration').forEach((i) => {
             i.style.setProperty('display', 'none');
         });
         document.getElementById('Pt5').style.removeProperty('display');
-
         // clears the canvas
         var canvas = document.getElementById("plotting_canvas");
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-
         // Calculate the accuracy
         calcAccuracy();
     }
