@@ -125,9 +125,9 @@ function calPointClick(node) {
         if (PointCalibrate == 1) { changePositionWithTransform(pinElement, '1vw', null, null, '49.7vw'); changePositionLabel('speech-left', '3.3vw', null, null, '53vw', 'Click on the "SUBSCRIBE" button!');}
         if (PointCalibrate == 2) { changePositionWithTransform(pinElement, '1vw', null, null, '96.7vw'); changePositionLabel('speech-right', '3.2vw', '4vw', null, null, 'Click on the Date!');}
         if (PointCalibrate == 3) { changePositionWithTransform(pinElement, '44vh', null, null, '1.7vw'); changePositionLabel('speech-left', '47.5vh', null, null, '5.5vw', 'Click on the No.3 listed news!');}
-        if (PointCalibrate == 4) { changePositionWithTransform(pinElement, '48vh', null, null, '96.7vw'); changePositionLabel('speech-right', '48vh', '4vw', null, null, 'Click on the comments\' section!');}
-        if (PointCalibrate == 5) { changePositionWithTransform(pinElement, '90.5vh', null, null, '96.7vw'); changePositionLabel('speech-left', '94.5vh', null, null, '5.5vw', 'Click on the iMEdD logo!');}
-        if (PointCalibrate == 6) { changePositionWithTransform(pinElement, '90.5vh', null, null, '1.7vw'); changePositionLabel('speech-right', '94.5vh', null, null, '35.5vw', 'Click on the Copyright!');}
+        if (PointCalibrate == 4) { changePositionWithTransform(pinElement, '44vh', null, null, '96.7vw'); changePositionLabel('speech-right', '48vh', '4vw', null, null, 'Click on the comments\' section!');}
+        if (PointCalibrate == 5) { changePositionWithTransform(pinElement, '90.5vh', null, null, '1.7vw'); changePositionLabel('speech-left', '94.5vh', null, null, '5.5vw', 'Click on the iMEdD logo!');}
+        if (PointCalibrate == 6) { changePositionWithTransform(pinElement, '90.5vh', null, null, '50.7vw'); changePositionLabel('speech-right', '94.5vh', null, null, '35.5vw', 'Click on the Copyright!');}
         if (PointCalibrate == 7) { changePositionWithTransform(pinElement, '90.5vh', null, null, '95.7vw'); changePositionLabel('speech-right', '94.5vh', '5vw', null, null, 'Click on the "Cookie Settings"!');}
     }else if (CalibrationPoints[id]<5){
         //Gradually increase the opacity of calibration points when click to give some indication to user.
