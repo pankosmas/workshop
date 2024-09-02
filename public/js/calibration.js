@@ -176,7 +176,8 @@ function restartCalibration() {
   const pinElement = document.querySelector('.red-pin');
   webgazer.clearData();
   ClearCalibration();
-  docLoad();
+  ClearCanvas();
+  helpModalShow();
   ShowCalibrationPoint();
   changePositionWithTransform(pinElement, '3vw', null, null, '7.7vw'); 
   changePositionLabel('speech-left', '4.5vw', null, null, '11.5vw', 'Click on the center of your webcam feed!');
