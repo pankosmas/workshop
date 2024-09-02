@@ -282,12 +282,15 @@ body {
 .speech {
     background-color: #fff;
     border: 1px solid #000;
+    z-index: 100;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.7);
     padding: 10px;
     max-width: 250px;
     text-align: center;
-    position: relative;
+    position: absolute;
+    top: 5.5vw;
+    left: 11vw;
 }
 .speech::after {
     content: "";
