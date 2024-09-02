@@ -249,8 +249,12 @@ body {
 }
 @media (min-width: 2159px) {
 	.Calibration { width: 33px; height: 33px; }
-    #Pt1 { top: 3.3vw; left: 4.1vw; }
+    #Pt1 { top: 3.8vw; left: 4.8vw; }
+}
+@media (min-width: 2303px) {
+	.Calibration { width: 33px; height: 33px; }
+    #Pt1 { top: 3.7vw; left: 4.7vw; }
 }
 @media (min-width: 2559px) {
-    
+    #Pt1 { top: 3.3vw; left: 4.1vw; }
 }
