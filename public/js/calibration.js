@@ -79,6 +79,7 @@ function calcAccuracy() {
                         } else {
                             // use restart function to restart the calibration
                             document.getElementById("Accuracy").innerHTML = "<a>Not yet Calibrated</a>";
+                            const pinElement = document.querySelector('.red-pin');
                             webgazer.clearData();
                             ClearCalibration();
                             ClearCanvas();
@@ -98,6 +99,7 @@ function calcAccuracy() {
                     }).then(() => {
                         // use restart function to restart the calibration
                         document.getElementById("Accuracy").innerHTML = "<a>Not yet Calibrated</a>";
+                        const pinElement = document.querySelector('.red-pin');
                         webgazer.clearData();
                         ClearCalibration();
                         ClearCanvas();
