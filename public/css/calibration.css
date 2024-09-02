@@ -250,6 +250,8 @@ body {
 @media (min-width: 2159px) {
 	.Calibration { width: 33px; height: 33px; }
     #Pt1 { top: 3.8vw; left: 4.8vw; }
+    .nav-links { font-size: 1.5em; }
+    .logo { width: 7vw;}
 }
 @media (min-width: 2303px) {
 	.Calibration { width: 33px; height: 33px; }
@@ -265,4 +267,11 @@ body {
     #Pt8 { bottom: 1.5vh; left: 51vw; }
     #Pt9 { bottom: 1.5vh; right: 2.5vw; }
     .Calibration { width: 40px; height: 40px; }
+}
+@media (min-width: 3071px) {
+    #Pt1 { top: 2.7vw; left: 3.3vw; }
+}
+@media (min-width: 3071px) {
+    #Pt1 { top: 2.2vw; left: 2.7vw; }
+    .Calibration { width: 43px; height: 43px; }
 }
