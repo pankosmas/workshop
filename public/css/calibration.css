@@ -257,4 +257,12 @@ body {
 }
 @media (min-width: 2559px) {
     #Pt1 { top: 3.3vw; left: 4.1vw; }
+    .Calibration { width: 36px; height: 36px; }
+}
+@media (min-width: 2879px) {
+    #Pt1 { top: 3.1vw; left: 3.8vw; }
+    #Pt7 { bottom: 1.5vh; left: 2.5vw; }
+    #Pt8 { bottom: 1.5vh; left: 51vw; }
+    #Pt9 { bottom: 1.5vh; right: 2.5vw; }
+    .Calibration { width: 40px; height: 40px; }
 }
