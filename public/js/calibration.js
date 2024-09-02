@@ -139,7 +139,7 @@ function calPointClick(node) {
     if (PointCalibrate == 8){
         document.getElementById('Pt5').style.removeProperty('display');
         changePositionWithTransform(pinElement, '49vh', null, null, '53.5vw');
-        changePositionLabel('speech-left', '49vh', '52.5vw', null, null, 'Click on the middle point!');
+        changePositionLabel('speech-left', '49vh', null, null, '52.5vw', 'Click on the middle point!');
     }
 
     if (PointCalibrate >= 9){ // last point is calibrated
@@ -181,6 +181,10 @@ window.addEventListener('load', docLoad);
  * Show the Calibration Points
  */
 function ShowCalibrationPoint() {
+  const pinElement = document.querySelector('.red-pin');
+  const speechElement = document.querySelector('.speech');
+  pinElement.style.display = "block";
+  speechElement.style.display = "block";
   document.querySelectorAll('.Calibration').forEach((i) => {
     i.style.removeProperty('display');
   });
