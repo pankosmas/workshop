@@ -83,6 +83,8 @@ function calcAccuracy() {
                             ClearCalibration();
                             ClearCanvas();
                             ShowCalibrationPoint();
+                            changePositionWithTransform(pinElement, '3vw', null, null, '7.7vw'); 
+                            changePositionLabel('speech-left', '4.5vw', null, null, '11.5vw', 'Click on the center of your webcam feed!');
                         }
                     });
                 } else {
@@ -100,6 +102,8 @@ function calcAccuracy() {
                         ClearCalibration();
                         ClearCanvas();
                         ShowCalibrationPoint();
+                        changePositionWithTransform(pinElement, '3vw', null, null, '7.7vw'); 
+                        changePositionLabel('speech-left', '4.5vw', null, null, '11.5vw', 'Click on the center of your webcam feed!');
                     });
                 }
         });
@@ -144,6 +148,11 @@ function calPointClick(node) {
 
     if (PointCalibrate >= 9){ // last point is calibrated
         // grab every element in Calibration class and hide them except the middle point.
+        const pinElement = document.querySelector('.red-pin');
+        const speechElement = document.querySelector('.speech');
+        pinElement.style.display = "none";
+        speechElement.style.display = "none";
+
         document.querySelectorAll('.Calibration').forEach((i) => {
             i.style.setProperty('display', 'none');
         });
