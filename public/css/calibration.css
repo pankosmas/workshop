@@ -278,3 +278,67 @@ body {
     #Pt1 { top: 2.2vw; left: 2.7vw; }
     .Calibration { width: 43px; height: 43px; }
 }
+
+.speech {
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.7);
+    padding: 10px;
+    max-width: 250px;
+    text-align: center;
+    position: relative;
+}
+.speech::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+.speech-left {
+    margin-right: auto;
+    order: 1;
+}
+.speech-left::after {
+    top: 50%;
+    left: -12px;
+    transform: translateY(-50%);
+    border-width: 5px 12px 5px 0;
+    border-color: transparent #fff transparent transparent;
+}
+.speech-left::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -13px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 13px 7px 0;
+    border-color: transparent #000 transparent transparent;
+}
+.speech-right {
+    margin-left: auto;
+    order: 2;
+}
+.speech-right::after {
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%);
+    border-width: 5px 0 5px 12px;
+    border-color: transparent transparent transparent #fff;
+}
+.speech-right::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 0 7px 12px;
+    border-color: transparent transparent transparent #000;
+}
