@@ -173,36 +173,38 @@ function calPointClick(node) {
     if (CalibrationPoints[id]==5){ //only turn to yellow after 5 clicks
         node.style.setProperty('background-color', 'yellow');
         node.setAttribute('disabled', 'disabled');
-        // Change pin's position - Initial position
-        changePositionWithTransform(pinElement, elemsCoords[width]['pin'][PointCalibrate]['top'], null, null, elemsCoords[width]['pin'][PointCalibrate]['left']); 
-        changePositionLabel(speechDirection[PointCalibrate], elemsCoords[width]['speech'][PointCalibrate]['top'], null, null, elemsCoords[width]['speech'][PointCalibrate]['left'], labelTexts[PointCalibrate]);         
         PointCalibrate++;
+        // Change pin's position - Initial position
+        if (PointCalibrate <= 7) {
+          changePositionWithTransform(pinElement, elemsCoords[width]['pin'][PointCalibrate]['top'], null, null, elemsCoords[width]['pin'][PointCalibrate]['left']); 
+          changePositionLabel(speechDirection[PointCalibrate], elemsCoords[width]['speech'][PointCalibrate]['top'], null, null, elemsCoords[width]['speech'][PointCalibrate]['left'], labelTexts[PointCalibrate]);         
+        }
+        else if (PointCalibrate == 8) {
+          changePositionWithTransform(pinElement, elemsCoords[width]['pin'][PointCalibrate]['top'], null, null, elemsCoords[width]['pin'][PointCalibrate]['left']); 
+          changePositionLabel(speechDirection[PointCalibrate], elemsCoords[width]['speech'][PointCalibrate]['top'], null, null, elemsCoords[width]['speech'][PointCalibrate]['left'], labelTexts[PointCalibrate]);         
+          document.getElementById('Pt5').style.removeProperty('display');
+        }
+        else {
+          // grab every element in Calibration class and hide them except the middle point.
+          const pinElement = document.querySelector('.red-pin');
+          const speechElement = document.querySelector('.speech');
+          pinElement.style.display = "none";
+          speechElement.style.display = "none";
+          document.querySelectorAll('.Calibration').forEach((i) => {
+              i.style.setProperty('display', 'none');
+          });
+          document.getElementById('Pt5').style.removeProperty('display');
+          // clears the canvas
+          var canvas = document.getElementById("plotting_canvas");
+          canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+          // Calculate the accuracy
+          calcAccuracy();
+        }
+        
     } else if (CalibrationPoints[id]<5){
         //Gradually increase the opacity of calibration points when click to give some indication to user.
         var opacity = 0.2*CalibrationPoints[id]+0.2;
         node.style.setProperty('opacity', opacity);
-    }
-
-    //Show the middle calibration point after all other points have been clicked.
-    if (PointCalibrate == 8){
-        document.getElementById('Pt5').style.removeProperty('display');
-    }
-
-    if (PointCalibrate >= 9){ // last point is calibrated
-        // grab every element in Calibration class and hide them except the middle point.
-        const pinElement = document.querySelector('.red-pin');
-        const speechElement = document.querySelector('.speech');
-        pinElement.style.display = "none";
-        speechElement.style.display = "none";
-        document.querySelectorAll('.Calibration').forEach((i) => {
-            i.style.setProperty('display', 'none');
-        });
-        document.getElementById('Pt5').style.removeProperty('display');
-        // clears the canvas
-        var canvas = document.getElementById("plotting_canvas");
-        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-        // Calculate the accuracy
-        calcAccuracy();
     }
 }
 
