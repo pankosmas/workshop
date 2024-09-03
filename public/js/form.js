@@ -288,7 +288,7 @@ function changeFormContent (newtIndicator, imgSrc, q1, q1a1, q1a2, q1a3, q2, q2a
     question2_answer5.innerHTML = q2a5; 
 }
 
-function showFullImage () {
+function showFullImage() {
     if (submitCounter == 0) { url = "../images/step1.png"; }
     else if (submitCounter == 1) { url = "../images/step2.png"; }
     else if (submitCounter == 2) { url = "../images/step3.png"; }
