@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Experiment with the progress bar
                         // Eisodos experiment 2
                         editProgress(progressBar, 40);
-                        loadNextStep("../images/step5.png", 'Step 5: Cross-check your findings with Reverse Image Search');
+                        loadNextStep("../images/step5.png", 'Step 5: ?????');
                         changeFormContent('Step 5: Cross-check your findings with Reverse Image Search', "../images/step5.png", 
                             '1. I believe this image is: ',
                             '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (submitCounter == 5) {
                     // Experiment with the progress bar
                     editProgress(progressBar, 50);
-                    loadNextStep("../images/step6.png", 'Step 6: Cross-check your findings with Reverse Image Search');
+                    loadNextStep("../images/step6.png", 'Step 6: ?????');
                     changeFormContent('Step 6: Cross-check your findings with Reverse Image Search', "../images/step6.png", 
                         '1. I believe this image is: ',
                         '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (submitCounter == 6) {
                     // Experiment with the progress bar
                     editProgress(progressBar, 60);
-                    loadNextStep("../images/step7.png", 'Step 7: Cross-check your findings with Reverse Image Search');
+                    loadNextStep("../images/step7.png", 'Step 7: ?????');
                     changeFormContent('Step 7: Cross-check your findings with Reverse Image Search', "../images/step7.png", 
                         '1. I believe this image is: ',
                         '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (submitCounter == 7) {
                     // Experiment with the progress bar
                     editProgress(progressBar, 70);
-                    loadNextStep("../images/step8.png", 'Step 8: Cross-check your findings with Reverse Image Search');
+                    loadNextStep("../images/step8.png", 'Step 8: ?????');
                     changeFormContent('Step 8: Cross-check your findings with Reverse Image Search', "../images/step8.png", 
                         '1. I believe this image is: ',
                         '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         confirmButtonText: 'Go Next'
                     }).then(() => {
                         // Experiment with the progress bar
-                        loadNextStep("../images/step9.png", 'Step 9: Cross-check your findings with Reverse Image Search');
+                        loadNextStep("../images/step9.png", 'Step 9: Final Step ???? of the Survey!');
                         editProgress(progressBar, 80);
                     })
                 }
