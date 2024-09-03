@@ -247,12 +247,16 @@ function docLoad() {
   ClearCanvas();
   helpModalShow();
     
-    // click event on the calibration buttons
-    document.querySelectorAll('.Calibration').forEach((i) => {
-        i.addEventListener('click', () => {
-            calPointClick(i);
-        })
-    })
+  // click event on the calibration buttons
+  document.querySelectorAll('.Calibration').forEach((i) => {
+      i.addEventListener('click', () => {
+          calPointClick(i);
+      })
+  })
+  const width = String(window.innerWidth);
+  const pinElement = document.getElementById('P1');
+  changePositionWithTransform(pinElement, elemsCoords[width]['pin'][0]['top'], null, null, elemsCoords[width]['pin'][0]['left']); 
+  changePositionLabel(speechDirection[0], elemsCoords[width]['speech'][0]['top'], null, null, elemsCoords[width]['speech'][0]['left'], labelTexts[0]);         
 };
 
 window.addEventListener('load', docLoad);
