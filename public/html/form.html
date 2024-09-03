@@ -119,6 +119,7 @@
             const container = document.getElementById('form-container');
             if (img.naturalHeight > img.naturalWidth) {
                 container.classList.add('left-image');
+                container.style.height ='auto';
                 initialContainer.style.width = '70%';
                 initialContainer.style.height = 'auto';
                 initialImage.style.maxWidth = '35%';
@@ -127,6 +128,7 @@
                 questiondiv.style.maxWidth = '60%';
             } else {
                 container.classList.add('left-image');
+                container.style.height ='auto';
                 initialContainer.style.width = '85%';
                 initialContainer.style.height = 'auto';
                 initialImage.style.maxWidth = '85%';
