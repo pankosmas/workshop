@@ -103,14 +103,14 @@ body {
 .initial-container {
     margin: 40px 0px 50px 0px;
     background-color: white;
-    padding: 20px;
+    padding: 15px;
     border-radius: 5px;
     box-shadow: 5px 5px 10px #16c7a6;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 75%; /* Limits the maximum width to 90% of the viewport width */
+    width: 70%; /* Limits the maximum width to 90% of the viewport width */
     height: auto; /* Limits the maximum height to 90% of the viewport height */
     box-sizing: border-box; /* Ensures padding is included in the div�s total width */
     position: absolute;
@@ -122,8 +122,8 @@ body {
     margin-bottom: 20px;
 }
 .initial-container img {
-    max-width: 100%;
-    max-height: 70vh;
+    max-width: 35%;
+    max-height: 65vh;
     height: auto;
     display: block; /* Ensures the image takes up its own line */
     margin-bottom: 20px; /* Adds space between the image and the button */
