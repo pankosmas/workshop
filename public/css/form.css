@@ -308,3 +308,8 @@ input[type="submit"]:hover {
 @media (min-width: 1365px) {
     #form-image { max-width: 85%;}
 }
+@media (min-width: 1439px) {
+    .container {
+        height: 'auto';
+    }
+}
