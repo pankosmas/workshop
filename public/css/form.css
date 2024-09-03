@@ -310,5 +310,5 @@ input[type="submit"]:hover {
 }
 @media (min-width: 1439px) {
     .container { height: auto; }
-    .content h1 { margin: 90px 0px 30px 0px; }
+    .content h1 { margin: 100px 0px 40px 0px; }
 }
