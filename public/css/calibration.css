@@ -243,6 +243,8 @@ body {
 	.Calibration { width: 30px; height: 30px; }
     #Pt1 { top: 5vw; left: 7vw; }
     #Pt3 { top: 8vh; right: 1vw; }
+    .modal-content { max-width: 720px; font-size: 1.2em; }
+    .calibrate-btn { font-size: 1.2em; }
 }
 @media (min-width: 1919px) {
     #Pt1 { top: 4vw; left: 5.5vw; }
@@ -252,6 +254,7 @@ body {
     #Pt1 { top: 3.8vw; left: 4.8vw; }
     .nav-links { font-size: 1.5em; }
     .logo { width: 7vw;}
+    .speech { font-size: 1.4em; max-width: 360px;}
 }
 @media (min-width: 2303px) {
 	.Calibration { width: 33px; height: 33px; }
