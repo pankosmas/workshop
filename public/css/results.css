@@ -82,7 +82,7 @@ canvas, #heatmap {
 }
 
 .submission-count, .my-timer, .global-timer {
-    width: 9vw;
+    width: auto;
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
@@ -91,17 +91,6 @@ canvas, #heatmap {
     border: 1px solid #ddd;
     margin: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-.submission-count {
-    width: 13vw;
-}
-
-.my-timer {
-    width: 12vw;
-}
-
-.global-timer {
-    width: 17vw;
 }
 
 #dropdown, #dropdown2, #dropdown3 {
