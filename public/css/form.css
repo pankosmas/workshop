@@ -304,3 +304,7 @@ input[type="submit"]:hover {
 .invisible {
     display: none;
 }
+
+@media (min-width: 1365px) {
+    #form-image { max-width: 85%;}
+}
