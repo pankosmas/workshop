@@ -112,14 +112,25 @@
             });
         });
 
+        const initialContainer = document.querySelector('.initial-container');
+        const initialImage = document.getElementById('#initial-image');
+
         const img = document.getElementById('form-image');
         const leftdiv = document.getElementById('left-div');
         const questiondiv = document.querySelector('.question');
+
         img.onload = function() {
             const container = document.getElementById('form-container');
             if (img.naturalHeight > img.naturalWidth) {
                 container.classList.add('left-image');
+                initialContainer.style.width = '70%';
+                initialContainer.style.height = 'auto';
+                initialImage.style.width = '35%';
             } else {
+                initialContainer.style.width = '85%';
+                initialContainer.style.height = '80%';
+                initialImage.style.width = '85%';
+
                 container.classList.add('left-image');
                 leftdiv.style.maxWidth = "35%";
                 img.style.maxWidth = "90%";
