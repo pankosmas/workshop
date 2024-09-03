@@ -92,9 +92,14 @@ canvas, #heatmap {
     margin: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+.submission-count {
+    width: 13vw;
+}
+
 .my-timer {
     width: 12vw;
 }
+
 .global-timer {
     width: 17vw;
 }
