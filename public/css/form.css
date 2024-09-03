@@ -149,7 +149,7 @@ body {
     border-radius: 5px;
     max-width: 75vw;
     width: 75%;
-    height: auto;
+    height: 74%;
     padding: 10px;
     background: white;
     box-shadow: 5px 5px 10px #16c7a6;
@@ -157,22 +157,20 @@ body {
 }
 #left-div {
     flex: 1 1 auto;
-    max-width: 35%;
+    max-width: 41%;
     padding: 0;
 }
 .question {
     flex: 1 1 auto; /* Allows question to grow and fit content */
     padding: 20px; /* Adjust as necessary */
     border: none;
-    min-width: 0; /* Prevents shrinking beyond content size */
+    max-width: 60%; /* Prevents shrinking beyond content size */
 }
 form {
     max-width: 100%;
     height: auto;
     margin: 30px 0 0 0;
     padding: 20px;
-    /*border: 1px solid gray;
-    border-style: solid;*/
     border: none; /* Remove the solid border */
     border-radius: 5px; /* Add rounded corners */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to create a floating effect */
