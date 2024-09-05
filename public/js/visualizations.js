@@ -126,7 +126,7 @@ function clusterGazeData(data, threshold = 150) {
 function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
     const clusters = [];
 
-    data.forEach(point => {
+    data.forEach((point, index) => {
         let foundCluster = false;
 
         for (let cluster of clusters) {
@@ -138,7 +138,7 @@ function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
 
             if (distance <= threshold) {
                 // Add point to the cluster
-                cluster.points.push(point);
+                cluster.points.push({ ...point, index }); // Include the original index
 
                 // Update cluster center
                 const totalDuration = cluster.totalDuration + point.duration;
@@ -156,7 +156,7 @@ function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
             clusters.push({
                 center: { x: point.x, y: point.y },
                 totalDuration: point.duration,
-                points: [point]
+                points: [{ ...point, index }] // Include the original index
             });
         }
     });
@@ -177,17 +177,21 @@ function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
         }
 
         // Adjust the radius range here
-        const minRadius = 20; // Increase the minimum radius
-        const maxRadius = 100; // Increase the maximum radius
+        const minRadius = 20;
+        const maxRadius = 100;
 
         // Calculate the radius proportional to the duration
         const radius = minRadius + (maxRadius - minRadius) * cluster.totalDuration / maxDuration;
+
+        // Include the original indexes in the final bubble
+        const indexes = cluster.points.map(p => p.index);
 
         grid[key].push({
             x: cluster.center.x,
             y: cluster.center.y,
             duration: cluster.totalDuration,
-            radius: radius
+            radius: radius,
+            indexes: indexes // Include the array of original indexes
         });
     });
 
@@ -198,32 +202,47 @@ function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
 // Function to calculate circle parameters with adjusted radius and color coding
 function calculateCircles(grid) {
     const circles = [];
+    let labelIndex = 1; // Start labeling from 1
+
     for (const key in grid) {
         const points = grid[key];
         points.forEach(point => {
             const avgX = point.x;
             const avgY = point.y;
-            const radius = point.radius; // Directly use pre-calculated radius
+            const radius = point.radius;
             const alpha = Math.min(point.duration / Math.max(...points.map(p => p.duration)), 1);
-            const color = `rgba(0, 0, 255, ${alpha})`; // Blue color with varying transparency
+            const color = `rgba(0, 0, 255, ${alpha})`;
 
-            circles.push({ x: avgX, y: avgY, radius, color });
+            // Add the label index to each circle
+            circles.push({ x: avgX, y: avgY, radius, color, label: labelIndex });
+            labelIndex++; // Increment the label index for the next bubble
         });
     }
     return circles;
 }
 
+
 // Function to draw circles on canvas with color coding and alpha blending
 function drawCircles(canvas, circles, ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     circles.forEach(circle => {
+        // Draw the circle
         ctx.beginPath();
         ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
         ctx.fillStyle = circle.color;
         ctx.fill();
         ctx.stroke();
+
+        // Draw the label (index) inside the circle
+        ctx.fillStyle = 'black'; // Set text color
+        ctx.font = `${circle.radius / 2}px Arial`; // Font size proportional to radius
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(circle.label, circle.x, circle.y);
     });
 }
+
 
 // Main function to plot fixation map
 function plotFixationMap(filename) {
