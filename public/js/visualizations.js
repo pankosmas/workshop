@@ -76,10 +76,10 @@ function groupGazeData(data, gridSize) {
 }
 
 // Function to calculate circle parameters with adjusted radius and color coding
-function calculateCircles(grid) {
+function calculateCircles(grid, type) {
     const circles = [];
     const minRadius = 1; // Minimum radius to ensure visibility
-    const maxRadius = 10; // Define a maximum radius for scaling purposes
+    const maxRadius = type === 'gaze' ? 30 : 10; // Define a maximum radius for scaling purposes
 
     // Find maximum duration in the data to normalize
     const maxDuration = Math.max(...Object.values(grid).flat().map(p => p.duration));
@@ -120,8 +120,14 @@ function drawCircles(canvas, circles, ctx) {
 function plotFixationMap(filename) {
     const data = loadDatasetFromLocal(filename);
     const finalData = rescaleFixationData(data);
-    const gridSize = 100;
+    const gridSize = 150;
     const canvas = document.getElementById('heatmap');
+
+    if (filename.toLowerCase().includes('gaze')) {
+        var type = 'gaze';
+    } else if (filename.toLowerCase().includes('mouse')) {
+        var type = 'mouse';
+    }
 
     if (canvas.getContext) {
         const ctx = canvas.getContext('2d');
@@ -129,7 +135,7 @@ function plotFixationMap(filename) {
         canvas.height = canvas.clientHeight;
 
         const grid = groupGazeData(finalData, gridSize);
-        const circles = calculateCircles(grid);
+        const circles = calculateCircles(grid, type);
         drawCircles(canvas, circles, ctx);
     }
 }
