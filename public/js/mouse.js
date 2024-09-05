@@ -15,41 +15,40 @@ document.addEventListener('mousemove', (event) => {
         lastEventTime = currentTime;
 
         if (step1) {
-            mousedArray1 = window.mouseArray.slice();
+            mousedArray1 = window.mouseArray.slice(1);
             backToTests.addEventListener('click', function() { saveMouseToArrays('step1', mousedArray1); });
         }
         if (step2) {
-            mouseArray2 = window.mouseArray.slice();
+            mouseArray2 = window.mouseArray.slice(1);
             backToTests.addEventListener('click', function () { saveMouseToArrays('step2', mouseArray2); });
         }
         if (step3) {
-            mouseArray3 = window.mouseArray.slice();
+            mouseArray3 = window.mouseArray.slice(1);
             backToTests.addEventListener('click', function () { saveMouseToArrays('step3', mouseArray3); });
         }
         if (step4) {
-            mouseArray4 = window.mouseArray.slice();
+            mouseArray4 = window.mouseArray.slice(1);
             backToTests.addEventListener('click', function () { saveMouseToArrays('step4', mouseArray4); });
         }
         if (step5) {
-            mouseArray5 = window.mouseArray.slice();
+            mouseArray5 = window.mouseArray.slice(1);
             backToTests.addEventListener('click', function () { saveMouseToArrays('step5', mouseArray5); });
         }
         if (step6) {
-            mouseArray6 = window.mouseArray.slice();
+            mouseArray6 = window.mouseArray.slice(1);
             backToTests.addEventListener('click', function () { saveMouseToArrays('step6', mouseArray6); });
         }
         if (step7) {
-            mouseArray7 = window.mouseArray.slice();
+            mouseArray7 = window.mouseArray.slice(1);
             backToTests.addEventListener('click', function () { saveMouseToArrays('step7', mouseArray7); });
         }
         if (step8) {
-            mouseArray8 = window.mouseArray.slice();
+            mouseArray8 = window.mouseArray.slice(1);
             backToTests.addEventListener('click', function () { saveMouseToArrays('step8', mouseArray8); });
         }
     }
 });
 
 function saveMouseToArrays(activityNumber, array) {
-    array.shift();
     saveDatasetToLocal(`mouse-${activityNumber}`, array);
 }
