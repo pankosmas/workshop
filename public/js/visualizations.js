@@ -72,17 +72,23 @@ function groupGazeData(data, gridSize) {
         }
         grid[key].push(point);
     });
+
+    // Process each grid cell to keep only the top 20 points by duration
+    for (const key in grid) {
+        const points = grid[key];
+        // Sort points by duration in descending order and keep the top 20
+        points.sort((a, b) => b.duration - a.duration);
+        grid[key] = points.slice(0, 20);
+    }
+
     return grid;
 }
 
 // Function to calculate circle parameters with adjusted radius and color coding
-function calculateCircles(grid, type) {
+function calculateCircles(grid) {
     const circles = [];
-    const minRadius = 1; // Minimum radius to ensure visibility
-    const maxRadius = type === 'gaze' ? 5 : 40; // Define a maximum radius for scaling purposes
-
-    // Find maximum duration in the data to normalize
-    const maxDuration = Math.max(...Object.values(grid).flat().map(p => p.duration));
+    const minRadius = 5; // Minimum radius to ensure visibility
+    const maxRadius = 20; // Define a maximum radius for scaling purposes
 
     for (const key in grid) {
         const points = grid[key];
@@ -92,10 +98,10 @@ function calculateCircles(grid, type) {
             const avgY = points.reduce((sum, p) => sum + p.y, 0) / points.length;
 
             // Adjust radius for small durations
-            const radius = Math.max(minRadius, Math.log(totalDuration + 1) * (maxRadius / Math.log(maxDuration + 1)));
+            const radius = minRadius + (maxRadius - minRadius) * (totalDuration / Math.max(...points.map(p => p.duration)));
 
             // Color based on duration with more sensitivity
-            const alpha = Math.min(totalDuration / maxDuration, 1); // Ensure alpha is between 0 and 1
+            const alpha = Math.min(totalDuration / Math.max(...points.map(p => p.duration)), 1);
             const color = `rgba(255, 0, 0, ${alpha})`; // Red color with varying transparency
 
             circles.push({ x: avgX, y: avgY, radius, color });
@@ -123,19 +129,13 @@ function plotFixationMap(filename) {
     const gridSize = 150;
     const canvas = document.getElementById('heatmap');
 
-    if (filename.toLowerCase().includes('gaze')) {
-        var type = 'gaze';
-    } else if (filename.toLowerCase().includes('mouse')) {
-        var type = 'mouse';
-    }
-
     if (canvas.getContext) {
         const ctx = canvas.getContext('2d');
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
 
         const grid = groupGazeData(finalData, gridSize);
-        const circles = calculateCircles(grid, type);
+        const circles = calculateCircles(grid);
         drawCircles(canvas, circles, ctx);
     }
 }
