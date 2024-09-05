@@ -256,21 +256,28 @@ function drawCircles(canvas, circles, ctx) {
         const start = circles[i];
         const end = circles[i + 1];
 
-        // Draw the arrow line
-        ctx.moveTo(start.x, start.y);
-        ctx.lineTo(end.x, end.y);
+        // Calculate angle and distance from the center to the edge of the circle
+        const angle = Math.atan2(end.y - start.y, end.x - start.x);
+        const startEdgeX = start.x + start.radius * Math.cos(angle);
+        const startEdgeY = start.y + start.radius * Math.sin(angle);
+        const endEdgeX = end.x - end.radius * Math.cos(angle);
+        const endEdgeY = end.y - end.radius * Math.sin(angle);
+
+        // Draw the arrow line from edge to edge
+        ctx.moveTo(startEdgeX, startEdgeY);
+        ctx.lineTo(endEdgeX, endEdgeY);
 
         // Draw an arrowhead
-        const angle = Math.atan2(end.y - start.y, end.x - start.x);
         const arrowSize = 10; // Size of the arrowhead
 
-        ctx.lineTo(end.x - arrowSize * Math.cos(angle - Math.PI / 6), end.y - arrowSize * Math.sin(angle - Math.PI / 6));
-        ctx.moveTo(end.x, end.y);
-        ctx.lineTo(end.x - arrowSize * Math.cos(angle + Math.PI / 6), end.y - arrowSize * Math.sin(angle + Math.PI / 6));
+        ctx.lineTo(endEdgeX - arrowSize * Math.cos(angle - Math.PI / 6), endEdgeY - arrowSize * Math.sin(angle - Math.PI / 6));
+        ctx.moveTo(endEdgeX, endEdgeY);
+        ctx.lineTo(endEdgeX - arrowSize * Math.cos(angle + Math.PI / 6), endEdgeY - arrowSize * Math.sin(angle + Math.PI / 6));
     }
 
     ctx.stroke();
 }
+
 
 
 
