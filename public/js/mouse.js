@@ -5,8 +5,9 @@ let lastEventTime = null;
 
 // Capture mouse movement data
 if (step1 || step2 || step3 || step4 || step5 || step6 || step7 || step8) {
-    const currentTime = Date.now();
     document.addEventListener('mousemove', (event) => {
+        const currentTime = Date.now();
+        
         if (lastEventTime !== null) { 
             const duration = currentTime - lastEventTime;
             window.mouseArray.push({"x": event.clientX, "y": event.clientY, "duration": duration});
