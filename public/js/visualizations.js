@@ -97,8 +97,7 @@ function calculateCircles(grid) {
 	return circles;
 }
 // Function to draw circles on canvas
-function drawCircles(canvas, circles) {
-    var ctx = canvas.getContext('2d');
+function drawCircles(canvas, circles, ctx) {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	circles.forEach(circle => {
 		ctx.beginPath();
@@ -113,12 +112,21 @@ function plotFixationMap(filename) {
     // Transform the dataset
     const transformedData = data.map(({ x, y, duration }) => ({ x, y, duration }));
     const finalData = rescaleHeatmapData(transformedData);
+    var canvas = document.getElementById('heatmap');
+    // Check if the canvas is available
+    if (canvas.getContext) {
+        // Get the 2D drawing context
+        var ctx = canvas.getContext('2d');
+        // Set the canvas dimensions (if necessary)
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+    }
+    reshapeContent(ctx);
 	const grid = groupGazeData(finalData, gridSize);
     console.log(grid);
 	const circles = calculateCircles(grid);
-    console.log('circles ready');
-    const heatmap = document.getElementById('heatmap');
-	drawCircles(heatmap, circles);	
+    console.log(circles);
+	drawCircles(heatmap, circles, ctx);	
 }
 // ============================== Visualization No.2 plot Heatmap
 // ============================== Visualization No.2 plot Heatmap
@@ -215,9 +223,7 @@ function rescaleGazeData(dataset) {
 function rescaleHeatmapData(dataset) {
     const scaleX = 0.65;
     const scaleY = 0.65;
-
     var type = getTypeValue();
-
     if (type === "gaze-") {
         return dataset.map(entry => {
             return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), 1];
@@ -228,4 +234,20 @@ function rescaleHeatmapData(dataset) {
         });
     }
     
+}
+
+// Function to rescale gaze data dynamically
+function rescaleFixationData(dataset) {
+    const scaleX = 0.65;
+    const scaleY = 0.65;
+    var type = getTypeValue();
+    if (type === "gaze-") {
+        return dataset.map(entry => {
+            return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), entry.duration];
+        });
+    } else if (type === "mouse-") {
+        return dataset.map(entry => {
+            return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), entry.duration];
+        });
+    }
 }
