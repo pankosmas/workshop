@@ -132,6 +132,59 @@ function clusterGazeData(data, threshold = 150) {
     return finalData;
 }
 
+function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
+    const clusters = [];
+    data.forEach(point => {
+        let foundCluster = false;
+
+        for (let cluster of clusters) {
+            const clusterCenter = cluster.center;
+            const distance = Math.sqrt(
+                Math.pow(point.x - clusterCenter.x, 2) +
+                Math.pow(point.y - clusterCenter.y, 2)
+            );
+            if (distance <= threshold) {
+                // Add point to the cluster
+                cluster.points.push(point);
+                // Update cluster center
+                const totalDuration = cluster.totalDuration + point.duration;
+                cluster.center.x = (cluster.center.x * cluster.totalDuration + point.x * point.duration) / totalDuration;
+                cluster.center.y = (cluster.center.y * cluster.totalDuration + point.y * point.duration) / totalDuration;
+                cluster.totalDuration = totalDuration;
+
+                foundCluster = true;
+                break;
+            }
+        }
+        if (!foundCluster) {
+            // Create a new cluster with this point as the center
+            clusters.push({
+                center: { x: point.x, y: point.y },
+                totalDuration: point.duration,
+                points: [point]
+            });
+        }
+    });
+
+    // Group clustered points into grid cells
+    const grid = {};
+    clusters.forEach(cluster => {
+        const gridX = Math.floor(cluster.center.x / gridSize);
+        const gridY = Math.floor(cluster.center.y / gridSize);
+        const key = `${gridX},${gridY}`;
+        if (!grid[key]) {
+            grid[key] = [];
+        }
+        grid[key].push({
+            x: cluster.center.x,
+            y: cluster.center.y,
+            duration: cluster.totalDuration
+        });
+    });
+
+    return grid;
+}
+
 // Function to calculate circle parameters with adjusted radius and color coding
 function calculateCircles(grid) {
     const circles = [];
@@ -187,9 +240,11 @@ function plotFixationMap(filename) {
 
         const grid1 = groupGazeData(finalData, gridSize);
         const grid2 = clusterGazeData(finalData);
+        const grid3 = clusterAndGroupGazeData(finalData);
         console.log(grid1);
         console.log(grid2);
-        const circles = calculateCircles(grid1);
+        console.log(grid3);
+        const circles = calculateCircles(grid3);
         drawCircles(canvas, circles, ctx);
     }
 }
