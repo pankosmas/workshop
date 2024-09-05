@@ -20,12 +20,10 @@ function plotDataPoints(filename) {
         console.error(`No data found in local storage with filename: ${filename}`);
         return;
     }
-    
     // Transform the dataset
     const transformedData = data.map(({ x, y }) => ({ x, y }));
     const finalData = rescaleGazeData(transformedData);
     var canvas = document.getElementById('heatmap');
-
     // Check if the canvas is available
     if (canvas.getContext) {
         // Get the 2D drawing context
@@ -35,7 +33,6 @@ function plotDataPoints(filename) {
         canvas.height = canvas.clientHeight;
     }
     reshapeContent(ctx);
-
     // Adjust color scale based on your data density if needed
     const color = d3.scaleSequential(d3.interpolateYlOrRd).domain([0, 1]);
     finalData.forEach(d => {
@@ -53,7 +50,6 @@ function plotHeatMap(filename) {
     // Transform the dataset
     const transformedData = data.map(({ x, y }) => ({ x, y }));
     const finalData = rescaleHeatmapData(transformedData);
-
     const heatmap = document.getElementById('heatmap');
     var ctx = heatmap.getContext('2d');
     reshapeContent(ctx);
@@ -87,8 +83,8 @@ function calculateCircles(grid) {
 			const totalDuration = points.reduce((sum, p) => sum + p.duration, 0);
 			const avgX = points.reduce((sum, p) => sum + p.x, 0) / points.length;
 			const avgY = points.reduce((sum, p) => sum + p.y, 0) / points.length;
-			const radius = Math.sqrt(totalDuration);  // Example: radius proportional to sqrt of total duration
-			circles.push({ x: avgX, y: avgY, radius });
+			const radius = Math.sqrt(totalDuration) % 60.0;  // Example: radius proportional to sqrt of total duration
+            if ( radius >= 15 ) { circles.push({ x: avgX, y: avgY, radius }); }
 			//const radius = 5 * Math.round(totalDuration/30);  // Example: radius proportional to sqrt of total duration
 			//if (radius > 10) { circles.push({ x: avgX, y: avgY, radius }); }
 		}
@@ -112,7 +108,6 @@ function plotFixationMap(filename) {
     const finalData = rescaleFixationData(data);
     console.log(finalData);
     const gridSize = 100;
-
     // Transform the dataset
     var canvas = document.getElementById('heatmap');
     // Check if the canvas is available
@@ -137,7 +132,6 @@ function getStepValue() {
     const dropdown = document.getElementById('dropdown');
     // Get the selected option's text and value
     const selectedText = dropdown.options[dropdown.selectedIndex].text;
-
     if (selectedText === "Step 1") {
         return 'step1';
     } else if (selectedText === "Step 2") {
@@ -161,7 +155,6 @@ function getTypeValue() {
     const dropdown2 = document.getElementById('dropdown2');
     // Get the selected option's text and value
     const selectedText = dropdown2.options[dropdown2.selectedIndex].text;
-
     if (selectedText === "Gaze Data") {
         return 'gaze-';
     } else if (selectedText === "Mouse Data") {
@@ -174,11 +167,9 @@ function getVizType() {
     // Get the selected option's text and value
     reshapeContent();
     const selectedText = dropdown3.options[dropdown3.selectedIndex].text;
-    
     var type = getTypeValue();
     var step = getStepValue();
     var filename = type + step;
-
     if (selectedText === "Data Points") {
         plotDataPoints(filename);
     } else if (selectedText === "Scanpath") {
@@ -236,7 +227,6 @@ function rescaleHeatmapData(dataset) {
         });
     }
 }
-
 // Function to rescale gaze data dynamically
 function rescaleFixationData(dataset) {
     const scaleX = 0.65;
