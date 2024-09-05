@@ -168,6 +168,7 @@ window.onload = function() {
 
     // Function for saving data arrays
     function saveDataToArrays(activityNumber, array) {
+        array.shift();
         saveDatasetToLocal(`gaze-${activityNumber}`, array);
     }
 };

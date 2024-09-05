@@ -64,7 +64,6 @@ function plotHeatMap(filename) {
 	heat.draw();
 }
 // ============================== Visualization No.3 Plot Fixation Map
-const gridSize = 200;
 // Function to group gaze data into grid cells
 function groupGazeData(data, gridSize) {
 	const grid = {};
@@ -112,6 +111,8 @@ function plotFixationMap(filename) {
     console.log(data);
     const finalData = rescaleFixationData(data);
     console.log(finalData);
+    const gridSize = 100;
+
     // Transform the dataset
     var canvas = document.getElementById('heatmap');
     // Check if the canvas is available
