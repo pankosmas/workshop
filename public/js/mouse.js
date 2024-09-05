@@ -7,7 +7,7 @@ let lastEventTime = null;
 if (step1 || step2 || step3 || step4 || step5 || step6 || step7 || step8) {
     document.addEventListener('mousemove', (event) => {
         const currentTime = Date.now();
-        
+
         if (lastEventTime !== null) { 
             const duration = currentTime - lastEventTime;
             window.mouseArray.push({"x": event.clientX, "y": event.clientY, "duration": duration});
@@ -49,6 +49,5 @@ if (step1 || step2 || step3 || step4 || step5 || step6 || step7 || step8) {
     });
 }
 function saveMouseToArrays(activityNumber, array) {
-    array.shift();
     saveDatasetToLocal(`mouse-${activityNumber}`, array);
 }
