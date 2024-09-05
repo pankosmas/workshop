@@ -109,7 +109,9 @@ function drawCircles(canvas, circles, ctx) {
 }
 function plotFixationMap(filename) {
     const data = loadDatasetFromLocal(filename);
+    console.log(data);
     const finalData = rescaleHeatmapData(data);
+    console.log(finalData);
     // Transform the dataset
     var canvas = document.getElementById('heatmap');
     // Check if the canvas is available
