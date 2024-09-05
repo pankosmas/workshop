@@ -94,17 +94,20 @@ function calculateCircles(grid) {
         const points = grid[key];
         if (points.length > 0) {
             const totalDuration = points.reduce((sum, p) => sum + p.duration, 0);
-            const avgX = points.reduce((sum, p) => sum + p.x, 0) / points.length;
-            const avgY = points.reduce((sum, p) => sum + p.y, 0) / points.length;
+            
+            points.forEach(point => {
+                const ratio = point.duration / totalDuration;
+                // Scale radius from minRadius to maxRadius based on ratio
+                const radius = minRadius + (maxRadius - minRadius) * ratio;
+                const avgX = point.x;
+                const avgY = point.y;
+                
+                // Determine color based on duration (optional)
+                const alpha = Math.min(point.duration / Math.max(...points.map(p => p.duration)), 1);
+                const color = `rgba(0, 0, 255, ${alpha})`; // Blue color with varying transparency
 
-            // Adjust radius for small durations
-            const radius = minRadius + (maxRadius - minRadius) * (totalDuration / Math.max(...points.map(p => p.duration)));
-
-            // Color based on duration with more sensitivity
-            const alpha = Math.min(totalDuration / Math.max(...points.map(p => p.duration)), 1);
-            const color = `rgba(255, 0, 0, ${alpha})`; // Red color with varying transparency
-
-            circles.push({ x: avgX, y: avgY, radius, color });
+                circles.push({ x: avgX, y: avgY, radius, color });
+            });
         }
     }
     return circles;
