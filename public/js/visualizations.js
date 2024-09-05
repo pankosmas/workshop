@@ -73,8 +73,8 @@ function groupGazeData(data, gridSize) {
             console.error(`Invalid point: ${JSON.stringify(point)}`);
             return;
         }
-		const gridX = Math.floor(point.x / gridSize);
-		const gridY = Math.floor(point.y / gridSize);
+		const gridX = Math.floor(point[0] / gridSize);
+		const gridY = Math.floor(point[1] / gridSize);
 		const key = `${gridX},${gridY}`;
 		if (!grid[key]) {
 			grid[key] = [];
