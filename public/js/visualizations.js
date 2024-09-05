@@ -63,7 +63,59 @@ function plotHeatMap(filename) {
 	heat.max(5);
 	heat.draw();
 }
-// ============================== Visualization No.2 plot Heatmap
+// ============================== Visualization No.3 Plot Fixation Map
+const gridSize = 200;
+// Function to group gaze data into grid cells
+function groupGazeData(data, gridSize) {
+	const grid = {};
+	data.forEach(point => {
+		const gridX = Math.floor(point.x / gridSize);
+		const gridY = Math.floor(point.y / gridSize);
+		const key = `${gridX},${gridY}`;
+		if (!grid[key]) {
+			grid[key] = [];
+		}
+		grid[key].push(point);
+	});
+	return grid;
+}
+// Function to calculate circle parameters
+function calculateCircles(grid) {
+	const circles = [];
+	for (const key in grid) {
+		const points = grid[key];
+		if (points.length > 0) {
+			const totalDuration = points.reduce((sum, p) => sum + p.duration, 0);
+			const avgX = points.reduce((sum, p) => sum + p.x, 0) / points.length;
+			const avgY = points.reduce((sum, p) => sum + p.y, 0) / points.length;
+			const radius = Math.sqrt(totalDuration);  // Example: radius proportional to sqrt of total duration
+			circles.push({ x: avgX, y: avgY, radius });
+			//const radius = 5 * Math.round(totalDuration/30);  // Example: radius proportional to sqrt of total duration
+			//if (radius > 10) { circles.push({ x: avgX, y: avgY, radius }); }
+		}
+	}
+	return circles;
+}
+// Function to draw circles on canvas
+function drawCircles(canvas, circles) {
+    var ctx = canvas.getContext('2d');
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+    reshapeContent(ctx);
+	circles.forEach(circle => {
+		ctx.beginPath();
+		ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+		ctx.fillStyle = 'rgba(0, 0, 255, 0.5)';
+		ctx.fill();
+		ctx.stroke();
+	});
+}
+function plotFixationMap(filename) {
+    const data = loadDatasetFromLocal(filename);
+	const grid = groupGazeData(data, gridSize);
+	const circles = calculateCircles(grid);
+    const heatmap = document.getElementById('heatmap');
+	drawCircles(heatmap, circles);	
+}
 // ============================== Visualization No.2 plot Heatmap
 // ============================== Visualization No.2 plot Heatmap
 
@@ -118,7 +170,7 @@ function getVizType() {
     } else if (selectedText === "Scanpath") {
         return 'step2';
     } else if (selectedText === "Fixation Map") {
-        return 'step3';
+        plotFixationMap(filename);
     } else if (selectedText === "Heatmap") {
         plotHeatMap(filename);
     } else if (selectedText === "Areas of Interest") {
