@@ -103,7 +103,7 @@ function drawCircles(canvas, circles) {
 	circles.forEach(circle => {
 		ctx.beginPath();
 		ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-		ctx.fillStyle = 'rgba(0, 0, 255, 0.5)';
+		ctx.fillStyle = 'rgba(0, 0, 255, 0.8)';
 		ctx.fill();
 		ctx.stroke();
 	});
@@ -114,7 +114,9 @@ function plotFixationMap(filename) {
     const transformedData = data.map(({ x, y, duration }) => ({ x, y, duration }));
     const finalData = rescaleHeatmapData(transformedData);
 	const grid = groupGazeData(finalData, gridSize);
+    console.log(grid);
 	const circles = calculateCircles(grid);
+    console.log('circles ready');
     const heatmap = document.getElementById('heatmap');
 	drawCircles(heatmap, circles);	
 }
@@ -172,7 +174,9 @@ function getVizType() {
     } else if (selectedText === "Scanpath") {
         return 'step2';
     } else if (selectedText === "Fixation Map") {
+        console.log('ena');
         plotFixationMap(filename);
+        console.log('duo');
     } else if (selectedText === "Heatmap") {
         plotHeatMap(filename);
     } else if (selectedText === "Areas of Interest") {
