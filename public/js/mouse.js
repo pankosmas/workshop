@@ -4,9 +4,10 @@ window.mouseArray = [];
 let lastEventTime = null;
 
 // Capture mouse movement data
-if (step1 || step2 || step3 || step4 || step5 || step6 || step7 || step8) {
-    const currentTime = Date.now();
-    document.addEventListener('mousemove', (event) => {
+    
+document.addEventListener('mousemove', (event) => {
+    if (step1 || step2 || step3 || step4 || step5 || step6 || step7 || step8) {
+        const currentTime = Date.now();
         if (lastEventTime !== null) { 
             const duration = currentTime - lastEventTime;
             window.mouseArray.push({"x": event.clientX, "y": event.clientY, "duration": duration});
@@ -15,9 +16,7 @@ if (step1 || step2 || step3 || step4 || step5 || step6 || step7 || step8) {
 
         if (step1) {
             mousedArray1 = window.mouseArray.slice();
-            backToTests.addEventListener('click', function() { saveMouseToArrays('step1', mousedArray1); console.log('mpika'); });
-            console.log('apothikeup');
-            console.log(mousedArray1);
+            backToTests.addEventListener('click', function() { saveMouseToArrays('step1', mousedArray1); });
         }
         if (step2) {
             mouseArray2 = window.mouseArray.slice();
@@ -47,8 +46,8 @@ if (step1 || step2 || step3 || step4 || step5 || step6 || step7 || step8) {
             mouseArray8 = window.mouseArray.slice();
             backToTests.addEventListener('click', function () { saveMouseToArrays('step8', mouseArray8); });
         }
-    });
-}
+    }
+});
 
 function saveMouseToArrays(activityNumber, array) {
     saveDatasetToLocal(`mouse-${activityNumber}`, array);
