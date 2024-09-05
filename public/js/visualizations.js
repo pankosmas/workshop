@@ -69,7 +69,7 @@ const gridSize = 200;
 function groupGazeData(data, gridSize) {
 	const grid = {};
 	data.forEach(point => {
-        if (isNaN(point.x) || isNaN(point.y)) {
+        if (isNaN(point[0]) || isNaN(point[1])) {
             console.error(`Invalid point: ${JSON.stringify(point)}`);
             return;
         }
