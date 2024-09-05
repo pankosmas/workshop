@@ -8,9 +8,6 @@
     <link rel="icon" href="../images/logo.png" type="image/x-icon">
     <script src="../js/webgazer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../js/form.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/mouse.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -117,7 +114,8 @@
         const img = document.getElementById('form-image');
         const leftdiv = document.getElementById('left-div');
         const questiondiv = document.querySelector('.question');
-
+        const initialContainer = document.querySelector('.initial-container');
+        
         img.onload = function() {
             const container = document.getElementById('form-container');
             if (img.naturalHeight > img.naturalWidth) {
@@ -154,5 +152,8 @@
             document.querySelector('form').addEventListener('submit', validateForm);
         });
     </script>
+    <script src="../js/form.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/mouse.js"></script>
 </body>
 </html>
