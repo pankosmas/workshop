@@ -9,7 +9,8 @@ document.addEventListener('mousemove', (event) => {
     if (step1 || step2 || step3 || step4 || step5 || step6 || step7 || step8) {
         const currentTime = performance.now();
         if (lastEventTime !== null) { 
-            const duration = currentTime - lastEventTime;
+            const msduration = currentTime - lastEventTime;
+            const duration = msduration / 1000;
             window.mouseArray.push({"x": event.clientX, "y": event.clientY, "duration": duration});
         }
         lastEventTime = currentTime;
