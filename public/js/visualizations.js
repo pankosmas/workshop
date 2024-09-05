@@ -111,7 +111,10 @@ function drawCircles(canvas, circles) {
 }
 function plotFixationMap(filename) {
     const data = loadDatasetFromLocal(filename);
-	const grid = groupGazeData(data, gridSize);
+    // Transform the dataset
+    const transformedData = data.map(({ x, y, duration }) => ({ x, y, duration }));
+    const finalData = rescaleHeatmapData(transformedData);
+	const grid = groupGazeData(finalData, gridSize);
 	const circles = calculateCircles(grid);
     const heatmap = document.getElementById('heatmap');
 	drawCircles(heatmap, circles);	
