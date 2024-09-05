@@ -79,7 +79,7 @@ function groupGazeData(data, gridSize) {
 function calculateCircles(grid, type) {
     const circles = [];
     const minRadius = 1; // Minimum radius to ensure visibility
-    const maxRadius = type === 'gaze' ? 10 : 30; // Define a maximum radius for scaling purposes
+    const maxRadius = type === 'gaze' ? 5 : 40; // Define a maximum radius for scaling purposes
 
     // Find maximum duration in the data to normalize
     const maxDuration = Math.max(...Object.values(grid).flat().map(p => p.duration));
