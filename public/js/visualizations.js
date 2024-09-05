@@ -185,9 +185,11 @@ function plotFixationMap(filename) {
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
 
-        //const grid = groupGazeData(finalData, gridSize);
-        const grid = clusterGazeData(finalData);
-        const circles = calculateCircles(grid);
+        const grid1 = groupGazeData(finalData, gridSize);
+        const grid2 = clusterGazeData(finalData);
+        console.log(grid1);
+        console.log(grid2);
+        const circles = calculateCircles(grid1);
         drawCircles(canvas, circles, ctx);
     }
 }
