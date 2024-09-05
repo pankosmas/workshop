@@ -72,7 +72,6 @@ function groupGazeData(data, gridSize) {
         }
         grid[key].push(point);
     });
-
     // Process each grid cell to keep only the top 20 points by duration
     for (const key in grid) {
         const points = grid[key];
@@ -80,27 +79,22 @@ function groupGazeData(data, gridSize) {
         points.sort((a, b) => b.duration - a.duration);
         grid[key] = points.slice(0, 20);
     }
-
     return grid;
 }
 
 function clusterGazeData(data, threshold = 150) {
     const clusters = [];
-
     data.forEach(point => {
         let foundCluster = false;
-
         for (let cluster of clusters) {
             const clusterCenter = cluster.center;
             const distance = Math.sqrt(
                 Math.pow(point.x - clusterCenter.x, 2) +
                 Math.pow(point.y - clusterCenter.y, 2)
             );
-
             if (distance <= threshold) {
                 // Add point to the cluster
                 cluster.points.push(point);
-
                 // Update cluster center
                 const totalDuration = cluster.totalDuration + point.duration;
                 cluster.center.x = (cluster.center.x * cluster.totalDuration + point.x * point.duration) / totalDuration;
@@ -111,7 +105,6 @@ function clusterGazeData(data, threshold = 150) {
                 break;
             }
         }
-
         if (!foundCluster) {
             // Create a new cluster with this point as the center
             clusters.push({
@@ -121,14 +114,12 @@ function clusterGazeData(data, threshold = 150) {
             });
         }
     });
-
     // Create the final output object
     const finalData = clusters.map(cluster => ({
         x: cluster.center.x,
         y: cluster.center.y,
         duration: cluster.totalDuration
     }));
-
     return finalData;
 }
 
@@ -136,7 +127,6 @@ function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
     const clusters = [];
     data.forEach(point => {
         let foundCluster = false;
-
         for (let cluster of clusters) {
             const clusterCenter = cluster.center;
             const distance = Math.sqrt(
@@ -165,7 +155,8 @@ function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
             });
         }
     });
-
+    // Calculate the maximum duration for scaling
+    const maxDuration = Math.max(...clusters.map(cluster => cluster.totalDuration));
     // Group clustered points into grid cells
     const grid = {};
     clusters.forEach(cluster => {
@@ -175,41 +166,32 @@ function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
         if (!grid[key]) {
             grid[key] = [];
         }
+        // Calculate the radius proportional to the duration
+        const radius = 5 + (15 * cluster.totalDuration / maxDuration); // Radius between 5 and 20
         grid[key].push({
             x: cluster.center.x,
             y: cluster.center.y,
-            duration: cluster.totalDuration
+            duration: cluster.totalDuration,
+            radius: radius
         });
     });
-
     return grid;
 }
 
 // Function to calculate circle parameters with adjusted radius and color coding
 function calculateCircles(grid) {
     const circles = [];
-    const minRadius = 10; // Minimum radius to ensure visibility
-    const maxRadius = 30; // Define a maximum radius for scaling purposes
-
     for (const key in grid) {
         const points = grid[key];
-        if (points.length > 0) {
-            const totalDuration = points.reduce((sum, p) => sum + p.duration, 0);
-            
-            points.forEach(point => {
-                const ratio = point.duration / totalDuration;
-                // Scale radius from minRadius to maxRadius based on ratio
-                const radius = minRadius + (maxRadius - minRadius) * ratio;
-                const avgX = point.x;
-                const avgY = point.y;
-                
-                // Determine color based on duration (optional)
-                const alpha = Math.min(point.duration / Math.max(...points.map(p => p.duration)), 1);
-                const color = `rgba(0, 0, 255, ${alpha})`; // Blue color with varying transparency
+        points.forEach(point => {
+            const avgX = point.x;
+            const avgY = point.y;
+            const radius = point.radius; // Directly use pre-calculated radius
+            const alpha = Math.min(point.duration / Math.max(...points.map(p => p.duration)), 1);
+            const color = `rgba(0, 0, 255, ${alpha})`; // Blue color with varying transparency
 
-                circles.push({ x: avgX, y: avgY, radius, color });
-            });
-        }
+            circles.push({ x: avgX, y: avgY, radius, color });
+        });
     }
     return circles;
 }
