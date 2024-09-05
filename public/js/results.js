@@ -14,7 +14,7 @@ async function fetchData() {
 function processCharts(users) {
     // Prepare data for pie chart and bar chart
     const imageRealityCounts = { Real: 0, Tampered: 0, Deepfake: 0 };
-    const detailsCounts = { Anomalies: { Real: 0, Tampered: 0, Deepfake: 0 }, Lighting: { Real: 0, Tampered: 0, Deepfake: 0 }, Semantic: { Real: 0, Tampered: 0, Deepfake: 0 }, Context: { Real: 0, Tampered: 0, Deepfake: 0 }, Edges: { Real: 0, Tampered: 0, Deepfake: 0 }, Source: { Real: 0, Tampered: 0, Deepfake: 0 } };
+    const detailsCounts = getDetailsArray();
     let totalTime = 0.0;
     console.log(users);
     users.forEach(user => {
