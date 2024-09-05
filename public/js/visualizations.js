@@ -62,69 +62,74 @@ function plotHeatMap(filename) {
 // ============================== Visualization No.3 Plot Fixation Map
 // Function to group gaze data into grid cells
 function groupGazeData(data, gridSize) {
-	const grid = {};
-	data.forEach(point => {
-		const gridX = Math.floor(point.x / gridSize);
-		const gridY = Math.floor(point.y / gridSize);
-		const key = `${gridX},${gridY}`;
-		if (!grid[key]) {
-			grid[key] = [];
-		}
-		grid[key].push(point);
-	});
-	return grid;
+    const grid = {};
+    data.forEach(point => {
+        const gridX = Math.floor(point.x / gridSize);
+        const gridY = Math.floor(point.y / gridSize);
+        const key = `${gridX},${gridY}`;
+        if (!grid[key]) {
+            grid[key] = [];
+        }
+        grid[key].push(point);
+    });
+    return grid;
 }
-// Function to calculate circle parameters
-function calculateCircles(grid) {
-	const circles = [];
-	for (const key in grid) {
-		const points = grid[key];
-		if (points.length > 0) {
-			const totalDuration = points.reduce((sum, p) => sum + p.duration, 0);
-			const avgX = points.reduce((sum, p) => sum + p.x, 0) / points.length;
-			const avgY = points.reduce((sum, p) => sum + p.y, 0) / points.length;
-			const radius = Math.sqrt(totalDuration);  // Example: radius proportional to sqrt of total duration
-            circles.push({ x: avgX, y: avgY, radius }); 
-			//const radius = 5 * Math.round(totalDuration/30);  // Example: radius proportional to sqrt of total duration
-			//if (radius > 10) { circles.push({ x: avgX, y: avgY, radius }); }
-		}
-	}
-	return circles;
+
+// Function to calculate circle parameters with improved radius and color coding
+function calculateCircles(grid, maxDuration) {
+    const circles = [];
+    const maxRadius = 50; // Define a maximum radius for scaling purposes
+    for (const key in grid) {
+        const points = grid[key];
+        if (points.length > 0) {
+            const totalDuration = points.reduce((sum, p) => sum + p.duration, 0);
+            const avgX = points.reduce((sum, p) => sum + p.x, 0) / points.length;
+            const avgY = points.reduce((sum, p) => sum + p.y, 0) / points.length;
+            
+            // Logarithmic scaling for radius
+            const radius = Math.log(totalDuration + 1) * (maxRadius / Math.log(maxDuration + 1));
+
+            // Color based on duration (you can customize the color scale)
+            const alpha = Math.min(totalDuration / maxDuration, 1); // Ensure alpha is between 0 and 1
+            const color = `rgba(255, 0, 0, ${alpha})`; // Red color with varying transparency
+
+            circles.push({ x: avgX, y: avgY, radius, color });
+        }
+    }
+    return circles;
 }
-// Function to draw circles on canvas
+
+// Function to draw circles on canvas with color coding and alpha blending
 function drawCircles(canvas, circles, ctx) {
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	circles.forEach(circle => {
-		ctx.beginPath();
-		ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-		ctx.fillStyle = 'rgba(0, 0, 255, 0.8)';
-		ctx.fill();
-		ctx.stroke();
-	});
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    circles.forEach(circle => {
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = circle.color;
+        ctx.fill();
+        ctx.stroke();
+    });
 }
+
+// Main function to plot fixation map
 function plotFixationMap(filename) {
     const data = loadDatasetFromLocal(filename);
-    console.log(data);
     const finalData = rescaleFixationData(data);
-    console.log(finalData);
     const gridSize = 100;
-    // Transform the dataset
-    var canvas = document.getElementById('heatmap');
-    // Check if the canvas is available
+    const canvas = document.getElementById('heatmap');
+
     if (canvas.getContext) {
-        // Get the 2D drawing context
-        var ctx = canvas.getContext('2d');
-        // Set the canvas dimensions (if necessary)
+        const ctx = canvas.getContext('2d');
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
+
+        const grid = groupGazeData(finalData, gridSize);
+        const maxDuration = Math.max(...finalData.map(p => p.duration)); // Find maximum duration for normalization
+        const circles = calculateCircles(grid, maxDuration);
+        drawCircles(canvas, circles, ctx);
     }
-    reshapeContent(ctx);
-	const grid = groupGazeData(finalData, gridSize);
-    console.log(grid);
-	const circles = calculateCircles(grid);
-    console.log(circles);
-	drawCircles(heatmap, circles, ctx);	
 }
+
 // ============================== Visualization No.2 plot Heatmap
 // ============================== Visualization No.2 plot Heatmap
 
