@@ -211,7 +211,8 @@ function calculateCircles(grid) {
             const avgY = point.y;
             const radius = point.radius;
             const alpha = Math.min(point.duration / Math.max(...points.map(p => p.duration)), 1);
-            const color = `rgba(0, 0, 255, ${alpha})`;
+            //const color = `rgba(255, 117, 24, ${alpha})`;
+            const color = `rgba(255, 117, 24, 0.7)`;
 
             // Add the label index to each circle
             circles.push({ x: avgX, y: avgY, radius, color, label: labelIndex });
