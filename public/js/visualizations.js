@@ -167,7 +167,7 @@ function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
             grid[key] = [];
         }
         // Calculate the radius proportional to the duration
-        const radius = 5 + (15 * cluster.totalDuration / maxDuration); // Radius between 5 and 20
+        const radius = 10 + (20 * cluster.totalDuration / maxDuration); // Radius between 5 and 20
         grid[key].push({
             x: cluster.center.x,
             y: cluster.center.y,
