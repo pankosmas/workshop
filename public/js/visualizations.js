@@ -227,6 +227,7 @@ function calculateCircles(grid) {
 function drawCircles(canvas, circles, ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // Draw circles and labels
     circles.forEach(circle => {
         // Draw the circle
         ctx.beginPath();
@@ -242,7 +243,35 @@ function drawCircles(canvas, circles, ctx) {
         ctx.textBaseline = 'middle';
         ctx.fillText(circle.label, circle.x, circle.y);
     });
+
+    // Draw arrows between bubbles
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2; // Thickness of the arrows
+    ctx.beginPath();
+
+    // Sort circles by their label to draw arrows in order
+    circles.sort((a, b) => a.label - b.label);
+
+    for (let i = 0; i < circles.length - 1; i++) {
+        const start = circles[i];
+        const end = circles[i + 1];
+
+        // Draw the arrow line
+        ctx.moveTo(start.x, start.y);
+        ctx.lineTo(end.x, end.y);
+
+        // Draw an arrowhead
+        const angle = Math.atan2(end.y - start.y, end.x - start.x);
+        const arrowSize = 10; // Size of the arrowhead
+
+        ctx.lineTo(end.x - arrowSize * Math.cos(angle - Math.PI / 6), end.y - arrowSize * Math.sin(angle - Math.PI / 6));
+        ctx.moveTo(end.x, end.y);
+        ctx.lineTo(end.x - arrowSize * Math.cos(angle + Math.PI / 6), end.y - arrowSize * Math.sin(angle + Math.PI / 6));
+    }
+
+    ctx.stroke();
 }
+
 
 
 // Main function to plot fixation map
