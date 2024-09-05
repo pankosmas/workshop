@@ -88,7 +88,7 @@ function calculateCircles(grid) {
 			const totalDuration = points.reduce((sum, p) => sum + p.duration, 0);
 			const avgX = points.reduce((sum, p) => sum + p.x, 0) / points.length;
 			const avgY = points.reduce((sum, p) => sum + p.y, 0) / points.length;
-			const radius = 5 * Math.sqrt(totalDuration);  // Example: radius proportional to sqrt of total duration
+			const radius = Math.sqrt(totalDuration);  // Example: radius proportional to sqrt of total duration
 			circles.push({ x: avgX, y: avgY, radius });
 			//const radius = 5 * Math.round(totalDuration/30);  // Example: radius proportional to sqrt of total duration
 			//if (radius > 10) { circles.push({ x: avgX, y: avgY, radius }); }
@@ -109,6 +109,7 @@ function drawCircles(canvas, circles, ctx) {
 }
 function plotFixationMap(filename) {
     const data = loadDatasetFromLocal(filename);
+    const finalData = rescaleHeatmapData(data);
     // Transform the dataset
     var canvas = document.getElementById('heatmap');
     // Check if the canvas is available
@@ -120,7 +121,7 @@ function plotFixationMap(filename) {
         canvas.height = canvas.clientHeight;
     }
     reshapeContent(ctx);
-	const grid = groupGazeData(data, gridSize);
+	const grid = groupGazeData(finalData, gridSize);
     console.log(grid);
 	const circles = calculateCircles(grid);
     console.log(circles);
@@ -231,5 +232,15 @@ function rescaleHeatmapData(dataset) {
             return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), 1];
         });
     }
-    
+}
+
+// Function to rescale gaze data dynamically
+function rescaleFixationData(dataset) {
+    const scaleX = 0.65;
+    const scaleY = 0.65;
+    return dataset.map(entry => ({
+        x: Math.round(entry.x * scaleX),
+        y: Math.round(entry.y * scaleY),
+        duration: entry.duration,
+    }));
 }
