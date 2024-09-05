@@ -125,17 +125,21 @@ function clusterGazeData(data, threshold = 150) {
 
 function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
     const clusters = [];
+
     data.forEach(point => {
         let foundCluster = false;
+
         for (let cluster of clusters) {
             const clusterCenter = cluster.center;
             const distance = Math.sqrt(
                 Math.pow(point.x - clusterCenter.x, 2) +
                 Math.pow(point.y - clusterCenter.y, 2)
             );
+
             if (distance <= threshold) {
                 // Add point to the cluster
                 cluster.points.push(point);
+
                 // Update cluster center
                 const totalDuration = cluster.totalDuration + point.duration;
                 cluster.center.x = (cluster.center.x * cluster.totalDuration + point.x * point.duration) / totalDuration;
@@ -146,6 +150,7 @@ function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
                 break;
             }
         }
+
         if (!foundCluster) {
             // Create a new cluster with this point as the center
             clusters.push({
@@ -155,19 +160,29 @@ function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
             });
         }
     });
+
     // Calculate the maximum duration for scaling
     const maxDuration = Math.max(...clusters.map(cluster => cluster.totalDuration));
+
     // Group clustered points into grid cells
     const grid = {};
+
     clusters.forEach(cluster => {
         const gridX = Math.floor(cluster.center.x / gridSize);
         const gridY = Math.floor(cluster.center.y / gridSize);
         const key = `${gridX},${gridY}`;
+
         if (!grid[key]) {
             grid[key] = [];
         }
+
+        // Adjust the radius range here
+        const minRadius = 20; // Increase the minimum radius
+        const maxRadius = 100; // Increase the maximum radius
+
         // Calculate the radius proportional to the duration
-        const radius = 10 + (20 * cluster.totalDuration / maxDuration); // Radius between 5 and 20
+        const radius = minRadius + (maxRadius - minRadius) * cluster.totalDuration / maxDuration;
+
         grid[key].push({
             x: cluster.center.x,
             y: cluster.center.y,
@@ -175,8 +190,10 @@ function clusterAndGroupGazeData(data, gridSize = 150, threshold = 150) {
             radius: radius
         });
     });
+
     return grid;
 }
+
 
 // Function to calculate circle parameters with adjusted radius and color coding
 function calculateCircles(grid) {
