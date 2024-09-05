@@ -50,5 +50,6 @@ document.addEventListener('mousemove', (event) => {
 });
 
 function saveMouseToArrays(activityNumber, array) {
+    array.shift();
     saveDatasetToLocal(`mouse-${activityNumber}`, array);
 }
