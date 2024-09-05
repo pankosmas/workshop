@@ -111,7 +111,7 @@ function plotFixationMap(filename) {
     const data = loadDatasetFromLocal(filename);
     // Transform the dataset
     const transformedData = data.map(({ x, y, duration }) => ({ x, y, duration }));
-    const finalData = rescaleHeatmapData(transformedData);
+    const finalData = rescaleFixationData(transformedData);
     var canvas = document.getElementById('heatmap');
     // Check if the canvas is available
     if (canvas.getContext) {
