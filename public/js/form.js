@@ -155,8 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             '2. What led you to your decision?',
                             '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
                             '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
-                            '<input type="checkbox" id="Lighting_Shadow" name="details" value="Lighting_Shadow"> Lighting and shadow inconsistencies are present.',
-                            '<input type="checkbox" id="Edges_Blending" name="details" value="Edges_Blending"> Poor edges and blending around the objects are present.',
+                            '<input type="checkbox" id="Lighting-Shadow" name="details" value="Lighting-Shadow"> Lighting and shadow inconsistencies are present.',
+                            '<input type="checkbox" id="Edges-Blending" name="details" value="Edges-Blending"> Poor edges and blending around the objects are present.',
                             '<input type="checkbox" id="Context" name="details" value="Context"> The image context does not fit with the displayed persona.',
                         );
                         activityCounter = 2;
