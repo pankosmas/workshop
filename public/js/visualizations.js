@@ -87,8 +87,8 @@ function groupGazeData(data, gridSize) {
 // Function to calculate circle parameters with adjusted radius and color coding
 function calculateCircles(grid) {
     const circles = [];
-    const minRadius = 5; // Minimum radius to ensure visibility
-    const maxRadius = 20; // Define a maximum radius for scaling purposes
+    const minRadius = 10; // Minimum radius to ensure visibility
+    const maxRadius = 30; // Define a maximum radius for scaling purposes
 
     for (const key in grid) {
         const points = grid[key];
