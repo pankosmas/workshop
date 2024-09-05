@@ -84,6 +84,54 @@ function groupGazeData(data, gridSize) {
     return grid;
 }
 
+function clusterGazeData(data, threshold = 150) {
+    const clusters = [];
+
+    data.forEach(point => {
+        let foundCluster = false;
+
+        for (let cluster of clusters) {
+            const clusterCenter = cluster.center;
+            const distance = Math.sqrt(
+                Math.pow(point.x - clusterCenter.x, 2) +
+                Math.pow(point.y - clusterCenter.y, 2)
+            );
+
+            if (distance <= threshold) {
+                // Add point to the cluster
+                cluster.points.push(point);
+
+                // Update cluster center
+                const totalDuration = cluster.totalDuration + point.duration;
+                cluster.center.x = (cluster.center.x * cluster.totalDuration + point.x * point.duration) / totalDuration;
+                cluster.center.y = (cluster.center.y * cluster.totalDuration + point.y * point.duration) / totalDuration;
+                cluster.totalDuration = totalDuration;
+
+                foundCluster = true;
+                break;
+            }
+        }
+
+        if (!foundCluster) {
+            // Create a new cluster with this point as the center
+            clusters.push({
+                center: { x: point.x, y: point.y },
+                totalDuration: point.duration,
+                points: [point]
+            });
+        }
+    });
+
+    // Create the final output object
+    const finalData = clusters.map(cluster => ({
+        x: cluster.center.x,
+        y: cluster.center.y,
+        duration: cluster.totalDuration
+    }));
+
+    return finalData;
+}
+
 // Function to calculate circle parameters with adjusted radius and color coding
 function calculateCircles(grid) {
     const circles = [];
@@ -137,7 +185,8 @@ function plotFixationMap(filename) {
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
 
-        const grid = groupGazeData(finalData, gridSize);
+        //const grid = groupGazeData(finalData, gridSize);
+        const grid = clusterGazeData(finalData);
         const circles = calculateCircles(grid);
         drawCircles(canvas, circles, ctx);
     }
