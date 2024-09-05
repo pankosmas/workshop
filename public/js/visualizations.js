@@ -75,21 +75,26 @@ function groupGazeData(data, gridSize) {
     return grid;
 }
 
-// Function to calculate circle parameters with improved radius and color coding
-function calculateCircles(grid, maxDuration) {
+// Function to calculate circle parameters with adjusted radius and color coding
+function calculateCircles(grid) {
     const circles = [];
-    const maxRadius = 50; // Define a maximum radius for scaling purposes
+    const minRadius = 1; // Minimum radius to ensure visibility
+    const maxRadius = 10; // Define a maximum radius for scaling purposes
+
+    // Find maximum duration in the data to normalize
+    const maxDuration = Math.max(...Object.values(grid).flat().map(p => p.duration));
+
     for (const key in grid) {
         const points = grid[key];
         if (points.length > 0) {
             const totalDuration = points.reduce((sum, p) => sum + p.duration, 0);
             const avgX = points.reduce((sum, p) => sum + p.x, 0) / points.length;
             const avgY = points.reduce((sum, p) => sum + p.y, 0) / points.length;
-            
-            // Logarithmic scaling for radius
-            const radius = Math.log(totalDuration + 1) * (maxRadius / Math.log(maxDuration + 1));
 
-            // Color based on duration (you can customize the color scale)
+            // Adjust radius for small durations
+            const radius = Math.max(minRadius, Math.log(totalDuration + 1) * (maxRadius / Math.log(maxDuration + 1)));
+
+            // Color based on duration with more sensitivity
             const alpha = Math.min(totalDuration / maxDuration, 1); // Ensure alpha is between 0 and 1
             const color = `rgba(255, 0, 0, ${alpha})`; // Red color with varying transparency
 
@@ -124,11 +129,11 @@ function plotFixationMap(filename) {
         canvas.height = canvas.clientHeight;
 
         const grid = groupGazeData(finalData, gridSize);
-        const maxDuration = Math.max(...finalData.map(p => p.duration)); // Find maximum duration for normalization
-        const circles = calculateCircles(grid, maxDuration);
+        const circles = calculateCircles(grid);
         drawCircles(canvas, circles, ctx);
     }
 }
+
 
 // ============================== Visualization No.2 plot Heatmap
 // ============================== Visualization No.2 plot Heatmap
