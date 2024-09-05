@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         '2. What led you to your decision?',
                         '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
                         '<input type="checkbox" id="Heatmap" name="details" value="Heatmap"> Visual inspection of image and heatmaps.',
-                        '<input type="checkbox" id="Fusion map" name="details" value="Fusion map"> Visual inspection of fusion map.',
+                        '<input type="checkbox" id="Fusion" name="details" value="Fusion"> Visual inspection of fusion map.',
                         '<input type="checkbox" id="Forgery" name="details" value="Forgery"> The indicated forgery probability.',
                         '<input type="checkbox" id="Combination" name="details" value="Combination"> Combined inspection of image, heatmaps, fusion map and forgery probability.',
                     );
@@ -146,8 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Experiment with the progress bar
                         // Eisodos experiment 2
                         editProgress(progressBar, 40);
-                        loadNextStep("../images/step5.png", 'Step 5: ?????');
-                        changeFormContent('Step 5: Cross-check your findings with Reverse Image Search', "../images/step5.png", 
+                        loadNextStep("../images/step5.png", 'Step 5: A challenge to Identify Real vs. Fake Images');
+                        changeFormContent('Step 5: A challenge to Identify Real vs. Fake Images', "../images/step5.png", 
                             '1. I believe this image is: ',
                             '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
                             '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
@@ -155,8 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             '2. What led you to your decision?',
                             '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
                             '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
-                            '<input type="checkbox" id="Lighting-Shadow Inconsistencies" name="details" value="Lighting-Shadow Inconsistencies"> Lighting and shadow inconsistencies are present.',
-                            '<input type="checkbox" id="Edges-Blending" name="details" value="Edges-Blending"> Poor edges and blending around the objects are present.',
+                            '<input type="checkbox" id="Lighting_Shadow" name="details" value="Lighting_Shadow"> Lighting and shadow inconsistencies are present.',
+                            '<input type="checkbox" id="Edges_Blending" name="details" value="Edges_Blending"> Poor edges and blending around the objects are present.',
                             '<input type="checkbox" id="Context" name="details" value="Context"> The image context does not fit with the displayed persona.',
                         );
                         activityCounter = 2;
@@ -166,8 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (submitCounter == 5) {
                     // Experiment with the progress bar
                     editProgress(progressBar, 50);
-                    loadNextStep("../images/step6.png", 'Step 6: ?????');
-                    changeFormContent('Step 6: Cross-check your findings with Reverse Image Search', "../images/step6.png", 
+                    loadNextStep("../images/step6.png", 'Step 6: Uncover the Truth by using Forensic Heatmaps');
+                    changeFormContent('Step 6: Uncover the Truth by using Forensic Heatmaps', "../images/step6.png", 
                         '1. I believe this image is: ',
                         '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
                         '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
@@ -176,16 +176,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
                         '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
                         '<input type="checkbox" id="Heatmap" name="details" value="Heatmap"> Heatmap areas of uniform color indicate that there is no processing.',
-                        '<input type="checkbox" id="Spatial Inconsistencies" name="details" value="Spatial Inconsistencies"> Spatial inconsistencies are present in the image.',
-                        '<input type="checkbox" id="Colour Inconsistencies" name="details" value="Colour Inconsistencies"> Colour inconsistencies present in the heatmap raise suspicions about the image.',
+                        '<input type="checkbox" id="Spatial" name="details" value="Spatial"> Spatial inconsistencies are present in the image.',
+                        '<input type="checkbox" id="Colour" name="details" value="Colour"> Colour inconsistencies present in the heatmap raise suspicions about the image.',
                     );
                     stepCounter = 2;
                 }
                 if (submitCounter == 6) {
                     // Experiment with the progress bar
                     editProgress(progressBar, 60);
-                    loadNextStep("../images/step7.png", 'Step 7: ?????');
-                    changeFormContent('Step 7: Cross-check your findings with Reverse Image Search', "../images/step7.png", 
+                    loadNextStep("../images/step7.png", 'Step 7: Confirm your findings with Fusion (probability) mapping');
+                    changeFormContent('Step 7: Confirm your findings with Fusion (probability) mapping', "../images/step7.png", 
                         '1. I believe this image is: ',
                         '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
                         '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         '2. What led you to your decision?',
                         '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
                         '<input type="checkbox" id="Heatmap" name="details" value="Heatmap"> Visual inspection of image and heatmaps.',
-                        '<input type="checkbox" id="Fusion map" name="details" value="Fusion map"> Visual inspection of fusion map.',
+                        '<input type="checkbox" id="Fusion" name="details" value="Fusion"> Visual inspection of fusion map.',
                         '<input type="checkbox" id="Forgery" name="details" value="Forgery"> The indicated forgery probability.',
                         '<input type="checkbox" id="Combination" name="details" value="Combination"> Combined inspection of image, heatmaps, fusion map and forgery probability.',
                     );
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (submitCounter == 7) {
                     // Experiment with the progress bar
                     editProgress(progressBar, 70);
-                    loadNextStep("../images/step8.png", 'Step 8: ?????');
+                    loadNextStep("../images/step8.png", 'Step 8: Cross-check your findings with Reverse Image Search');
                     changeFormContent('Step 8: Cross-check your findings with Reverse Image Search', "../images/step8.png", 
                         '1. I believe this image is: ',
                         '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
                         '2. What led you to your decision?',
                         '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
-                        '<input type="checkbox" id="Synthetically produced" name="details" value="Synthetically produced"> Search results pointed out the image has been synthetically produced by other documents.',
+                        '<input type="checkbox" id="Synthetically Produced" name="details" value="Synthetically Produced"> Search results pointed out the image has been synthetically produced by other documents.',
                         '<input type="checkbox" id="Variants" name="details" value="Variants"> Search results revealed multiple variants of the image components.',
                         '<input type="checkbox" id="Unique" name="details" value="Unique"> The image seems unique, like it has been created to serve a very specific purpose.',
                         '<input type="checkbox" id="DF Algorithms" name="details" value="DF Algorithms"> The deep fake detection algorithms points to an AI Generated image.',
