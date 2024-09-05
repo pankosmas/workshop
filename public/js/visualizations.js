@@ -84,7 +84,7 @@ function calculateCircles(grid) {
 			const avgX = points.reduce((sum, p) => sum + p.x, 0) / points.length;
 			const avgY = points.reduce((sum, p) => sum + p.y, 0) / points.length;
 			const radius = Math.sqrt(totalDuration);  // Example: radius proportional to sqrt of total duration
-            if ( radius >= 15 ) { circles.push({ x: avgX, y: avgY, radius }); }
+            circles.push({ x: avgX, y: avgY, radius }); 
 			//const radius = 5 * Math.round(totalDuration/30);  // Example: radius proportional to sqrt of total duration
 			//if (radius > 10) { circles.push({ x: avgX, y: avgY, radius }); }
 		}
