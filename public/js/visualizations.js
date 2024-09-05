@@ -69,12 +69,8 @@ const gridSize = 200;
 function groupGazeData(data, gridSize) {
 	const grid = {};
 	data.forEach(point => {
-        if (isNaN(point[0]) || isNaN(point[1])) {
-            console.error(`Invalid point: ${JSON.stringify(point)}`);
-            return;
-        }
-		const gridX = Math.floor(point[0] / gridSize);
-		const gridY = Math.floor(point[1] / gridSize);
+		const gridX = Math.floor(point.x / gridSize);
+		const gridY = Math.floor(point.y / gridSize);
 		const key = `${gridX},${gridY}`;
 		if (!grid[key]) {
 			grid[key] = [];
@@ -114,8 +110,6 @@ function drawCircles(canvas, circles, ctx) {
 function plotFixationMap(filename) {
     const data = loadDatasetFromLocal(filename);
     // Transform the dataset
-    const transformedData = data.map(({ x, y, duration }) => ({ x, y, duration }));
-    const finalData = rescaleFixationData(transformedData);
     var canvas = document.getElementById('heatmap');
     // Check if the canvas is available
     if (canvas.getContext) {
@@ -126,7 +120,7 @@ function plotFixationMap(filename) {
         canvas.height = canvas.clientHeight;
     }
     reshapeContent(ctx);
-	const grid = groupGazeData(finalData, gridSize);
+	const grid = groupGazeData(data, gridSize);
     console.log(grid);
 	const circles = calculateCircles(grid);
     console.log(circles);
@@ -238,20 +232,4 @@ function rescaleHeatmapData(dataset) {
         });
     }
     
-}
-
-// Function to rescale gaze data dynamically
-function rescaleFixationData(dataset) {
-    const scaleX = 0.65;
-    const scaleY = 0.65;
-    var type = getTypeValue();
-    if (type === "gaze-") {
-        return dataset.map(entry => {
-            return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), entry.duration];
-        });
-    } else if (type === "mouse-") {
-        return dataset.map(entry => {
-            return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), entry.duration];
-        });
-    }
 }
