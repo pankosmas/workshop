@@ -89,9 +89,8 @@ body {
     -moz-border-radius: 25px;
     border-radius: 25px;
     background-color: red;
-    opacity: 0.35;
-    border-color: black;
-    border-style: solid;
+    opacity: 0.4;
+    border: 2px solid black;
     cursor: pointer;
     position: fixed;
 }
@@ -223,6 +222,9 @@ body {
 }
 .explanation1-image {
     width: 50%;
+}
+.swal-footer {
+    text-align: center !important;
 }
 
 @keyframes bounce {

@@ -38,7 +38,7 @@ body {
 }
 .nav-links a {
     color: #7A7A7A;
-    margin: 0 20px;
+    margin: 0 1em;
 	text-decoration: none;
 }
 .nav-links a:hover {
@@ -50,7 +50,7 @@ body {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0.3em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
     overflow: visible; /* Ensure that any overflow is visible */
     font-size: 1em;
@@ -86,7 +86,7 @@ body {
 }
 .text-container {
     text-align: center;
-    max-width: 1000px;
+    max-width: 90vw;
     margin: 0 auto; /* Center horizontally */
     flex: 1; /* Take up remaining vertical space */
     display: flex;
@@ -102,7 +102,7 @@ body {
     transform: translate(-50%, -50%);
 }
 .text-container p {
-    margin-top: 30px; /* Add margin to create space below the logo */
+    margin-top: 3vh; /* Add margin to create space below the logo */
 }
 .gradient-text {
     font-size: 3vw; /* Responsive font size */
@@ -139,19 +139,24 @@ footer a:hover {
 @media (min-width: 1919px) {
 	.text-container h1 { top: 60%; }
     .gradient-text { top: 70%; }
-    .nav-button { font-size: 1vw; top: 82%; }
-    .nav-links { font-size: 1vw; }
-    footer { font-size: 1vw; }
+    .nav-button { font-size: 1.3rem; top: 82%; }
+    .nav-links, footer { font-size: 1.1rem; }
     .logo { width: 5vw; }
 }
 @media (min-width: 2159px) {
 	.text-container h1 { top: 60%; }
     .gradient-text { top: 70%; }
-    .nav-links { font-size: 1.1vw; }
-    .nav-button { font-size: 1.3vw; top: 82%; }
-    .main-logo { max-width: 22vw; }
+    .nav-button { font-size: 2rem; top: 82%; }
+    .nav-links, footer { font-size: 1.5rem; }
+    .main-logo { max-width: 23vw; }
     .logo { width: 7vw; }
 }
 @media (min-width: 2559px) {
-    .nav-button { font-size: 1.6vw; }
+    .nav-button { font-size: 2.5rem; }
+}
+@media (min-width: 2879px) {
+    .nav-links, footer { font-size: 1.8rem; }
+}
+@media (min-width: 2999px) {
+    .nav-button { font-size: 3rem;}
 }

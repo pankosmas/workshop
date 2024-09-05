@@ -15,7 +15,7 @@ const elemsCoords = {
             "speech": [{ "top": '7vh', "left": '10vw' }, { "top": '6vh', "left": '53vw' }, { "top": '7vh', "left": '86vw' }, { "top": '48vh', "left": '5vw' }, { "top": '48vh', "left": '79vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '55.5vw' }, { "top": '94.5vh', "left": '78.5vw' }, { "top": '49vh', "left": '53vw' }]},
 
   "1920": {"pin": [{ "top": '3vh', "left": '5.5vw' }, { "top": '3vh', "left": '49.9vw' }, { "top": '4vh', "left": '97.3vw' }, { "top": '45vh', "left": '1.8vw' }, { "top": '45vh', "left": '97.3vw' }, { "top": '92vh', "left": '1.9vw' }, { "top": '92.5vh', "left": '50.9vw' }, { "top": '92.5vh', "left": '96.3vw' }, { "top": '46vh', "left": '50vw' }], 
-            "speech": [{ "top": '5.5vh', "left": '8.5vw' }, { "top": '6vh', "left": '53vw' }, { "top": '7vh', "left": '88vw' }, { "top": '48.5Vh', "left": '4.5vw' }, { "top": '48.5vh', "left": '82.5vw' }, { "top": '95.5vh', "left": '4.5vw' }, { "top": '95.5vh', "left": '53.5vw' }, { "top": '95.5vh', "left": '81.5vw' }, { "top": '49vh', "left": '53vw' }]},
+            "speech": [{ "top": '5.5vh', "left": '8.5vw' }, { "top": '6vh', "left": '53vw' }, { "top": '7vh', "left": '88vw' }, { "top": '48.5Vh', "left": '4.5vw' }, { "top": '48.5vh', "left": '82.5vw' }, { "top": '95.5vh', "left": '4.5vw' }, { "top": '95.5vh', "left": '53.5vw' }, { "top": '95.5vh', "left": '81.5vw' }, { "top": '49.5vh', "left": '52.5vw' }]},
 
   "2160": {"pin": [{ "top": '3vh', "left": '4.8vw' }, { "top": '4vh', "left": '49.9vw' }, { "top": '5vh', "left": '97.4vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '97vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '96vw' }, { "top": '45vh', "left": '49.9VW' }], 
             "speech": [{ "top": '5.5vh', "left": '7.5vw' }, { "top": '6.5vh', "left": '52.5vw' }, { "top": '7.5vh', "left": '89vw' }, { "top": '48vh', "left": '5vw' }, { "top": '48vh', "left": '79vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '55.5vw' }, { "top": '94.5vh', "left": '78.5vw' }, { "top": '49.4vh', "left": '52.5vw' }]},
@@ -102,7 +102,6 @@ function calcAccuracy() {
         closeModal: true
     }).then( () => {
         // makes the variables true for 5 seconds & plots the points
-    
         store_points_variable(); // start storing the prediction points
     
         sleep(5000).then(() => {
@@ -133,8 +132,8 @@ function calcAccuracy() {
                             ClearCalibration();
                             ClearCanvas();
                             ShowCalibrationPoint();
-                            changePositionWithTransform(pinElement, '3vw', null, null, '7.7vw'); 
-                            changePositionLabel('speech-left', '4.5vw', null, null, '11.5vw', 'Click on the center of your webcam feed!');
+                            changePositionWithTransform(pinElement, elemsCoords[width]['pin'][0]['top'], null, null, elemsCoords[width]['pin'][0]['left']); 
+                            changePositionLabel(speechDirection[0], elemsCoords[width]['speech'][0]['top'], null, null, elemsCoords[width]['speech'][0]['left'], labelTexts[0]);
                         }
                     });
                 } else {
@@ -153,8 +152,8 @@ function calcAccuracy() {
                         ClearCalibration();
                         ClearCanvas();
                         ShowCalibrationPoint();
-                        changePositionWithTransform(pinElement, '3vw', null, null, '7.7vw'); 
-                        changePositionLabel('speech-left', '4.5vw', null, null, '11.5vw', 'Click on the center of your webcam feed!');
+                        changePositionWithTransform(pinElement, elemsCoords[width]['pin'][0]['top'], null, null, elemsCoords[width]['pin'][0]['left']); 
+                        changePositionLabel(speechDirection[0], elemsCoords[width]['speech'][0]['top'], null, null, elemsCoords[width]['speech'][0]['left'], labelTexts[0]);
                     });
                 }
         });
@@ -228,13 +227,14 @@ function restartCalibration() {
   // use restart function to restart the calibration
   document.getElementById("Accuracy").innerHTML = "<a>Not yet Calibrated</a>";
   const pinElement = document.querySelector('.red-pin');
+  const width = String(window.innerWidth);
   webgazer.clearData();
   ClearCalibration();
   ClearCanvas();
   helpModalShow();
-  ShowCalibrationPoint();
-  changePositionWithTransform(pinElement, '3vw', null, null, '7.7vw'); 
-  changePositionLabel('speech-left', '4.5vw', null, null, '11.5vw', 'Click on the center of your webcam feed!');
+  PopUpInstruction();
+  changePositionWithTransform(pinElement, elemsCoords[width]['pin'][0]['top'], null, null, elemsCoords[width]['pin'][0]['left']); 
+  changePositionLabel(speechDirection[0], elemsCoords[width]['speech'][0]['top'], null, null, elemsCoords[width]['speech'][0]['left'], labelTexts[0]);
 }
 
 /**
@@ -246,7 +246,6 @@ function restartCalibration() {
 function docLoad() {
   ClearCanvas();
   helpModalShow();
-    
   // click event on the calibration buttons
   document.querySelectorAll('.Calibration').forEach((i) => {
       i.addEventListener('click', () => {
@@ -281,10 +280,9 @@ function ShowCalibrationPoint() {
 */
 function ClearCalibration(){
   // Clear data from WebGazer
-
   document.querySelectorAll('.Calibration').forEach((i) => {
     i.style.setProperty('background-color', 'red');
-    i.style.setProperty('opacity', '0.2');
+    i.style.setProperty('opacity', '0.4');
     i.removeAttribute('disabled');
   });
 

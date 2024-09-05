@@ -123,7 +123,8 @@
                 initialContainer.style.height = 'auto';
                 initialImage.style.maxWidth = '35%';
                 leftdiv.style.maxWidth = "41%";
-                img.style.maxWidth = "97%";
+                if (document.body.style.width > 1400) { img.style.maxWidth = "97%"; }
+                else { img.style.maxWidth = "85%"; }
                 questiondiv.style.maxWidth = '60%';
             } else {
                 container.classList.add('left-image');
@@ -131,7 +132,8 @@
                 initialContainer.style.height = 'auto';
                 initialImage.style.maxWidth = '85%';
                 leftdiv.style.maxWidth = "41%";
-                img.style.maxWidth = "97%";
+                if (document.body.style.width > 1400) { img.style.maxWidth = "97%"; }
+                else { img.style.maxWidth = "85%"; }
                 questiondiv.style.maxWidth = '55%';
             }
         }
