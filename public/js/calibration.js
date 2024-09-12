@@ -329,6 +329,44 @@ function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
+function resizeBackgroundImage() {
+  // Get the screen width and height
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  // Define the base dimensions of your background image
+  const baseWidth = 1920;  // Change according to your image dimensions
+  const baseHeight = 1080; // Change according to your image dimensions
+
+  // Calculate the aspect ratio of the screen and the image
+  const screenAspectRatio = screenWidth / screenHeight;
+  const imageAspectRatio = baseWidth / baseHeight;
+
+  let newWidth, newHeight;
+
+  if (screenAspectRatio > imageAspectRatio) {
+      // Screen is wider than the image
+      newWidth = screenWidth;
+      newHeight = newWidth / imageAspectRatio;
+  } else {
+      // Screen is taller than the image
+      newHeight = screenHeight;
+      newWidth = newHeight * imageAspectRatio;
+  }
+
+  // Create the background image CSS
+  body.style.background = `url('../images/calibration/1920x1080.png')`;
+  body.style.backgroundSize = `${newWidth}px ${newHeight}px`; 
+  body.style.backgroundPosition = 'center'; 
+  body.style.backgroundRepeat = 'no-repeat'; 
+  //body.style.backgroundAttachment = 'fixed';
+  console.log(`Η οθόνη έχει διαστάσεις ${window.innerWidth} και ${window.innerHeight} !!`);
+}
+
+// Call the function on page load and on window resize
+window.onload = resizeBackgroundImage;
+window.onresize = resizeBackgroundImage;
+/*
 document.addEventListener('DOMContentLoaded', function() {
   function updateBackgroundImage() {
       // Get the width of the window
@@ -361,13 +399,13 @@ document.addEventListener('DOMContentLoaded', function() {
       else { imageURL = 'url(../images/calibration/1360x768.png)'; }
 
       body.style.background = imageURL;
-      body.style.backgroundSize = 'cover'; /* Ensures the image covers the entire window */
-      body.style.backgroundPosition = 'center'; /* Centers the image */
-      body.style.backgroundRepeat = 'no-repeat'; /* Prevents the image from repeating */
-      body.style.backgroundAttachment = 'fixed'; /* Keeps the image fixed while content scrolls */
+      body.style.backgroundSize = 'cover'; 
+      body.style.backgroundPosition = 'center'; 
+      body.style.backgroundRepeat = 'no-repeat'; 
+      body.style.backgroundAttachment = 'fixed';
       console.log(`Η οθόνη έχει διαστάσεις ${window.innerWidth} και ${window.innerHeight} !!`);
   }
-
   // Call the function to set the correct background image on load
   updateBackgroundImage();
 });
+*/
