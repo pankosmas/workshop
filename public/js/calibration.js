@@ -360,7 +360,7 @@ function resizeBackgroundImage() {
   body.style.backgroundSize = `${newWidth}px ${newHeight}px`; 
   body.style.backgroundPosition = 'center'; 
   body.style.backgroundRepeat = 'no-repeat'; 
-  //body.style.backgroundAttachment = 'fixed';
+  body.style.backgroundAttachment = 'fixed';
   console.log(`Η οθόνη έχει διαστάσεις ${window.innerWidth} και ${window.innerHeight} !!`);
 }
 
