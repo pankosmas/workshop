@@ -14,6 +14,9 @@ const elemsCoords = {
   "1600": {"pin": [{ "top": '4.8vh', "left": '6.9vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '3vh', "left": '97vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '97vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '96vw' }, { "top": '45vh', "left": '50vw' }], 
             "speech": [{ "top": '7vh', "left": '10vw' }, { "top": '6vh', "left": '53vw' }, { "top": '7vh', "left": '86vw' }, { "top": '48vh', "left": '5vw' }, { "top": '48vh', "left": '79vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '55.5vw' }, { "top": '94.5vh', "left": '78.5vw' }, { "top": '49vh', "left": '53vw' }]},
 
+  "1707": {"pin": [{ "top": '4.8vh', "left": '6.9vw' }, { "top": '1vh', "left": '49.7vw' }, { "top": '3vh', "left": '97vw' }, { "top": '44vh', "left": '1.7vw' }, { "top": '44vh', "left": '97vw' }, { "top": '90.5vh', "left": '1.7vw' }, { "top": '90.5vh', "left": '50.7vw' }, { "top": '90.5vh', "left": '96vw' }, { "top": '45vh', "left": '50vw' }], 
+            "speech": [{ "top": '7vh', "left": '10vw' }, { "top": '6vh', "left": '53vw' }, { "top": '7vh', "left": '86vw' }, { "top": '48vh', "left": '5vw' }, { "top": '48vh', "left": '79vw' }, { "top": '94.5vh', "left": '5.5vw' }, { "top": '94.5vh', "left": '55.5vw' }, { "top": '94.5vh', "left": '78.5vw' }, { "top": '49vh', "left": '53vw' }]},
+
   "1920": {"pin": [{ "top": '3vh', "left": '5.5vw' }, { "top": '3vh', "left": '49.9vw' }, { "top": '4vh', "left": '97.3vw' }, { "top": '45vh', "left": '1.8vw' }, { "top": '45vh', "left": '97.3vw' }, { "top": '92vh', "left": '1.9vw' }, { "top": '92.5vh', "left": '50.9vw' }, { "top": '92.5vh', "left": '96.3vw' }, { "top": '46vh', "left": '50vw' }], 
             "speech": [{ "top": '5.5vh', "left": '8.5vw' }, { "top": '6vh', "left": '53vw' }, { "top": '7vh', "left": '88vw' }, { "top": '48.5Vh', "left": '4.5vw' }, { "top": '48.5vh', "left": '82.5vw' }, { "top": '95.5vh', "left": '4.5vw' }, { "top": '95.5vh', "left": '53.5vw' }, { "top": '95.5vh', "left": '81.5vw' }, { "top": '49.5vh', "left": '52.5vw' }]},
 
@@ -339,7 +342,8 @@ document.addEventListener('DOMContentLoaded', function() {
       else if (width > 1361 && width <= 1366) { imageURL = 'url(../images/calibration/1366x768.png)'; }
       else if (width > 1367 && width <= 1440) { imageURL = 'url(../images/calibration/1440x900.png)'; }
       else if (width > 1441 && width <= 1600) { imageURL = 'url(../images/calibration/1600x900.png)'; }
-      else if ((width > 1601 && width <= 1920) || (width > 1921 && width <= 2048)) { imageURL = 'url(../images/calibration/1920x1080.png)'; }
+      else if (width > 1601 && width <= 1920) { imageURL = 'url(../images/calibration/1707x1067.png)'; }
+      else if (width > 1921 && width <= 2048) { imageURL = 'url(../images/calibration/1920x1080.png)'; }
       else if (width > 2049 && width <= 2160) { imageURL = 'url(../images/calibration/2160x1440.png)'; }
       else if (width > 2161 && width <= 2304) { imageURL = 'url(../images/calibration/2304x1440.png)'; }
       else if (width > 2305 && width <= 2560) { 
