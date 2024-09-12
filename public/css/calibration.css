@@ -4,7 +4,7 @@ body {
     box-sizing: border-box;
     font-family: Open Sans, Arial, sans-serif;
     font-size: 16px;
-    background: url('../images/calibration/1360x768.png');
+    background: url('../images/calibration/1920x1080.png');
     background-size: cover; /* Ensures the image covers the entire window */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -94,56 +94,55 @@ body {
     cursor: pointer;
     position: fixed;
 }
-
-/* Calibration point position */
-#P1 {
+.calibrationContainer {
     position: absolute;
-    top: 5vh;
-    left: 7.7vw;
-    z-index: 50;
-}
-#Pt1 {
-    top: 6vw;
-    left: 8vw;
     z-index: 2;
 }
-#Pt2 {
+#Container1 {
+    top: 6vw;
+    left: 8vw;
+}
+#Container2 {
     top: 7vh;
     left: 50vw;
-    margin-left: 340;
+    margin-left: 340px;
 }
-#Pt3 {
+#Container3 {
     top: 7vh;
     right: 1vw;
 }
-#Pt4 {
+#Container4 {
     top: 49vh;
     left: 2vw;
 }
-#Pt5 {
+#Container5 {
     top: 50vh;
     left: 50vw;
 }
-#Pt6 {
+#Container6 {
     top: 49vh;
     right: 1vw;
 }
-#Pt7 {
+#Container7 {
     bottom: 1vh;
     left: 2vw;
 }
-#Pt8 {
+#Container8 {
     bottom: 1vh;
     left: 51vw;
 }
-#Pt9 {
+#Container9 {
     bottom: 1vh;
     right: 2vw;
 }
+
 .red-pin {
     width: 35px;
     height: 35px;
-    display: none;
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    left: 30px; /* Adjust as needed */
+    z-index: 3;
 }
 .bounce {
     animation: bounce 2s infinite;
@@ -294,9 +293,9 @@ body {
     max-width: 280px;
     text-align: center;
     position: absolute;
-    top: 8vh;
-    left: 11.5vw;
-    display: none;
+    top: -20px; /* Adjust as needed */
+    left: 60px; /* Adjust as needed */
+    z-index: 4;
     font-weight: bold;
 }
 .speech::after {
