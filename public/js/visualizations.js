@@ -304,7 +304,6 @@ function plotFixationMap(filename) {
     }
 }
 
-
 // ============================== Visualization No.2 plot Heatmap
 // ============================== Visualization No.2 plot Heatmap
 

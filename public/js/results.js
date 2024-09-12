@@ -4,6 +4,7 @@ async function fetchData() {
         const response = await fetch(`https://inquisitive-moxie-cf6310.netlify.app/.netlify/functions/data?activityStep=${activityStepValue}`);
         const data = await response.json();
         processCharts(data);
+        aggregatePoints(data);
         getVizType();
         updateSubmissionCount(data.length); // Update submission count
     } catch (error) {
@@ -63,3 +64,13 @@ function updateTimer(time, std) {
 
 // Set up auto-refresh every 30 seconds
 setInterval(fetchData, 15000); // 30,000 milliseconds = 30 seconds
+
+let gazeCoordinates = [];
+let mouseCoordinates = [];
+
+function aggregatePoints(data) {
+    data.forEach( record => {
+        gazeCoordinates = gazeCoordinates.concat(record.gazeCoordinates);        
+    })
+    console.log(gazeCoordinates);
+}
