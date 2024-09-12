@@ -133,13 +133,10 @@ function calcAccuracy() {
                         } else {
                             // use restart function to restart the calibration
                             document.getElementById("Accuracy").innerHTML = "<a>Not yet Calibrated</a>";
-                            const pinElement = document.querySelector('.red-pin');
                             webgazer.clearData();
                             ClearCalibration();
                             ClearCanvas();
                             ShowCalibrationPoint();
-                            changePositionWithTransform(pinElement, elemsCoords[width]['pin'][0]['top'], null, null, elemsCoords[width]['pin'][0]['left']); 
-                            changePositionLabel(speechDirection[0], elemsCoords[width]['speech'][0]['top'], null, null, elemsCoords[width]['speech'][0]['left'], labelTexts[0]);
                         }
                     });
                 } else {
@@ -153,13 +150,10 @@ function calcAccuracy() {
                     }).then(() => {
                         // use restart function to restart the calibration
                         document.getElementById("Accuracy").innerHTML = "<a>Not yet Calibrated</a>";
-                        const pinElement = document.querySelector('.red-pin');
                         webgazer.clearData();
                         ClearCalibration();
                         ClearCanvas();
                         ShowCalibrationPoint();
-                        changePositionWithTransform(pinElement, elemsCoords[width]['pin'][0]['top'], null, null, elemsCoords[width]['pin'][0]['left']); 
-                        changePositionLabel(speechDirection[0], elemsCoords[width]['speech'][0]['top'], null, null, elemsCoords[width]['speech'][0]['left'], labelTexts[0]);
                     });
                 }
         });
@@ -208,15 +202,11 @@ function calPointClick(node) {
 function restartCalibration() {
   // use restart function to restart the calibration
   document.getElementById("Accuracy").innerHTML = "<a>Not yet Calibrated</a>";
-  const pinElement = document.querySelector('.red-pin');
-  const width = String(window.innerWidth);
   webgazer.clearData();
   ClearCalibration();
   ClearCanvas();
   helpModalShow();
   PopUpInstruction();
-  changePositionWithTransform(pinElement, elemsCoords[width]['pin'][0]['top'], null, null, elemsCoords[width]['pin'][0]['left']); 
-  changePositionLabel(speechDirection[0], elemsCoords[width]['speech'][0]['top'], null, null, elemsCoords[width]['speech'][0]['left'], labelTexts[0]);
 }
 
 /**
@@ -226,6 +216,7 @@ function restartCalibration() {
 */
 function docLoad() {
   ClearCanvas();
+  resizeBackgroundImage();
   helpModalShow();
   // click event on the calibration buttons
   document.querySelectorAll('.Calibration').forEach((i) => {
@@ -233,13 +224,7 @@ function docLoad() {
           calPointClick(i);
       })
   })
-  const width = String(window.innerWidth);
-  const pinElement = document.getElementById('P1');
-  changePositionWithTransform(pinElement, elemsCoords[width]['pin'][0]['top'], null, null, elemsCoords[width]['pin'][0]['left']); 
-  changePositionLabel(speechDirection[0], elemsCoords[width]['speech'][0]['top'], null, null, elemsCoords[width]['speech'][0]['left'], labelTexts[0]);         
 };
-
-window.addEventListener('load', docLoad);
 
 /**
  * Show the Calibration Points
@@ -271,34 +256,6 @@ function ClearCalibration(){
   PointCalibrate = 0;
 }
 
-function changePosition(element, top, right, bottom, left, transformX, transformY) {
-  element.style.top = top;
-  element.style.right = right;
-  element.style.bottom = bottom;
-  element.style.left = left;
-  element.style.transform = transformX;
-  element.style.transform = transformY;
-}
-
-function changePositionWithTransform(element, top, right, bottom, left, transformX, transformY) {
-  changePosition(element, top, right, bottom, left, transformX, transformY);
-}
-
-function changePositionLabel(speech_class, top, right, bottom, left, text) {
-  const buttonLabel = document.querySelector('.speech');
-
-  if (! (buttonLabel.classList.contains(speech_class)) ){
-    buttonLabel.classList.remove('speech-left');
-    buttonLabel.classList.remove('speech-right');
-    buttonLabel.classList.add(speech_class);
-  }
-  buttonLabel.style.top = top;
-  buttonLabel.style.right = right;
-  buttonLabel.style.bottom = bottom;
-  buttonLabel.style.left = left;
-  buttonLabel.innerHTML = text;
-}
-
 // sleep function because java doesn't have one, sourced from http://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
 function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -320,5 +277,5 @@ function resizeBackgroundImage() {
 }
 
 // Call the function on page load and on window resize
-window.onload = resizeBackgroundImage;
-window.onresize = resizeBackgroundImage;
+window.addEventListener('load', docLoad);
+window.addEventListener('resize', resizeBackgroundImage);
