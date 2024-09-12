@@ -335,25 +335,25 @@ document.addEventListener('DOMContentLoaded', function() {
       var imageURL = null;
 
       // Check the width and set the background image accordingly
-      if (width === 1360) { imageURL = 'url(../images/calibration/1360x768.png)'; } 
-      else if (width === 1366) { imageURL = 'url(../images/calibration/1366x768.png)'; }
-      else if (width === 1440) { imageURL = 'url(../images/calibration/1440x900.png)'; }
-      else if (width === 1600) { imageURL = 'url(../images/calibration/1600x900.png)'; }
-      else if (width === 1920 || width === 2048) { imageURL = 'url(../images/calibration/1920x1080.png)'; }
-      else if (width === 2160) { imageURL = 'url(../images/calibration/2160x1440.png)'; }
-      else if (width === 2304) { imageURL = 'url(../images/calibration/2304x1440.png)'; }
-      else if (width === 2560) { 
-        if (height === 1440) { imageURL = 'url(../images/calibration/2560x1440.png)'; }
+      if (width <= 1360) { imageURL = 'url(../images/calibration/1360x768.png)'; } 
+      else if (width > 1361 && width <= 1366) { imageURL = 'url(../images/calibration/1366x768.png)'; }
+      else if (width > 1367 && width <= 1440) { imageURL = 'url(../images/calibration/1440x900.png)'; }
+      else if (width > 1441 && width <= 1600) { imageURL = 'url(../images/calibration/1600x900.png)'; }
+      else if ((width > 1601 && width <= 1920) || (width > 1921 && width <= 2048)) { imageURL = 'url(../images/calibration/1920x1080.png)'; }
+      else if (width > 2049 && width <= 2160) { imageURL = 'url(../images/calibration/2160x1440.png)'; }
+      else if (width > 2161 && width <= 2304) { imageURL = 'url(../images/calibration/2304x1440.png)'; }
+      else if (width > 2305 && width <= 2560) { 
+        if (height <= 1440) { imageURL = 'url(../images/calibration/2560x1440.png)'; }
         else { imageURL = 'url(../images/calibration/2560x1600.png)'; }
       }
-      else if (width === 2880) { 
-        if ( height === 1620) { imageURL = 'url(../images/calibration/2880x1620.png)'; }
+      else if (width > 2561 && width <= 2880) { 
+        if ( height <= 1620) { imageURL = 'url(../images/calibration/2880x1620.png)'; }
         else { imageURL = 'url(../images/calibration/2880x1800.png)'; }
       }
-      else if (width === 3000) { imageURL = 'url(../images/calibration/3000x2000.png)'; }
-      else if (width === 3072) { imageURL = 'url(../images/calibration/3072x1920.png)'; }
-      else if (width === 3200) { imageURL = 'url(../images/calibration/3200x1800.png)'; }
-      else if (width === 3840) { imageURL = 'url(../images/calibration/3840x2160.png)'; }
+      else if (width > 2881 && width <= 3000) { imageURL = 'url(../images/calibration/3000x2000.png)'; }
+      else if (width > 3001 && width <= 3072) { imageURL = 'url(../images/calibration/3072x1920.png)'; }
+      else if (width > 3073 && width <= 3200) { imageURL = 'url(../images/calibration/3200x1800.png)'; }
+      else if (width > 3201 && width <= 3840) { imageURL = 'url(../images/calibration/3840x2160.png)'; }
       else { imageURL = 'url(../images/calibration/1360x768.png)'; }
 
       body.style.background = imageURL;
