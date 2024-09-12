@@ -4,7 +4,10 @@ async function fetchData() {
         const response = await fetch(`https://inquisitive-moxie-cf6310.netlify.app/.netlify/functions/data?activityStep=${activityStepValue}`);
         const data = await response.json();
         processCharts(data);
-        aggregatePoints(data);
+        let gazeCoordinates = [];
+        let mouseCoordinates = [];
+        gazeCoordinates, mouseCoordinates = aggregatePoints(gazeCoordinates, mouseCoordinates, data);
+        plotAggregatedPoints(gazeCoordinates);
         getVizType();
         updateSubmissionCount(data.length); // Update submission count
     } catch (error) {
@@ -17,7 +20,6 @@ function processCharts(users) {
     const imageRealityCounts = { Real: 0, Tampered: 0, Deepfake: 0 };
     const detailsCounts = getDetailsArray();
     let totalTime = 0.0;
-    console.log(users);
     users.forEach(user => {
         // Count imageReality
         if (imageRealityCounts[user.imageReality] !== undefined) {
@@ -65,12 +67,36 @@ function updateTimer(time, std) {
 // Set up auto-refresh every 30 seconds
 setInterval(fetchData, 15000); // 30,000 milliseconds = 30 seconds
 
-let gazeCoordinates = [];
-let mouseCoordinates = [];
-
-function aggregatePoints(data) {
+function aggregatePoints(gazeCoordinates, mouseCoordinates, data) {
     data.forEach( record => {
         gazeCoordinates = gazeCoordinates.concat(record.gazeCoordinates);        
+        mouseCoordinates = mouseCoordinates.concat(record.mouseCoordinates);        
     })
     console.log(gazeCoordinates);
+}
+
+// ============================== Visualization No.1 plot gaze data points
+function plotAggregatedPoints(data) {
+    // Transform the dataset
+    const transformedData = data.map(({ x, y }) => ({ x, y }));
+    const finalData = rescaleGazeData(transformedData);
+    var canvas = document.getElementById('heatmap');
+    // Check if the canvas is available
+    if (canvas.getContext) {
+        // Get the 2D drawing context
+        var ctx = canvas.getContext('2d');
+        // Set the canvas dimensions (if necessary)
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+    }
+    reshapeContent(ctx);
+    // Adjust color scale based on your data density if needed
+    const color = d3.scaleSequential(d3.interpolateYlOrRd).domain([0, 1]);
+    finalData.forEach(d => {
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, 7, 0, Math.PI * 2, true);
+        ctx.fillStyle = "rgba(255, 0, 0, 0.8)";
+        //ctx.fillStyle = "rgba(255, 255, 0, 0.9)";
+        ctx.fill();
+    });
 }
