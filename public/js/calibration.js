@@ -334,30 +334,10 @@ function resizeBackgroundImage() {
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
 
-  // Define the base dimensions of your background image
-  const baseWidth = 1920;  // Change according to your image dimensions
-  const baseHeight = 1080; // Change according to your image dimensions
-
-  // Calculate the aspect ratio of the screen and the image
-  const screenAspectRatio = screenWidth / screenHeight;
-  const imageAspectRatio = baseWidth / baseHeight;
-
-  let newWidth, newHeight;
-
-  if (screenAspectRatio > imageAspectRatio) {
-      // Screen is wider than the image
-      newWidth = screenWidth;
-      newHeight = newWidth / imageAspectRatio;
-  } else {
-      // Screen is taller than the image
-      newHeight = screenHeight;
-      newWidth = newHeight * imageAspectRatio;
-  }
-
   // Create the background image CSS
   const body = document.body;
   body.style.background = `url('../images/calibration/1920x1080.png')`;
-  body.style.backgroundSize = `${newWidth}px ${newHeight}px`; 
+  body.style.backgroundSize = `${screenWidth}px ${screenHeight}px`; 
   body.style.backgroundPosition = 'center'; 
   body.style.backgroundRepeat = 'no-repeat'; 
   body.style.backgroundAttachment = 'fixed';
