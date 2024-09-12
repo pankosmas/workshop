@@ -7,7 +7,7 @@ async function fetchData() {
         let gazeCoordinates = [];
         let mouseCoordinates = [];
         gazeCoordinates, mouseCoordinates = aggregatePoints(gazeCoordinates, mouseCoordinates, data);
-        plotAggregatedPoints(gazeCoordinates);
+        //plotAggregatedPoints(gazeCoordinates);
         getVizType();
         updateSubmissionCount(data.length); // Update submission count
     } catch (error) {
