@@ -168,26 +168,10 @@ function calcAccuracy() {
 
 function calPointClick(node) {
     const id = node.id;
-    const pinElement = document.getElementById('P1');
-    const width = String(window.innerWidth);
-    console.log(width);
-
-    if (width === '2560') { 
-      const height = String(window.innerHeight);
-      if (height === '1440') { width = '25601'; }
-      else { width = '25602'; } 
-    }
-
-    if (width === '2880') { 
-      const height = String(window.innerHeight);
-      if (height === '1800') { width = '28801'; }
-      else { width = '28802'; } 
-    }
 
     if (!CalibrationPoints[id]){ // initialises if not done
         CalibrationPoints[id]=0;
     }
-    
     CalibrationPoints[id]++; // increments values
 
     if (CalibrationPoints[id]==5){ //only turn to yellow after 5 clicks
@@ -195,16 +179,10 @@ function calPointClick(node) {
         node.setAttribute('disabled', 'disabled');
         PointCalibrate++;
         // Change pin's position - Initial position
-        if (PointCalibrate <= 7) {
-          changePositionWithTransform(pinElement, elemsCoords[width]['pin'][PointCalibrate]['top'], null, null, elemsCoords[width]['pin'][PointCalibrate]['left']); 
-          changePositionLabel(speechDirection[PointCalibrate], elemsCoords[width]['speech'][PointCalibrate]['top'], null, null, elemsCoords[width]['speech'][PointCalibrate]['left'], labelTexts[PointCalibrate]);         
-        }
-        else if (PointCalibrate == 8) {
-          changePositionWithTransform(pinElement, elemsCoords[width]['pin'][PointCalibrate]['top'], null, null, elemsCoords[width]['pin'][PointCalibrate]['left']); 
-          changePositionLabel(speechDirection[PointCalibrate], elemsCoords[width]['speech'][PointCalibrate]['top'], null, null, elemsCoords[width]['speech'][PointCalibrate]['left'], labelTexts[PointCalibrate]);         
+        if (PointCalibrate == 8) {
           document.getElementById('Pt5').style.removeProperty('display');
         }
-        else {
+        if (PointCalibrate == 9) {
           // grab every element in Calibration class and hide them except the middle point.
           const pinElement = document.querySelector('.red-pin');
           const speechElement = document.querySelector('.speech');
@@ -214,13 +192,11 @@ function calPointClick(node) {
               i.style.setProperty('display', 'none');
           });
           document.getElementById('Pt5').style.removeProperty('display');
-          // clears the canvas
           var canvas = document.getElementById("plotting_canvas");
           canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
           // Calculate the accuracy
           calcAccuracy();
         }
-        
     } else if (CalibrationPoints[id]<5){
         //Gradually increase the opacity of calibration points when click to give some indication to user.
         var opacity = 0.2*CalibrationPoints[id]+0.2;
@@ -248,7 +224,6 @@ function restartCalibration() {
 * This function listens for button clicks on the html page
 * checks that all buttons have been clicked 5 times each, and then goes on to measuring the precision
 */
-//$(document).ready(function(){
 function docLoad() {
   ClearCanvas();
   helpModalShow();
@@ -347,46 +322,3 @@ function resizeBackgroundImage() {
 // Call the function on page load and on window resize
 window.onload = resizeBackgroundImage;
 window.onresize = resizeBackgroundImage;
-/*
-document.addEventListener('DOMContentLoaded', function() {
-  function updateBackgroundImage() {
-      // Get the width of the window
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const body = document.body;
-      var imageURL = null;
-
-      // Check the width and set the background image accordingly
-      if (width <= 1360) { imageURL = 'url(../images/calibration/1360x768.png)'; } 
-      else if (width > 1361 && width <= 1366) { imageURL = 'url(../images/calibration/1366x768.png)'; }
-      else if (width > 1367 && width <= 1440) { imageURL = 'url(../images/calibration/1440x900.png)'; }
-      else if (width > 1441 && width <= 1600) { imageURL = 'url(../images/calibration/1600x900.png)'; }
-      else if (width > 1601 && width <= 1920) { imageURL = 'url(../images/calibration/1707x1067.png)'; }
-      else if (width > 1921 && width <= 2048) { imageURL = 'url(../images/calibration/1920x1080.png)'; }
-      else if (width > 2049 && width <= 2160) { imageURL = 'url(../images/calibration/2160x1440.png)'; }
-      else if (width > 2161 && width <= 2304) { imageURL = 'url(../images/calibration/2304x1440.png)'; }
-      else if (width > 2305 && width <= 2560) { 
-        if (height <= 1440) { imageURL = 'url(../images/calibration/2560x1440.png)'; }
-        else { imageURL = 'url(../images/calibration/2560x1600.png)'; }
-      }
-      else if (width > 2561 && width <= 2880) { 
-        if ( height <= 1620) { imageURL = 'url(../images/calibration/2880x1620.png)'; }
-        else { imageURL = 'url(../images/calibration/2880x1800.png)'; }
-      }
-      else if (width > 2881 && width <= 3000) { imageURL = 'url(../images/calibration/3000x2000.png)'; }
-      else if (width > 3001 && width <= 3072) { imageURL = 'url(../images/calibration/3072x1920.png)'; }
-      else if (width > 3073 && width <= 3200) { imageURL = 'url(../images/calibration/3200x1800.png)'; }
-      else if (width > 3201 && width <= 3840) { imageURL = 'url(../images/calibration/3840x2160.png)'; }
-      else { imageURL = 'url(../images/calibration/1360x768.png)'; }
-
-      body.style.background = imageURL;
-      body.style.backgroundSize = 'cover'; 
-      body.style.backgroundPosition = 'center'; 
-      body.style.backgroundRepeat = 'no-repeat'; 
-      body.style.backgroundAttachment = 'fixed';
-      console.log(`Η οθόνη έχει διαστάσεις ${window.innerWidth} και ${window.innerHeight} !!`);
-  }
-  // Call the function to set the correct background image on load
-  updateBackgroundImage();
-});
-*/
