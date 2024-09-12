@@ -241,44 +241,32 @@ body {
 
 @media (min-width: 1599px) {
 	.Calibration { width: 30px; height: 30px; }
-    #Pt1 { top: 5vw; left: 7vw; }
-    #Pt3 { top: 8vh; right: 1vw; }
     .modal-content { max-width: 720px; font-size: 1.2em; }
     .calibrate-btn { font-size: 1.2em; }
 }
 @media (min-width: 1919px) {
-    #Pt1 { top: 4vw; left: 5.5vw; }
 }
 @media (min-width: 2159px) {
 	.Calibration { width: 33px; height: 33px; }
-    #Pt1 { top: 3.8vw; left: 4.8vw; }
     .nav-links { font-size: 1.5em; }
     .logo { width: 7vw;}
     .speech { font-size: 1.4em; max-width: 360px;}
 }
 @media (min-width: 2303px) {
 	.Calibration { width: 33px; height: 33px; }
-    #Pt1 { top: 3.7vw; left: 4.7vw; }
     .modal-content { max-width: 1100px; font-size: 1.5em;  border-radius: 10px}
     .calibrate-btn { font-size: 1.4em; border-radius: 10px;; }
 }
 @media (min-width: 2559px) {
-    #Pt1 { top: 3.3vw; left: 4.1vw; }
     .Calibration { width: 36px; height: 36px; }
     .nav-links { font-size: 1.8em; }
 }
 @media (min-width: 2879px) {
-    #Pt1 { top: 3.1vw; left: 3.8vw; }
-    #Pt7 { bottom: 1.5vh; left: 2.5vw; }
-    #Pt8 { bottom: 1.5vh; left: 51vw; }
-    #Pt9 { bottom: 1.5vh; right: 2.5vw; }
     .Calibration { width: 40px; height: 40px; }
 }
 @media (min-width: 3071px) {
-    #Pt1 { top: 2.7vw; left: 3.3vw; }
 }
 @media (min-width: 3071px) {
-    #Pt1 { top: 2.2vw; left: 2.7vw; }
     .Calibration { width: 43px; height: 43px; }
 }
 
