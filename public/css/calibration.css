@@ -92,7 +92,7 @@ body {
     opacity: 0.4;
     border: 2px solid black;
     cursor: pointer;
-    position: fixed;
+    position: relative;
 }
 .calibrationContainer {
     position: absolute;
@@ -105,7 +105,6 @@ body {
 #Container2 {
     top: 7vh;
     left: 50vw;
-    margin-left: 340px;
 }
 #Container3 {
     top: 7vh;
@@ -140,8 +139,8 @@ body {
     width: 35px;
     height: 35px;
     position: absolute;
-    top: 10px; /* Adjust as needed */
-    left: 30px; /* Adjust as needed */
+    top: -40px; /* Adjust as needed */
+    left: -5px; /* Adjust as needed */
     z-index: 3;
 }
 .bounce {
@@ -290,11 +289,11 @@ body {
     border-radius: 10px;
     box-shadow: 10px 10px 20px #11819b;
     padding: 10px;
-    max-width: 280px;
+    width: 350px;
     text-align: center;
     position: absolute;
-    top: -20px; /* Adjust as needed */
-    left: 60px; /* Adjust as needed */
+    top: -10px; /* Adjust as needed */
+    left: 40px; /* Adjust as needed */
     z-index: 4;
     font-weight: bold;
 }
