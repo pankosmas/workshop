@@ -360,6 +360,9 @@ function updateForm(stepTitle, imgSrc, question1, radio1Yes, radio1No, question2
     document.getElementById('form-image').src = imgSrc;
     
     const form = document.getElementById('form');
+    form.innerHTML = ''; // Remove all old form elements
+
+    // Build the new form content for steps 9 and 10
     form.innerHTML = `
         <label>${question1}</label>
         <div class="radio-group" required>
