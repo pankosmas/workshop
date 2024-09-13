@@ -234,8 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
                             null,
                             '2. Would you prefer a different position? ',
-                            '<input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes',
-                            '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
+                            '<input type="radio" id="Yes" name="preferred-position" value="Yes" required> Yes',
+                            '<input type="radio" id="No" name="preferred-position" value="No" required> No',
                             null,
                             null,
                             null,
@@ -252,8 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
                         null,
                         '2. Would you prefer a different position? ',
-                        '<input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes',
-                        '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
+                        '<input type="radio" id="Yes" name="preferred-position" value="Yes" required> Yes',
+                        '<input type="radio" id="No" name="preferred-position" value="No" required> No',
                         null,
                         null,
                         null,
@@ -342,7 +342,8 @@ function showFullImage() {
     else if (submitCounter == 4) { url = "../images/step5.png"; }
     else if (submitCounter == 5) { url = "../images/step6.png"; }
     else if (submitCounter == 6) { url = "../images/step7.png"; }
-    else { url = "../images/step8.png"; }
+    else if (submitCounter == 7) { url = "../images/step8.png"; }
+    else { url = "../images/calibration/calibration.png"; }
 
     pageContent.style.display = "none";
     navbar.style.display = "none";
