@@ -268,7 +268,7 @@ function resizeBackgroundImage() {
 
   // Create the background image CSS
   const body = document.body;
-  body.style.background = `url('../images/calibration/1920x1080.png')`;
+  body.style.background = `url('../images/calibration/calibration.png')`;
   body.style.backgroundSize = `${screenWidth}px ${screenHeight}px`; 
   body.style.backgroundPosition = 'center'; 
   body.style.backgroundRepeat = 'no-repeat'; 

@@ -226,11 +226,40 @@ document.addEventListener('DOMContentLoaded', () => {
                         confirmButtonText: 'Go Next'
                     }).then(() => {
                         // Experiment with the progress bar
-                        loadNextStep("../images/step9.png", 'Step 9: Final Step ???? of the Survey!');
                         editProgress(progressBar, 80);
+                        loadNextStep("../images/calibration/calibration.png", 'Step 9: Can you spot the subscription button?');
+                        changeFormContent('Step 9: Can you spot the subscription button?', "../images/calibration/calibration.png", 
+                            '1. Was it easy for you to locate it? ',
+                            '<input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes',
+                            '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
+                            null,
+                            '2. Would you prefer a different position? ',
+                            '<input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes',
+                            '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
+                            null,
+                            null,
+                            null,
+                        );
                     })
                 }
                 if (submitCounter == 9) { 
+                    // Experiment with the progress bar
+                    editProgress(progressBar, 90);
+                    loadNextStep("../images/calibration/calibration.png", 'Step 10: Can you spot an advertisement?');
+                    changeFormContent('Step 10: Can you spot an advertisement?', "../images/calibration/calibration.png", 
+                        '1. Was it easy for you to locate it? ',
+                        '<input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes',
+                        '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
+                        null,
+                        '2. Would you prefer a different position? ',
+                        '<input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes',
+                        '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
+                        null,
+                        null,
+                        null,
+                    );
+                }
+                if (submitCounter == 10) { 
                     Swal.fire({
                         title: 'Success!',
                         text: `You completed the Survey!`,
@@ -269,19 +298,40 @@ function changeHeaderText (newHeaderText) {
     headerText.textContent = newHeaderText;
 }
 
-function changeFormContent (newtIndicator, imgSrc, q1, q1a1, q1a2, q1a3, q2, q2a1, q2a2, q2a3, q2a4, q2a5) {
-    partIndicator.textContent = newtIndicator;
-    formImage.src = imgSrc;
-    question1.innerHTML = q1;
-    question1_answer1.innerHTML = q1a1;
-    question1_answer2.innerHTML = q1a2; 
-    question1_answer3.innerHTML = q1a3; 
-    question2.innerHTML = q2;
-    question2_answer1.innerHTML = q2a1; 
-    question2_answer2.innerHTML = q2a2; 
-    question2_answer3.innerHTML = q2a3; 
-    question2_answer4.innerHTML = q2a4; 
-    question2_answer5.innerHTML = q2a5; 
+// Function to update or remove an element based on the value
+function updateOrRemoveElement(element, value) {
+    if (value !== null) {
+        element.innerHTML = value;
+    } else {
+        element.remove();
+    }
+}
+
+// Main function to change the form content
+function changeFormContent(newtIndicator, imgSrc, q1, q1a1, q1a2, q1a3, q2, q2a1, q2a2, q2a3, q2a4, q2a5) {
+    // Update or remove partIndicator
+    updateOrRemoveElement(partIndicator, newtIndicator);
+
+    // Update or remove formImage
+    if (imgSrc !== null) {
+        formImage.src = imgSrc;
+    } else {
+        formImage.remove();
+    }
+
+    // Update or remove question 1 and its answers
+    updateOrRemoveElement(question1, q1);
+    updateOrRemoveElement(question1_answer1, q1a1);
+    updateOrRemoveElement(question1_answer2, q1a2);
+    updateOrRemoveElement(question1_answer3, q1a3);
+
+    // Update or remove question 2 and its answers
+    updateOrRemoveElement(question2, q2);
+    updateOrRemoveElement(question2_answer1, q2a1);
+    updateOrRemoveElement(question2_answer2, q2a2);
+    updateOrRemoveElement(question2_answer3, q2a3);
+    updateOrRemoveElement(question2_answer4, q2a4);
+    updateOrRemoveElement(question2_answer5, q2a5);
 }
 
 function showFullImage() {
