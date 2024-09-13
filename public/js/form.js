@@ -227,6 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }).then(() => {
                         // Experiment with the progress bar
                         editProgress(progressBar, 80);
+                        header1 = document.getElementById('h1');
+                        header1.innerHTML = 'News Page Exploration';
                         loadNextStep("../images/calibration/calibration.png", 'Step 9: Can you spot the subscription button?');
                         changeFormContent('Step 9: Can you spot the subscription button?', "../images/calibration/calibration.png", 
                             '1. Was it easy for you to locate it? ',

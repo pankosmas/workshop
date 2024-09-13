@@ -327,6 +327,10 @@ function getStepValue() {
         return 'step7';
     } else if (selectedText === "Step 8") {
         return 'step8';
+    } else if (selectedText === "Step 9") {
+        return 'step9';
+    } else if (selectedText === "Step 10") {
+        return 'step10';
     }
 }
 
