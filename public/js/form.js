@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const timeDiff = (endTime - startTime) / 1000;
 
         const formData = new FormData(form);
-
         // Collect radio button value
         const imageReality = formData.get('image-reality');
         // Collect checkbox values
@@ -81,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 console.log('Form submission successful');  // Log successful submission
-
                 if (submitCounter == 1) {
                     // Experiment with the progress bar
                     editProgress(progressBar, 10);
@@ -230,17 +228,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         header1 = document.getElementById('h1');
                         header1.innerHTML = 'News Page Exploration';
                         loadNextStep("../images/calibration/calibration.png", 'Step 9: Can you spot the subscription button?');
-                        changeFormContent('Step 9: Can you spot the subscription button?', "../images/calibration/calibration.png", 
-                            '1. Was it easy for you to locate it? ',
+                        updateForm(
+                            'Step 9: Can you spot the subscription button?',
+                            '../images/calibration/calibration.png',
+                            '1. Was it easy for you to locate it?',
                             '<input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes',
                             '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
-                            null,
-                            '2. Would you prefer a different position? ',
+                            '2. Would you prefer a different position?',
                             '<input type="radio" id="Yes" name="preferred-position" value="Yes" required> Yes',
-                            '<input type="radio" id="No" name="preferred-position" value="No" required> No',
-                            null,
-                            null,
-                            null,
+                            '<input type="radio" id="No" name="preferred-position" value="No" required> No'
                         );
                     })
                 }
@@ -248,17 +244,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Experiment with the progress bar
                     editProgress(progressBar, 90);
                     loadNextStep("../images/calibration/calibration.png", 'Step 10: Can you spot an advertisement?');
-                    changeFormContent('Step 10: Can you spot an advertisement?', "../images/calibration/calibration.png", 
-                        '1. Was it easy for you to locate it? ',
+                    updateForm(
+                        'Step 10: Can you spot an advertisement?',
+                        '../images/calibration/calibration.png',
+                        '1. Was it easy for you to locate it?',
                         '<input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes',
                         '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
-                        null,
-                        '2. Would you prefer a different position? ',
+                        '2. Would you prefer a different position?',
                         '<input type="radio" id="Yes" name="preferred-position" value="Yes" required> Yes',
-                        '<input type="radio" id="No" name="preferred-position" value="No" required> No',
-                        null,
-                        null,
-                        null,
+                        '<input type="radio" id="No" name="preferred-position" value="No" required> No'
                     );
                 }
                 if (submitCounter == 10) { 
@@ -334,6 +328,26 @@ function changeFormContent(newtIndicator, imgSrc, q1, q1a1, q1a2, q1a3, q2, q2a1
     updateOrRemoveElement(question2_answer3, q2a3);
     updateOrRemoveElement(question2_answer4, q2a4);
     updateOrRemoveElement(question2_answer5, q2a5);
+}
+
+function updateForm(stepTitle, imgSrc, question1, radio1Yes, radio1No, question2, radio2Yes, radio2No) {
+    document.getElementById('step-title').innerText = stepTitle;
+    document.getElementById('form-image').src = imgSrc;
+    
+    const form = document.getElementById('form');
+    form.innerHTML = `
+        <label>${question1}</label>
+        <div class="radio-group" required>
+            ${radio1Yes}
+            ${radio1No}
+        </div>
+        <label>${question2}</label>
+        <div class="radio-group" required>
+            ${radio2Yes}
+            ${radio2No}
+        </div>
+        <input type="submit" value="Submit">
+    `;
 }
 
 function showFullImage() {

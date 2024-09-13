@@ -3,7 +3,9 @@ async function fetchData() {
         activityStepValue = getActivityStepValue();
         const response = await fetch(`https://inquisitive-moxie-cf6310.netlify.app/.netlify/functions/data?activityStep=${activityStepValue}`);
         const data = await response.json();
-        processCharts(data);
+        if (activityStepValue === 'step9' || activityStepValue === 'step10') {
+            processFinalCharts(data);
+        } else { processCharts(data); }
         let gazeCoordinates = [];
         let mouseCoordinates = [];
         gazeCoordinates, mouseCoordinates = aggregatePoints(gazeCoordinates, mouseCoordinates, data);
@@ -56,6 +58,13 @@ function processCharts(users) {
     updateTimer(avgTime.toFixed(2), stdDev.toFixed(2));
 }
 
+function processFinalCharts(users) {
+    // Prepare data for pie chart and bar chart
+    const easyToFind = { Yes: 0, No: 0 };
+    const preferredPosition = { Yes: 0, No: 0 };
+   
+}
+
 function updateSubmissionCount(count) {
     document.getElementById('submission-count').innerText = `Total Submissions: ${count}`;
 }
@@ -65,7 +74,7 @@ function updateTimer(time, std) {
 }
 
 // Set up auto-refresh every 30 seconds
-setInterval(fetchData, 15000); // 30,000 milliseconds = 30 seconds
+setInterval(fetchData, 20000); // 30,000 milliseconds = 30 seconds
 
 function aggregatePoints(gazeCoordinates, mouseCoordinates, data) {
     data.forEach( record => {
