@@ -10,6 +10,8 @@ const formResponseSchema = new Schema({
     activityStep: String,
     imageReality: String,
     details: Array,
+    easyToFind: String,   // for steps 9 and 10
+    preferredPosition: String, // for steps 9 and 10
     mouseMovements: Array,
     gazeCoordinates: Array,
     time: Number,

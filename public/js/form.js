@@ -38,35 +38,60 @@ document.addEventListener('DOMContentLoaded', () => {
         const timeDiff = (endTime - startTime) / 1000;
 
         const formData = new FormData(form);
-        // Collect radio button value
-        const imageReality = formData.get('image-reality');
-        // Collect checkbox values
-        const details = [];
-        formData.getAll('details').forEach(value => {
-            details.push(value);
-        });
+        const activityStep = getActivityNumberNew();
 
-        const data = {
-            activityStep: getActivityNumber(),
-            imageReality: imageReality,
-            details: details,
-            mouseMovements: window.mouseArray, // Initialize with actual data as needed
-            gazeCoordinates: window.dataArray, // Initialize with actual data as needed
-            time: timeDiff.toFixed(2)
-        };
+        let data = {};
+        let currentStep = {};
 
-        const currentStep = {
-            step: getActivityNumber(),
-            radio: imageReality,
-            checkbox: details,
-            time: timeDiff.toFixed(2)
+        if (activityStep <= 8) {
+            const imageReality = formData.get('image-reality');
+            const details = [];
+            formData.getAll('details').forEach(value => {
+                details.push(value);
+            });
+
+            data = {
+                activityStep: getActivityNumber(),
+                imageReality: imageReality,
+                details: details,
+                mouseMovements: window.mouseArray, // Initialize with actual data as needed
+                gazeCoordinates: window.dataArray, // Initialize with actual data as needed
+                time: timeDiff.toFixed(2)
+            };
+
+            currentStep = {
+                step: getActivityNumber(),
+                radio: imageReality,
+                checkbox: details,
+                time: timeDiff.toFixed(2)
+            };
+
+        } else if (activityStep === 9 || activityStep === 10) {
+            // Steps 9 and 10
+            const easyToFind = formData.get('easy-to-find');
+            const preferredPosition = formData.get('preferred-position');
+            
+            data = {
+                activityStep: activityStep,
+                easyToFind: easyToFind,
+                preferredPosition: preferredPosition,
+                mouseMovements: window.mouseArray,
+                gazeCoordinates: window.dataArray,
+                time: timeDiff.toFixed(2)
+            };
+            currentStep = {
+                step: activityStep,
+                radio: {
+                    'easy-to-find': easyToFind,
+                    'preferred-position': preferredPosition
+                },
+                time: timeDiff.toFixed(2)
+            };
         }
 
-        // Get existing answers from localStorage
+        // save answers from localStorage
         window.answers = JSON.parse(localStorage.getItem('answers')) || [];
-        // Add the current step to the answers array
         window.answers.push(currentStep);
-        // Save the updated answers array back to localStorage
         localStorage.setItem('answers', JSON.stringify(window.answers));
 
         try {
@@ -381,6 +406,19 @@ function getActivityNumber() {
     else if (submitCounter == 8) { return 'step8'; }
     else if (submitCounter == 9) { return 'step9'; }
     else { return 'step10'; }
+}
+
+function getActivityNumberNew() {
+    if (submitCounter == 1) { return 1; }
+    else if (submitCounter == 2) { return 2; }
+    else if (submitCounter == 3) { return 3; }
+    else if (submitCounter == 4) { return 4; }
+    else if (submitCounter == 5) { return 5; }
+    else if (submitCounter == 6) { return 6; }
+    else if (submitCounter == 7) { return 7; }
+    else if (submitCounter == 8) { return 8; }
+    else if (submitCounter == 9) { return 9; }
+    else { return 10; }
 }
 
 function loadNextStep(url, title) {
