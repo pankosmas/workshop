@@ -331,7 +331,7 @@ function changeFormContent(newtIndicator, imgSrc, q1, q1a1, q1a2, q1a3, q2, q2a1
 }
 
 function updateForm(stepTitle, imgSrc, question1, radio1Yes, radio1No, question2, radio2Yes, radio2No) {
-    document.getElementById('step-title').innerText = stepTitle;
+    document.querySelector('.partIndicator').innerText = stepTitle;
     document.getElementById('form-image').src = imgSrc;
     
     const form = document.getElementById('form');
