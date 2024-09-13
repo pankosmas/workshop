@@ -6,7 +6,7 @@ let lastEventTime = null;
 // Capture mouse movement data
     
 document.addEventListener('mousemove', (event) => {
-    if (step1 || step2 || step3 || step4 || step5 || step6 || step7 || step8) {
+    if (step1 || step2 || step3 || step4 || step5 || step6 || step7 || step8 || step9 || step10) {
         const currentTime = performance.now();
         if (lastEventTime !== null) { 
             const msduration = currentTime - lastEventTime;
@@ -46,6 +46,14 @@ document.addEventListener('mousemove', (event) => {
         if (step8) {
             mouseArray8 = window.mouseArray.slice(1);
             backToTests.addEventListener('click', function () { saveMouseToArrays('step8', mouseArray8); });
+        }
+        if (step9) {
+            mouseArray9 = window.mouseArray.slice(1);
+            backToTests.addEventListener('click', function () { saveMouseToArrays('step9', mouseArray9); });
+        }
+        if (step10) {
+            mouseArray10 = window.mouseArray.slice(1);
+            backToTests.addEventListener('click', function () { saveMouseToArrays('step10', mouseArray10); });
         }
     }
 });
