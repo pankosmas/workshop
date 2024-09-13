@@ -71,6 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const easyToFind = formData.get('easy-to-find');
             const preferredPosition = formData.get('preferred-position');
             
+            // Check if both radio buttons are filled in
+            if (!easyToFind || !preferredPosition) {
+                alert('Please answer both questions before submitting.');
+                return; // Prevent submission
+            }
+            
             data = {
                 activityStep: activityStep,
                 easyToFind: easyToFind,
@@ -362,6 +368,15 @@ function updateForm(stepTitle, imgSrc, question1, radio1Yes, radio1No, question2
     const form = document.getElementById('form');
     form.innerHTML = ''; // Remove all old form elements
 
+    // Reset the form validation
+    form.reset(); // Reset form state, clears validation
+    form.noValidate = true; // Disable built-in browser validation
+
+    // Remove any lingering event listeners that might have been set earlier
+    form.querySelectorAll('*').forEach(el => {
+        el.removeEventListener('invalid', preventValidation, true);
+    });
+
     // Build the new form content for steps 9 and 10
     form.innerHTML = `
         <label>${question1}</label>
@@ -376,6 +391,11 @@ function updateForm(stepTitle, imgSrc, question1, radio1Yes, radio1No, question2
         </div>
         <input type="submit" value="Submit">
     `;
+}
+
+// Optional helper to prevent default form validation on submit
+function preventValidation(event) {
+    event.preventDefault(); // Prevents form validation error display
 }
 
 function showFullImage() {
