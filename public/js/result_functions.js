@@ -25,6 +25,8 @@ function getActivityStepValue(){
     else if (selectedText === "Step 6") { return 'step6'; } 
     else if (selectedText === "Step 7") { return 'step7'; } 
     else if (selectedText === "Step 8") { return 'step8'; }
+    else if (selectedText === "Step 9") { return 'step9'; }
+    else if (selectedText === "Step 10") { return 'step10'; }
 }
 
 function updatePieChart(labels, data) {
@@ -236,5 +238,5 @@ function getDetailsArray() {
     else if (activityStepValue == 'step6') { return { 'Normal': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Awareness': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Heatmap': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Spatial': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Colour': { Real: 0, Tampered: 0, Deepfake: 0 } }; }
     else if (activityStepValue == 'step7') { return { 'Awareness': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Heatmap': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Fusion': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Forgery': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Combination': { Real: 0, Tampered: 0, Deepfake: 0 } }; }
     else if (activityStepValue == 'step8') { return { 'Awareness': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Synthetically Produced': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Variants': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Unique': { Real: 0, Tampered: 0, Deepfake: 0 }, 'DF Algorithms': { Real: 0, Tampered: 0, Deepfake: 0 } }; }
-    else { url = "../images/step8.png"; }
+    else { return { 'Awareness': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Synthetically Produced': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Variants': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Unique': { Real: 0, Tampered: 0, Deepfake: 0 }, 'DF Algorithms': { Real: 0, Tampered: 0, Deepfake: 0 } }; }
 }
