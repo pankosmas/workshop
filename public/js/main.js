@@ -10,6 +10,8 @@ var step5 = false;
 var step6 = false;
 var step7 = false;
 var step8 = false;
+var step9 = false;
+var step10 = false;
 
 // Save and Load Data to and from local storage!
 function saveDatasetToLocal(filename, dataset) {
@@ -22,6 +24,8 @@ function saveDatasetToLocal(filename, dataset) {
     step6 = false; /* step 6 */
     step7 = false; /* step 7 */
     step8 = false; /* step 8 */
+    step9 = false;
+    step10 = false;
 }
 
 window.onload = function() {
@@ -107,6 +111,16 @@ window.onload = function() {
                 clonedArray8 = window.dataArray.slice();
                 backToTests.addEventListener('click', function () { saveDataToArrays('step8', clonedArray8); });
             }
+            if (step9) {
+                window.dataArray.push(dataPoint);
+                clonedArray9 = window.dataArray.slice();
+                backToTests.addEventListener('click', function () { saveDataToArrays('step9', clonedArray9); });
+            }
+            if (step10) {
+                window.dataArray.push(dataPoint);
+                clonedArray10 = window.dataArray.slice();
+                backToTests.addEventListener('click', function () { saveDataToArrays('step10', clonedArray10); });
+            }
         })
         .saveDataAcrossSessions(true)
         .begin();
@@ -153,6 +167,8 @@ window.onload = function() {
         if (submitCounter == 5) { step6 = true; /* step 6 */ }
         if (submitCounter == 6) { step7 = true; /* step 7 */ }
         if (submitCounter == 7) { step8 = true; /* step 8 */ }
+        if (submitCounter == 8) { step9 = true; /* step 9 */ }
+        if (submitCounter == 9) { step10 = true; /* step 10 */ }
     });
     // Check if image is full sized and in what stage
     initialShowFullImage.addEventListener('click', function() {
@@ -164,6 +180,8 @@ window.onload = function() {
         if (submitCounter == 5) { step6 = true; /* step 6 */ }
         if (submitCounter == 6) { step7 = true; /* step 7 */ }
         if (submitCounter == 7) { step8 = true; /* step 8 */ }
+        if (submitCounter == 8) { step9 = true; /* step 9 */ }
+        if (submitCounter == 9) { step10 = true; /* step 10 */ }
     });
 
     // Function for saving data arrays
