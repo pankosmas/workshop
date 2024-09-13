@@ -362,7 +362,9 @@ function getActivityNumber() {
     else if (submitCounter == 5) { return 'step5'; }
     else if (submitCounter == 6) { return 'step6'; }
     else if (submitCounter == 7) { return 'step7'; }
-    else { return 'step8'; }
+    else if (submitCounter == 8) { return 'step8'; }
+    else if (submitCounter == 9) { return 'step9'; }
+    else { return 'step10'; }
 }
 
 function loadNextStep(url, title) {
