@@ -70,6 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 activityStep: getActivityNumber(),
                 imageReality: imageReality,
                 details: details,
+                easyToFind: null,
+                preferredPosition: null,
                 mouseMovements: window.mouseArray, // Initialize with actual data as needed
                 gazeCoordinates: window.dataArray, // Initialize with actual data as needed
                 time: timeDiff.toFixed(2)
@@ -95,6 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             data = {
                 activityStep: activityStep,
+                imageReality: null,
+                details: null,
                 easyToFind: easyToFind,
                 preferredPosition: preferredPosition,
                 mouseMovements: window.mouseArray,
