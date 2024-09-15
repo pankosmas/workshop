@@ -1,4 +1,4 @@
-let submitCounter = 0;
+let submitCounter = 1;
 let activityCounter = 1;
 let stepCounter = 1;
 // Variables to store the start and end times
@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form');
     form.addEventListener('submit', async (event) => {
         const activityNumber = getActivityNumberNew();
-        console.log(activityNumber);
         if (!validateForm(event)) {
             // Prevent form from being submitted if validation fails
             event.preventDefault();
