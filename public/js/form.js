@@ -40,7 +40,7 @@ function validateForm(event) {
     let isEasyToFindChecked = false;
     let isPreferredPositionChecked = false;
 
-    if (activityNumber <= 8) {
+    if (activityNumber <= 9) {
         // For steps 1 to 8: Validate radio buttons and checkboxes
         const radioButtons = document.querySelectorAll('input[name="image-reality"]');
         isRadioChecked = Array.from(radioButtons).some(radio => radio.checked);
@@ -58,7 +58,7 @@ function validateForm(event) {
             message = 'Please select at least one option from the second question.';
             isValid = false;
         }
-    } else if (activityNumber === 9 || activityNumber === 10) {
+    } else {
         // For steps 9 and 10: Validate the new set of radio buttons
         const radioButtonsEasyToFind = document.querySelectorAll('input[name="easy-to-find"]');
         isEasyToFindChecked = Array.from(radioButtonsEasyToFind).some(radio => radio.checked);
@@ -84,7 +84,7 @@ function validateForm(event) {
             confirmButtonText: 'Okay'
         }).then(() => {
             // Optionally focus on the first unchecked field
-            if (activityNumber <= 8) {
+            if (activityNumber <= 9) {
                 const radioButtons = document.querySelectorAll('input[name="image-reality"]');
                 const checkboxes = document.querySelectorAll('input[name="details"]');
 
@@ -93,7 +93,7 @@ function validateForm(event) {
                 } else if (!isCheckboxChecked) {
                     checkboxes[0].focus();
                 }
-            } else if (activityNumber === 9 || activityNumber === 10) {
+            } else {
                 const radioButtonsEasyToFind = document.querySelectorAll('input[name="easy-to-find"]');
                 const radioButtonsPreferredPosition = document.querySelectorAll('input[name="preferred-position"]');
 
@@ -108,8 +108,6 @@ function validateForm(event) {
     }
     return true; // Allow form submission if valid
 }
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form');
@@ -130,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let data = {};
         let currentStep = {};
 
-        if (activityNumber <= 8) {
+        if (activityNumber <= 9) {
             const imageReality = formData.get('image-reality');
             const details = [];
             formData.getAll('details').forEach(value => {
