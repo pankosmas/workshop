@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form');
     form.addEventListener('submit', async (event) => {
         const activityNumber = getActivityNumberNew();
+        console.log(activityNumber);
         if (!validateForm(event)) {
             // Prevent form from being submitted if validation fails
             event.preventDefault();
