@@ -29,22 +29,48 @@ const question2_answer4 = document.querySelector('label[for="Blending"]');
 const question2_answer5 = document.querySelector('label[for="Context"]');
 
 function validateForm(event) {
-    // Check if a radio button is selected.
-    const radioButtons = document.querySelectorAll('input[name="image-reality"]');
-    const isRadioChecked = Array.from(radioButtons).some(radio => radio.checked);
-    // Check if at least one checkbox is checked
-    const checkboxes = document.querySelectorAll('input[name="details"]');
-    const isCheckboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-    // Determine the message to show based on validation status
+    // Determine the current activity number (step)
+    const activityNumber = getActivityNumberNew(); // Implement this function to get the current step
+
+    let isValid = true;
     let message = '';
-    if (!isRadioChecked && !isCheckboxChecked) {
-        message = 'Please select one option from the first question and at least one option from the second question.';
-    } else if (!isRadioChecked) {
-        message = 'Please select one option from the first question.';
-    } else if (!isCheckboxChecked) {
-        message = 'Please select at least one option from the second question.';
+
+    if (activityNumber <= 8) {
+        // For steps 1 to 8: Validate radio buttons and checkboxes
+        const radioButtons = document.querySelectorAll('input[name="image-reality"]');
+        const isRadioChecked = Array.from(radioButtons).some(radio => radio.checked);
+
+        const checkboxes = document.querySelectorAll('input[name="details"]');
+        const isCheckboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+        if (!isRadioChecked && !isCheckboxChecked) {
+            message = 'Please select one option from the first question and at least one option from the second question.';
+            isValid = false;
+        } else if (!isRadioChecked) {
+            message = 'Please select one option from the first question.';
+            isValid = false;
+        } else if (!isCheckboxChecked) {
+            message = 'Please select at least one option from the second question.';
+            isValid = false;
+        }
+    } else if (activityNumber === 9 || activityNumber === 10) {
+        // For steps 9 and 10: Validate the new set of radio buttons
+        const radioButtonsEasyToFind = document.querySelectorAll('input[name="easy-to-find"]');
+        const isEasyToFindChecked = Array.from(radioButtonsEasyToFind).some(radio => radio.checked);
+
+        const radioButtonsPreferredPosition = document.querySelectorAll('input[name="preferred-position"]');
+        const isPreferredPositionChecked = Array.from(radioButtonsPreferredPosition).some(radio => radio.checked);
+
+        if (!isEasyToFindChecked) {
+            message = 'Please select one option for the "Was it easy for you to locate it?" question.';
+            isValid = false;
+        } else if (!isPreferredPositionChecked) {
+            message = 'Please select one option for the "Would you prefer a different position?" question.';
+            isValid = false;
+        }
     }
-    if (message) {
+
+    if (!isValid) {
         event.preventDefault(); // Prevent form submission
         Swal.fire({
             icon: 'warning',
@@ -53,16 +79,25 @@ function validateForm(event) {
             confirmButtonText: 'Okay'
         }).then(() => {
             // Optionally focus on the first unchecked field
-            if (!isRadioChecked) {
-                radioButtons[0].focus();
-            } else if (!isCheckboxChecked) {
-                checkboxes[0].focus();
+            if (activityNumber <= 8) {
+                if (!isRadioChecked) {
+                    radioButtons[0].focus();
+                } else if (!isCheckboxChecked) {
+                    checkboxes[0].focus();
+                }
+            } else if (activityNumber === 9 || activityNumber === 10) {
+                if (!isEasyToFindChecked) {
+                    radioButtonsEasyToFind[0].focus();
+                } else if (!isPreferredPositionChecked) {
+                    radioButtonsPreferredPosition[0].focus();
+                }
             }
         });
         return false; // Prevent further form processing
     }
     return true; // Allow form submission if valid
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form');
