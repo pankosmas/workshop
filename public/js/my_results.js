@@ -45,16 +45,16 @@ function processPersonalFinalQuestionsCharts(answers) {
     let divname;
     if (activityStepValue === 'step9') {
         divname = 'pie-chart';
-        if (answersCounts[lastAnswer.radio['easy-to-find']] !== undefined) {
-            answersCounts[lastAnswer.radio['easy-to-find']]++;
+        if (answersCounts[lastAnswer.radio[0]] !== undefined) {
+            answersCounts[lastAnswer.radio[0]]++;
         }
         console.log(answersCounts);
         console.log(answersCounts[lastAnswer.radio]);
-        console.log(answersCounts[lastAnswer.radio['easy-to-find']]);
+        console.log(answersCounts[lastAnswer.radio[0]]);
     } else if (activityStepValue === 'step10') {
         divname = 'bar-chart';
-        if (answersCounts[lastAnswer.radio['preferred-position']] !== undefined) {
-            answersCounts[lastAnswer.radio['preferred-position']]++;
+        if (answersCounts[lastAnswer.radio[1]] !== undefined) {
+            answersCounts[lastAnswer.radio[1]]++;
         }
     }
     const barChartLabels = Object.keys(answersCounts);
