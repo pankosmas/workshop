@@ -31,24 +31,62 @@ const question2_answer5 = document.querySelector('label[for="Context"]');
 function validateForm(event) {
     const activityNumber = getActivityNumberNew();
 
-    if (activityNumber === 'step9' || activityNumber === 'step10') {
-        return true;
-    } else {
-        // Check if a radio button is selected
-        const radioButtons = document.querySelectorAll('input[name="image-reality"]');
-        const isRadioChecked = Array.from(radioButtons).some(radio => radio.checked);
-
-        // Check if at least one checkbox is checked
-        const checkboxes = document.querySelectorAll('input[name="details"]');
-        const isCheckboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-
-        // Validate both conditions
-        if (!isRadioChecked || !isCheckboxChecked) {
+    if (activityNumber === 9 || activityNumber === 10) {
+        // Check if at least one radio button is selected in the first group
+        const firstGroupRadios = document.querySelectorAll('input[name="easy-to-find"]');
+        const isFirstGroupChecked = Array.from(firstGroupRadios).some(radio => radio.checked);
+        // Check if at least one radio button is selected in the second group
+        const secondGroupRadios = document.querySelectorAll('input[name="preferred-position"]');
+        const isSecondGroupChecked = Array.from(secondGroupRadios).some(radio => radio.checked);
+        // Determine the message to show based on validation status
+        let message = '';
+        if (!isFirstGroupChecked && !isSecondGroupChecked) {
+            message = 'Please select one option from both questions.';
+        } else if (!isFirstGroupChecked) {
+            message = 'Please select one option from the first question.';
+        } else if (!isSecondGroupChecked) {
+            message = 'Please select one option from the second question.';
+        }
+        if (message) {
             event.preventDefault(); // Prevent form submission
             Swal.fire({
                 icon: 'warning',
                 title: 'Oops!',
-                text: 'Please make sure to select one option from the first question and at least one option from the second question.',
+                text: message,
+                confirmButtonText: 'Okay'
+            }).then(() => {
+                // Optionally focus on the first unchecked radio button
+                if (!isFirstGroupChecked) {
+                    firstGroupRadios[0].focus();
+                } else if (!isSecondGroupChecked) {
+                    secondGroupRadios[0].focus();
+                }
+            });
+            return false; // Prevent further form processing
+        }
+        return true; // Allow form submission if valid
+    } else {
+        // Check if a radio button is selected
+        const radioButtons = document.querySelectorAll('input[name="image-reality"]');
+        const isRadioChecked = Array.from(radioButtons).some(radio => radio.checked);
+        // Check if at least one checkbox is checked
+        const checkboxes = document.querySelectorAll('input[name="details"]');
+        const isCheckboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+        // Determine the message to show based on validation status
+        let message = '';
+        if (!isRadioChecked && !isCheckboxChecked) {
+            message = 'Please select one option from the first question and at least one option from the second question.';
+        } else if (!isRadioChecked) {
+            message = 'Please select one option from the first question.';
+        } else if (!isCheckboxChecked) {
+            message = 'Please select at least one option from the second question.';
+        }
+        if (message) {
+            event.preventDefault(); // Prevent form submission
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops!',
+                text: message,
                 confirmButtonText: 'Okay'
             }).then(() => {
                 // Optionally focus on the first unchecked field
