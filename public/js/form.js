@@ -29,7 +29,7 @@ const question2_answer4 = document.querySelector('label[for="Blending"]');
 const question2_answer5 = document.querySelector('label[for="Context"]');
 
 function validateForm(event, activityNumber) {
-    if (activityNumber === 9 || activityNumber === 10) {
+    if (activityNumber == 9 || activityNumber == 10) {
         // Check if at least one radio button is selected in the first group
         const firstGroupRadios = document.querySelectorAll('input[name="easy-to-find"]');
         const isFirstGroupChecked = Array.from(firstGroupRadios).some(radio => radio.checked);
