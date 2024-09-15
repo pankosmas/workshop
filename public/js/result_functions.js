@@ -107,8 +107,6 @@ function updateBarChart(labels, data) {
 }
 
 function updateGlobalBarChart(labels, data) {
-    let barChartInstance = null;
-
     const ctx2 = document.getElementById('bar-chart').getContext('2d');
 
     if (barChartInstance) {
@@ -179,6 +177,9 @@ function updateLastQuestionsBarChart(labels, data, divname) {
 
     if (barChartInstance) {
         barChartInstance.destroy(); // Destroy the old instance
+    }
+    if (pieChartInstance) {
+        pieChartInstance.destroy(); // Destroy the old instance
     }
 
     // Colors for "Yes" and "No"
