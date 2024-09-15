@@ -238,8 +238,8 @@ function updateLastQuestionsPieChart(labels, data) {
 
     // Define colors for the pie chart
     const colors = {
-        Yes: '#4CAF50', // Green for Yes
-        No: '#36A2EB'  // Blue for No
+        "Yes": '#4CAF50', // Green for Yes
+        "No": '#36A2EB'  // Blue for No
     };
 
     // Prepare data for pie chart
