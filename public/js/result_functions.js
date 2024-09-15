@@ -185,7 +185,7 @@ function updateLastQuestionsBarChart(labels, data, question) {
             datasets: [{
                 label: 'Responses',   // Add a label for the dataset (entire dataset label)
                 data: data,           // [1, 0]
-                backgroundColor: '#CCCCCC' // ['#4CAF50', '#36A2EB']
+                backgroundColor: backgroundColor // ['#4CAF50', '#36A2EB']
             }]
         },
         options: {
