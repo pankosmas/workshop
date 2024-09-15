@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let data = {};
         let currentStep = {};
 
-        if (activityNumber <= 9) {
+        if (activityNumber <= 8) {
             const imageReality = formData.get('image-reality');
             const details = [];
             formData.getAll('details').forEach(value => {
@@ -171,6 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('answers', JSON.stringify(window.answers));
 
         try {
+            console.log(submitCounter);
+            console.log(getActivityNumber());
+            console.log(getActivityNumberNew());
             const response = await fetch('/api/form', {
                 method: 'POST',
                 headers: {
