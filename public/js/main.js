@@ -172,16 +172,16 @@ window.onload = function() {
     });
     // Check if image is full sized and in what stage
     initialShowFullImage.addEventListener('click', function() {
-        if (submitCounter == 0) { step1 = true; /* step 1 */ }
-        if (submitCounter == 1) { step2 = true; /* step 2 */ }
-        if (submitCounter == 2) { step3 = true; /* step 3 */ }
-        if (submitCounter == 3) { step4 = true; /* step 4 */ }
-        if (submitCounter == 4) { step5 = true; /* step 5 */ }
-        if (submitCounter == 5) { step6 = true; /* step 6 */ }
-        if (submitCounter == 6) { step7 = true; /* step 7 */ }
-        if (submitCounter == 7) { step8 = true; /* step 8 */ }
-        if (submitCounter == 8) { step9 = true; /* step 9 */ }
-        if (submitCounter == 9) { step10 = true; /* step 10 */ }
+        if (submitCounter == 1) { step1 = true; /* step 1 */ }
+        if (submitCounter == 2) { step2 = true; /* step 2 */ }
+        if (submitCounter == 3) { step3 = true; /* step 3 */ }
+        if (submitCounter == 4) { step4 = true; /* step 4 */ }
+        if (submitCounter == 5) { step5 = true; /* step 5 */ }
+        if (submitCounter == 6) { step6 = true; /* step 6 */ }
+        if (submitCounter == 7) { step7 = true; /* step 7 */ }
+        if (submitCounter == 8) { step8 = true; /* step 8 */ }
+        if (submitCounter == 9) { step9 = true; /* step 9 */ }
+        if (submitCounter == 10) { step10 = true; /* step 10 */ }
     });
 
     // Function for saving data arrays
