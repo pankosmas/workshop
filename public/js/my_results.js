@@ -47,14 +47,14 @@ function processPersonalFinalQuestionsCharts(answers) {
     // Get the last object from the filtered results
     if (activityStepValue === 'step9') { 
         divname = 'pie-chart'; 
-        if (answersCounts[lastAnswer.radio[easy-to-find]] !== undefined) { answersCounts[lastAnswer.radio[easy-to-find]]++; }
+        if (answersCounts[lastAnswer.radio['easy-to-find']] !== undefined) { answersCounts[lastAnswer.radio['easy-to-find']]++; }
         console.log(lastAnswer);
         console.log(answersCounts);
         console.log(lastAnswer.radio);
         console.log(lastAnswer.radio[0]);
     } else { 
         divname = 'bar-chart'; 
-        if (answersCounts[lastAnswer.radio][preferred-position] !== undefined) { answersCounts[lastAnswer.radio][preferred-position]++; }
+        if (answersCounts[lastAnswer.radio]['preferred-position'] !== undefined) { answersCounts[lastAnswer.radio]['preferred-position']++; }
     }
     // Data for bar chart for question 
     const barChartQuestion1Labels = Object.keys(answersCounts);
