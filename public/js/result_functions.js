@@ -31,8 +31,9 @@ function getActivityStepValue(){
 
 function updatePieChart(labels, data) {
     const ctx1 = document.getElementById('pie-chart').getContext('2d');
-    if (pieChartInstance) {
-        pieChartInstance.destroy(); // Destroy the old instance
+    if (barChartInstance || pieChartInstance) {
+        barChartInstance.destroy(); // Destroy the old instance
+        pieChartInstance.destroy();
     }
     pieChartInstance = new Chart(ctx1, {
         type: 'pie',
@@ -66,8 +67,9 @@ function updatePieChart(labels, data) {
 
 function updateBarChart(labels, data) {
     const ctx2 = document.getElementById('bar-chart').getContext('2d');
-    if (barChartInstance) {
+    if (barChartInstance || pieChartInstance) {
         barChartInstance.destroy(); // Destroy the old instance
+        pieChartInstance.destroy();
     }
     barChartInstance = new Chart(ctx2, {
         type: 'bar',
@@ -109,8 +111,9 @@ function updateBarChart(labels, data) {
 function updateGlobalBarChart(labels, data) {
     const ctx2 = document.getElementById('bar-chart').getContext('2d');
 
-    if (barChartInstance) {
+    if (barChartInstance || pieChartInstance) {
         barChartInstance.destroy(); // Destroy the old instance
+        pieChartInstance.destroy();
     }
     // Assuming radio buttons determine the color for each image reality type
     // Get colors based on selected radio buttons
@@ -181,7 +184,9 @@ function updateLastQuestionsBarChart(labels, data, divname) {
         }
     }
     if (divname === 'bar-chart') {
-        barChartInstance.destroy(); // Destroy the old instance
+        if (barChartInstance) {
+            barChartInstance.destroy(); // Destroy the old instance
+        }
     }
     
 
