@@ -38,8 +38,8 @@ function processPersonalCharts(answers) {
 
 function processPersonalFinalQuestionsCharts(answers) {
     // Prepare data for pie chart and bar chart
-    const easytofindCounts = { 'Yes': 0, 'No': 0 };
-    const positionCounts = { 'Yes': 0, 'No': 0 };
+    const easytofindCounts = { Yes: 0, No: 0 };
+    const positionCounts = { Yes: 0, No: 0 };
 
     const filteredAnswers = answers.filter(item => item.step === activityStepValue);
     const lastAnswer = filteredAnswers[filteredAnswers.length - 1];
