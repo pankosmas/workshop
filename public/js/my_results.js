@@ -50,7 +50,7 @@ function processPersonalFinalQuestionsCharts(answers) {
         }
         const pieChartLabels = Object.keys(answersCounts);
         const pieChartData = Object.values(answersCounts);
-        updateLastQuestionsPieChart(pieChartLabels, pieChartData);
+        updateLastQuestionsPieChart(pieChartLabels, pieChartData, divname);
     } else if (activityStepValue === 'step10') {
         divname = 'bar-chart';
         if (answersCounts[lastAnswer.radio['preferred-position']] !== undefined) {
@@ -58,7 +58,7 @@ function processPersonalFinalQuestionsCharts(answers) {
         }
         const barChartLabels = Object.keys(answersCounts);
         const barChartData = Object.values(answersCounts);
-        updateLastQuestionsBarChart(barChartLabels, barChartData);
+        updateLastQuestionsBarChart(barChartLabels, barChartData, divname);
     }
     updateTimer(lastAnswer.time);
 }
