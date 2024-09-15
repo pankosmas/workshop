@@ -1,8 +1,8 @@
 async function fetchData() {
     try {
         activityStepValue = getActivityStepValue();
-        // Load the personal users answers from localstorage
         const answers = JSON.parse(localStorage.getItem('answers'));
+
         if (activityStepValue === 'step9' || activityStepValue === 'step10') {
             processPersonalFinalQuestionsCharts(answers);
         } else { processPersonalCharts(answers); }
@@ -16,9 +16,7 @@ function processPersonalCharts(answers) {
     // Prepare data for pie chart and bar chart
     const imageRealityCounts = { Real: 0, Tampered: 0, Deepfake: 0 };
     const detailsCounts = getDetailsArray();
-    // Filter to find all objects with step: 11
     const filteredAnswers = answers.filter(item => item.step === activityStepValue);
-    // Get the last object from the filtered results
     const lastAnswer = filteredAnswers[filteredAnswers.length - 1];
     // Count imageReality
     if (imageRealityCounts[lastAnswer.radio] !== undefined) { imageRealityCounts[lastAnswer.radio]++; }
@@ -41,21 +39,26 @@ function processPersonalCharts(answers) {
 function processPersonalFinalQuestionsCharts(answers) {
     // Prepare data for pie chart and bar chart
     const answersCounts = { Yes: 0, No: 0 };
-    // Filter to find all objects with step: 11
     const filteredAnswers = answers.filter(item => item.step === activityStepValue);
     const lastAnswer = filteredAnswers[filteredAnswers.length - 1];
     // Get the last object from the filtered results
-    if (activityStepValue === 'step9') { 
-        divname = 'pie-chart'; 
-        if (answersCounts[lastAnswer.radio['easy-to-find']] !== undefined) { answersCounts[lastAnswer.radio['easy-to-find']]++; }
-    } else { 
-        divname = 'bar-chart'; 
-        if (answersCounts[lastAnswer.radio]['preferred-position'] !== undefined) { answersCounts[lastAnswer.radio]['preferred-position']++; }
+    let divname;
+    if (activityStepValue === 'step9') {
+        divname = 'pie-chart';
+        if (answersCounts[lastAnswer.radio['easy-to-find']] !== undefined) {
+            answersCounts[lastAnswer.radio['easy-to-find']]++;
+        }
+    } else if (activityStepValue === 'step10') {
+        divname = 'bar-chart';
+        if (answersCounts[lastAnswer.radio['preferred-position']] !== undefined) {
+            answersCounts[lastAnswer.radio['preferred-position']]++;
+        }
     }
     // Data for bar chart for question 
-    const barChartQuestion1Labels = Object.keys(answersCounts);
-    const barChartQuestion1Data = Object.values(answersCounts);
-    updateLastQuestionsBarChart(barChartQuestion1Labels, barChartQuestion1Data, divname);
+    const barChartLabels = Object.keys(answersCounts);
+    const barChartData = Object.values(answersCounts);
+
+    updateLastQuestionsBarChart(barChartLabels, barChartData, divname);
     updateTimer(lastAnswer.time);
 }
 

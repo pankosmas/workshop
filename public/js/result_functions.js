@@ -5,10 +5,8 @@ const originalHeight = bodyElement.clientHeight;
 let pieChartInstance = null;
 let barChartInstance = null;
 
-// Adjust the heatmap size based on the initial image
+// Fetch the data when the page loads
 window.onload = function () {
-    activityStepValue = getActivityStepValue();
-    // Fetch data initially
     fetchData();
 };
 
@@ -16,17 +14,7 @@ function getActivityStepValue(){
     const dropdown = document.getElementById('dropdown');
     // Get the selected option's text and value
     const selectedText = dropdown.options[dropdown.selectedIndex].text;
-    
-    if (selectedText === "Step 1") { return 'step1'; } 
-    else if (selectedText === "Step 2") { return 'step2'; } 
-    else if (selectedText === "Step 3") { return 'step3'; } 
-    else if (selectedText === "Step 4") { return 'step4'; } 
-    else if (selectedText === "Step 5") { return 'step5'; } 
-    else if (selectedText === "Step 6") { return 'step6'; } 
-    else if (selectedText === "Step 7") { return 'step7'; } 
-    else if (selectedText === "Step 8") { return 'step8'; }
-    else if (selectedText === "Step 9") { return 'step9'; }
-    else if (selectedText === "Step 10") { return 'step10'; }
+    return selectedText.toLowerCase().replace(" ", "");
 }
 
 function updatePieChart(labels, data) {
@@ -173,113 +161,80 @@ function updateGlobalBarChart(labels, data) {
 }
 
 function updateLastQuestionsBarChart(labels, data, divname) {
-    const ctx2 = document.getElementById(divname).getContext('2d');
+    const ctx = document.getElementById(divname).getContext('2d');
 
-    // Handle pie chart separately
     if (divname === 'pie-chart') {
-        if (pieChartInstance) {
-            pieChartInstance.destroy(); // Destroy the old instance
+        if (barChartInstance1) {
+            barChartInstance1.destroy();
         }
+    } else if (divname === 'bar-chart') {
+        if (barChartInstance2) {
+            barChartInstance2.destroy();
+        }
+    }
 
-        const colors = ['#4CAF50', '#F44336']; // Green for Yes, Red for No
-        pieChartInstance = new Chart(ctx2, {
-            type: 'pie',
-            data: {
-                labels: labels,  // X-axis labels (Yes/No)
-                datasets: [{
-                    data: data,  // Yes and No data counts
-                    backgroundColor: colors
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    datalabels: {
-                        color: '#fff',
-                        formatter: function(value, context) {
-                            let total = context.chart.data.datasets[0].data.reduce((acc, val) => acc + val, 0);
-                            let percentage = ((value / total) * 100).toFixed(2);
-                            return `${value}\n(${percentage}%)`;
-                        },
-                        anchor: 'center',
-                        align: 'center',
-                        font: {
-                            weight: 'bold',
-                            size: 14
-                        }
+    const colors = {
+        Yes: '#4CAF50',   // Green for Yes
+        No: '#36A2EB'     // Blue for No
+    };
+
+    const datasets = Object.keys(colors).map(category => ({
+        label: category,
+        data: labels.map((_, index) => data[index][category] || 0),
+        backgroundColor: colors[category],
+        stack: 'stack1'
+    }));
+
+    const newBarChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: datasets
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                datalabels: {
+                    color: '#000',
+                    formatter: function (value, context) {
+                        let total = context.chart.data.datasets[context.datasetIndex].data.reduce((acc, val) => acc + val, 0);
+                        let percentage = ((value / total) * 100).toFixed(2);
+                        return `${value}\n(${percentage}%)`;
+                    },
+                    anchor: 'end',
+                    align: 'top',
+                    font: {
+                        weight: 'bold',
+                        size: 14
                     }
                 }
-            }
-        });
-    }
-    
-    // Handle bar chart separately
-    if (divname === 'bar-chart') {
-        if (barChartInstance) {
-            barChartInstance.destroy(); // Destroy the old instance
-        }
-
-        // Colors for "Yes" and "No"
-        const colors = {
-            Yes: '#4CAF50',   // Green for Yes
-            No: '#36A2EB'     // Blue for No
-        };
-
-        // Prepare datasets for "Yes" and "No"
-        const datasets = Object.keys(colors).map(category => ({
-            label: category,
-            data: labels.map((_, index) => data[index][category] || 0),
-            backgroundColor: colors[category],
-            stack: 'stack1' // Ensure bars are stacked
-        }));
-
-        barChartInstance = new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: labels, // X-axis labels (categories)
-                datasets: datasets
             },
-            options: {
-                responsive: true,
-                plugins: {
-                    datalabels: {
-                        color: '#000',
-                        formatter: function(value, context) {
-                            let total = context.chart.data.datasets[context.datasetIndex].data.reduce((acc, val) => acc + val, 0);
-                            let percentage = ((value / total) * 100).toFixed(2);
-                            return `${value}\n(${percentage}%)`;
-                        },
-                        anchor: 'end',
-                        align: 'top',
-                        font: {
-                            weight: 'bold',
-                            size: 14
-                        }
+            scales: {
+                x: {
+                    stacked: true,
+                    title: {
+                        display: true,
+                        text: 'Details'
                     }
                 },
-                scales: {
-                    x: {
-                        stacked: true,
-                        title: {
-                            display: true,
-                            text: 'Details'
-                        }
-                    },
-                    y: {
-                        stacked: true,
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Counts'
-                        }
+                y: {
+                    stacked: true,
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Counts'
                     }
                 }
             }
-        });
+        }
+    });
+
+    if (divname === 'pie-chart') {
+        barChartInstance1 = newBarChartInstance;
+    } else if (divname === 'bar-chart') {
+        barChartInstance2 = newBarChartInstance;
     }
 }
-
-
 
 function adjustHeatmapSize(imagePath) {
     const heatmapCanvas = document.getElementById('heatmap');
