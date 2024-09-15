@@ -181,10 +181,9 @@ function updateLastQuestionsBarChart(labels, data) {
     barChartInstance = new Chart(ctx1, {
         type: 'bar',
         data: {
-            labels: labels, // ['Yes', 'No'] will be shown on the x-axis
+            labels: labels, // ['Yes', 'No']
             datasets: [{
-                label: 'Responses',   // Add a label for the dataset (entire dataset label)
-                data: data,           // [1, 0]
+                data: data,     // [1, 0]
                 backgroundColor: backgroundColor // ['#4CAF50', '#36A2EB']
             }]
         },
