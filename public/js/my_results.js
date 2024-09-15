@@ -38,7 +38,7 @@ function processPersonalCharts(answers) {
 
 function processPersonalFinalQuestionsCharts(answers) {
     // Prepare data for pie chart and bar chart
-    const answersCounts = { Yes: 0, No: 0 };
+    const answersCounts = { 'Yes': 0, 'No': 0 };
     const filteredAnswers = answers.filter(item => item.step === activityStepValue);
     const lastAnswer = filteredAnswers[filteredAnswers.length - 1];
     // Get the last object from the filtered results
@@ -48,6 +48,9 @@ function processPersonalFinalQuestionsCharts(answers) {
         if (answersCounts[lastAnswer.radio['easy-to-find']] !== undefined) {
             answersCounts[lastAnswer.radio['easy-to-find']]++;
         }
+        console.log(answersCounts);
+        console.log(answersCounts[lastAnswer.radio]);
+        console.log(answersCounts[lastAnswer.radio['easy-to-find']]);
     } else if (activityStepValue === 'step10') {
         divname = 'bar-chart';
         if (answersCounts[lastAnswer.radio['preferred-position']] !== undefined) {
