@@ -107,6 +107,8 @@ function updateBarChart(labels, data) {
 }
 
 function updateGlobalBarChart(labels, data) {
+    let barChartInstance = null;
+
     const ctx2 = document.getElementById('bar-chart').getContext('2d');
 
     if (barChartInstance) {
