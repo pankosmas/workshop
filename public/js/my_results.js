@@ -43,14 +43,22 @@ function processPersonalFinalQuestionsCharts(answers) {
     const answersCounts = { Yes: 0, No: 0 };
     // Filter to find all objects with step: 11
     const filteredAnswers = answers.filter(item => item.step === activityStepValue);
-    // Get the last object from the filtered results
     const lastAnswer = filteredAnswers[filteredAnswers.length - 1];
-    if (answersCounts[lastAnswer.radio] !== undefined) { answersCounts[lastAnswer.radio]++; }
+    // Get the last object from the filtered results
+    if (activityStepValue === 'step9') { 
+        divname = 'pie-chart'; 
+        if (answersCounts[lastAnswer.radio[easy-to-find]] !== undefined) { answersCounts[lastAnswer.radio[easy-to-find]]++; }
+        console.log(lastAnswer);
+        console.log(answersCounts);
+        console.log(lastAnswer.radio);
+        console.log(lastAnswer.radio[0]);
+    } else { 
+        divname = 'bar-chart'; 
+        if (answersCounts[lastAnswer.radio][preferred-position] !== undefined) { answersCounts[lastAnswer.radio][preferred-position]++; }
+    }
     // Data for bar chart for question 
     const barChartQuestion1Labels = Object.keys(answersCounts);
     const barChartQuestion1Data = Object.values(answersCounts);
-    if (activityStepValue === 'step9') { divname = 'pie-chart'; }
-    else { divname = 'bar-chart'; }
     updateLastQuestionsBarChart(barChartQuestion1Labels, barChartQuestion1Data, divname);
     updateTimer(lastAnswer.time);
 }

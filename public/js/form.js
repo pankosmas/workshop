@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             data = {
-                activityStep: activityStep,
+                activityStep: getActivityNumber(),
                 imageReality: null,
                 details: null,
                 easyToFind: easyToFind,
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 time: timeDiff.toFixed(2)
             };
             currentStep = {
-                step: activityStep,
+                step: getActivityNumber(),
                 radio: {
                     'easy-to-find': easyToFind,
                     'preferred-position': preferredPosition
