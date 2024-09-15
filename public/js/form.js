@@ -38,12 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const timeDiff = (endTime - startTime) / 1000;
 
         const formData = new FormData(form);
-        const activityStep = getActivityNumberNew();
+        const activityNumber = getActivityNumberNew();
 
         let data = {};
         let currentStep = {};
 
-        if (activityStep <= 8) {
+        if (activityNumber <= 8) {
             const imageReality = formData.get('image-reality');
             const details = [];
             formData.getAll('details').forEach(value => {
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 time: timeDiff.toFixed(2)
             };
 
-        } else if (activityStep === 9 || activityStep === 10) {
+        } else if (activityNumber === 9 || activityNumber === 10) {
             // Steps 9 and 10
             const easyToFind = formData.get('easy-to-find');
             const preferredPosition = formData.get('preferred-position');
