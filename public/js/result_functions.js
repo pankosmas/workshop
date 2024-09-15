@@ -164,12 +164,12 @@ function updateLastQuestionsBarChart(labels, data, divname) {
     const ctx = document.getElementById(divname).getContext('2d');
 
     if (divname === 'pie-chart') {
-        if (barChartInstance1) {
-            barChartInstance1.destroy();
+        if (pieChartInstance) {
+            pieChartInstance.destroy();
         }
     } else if (divname === 'bar-chart') {
-        if (barChartInstance2) {
-            barChartInstance2.destroy();
+        if (barChartInstance) {
+            barChartInstance.destroy();
         }
     }
 
