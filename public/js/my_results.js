@@ -4,7 +4,7 @@ async function fetchData() {
         // Load the personal users answers from localstorage
         const answers = JSON.parse(localStorage.getItem('answers'));
         if (activityStepValue === 'step9' || activityStepValue === 'step10') {
-            processFinalCharts(answers);
+            processPersonalFinalQuestionsCharts(answers);
         } else { processPersonalCharts(answers); }
         getVizType();
     } catch (error) {
