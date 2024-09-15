@@ -181,9 +181,10 @@ function updateLastQuestionsBarChart(labels, data) {
     barChartInstance = new Chart(ctx1, {
         type: 'bar',
         data: {
-            labels: labels, // ['Yes', 'No']
+            labels: labels, // ['Yes', 'No'] will be shown on the x-axis
             datasets: [{
-                data: data,     // [1, 0]
+                label: 'Responses',   // Add a label for the dataset (entire dataset label)
+                data: data,           // [1, 0]
                 backgroundColor: backgroundColor // ['#4CAF50', '#36A2EB']
             }]
         },
@@ -209,14 +210,14 @@ function updateLastQuestionsBarChart(labels, data) {
                 x: {
                     title: {
                         display: true,
-                        text: 'Categories'
+                        text: 'Categories' // X-axis title
                     }
                 },
                 y: {
                     beginAtZero: true,
                     title: {
                         display: true,
-                        text: 'Counts'
+                        text: 'Counts' // Y-axis title
                     }
                 }
             }
