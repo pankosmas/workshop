@@ -325,9 +325,9 @@ function handleStepNavigation(submitCounter){
         loadNextStep("../images/step2.png", 'Step 2: Uncover the Truth by using Forensic Heatmaps');
         changeFormContent('Step 2: Uncover the Truth by using Forensic Heatmaps', "../images/step2.png", 
             '1. I believe this image is: ', 
-            '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)', 
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
+            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)', 
+            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
+            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
             '2. What led you to your decision?', 
             '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
             '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
@@ -343,9 +343,9 @@ function handleStepNavigation(submitCounter){
         loadNextStep("../images/step3.png", 'Step 3: Confirm your findings with Fusion (probability) mapping');
         changeFormContent('Step 3: Confirm your findings with Fusion (probability) mapping', "../images/step3.png",
             '1. I believe this image is: ',
-            '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
+            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
+            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
+            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
             '2. What led you to your decision?',
             '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
             '<input type="checkbox" id="Heatmap" name="details" value="Heatmap"> Visual inspection of image and heatmaps.',
@@ -361,9 +361,9 @@ function handleStepNavigation(submitCounter){
         loadNextStep("../images/step4.png", 'Step 4: Cross-check your findings with Reverse Image Search');
         changeFormContent('Step 4: Cross-check your findings with Reverse Image Search', "../images/step4.png", 
             '1. I believe this image is: ',
-            '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
+            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
+            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
+            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
             '2. What led you to your decision?',
             '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
             '<input type="checkbox" id="Identical" name="details" value="Identical"> Search results point to a single identical image.',
@@ -386,9 +386,9 @@ function handleStepNavigation(submitCounter){
             loadNextStep("../images/step5.png", 'Step 5: A challenge to Identify Real vs. Fake Images');
             changeFormContent('Step 5: A challenge to Identify Real vs. Fake Images', "../images/step5.png", 
                 '1. I believe this image is: ',
-                '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
-                '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
-                '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
+                '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
+                '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
+                '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
                 '2. What led you to your decision?',
                 '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
                 '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
@@ -406,9 +406,9 @@ function handleStepNavigation(submitCounter){
         loadNextStep("../images/step6.png", 'Step 6: Uncover the Truth by using Forensic Heatmaps');
         changeFormContent('Step 6: Uncover the Truth by using Forensic Heatmaps', "../images/step6.png", 
             '1. I believe this image is: ',
-            '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
+            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
+            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
+            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
             '2. What led you to your decision?',
             '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
             '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
@@ -424,9 +424,9 @@ function handleStepNavigation(submitCounter){
         loadNextStep("../images/step7.png", 'Step 7: Confirm your findings with Fusion (probability) mapping');
         changeFormContent('Step 7: Confirm your findings with Fusion (probability) mapping', "../images/step7.png", 
             '1. I believe this image is: ',
-            '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
+            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
+            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
+            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
             '2. What led you to your decision?',
             '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
             '<input type="checkbox" id="Heatmap" name="details" value="Heatmap"> Visual inspection of image and heatmaps.',
@@ -443,9 +443,9 @@ function handleStepNavigation(submitCounter){
         loadNextStep("../images/step8.png", 'Step 8: Cross-check your findings with Reverse Image Search');
         changeFormContent('Step 8: Cross-check your findings with Reverse Image Search', "../images/step8.png", 
             '1. I believe this image is: ',
-            '<input type="radio" id="Real" name="image-reality" value="Real" required> Authentic (Real)',
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered" required> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake" required> Deepfake (AI Generated)',
+            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
+            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
+            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
             '2. What led you to your decision?',
             '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
             '<input type="checkbox" id="Synthetically Produced" name="details" value="Synthetically Produced"> Search results pointed out the image has been synthetically produced by other documents.',
@@ -472,11 +472,11 @@ function handleStepNavigation(submitCounter){
                 'Step 9: Can you spot the subscription button?',
                 '../images/calibration/calibration.png',
                 '1. Was it easy for you to locate it?',
-                '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes</label>',
-                '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No" required> No</label>',
+                '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes"> Yes</label>',
+                '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No"> No</label>',
                 '2. Would you prefer a different position?',
-                '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes" required> Yes</label>',
-                '<label for="No"><input type="radio" id="No" name="preferred-position" value="No" required> No</label>'
+                '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes"> Yes</label>',
+                '<label for="No"><input type="radio" id="No" name="preferred-position" value="No"> No</label>'
             );
         })
     }
@@ -489,11 +489,11 @@ function handleStepNavigation(submitCounter){
             'Step 10: Can you spot an advertisement?',
             '../images/calibration/calibration.png',
             '1. Was it easy for you to locate it?',
-            '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes</label>',
-            '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No" required> No</label>',
+            '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes"> Yes</label>',
+            '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No"> No</label>',
             '2. Would you prefer a different position?',
-            '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes" required> Yes</label>',
-            '<label for="No"><input type="radio" id="No" name="preferred-position" value="No" required> No</label>'
+            '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes"> Yes</label>',
+            '<label for="No"><input type="radio" id="No" name="preferred-position" value="No"> No</label>'
         );
     }
     if (submitCounter == 11) { 
