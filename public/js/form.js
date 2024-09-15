@@ -34,23 +34,33 @@ function validateForm(event) {
     if (activityNumber === 'step9' || activityNumber === 'step10') {
         return true;
     } else {
-        const checkboxes = document.querySelectorAll('input[name="details"]');
-        const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+        // Check if a radio button is selected
+        const radioButtons = document.querySelectorAll('input[name="image-reality"]');
+        const isRadioChecked = Array.from(radioButtons).some(radio => radio.checked);
 
-        if (!isChecked) {
+        // Check if at least one checkbox is checked
+        const checkboxes = document.querySelectorAll('input[name="details"]');
+        const isCheckboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+        // Validate both conditions
+        if (!isRadioChecked || !isCheckboxChecked) {
             event.preventDefault(); // Prevent form submission
             Swal.fire({
                 icon: 'warning',
                 title: 'Oops!',
-                text: 'Please select at least one option in the second question.',
+                text: 'Please make sure to select one option from the first question and at least one option from the second question.',
                 confirmButtonText: 'Okay'
             }).then(() => {
-                // You can focus on the first unchecked checkbox if you like
-                checkboxes[0].focus();
+                // Optionally focus on the first unchecked field
+                if (!isRadioChecked) {
+                    radioButtons[0].focus();
+                } else if (!isCheckboxChecked) {
+                    checkboxes[0].focus();
+                }
             });
-            return false;
+            return false; // Prevent further form processing
         }
-        return true;
+        return true; // Allow form submission if valid
     }
 }
 
