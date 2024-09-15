@@ -38,29 +38,24 @@ function processPersonalCharts(answers) {
 
 function processPersonalFinalQuestionsCharts(answers) {
     // Prepare data for pie chart and bar chart
-    const answersCounts = { 'Yes': 0, 'No': 0 };
+    const easytofindCounts = { 'Yes': 0, 'No': 0 };
+    const positionCounts = { 'Yes': 0, 'No': 0 };
+
     const filteredAnswers = answers.filter(item => item.step === activityStepValue);
     const lastAnswer = filteredAnswers[filteredAnswers.length - 1];
     // Get the last object from the filtered results
-    let divname;
-    if (activityStepValue === 'step9') {
-        divname = 'pie-chart';
-        if (answersCounts[lastAnswer.radio['easy-to-find']] !== undefined) {
-            answersCounts[lastAnswer.radio['easy-to-find']]++;
-        }
-        console.log(answersCounts);
-        console.log(lastAnswer.radio);
-        console.log(lastAnswer.radio['easy-to-find']);
-    } else if (activityStepValue === 'step10') {
-        divname = 'bar-chart';
-        if (answersCounts[lastAnswer.radio['preferred-position']] !== undefined) {
-            answersCounts[lastAnswer.radio['preferred-position']]++;
-        }
+
+    if (easytofindCounts[lastAnswer.radio['easy-to-find']] !== undefined) {
+        easytofindCounts[lastAnswer.radio['easy-to-find']]++;
     }
-    const barChartLabels = Object.keys(answersCounts);
-    const barChartData = Object.values(answersCounts);
-    const pieChartLabels = Object.keys(answersCounts);
-    const pieChartData = Object.values(answersCounts);
+    if (positionCounts[lastAnswer.radio['easy-to-find']] !== undefined) {
+        positionCounts[lastAnswer.radio['easy-to-find']]++;
+    }
+
+    const barChartLabels = Object.keys(positionCounts);
+    const barChartData = Object.values(positionCounts);
+    const pieChartLabels = Object.keys(easytofindCounts);
+    const pieChartData = Object.values(easytofindCounts);
     updateLastQuestionsPieChart(pieChartLabels, pieChartData, 'pie-chart');
     updateLastQuestionsBarChart(barChartLabels, barChartData, 'bar-chart');
     updateTimer(lastAnswer.time);
