@@ -137,18 +137,23 @@
                 questiondiv.style.maxWidth = '55%';
             }
         }
-
+    </script>
+    <script>
         function validateForm(event) {
-            var checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
-            var isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+            const checkboxes = document.querySelectorAll('input[name="details"]');
+            const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
             if (!isChecked) {
+                event.preventDefault(); // Prevent form submission
                 alert("Please select at least one option in the second question.");
-                event.preventDefault();  // Prevent form submission
+                return false;
             }
+            return true;
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('form').addEventListener('submit', validateForm);
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('form');
+            form.addEventListener('submit', validateForm);
         });
     </script>
     <script src="../js/form.js"></script>
