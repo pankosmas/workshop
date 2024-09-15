@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 time: timeDiff.toFixed(2)
             };
 
-        } else if (activityNumber === 9 || activityNumber === 10) {
+        } else if (activityNumber >= 9) {
             // Steps 9 and 10
             const easyToFind = formData.get('easy-to-find');
             const preferredPosition = formData.get('preferred-position');
