@@ -163,23 +163,27 @@ function updateGlobalBarChart(labels, data) {
 function updateLastQuestionsBarChart(labels, data, divname) {
     const ctx = document.getElementById(divname).getContext('2d');
 
+    // Destroy existing bar chart instance if it exists
     if (barChartInstance) {
         barChartInstance.destroy();
     }
 
+    // Define colors for the bar chart
     const colors = {
         Yes: '#4CAF50',   // Green for Yes
         No: '#36A2EB'     // Blue for No
     };
 
+    // Prepare datasets for the bar chart
     const datasets = Object.keys(colors).map(category => ({
         label: category,
-        data: labels.map((_, index) => data[index][category] || 0),
+        data: labels.map(label => data[label] && data[label][category] || 0),
         backgroundColor: colors[category],
         stack: 'stack1'
     }));
 
-    const newBarChartInstance = new Chart(ctx, {
+    // Create or update bar chart
+    barChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labels,
@@ -208,7 +212,7 @@ function updateLastQuestionsBarChart(labels, data, divname) {
                     stacked: true,
                     title: {
                         display: true,
-                        text: 'Details'
+                        text: 'Categories'
                     }
                 },
                 y: {
@@ -222,30 +226,30 @@ function updateLastQuestionsBarChart(labels, data, divname) {
             }
         }
     });
-
-    barChartInstance = newBarChartInstance;    
 }
 
 function updateLastQuestionsPieChart(labels, data, divname) {
     const ctx = document.getElementById(divname).getContext('2d');
 
+    // Destroy existing pie chart instance if it exists
     if (pieChartInstance) {
         pieChartInstance.destroy();
     }
 
+    // Define colors for the pie chart
     const colors = {
         Yes: '#4CAF50',   // Green for Yes
         No: '#36A2EB'     // Blue for No
     };
 
-    const datasets = Object.keys(colors).map(category => ({
-        label: category,
-        data: labels.map((_, index) => data[index][category] || 0),
-        backgroundColor: colors[category],
-        stack: 'stack1'
-    }));
+    // Prepare data for pie chart
+    const datasets = [{
+        data: labels.map(label => data[label] || 0),
+        backgroundColor: labels.map(label => colors[label] || '#CCCCCC')  // Default color if label not found
+    }];
 
-    const newPieChartInstance = new Chart(ctx, {
+    // Create or update pie chart
+    pieChartInstance = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: labels,
@@ -257,39 +261,20 @@ function updateLastQuestionsPieChart(labels, data, divname) {
                 datalabels: {
                     color: '#000',
                     formatter: function (value, context) {
-                        let total = context.chart.data.datasets[context.datasetIndex].data.reduce((acc, val) => acc + val, 0);
+                        let total = context.chart.data.datasets[0].data.reduce((acc, val) => acc + val, 0);
                         let percentage = ((value / total) * 100).toFixed(2);
                         return `${value}\n(${percentage}%)`;
                     },
-                    anchor: 'end',
-                    align: 'top',
+                    anchor: 'center',
+                    align: 'center',
                     font: {
                         weight: 'bold',
                         size: 14
                     }
                 }
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                    title: {
-                        display: true,
-                        text: 'Details'
-                    }
-                },
-                y: {
-                    stacked: true,
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Counts'
-                    }
-                }
             }
         }
     });
-
-    pieChartInstance = newPieChartInstance;    
 }
 
 function adjustHeatmapSize(imagePath) {
