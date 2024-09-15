@@ -64,8 +64,8 @@ function processPersonalFinalQuestionsCharts(answers) {
     console.log(pieChartLabels);
     console.log(pieChartData);
 
-    updateLastQuestionsPieChart(pieChartLabels, pieChartData);
-    updateLastQuestionsBarChart(barChartLabels, barChartData, 'bar-chart');
+    updateLastQuestionsPieChart(pieChartLabels, pieChartData, 'Was it is to locate it?');
+    updateLastQuestionsBarChart(barChartLabels, barChartData, 'Would you prefer a different position?');
     updateTimer(lastAnswer.time);
 }
 

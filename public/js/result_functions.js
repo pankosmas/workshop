@@ -160,7 +160,7 @@ function updateGlobalBarChart(labels, data) {
     });
 }
 
-function updateLastQuestionsBarChart(labels, data) {
+function updateLastQuestionsBarChart(labels, data, question) {
     const ctx1 = document.getElementById('bar-chart').getContext('2d');
 
     // Destroy existing bar chart instance if it exists
@@ -181,15 +181,24 @@ function updateLastQuestionsBarChart(labels, data) {
     barChartInstance = new Chart(ctx1, {
         type: 'bar',
         data: {
-            labels: labels, // ['Yes', 'No']
+            labels: labels, // ['Yes', 'No'] will be shown on the x-axis
             datasets: [{
-                data: data,     // [1, 0]
+                label: 'Responses',   // Add a label for the dataset (entire dataset label)
+                data: data,           // [1, 0]
                 backgroundColor: backgroundColor // ['#4CAF50', '#36A2EB']
             }]
         },
         options: {
             responsive: true,
             plugins: {
+                title: {
+                    display: true,       // Show the title
+                    text: question,      // The question to display as the title
+                    font: {
+                        size: 18,        // Title font size
+                        weight: 'bold'   // Make the title bold
+                    }
+                },
                 datalabels: {
                     color: '#000',
                     formatter: function(value, context) {
@@ -224,7 +233,7 @@ function updateLastQuestionsBarChart(labels, data) {
     });
 }
 
-function updateLastQuestionsPieChart(labels, data) {
+function updateLastQuestionsPieChart(labels, data, question) {
     const ctx1 = document.getElementById('pie-chart').getContext('2d');
 
     // Destroy existing pie chart instance if it exists
@@ -254,6 +263,14 @@ function updateLastQuestionsPieChart(labels, data) {
         options: {
             responsive: true,
             plugins: {
+                title: {
+                    display: true,       // Show the title
+                    text: question,      // The question to display as the title
+                    font: {
+                        size: 18,        // Title font size
+                        weight: 'bold'   // Make the title bold
+                    }
+                },
                 datalabels: {
                     color: '#fff',
                     formatter: function(value, context) {
