@@ -58,7 +58,7 @@ function processCharts(users) {
     updateTimer(avgTime.toFixed(2), stdDev.toFixed(2));
 }
 
-function processFinalCharts(users) {
+function processFinalQuestionsCharts(users) {
     // Prepare data for pie chart and bar chart
     const easyToFind = { Yes: 0, No: 0 };
     const preferredPosition = { Yes: 0, No: 0 };
