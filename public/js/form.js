@@ -40,7 +40,7 @@ function validateForm(event) {
     let isEasyToFindChecked = false;
     let isPreferredPositionChecked = false;
 
-    if (activityNumber <= 9) {
+    if (activityNumber <= 8) {
         // For steps 1 to 8: Validate radio buttons and checkboxes
         const radioButtons = document.querySelectorAll('input[name="image-reality"]');
         isRadioChecked = Array.from(radioButtons).some(radio => radio.checked);
@@ -84,7 +84,7 @@ function validateForm(event) {
             confirmButtonText: 'Okay'
         }).then(() => {
             // Optionally focus on the first unchecked field
-            if (activityNumber <= 9) {
+            if (activityNumber <= 8) {
                 const radioButtons = document.querySelectorAll('input[name="image-reality"]');
                 const checkboxes = document.querySelectorAll('input[name="details"]');
 
