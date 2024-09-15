@@ -29,7 +29,7 @@ const question2_answer4 = document.querySelector('label[for="Blending"]');
 const question2_answer5 = document.querySelector('label[for="Context"]');
 
 function validateForm(event) {
-    // Check if a radio button is selected
+    // Check if a radio button is selected.
     const radioButtons = document.querySelectorAll('input[name="image-reality"]');
     const isRadioChecked = Array.from(radioButtons).some(radio => radio.checked);
     // Check if at least one checkbox is checked
