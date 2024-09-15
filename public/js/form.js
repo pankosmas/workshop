@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!validateForm(event)) {
             // Prevent form from being submitted if validation fails
             event.preventDefault();
+            return;
         }
         submitCounter ++;
         event.preventDefault(); // Prevent form submission

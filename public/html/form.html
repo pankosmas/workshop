@@ -138,32 +138,6 @@
             }
         }
     </script>
-    <script>
-        function validateForm(event) {
-            const checkboxes = document.querySelectorAll('input[name="details"]');
-            const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-
-            if (!isChecked) {
-                event.preventDefault(); // Prevent form submission
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Oops!',
-                    text: 'Please select at least one option in the second question.',
-                    confirmButtonText: 'Okay'
-                }).then(() => {
-                    // You can focus on the first unchecked checkbox if you like
-                    checkboxes[0].focus();
-                });
-                return false;
-            }
-            return true;
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('form');
-            form.addEventListener('submit', validateForm);
-        });
-    </script>
     <script src="../js/form.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/mouse.js"></script>
