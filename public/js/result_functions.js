@@ -31,9 +31,7 @@ function getActivityStepValue(){
 
 function updatePieChart(labels, data) {
     const ctx1 = document.getElementById('pie-chart').getContext('2d');
-    if (pieChartInstance) {
-        pieChartInstance.destroy(); // Destroy the old instance
-    }
+    destroyCharts();
     pieChartInstance = new Chart(ctx1, {
         type: 'pie',
         data: {
@@ -66,9 +64,7 @@ function updatePieChart(labels, data) {
 
 function updateBarChart(labels, data) {
     const ctx2 = document.getElementById('bar-chart').getContext('2d');
-    if (barChartInstance) {
-        barChartInstance.destroy(); // Destroy the old instance
-    }
+    destroyCharts();
     barChartInstance = new Chart(ctx2, {
         type: 'bar',
         data: {
@@ -109,9 +105,7 @@ function updateBarChart(labels, data) {
 function updateGlobalBarChart(labels, data) {
     const ctx2 = document.getElementById('bar-chart').getContext('2d');
 
-    if (barChartInstance) {
-        barChartInstance.destroy(); // Destroy the old instance
-    }
+    destroyCharts();
     // Assuming radio buttons determine the color for each image reality type
     // Get colors based on selected radio buttons
     const colors = {
@@ -174,13 +168,7 @@ function updateGlobalBarChart(labels, data) {
 
 function updateLastQuestionsBarChart(labels, data, divname) {
     const ctx2 = document.getElementById(divname).getContext('2d');
-
-    if (barChartInstance) {
-        barChartInstance.destroy(); // Destroy the old instance
-    }
-    if (pieChartInstance) {
-        pieChartInstance.destroy(); // Destroy the old instance
-    }
+    destroyCharts();
 
     // Colors for "Yes" and "No"
     const colors = {
@@ -309,4 +297,13 @@ function getDetailsArray() {
     else if (activityStepValue == 'step7') { return { 'Awareness': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Heatmap': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Fusion': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Forgery': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Combination': { Real: 0, Tampered: 0, Deepfake: 0 } }; }
     else if (activityStepValue == 'step8') { return { 'Awareness': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Synthetically Produced': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Variants': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Unique': { Real: 0, Tampered: 0, Deepfake: 0 }, 'DF Algorithms': { Real: 0, Tampered: 0, Deepfake: 0 } }; }
     else { return { 'Awareness': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Synthetically Produced': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Variants': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Unique': { Real: 0, Tampered: 0, Deepfake: 0 }, 'DF Algorithms': { Real: 0, Tampered: 0, Deepfake: 0 } }; }
+}
+
+function destroyCharts(){
+    if (barChartInstance) {
+        barChartInstance.destroy(); // Destroy the old instance
+    }
+    if (pieChartInstance) {
+        pieChartInstance.destroy(); // Destroy the old instance
+    }
 }
