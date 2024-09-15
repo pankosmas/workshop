@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let data = {};
         let currentStep = {};
 
-        if (activityNumber-1 <= 8) {
+        if (activityNumber <= 9) {
             const imageReality = formData.get('image-reality');
             const details = [];
             formData.getAll('details').forEach(value => {
