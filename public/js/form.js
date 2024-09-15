@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let data = {};
         let currentStep = {};
 
-        if (activityNumber <= 8) {
+        if (activityNumber-1 <= 8) {
             const imageReality = formData.get('image-reality');
             const details = [];
             formData.getAll('details').forEach(value => {
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 time: timeDiff.toFixed(2)
             };
 
-        } else if (activityNumber >= 9) {
+        } else {
             // Steps 9 and 10
             const easyToFind = formData.get('easy-to-find');
             const preferredPosition = formData.get('preferred-position');
