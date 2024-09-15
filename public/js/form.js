@@ -73,6 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             return;
         }
+        var submitButton = document.getElementById('submitButton');
+        submitButton.disabled = true; // Disable the button
         submitCounter ++;
         event.preventDefault(); // Prevent form submission
         const timeDiff = ((new Date()) - startTime) / 1000;
@@ -145,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 console.log('Form submission successful');  // Log successful submission
                 handleStepNavigation(submitCounter);
+                submitButton.disabled = false;
             } else {
                 console.error('Error submitting form:', response.status);  // Log errors
                 alert('Error submitting form');
