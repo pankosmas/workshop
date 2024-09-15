@@ -228,8 +228,8 @@ function updateLastQuestionsBarChart(labels, data, divname) {
     });
 }
 
-function updateLastQuestionsPieChart(labels, data, divname) {
-    const ctx = document.getElementById(divname).getContext('2d');
+function updateLastQuestionsPieChart(labels, data) {
+    const ctx1 = document.getElementById('pie-chart').getContext('2d');
 
     // Destroy existing pie chart instance if it exists
     if (pieChartInstance) {
@@ -238,29 +238,30 @@ function updateLastQuestionsPieChart(labels, data, divname) {
 
     // Define colors for the pie chart
     const colors = {
-        Yes: '#4CAF50',   // Green for Yes
-        No: '#36A2EB'     // Blue for No
+        Yes: '#4CAF50', // Green for Yes
+        No: '#36A2EB'  // Blue for No
     };
 
     // Prepare data for pie chart
-    const datasets = [{
-        data: labels.map(label => data[label] || 0),
-        backgroundColor: labels.map(label => colors[label] || '#CCCCCC')  // Default color if label not found
-    }];
+    const datasetData = labels.map(label => data[label] || 0);
+    const backgroundColor = labels.map(label => colors[label] || '#CCCCCC'); // Default color if label not found
 
     // Create or update pie chart
-    pieChartInstance = new Chart(ctx, {
+    pieChartInstance = new Chart(ctx1, {
         type: 'pie',
         data: {
             labels: labels,
-            datasets: datasets
+            datasets: [{
+                data: datasetData,
+                backgroundColor: backgroundColor
+            }]
         },
         options: {
             responsive: true,
             plugins: {
                 datalabels: {
-                    color: '#000',
-                    formatter: function (value, context) {
+                    color: '#fff',
+                    formatter: function(value, context) {
                         let total = context.chart.data.datasets[0].data.reduce((acc, val) => acc + val, 0);
                         let percentage = ((value / total) * 100).toFixed(2);
                         return `${value}\n(${percentage}%)`;

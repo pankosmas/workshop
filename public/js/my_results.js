@@ -60,7 +60,7 @@ function processPersonalFinalQuestionsCharts(answers) {
     const barChartData = Object.values(positionCounts);
     const pieChartLabels = Object.keys(easytofindCounts);
     const pieChartData = Object.values(easytofindCounts);
-    updateLastQuestionsPieChart(pieChartLabels, pieChartData, 'pie-chart');
+    updateLastQuestionsPieChart(pieChartLabels, pieChartData);
     updateLastQuestionsBarChart(barChartLabels, barChartData, 'bar-chart');
     updateTimer(lastAnswer.time);
 }
