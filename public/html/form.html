@@ -49,7 +49,7 @@
             <div class="question">
                 <form id="form">
                     <label for="image-reality">1. I believe this image is: </label>
-                    <div class="radio-group" required>
+                    <div class="radio-group">
                         <label for="Real">
                             <input type="radio" id="Real" name="image-reality" value="Real" required>
                             Authentic (Real)
@@ -63,7 +63,7 @@
                             Deepfake (AI Generated)
                         </label>
                     </div>
-            
+        
                     <label for="details">2. What led you to your decision?</label>
                     <div class="checkbox-group">
                         <label for="Normal">
@@ -87,7 +87,7 @@
                             The image context does not fit with the displayed persona.
                         </label>
                     </div>
-            
+        
                     <input type="submit" value="Submit">
                 </form>
             </div>
@@ -145,7 +145,15 @@
 
             if (!isChecked) {
                 event.preventDefault(); // Prevent form submission
-                alert("Please select at least one option in the second question.");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops!',
+                    text: 'Please select at least one option in the second question.',
+                    confirmButtonText: 'Okay'
+                }).then(() => {
+                    // You can focus on the first unchecked checkbox if you like
+                    checkboxes[0].focus();
+                });
                 return false;
             }
             return true;
