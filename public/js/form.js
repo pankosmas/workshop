@@ -260,15 +260,15 @@ function showFullImage() {
 }
 
 function getActivityNumber() {
-    if (submitCounter == 1) { return 'step1'; }
-    else if (submitCounter == 2) { return 'step2'; }
-    else if (submitCounter == 3) { return 'step3'; }
-    else if (submitCounter == 4) { return 'step4'; }
-    else if (submitCounter == 5) { return 'step5'; }
-    else if (submitCounter == 6) { return 'step6'; }
-    else if (submitCounter == 7) { return 'step7'; }
-    else if (submitCounter == 8) { return 'step8'; }
-    else if (submitCounter == 9) { return 'step9'; }
+    if (submitCounter == 2) { return 'step1'; }
+    else if (submitCounter == 3) { return 'step2'; }
+    else if (submitCounter == 4) { return 'step3'; }
+    else if (submitCounter == 5) { return 'step4'; }
+    else if (submitCounter == 6) { return 'step5'; }
+    else if (submitCounter == 7) { return 'step6'; }
+    else if (submitCounter == 8) { return 'step7'; }
+    else if (submitCounter == 9) { return 'step8'; }
+    else if (submitCounter == 10) { return 'step9'; }
     else { return 'step10'; }
 }
 
