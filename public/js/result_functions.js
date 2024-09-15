@@ -228,7 +228,7 @@ function updateLastQuestionsBarChart(labels, data, divname) {
     });
 }
 
-function updatePieChart(labels, data) {
+function updateLastQuestionsPieChart(labels, data) {
     const ctx1 = document.getElementById('pie-chart').getContext('2d');
 
     // Destroy existing pie chart instance if it exists
