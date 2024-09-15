@@ -46,15 +46,16 @@ function processPersonalFinalQuestionsCharts(answers) {
     const filteredAnswers = answers.filter(item => item.step === activityStepValue);
     // Get the last object from the filtered results
     const lastAnswer = filteredAnswers[filteredAnswers.length - 1];
-    if (easyToFind[lastAnswer.radio] !== undefined) { imageRealityCounts[lastAnswer.radio]++; }
+    if (easyToFindCounts[lastAnswer.radio] !== undefined) { easyToFindCounts[lastAnswer.radio]++; }
+    if (preferredPositionCounts[lastAnswer.radio] !== undefined) { preferredPositionCounts[lastAnswer.radio]++; }
     // Data for bar chart for question 1
     const barChartQuestion1Labels = Object.keys(easyToFindCounts);
     const barChartQuestion1Data = Object.values(easyToFindCounts);
-    updateLastQuestionsBarChart(barChartLabels, barChartData, 'pie-chart');
+    updateLastQuestionsBarChart(barChartQuestion1Labels, barChartQuestion1Data, 'pie-chart');
     // Data for bar chart for question 2
     const barChartQuestion2Labels = Object.keys(preferredPositionCounts);
     const barChartQuestion2Data = Object.values(preferredPositionCounts);
-    updateLastQuestionsBarChart(barChartLabels, barChartData, 'bar-chart');
+    updateLastQuestionsBarChart(barChartQuestion2Labels, barChartQuestion2Data, 'bar-chart');
     updateTimer(lastAnswer.time);
 
 }
