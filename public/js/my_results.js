@@ -48,24 +48,18 @@ function processPersonalFinalQuestionsCharts(answers) {
         if (answersCounts[lastAnswer.radio['easy-to-find']] !== undefined) {
             answersCounts[lastAnswer.radio['easy-to-find']]++;
         }
-        const barChartLabels = Object.keys(answersCounts);
-        const barChartData = Object.values(answersCounts);
-        const pieChartLabels = Object.keys(answersCounts);
-        const pieChartData = Object.values(answersCounts);
-        updateLastQuestionsPieChart(pieChartLabels, pieChartData, divname);
-        updateLastQuestionsBarChart(barChartLabels, barChartData, divname);
     } else if (activityStepValue === 'step10') {
         divname = 'bar-chart';
         if (answersCounts[lastAnswer.radio['preferred-position']] !== undefined) {
             answersCounts[lastAnswer.radio['preferred-position']]++;
         }
-        const barChartLabels = Object.keys(answersCounts);
-        const barChartData = Object.values(answersCounts);
-        const pieChartLabels = Object.keys(answersCounts);
-        const pieChartData = Object.values(answersCounts);
-        updateLastQuestionsPieChart(pieChartLabels, pieChartData, divname);
-        updateLastQuestionsBarChart(barChartLabels, barChartData, divname);
     }
+    const barChartLabels = Object.keys(answersCounts);
+    const barChartData = Object.values(answersCounts);
+    const pieChartLabels = Object.keys(answersCounts);
+    const pieChartData = Object.values(answersCounts);
+    updateLastQuestionsPieChart(pieChartLabels, pieChartData, 'pie-chart');
+    updateLastQuestionsBarChart(barChartLabels, barChartData, 'bar-chart');
     updateTimer(lastAnswer.time);
 }
 
