@@ -240,14 +240,14 @@ function preventValidation(event) {
 }
 
 function showFullImage() {
-    if (submitCounter == 0) { url = "../images/step1.png"; }
-    else if (submitCounter == 1) { url = "../images/step2.png"; }
-    else if (submitCounter == 2) { url = "../images/step3.png"; }
-    else if (submitCounter == 3) { url = "../images/step4.png"; }
-    else if (submitCounter == 4) { url = "../images/step5.png"; }
-    else if (submitCounter == 5) { url = "../images/step6.png"; }
-    else if (submitCounter == 6) { url = "../images/step7.png"; }
-    else if (submitCounter == 7) { url = "../images/step8.png"; }
+    if (submitCounter == 1) { url = "../images/step1.png"; }
+    else if (submitCounter == 2) { url = "../images/step2.png"; }
+    else if (submitCounter == 3) { url = "../images/step3.png"; }
+    else if (submitCounter == 4) { url = "../images/step4.png"; }
+    else if (submitCounter == 5) { url = "../images/step5.png"; }
+    else if (submitCounter == 6) { url = "../images/step6.png"; }
+    else if (submitCounter == 7) { url = "../images/step7.png"; }
+    else if (submitCounter == 8) { url = "../images/step8.png"; }
     else { url = "../images/calibration/calibration.png"; }
 
     pageContent.style.display = "none";
