@@ -40,24 +40,19 @@ function processPersonalCharts(answers) {
 
 function processPersonalFinalQuestionsCharts(answers) {
     // Prepare data for pie chart and bar chart
-    const easyToFindCounts = { Yes: 0, No: 0 };
-    const preferredPositionCounts = { Yes: 0, No: 0 };
+    const answersCounts = { Yes: 0, No: 0 };
     // Filter to find all objects with step: 11
     const filteredAnswers = answers.filter(item => item.step === activityStepValue);
     // Get the last object from the filtered results
     const lastAnswer = filteredAnswers[filteredAnswers.length - 1];
-    if (easyToFindCounts[lastAnswer.radio] !== undefined) { easyToFindCounts[lastAnswer.radio]++; }
-    if (preferredPositionCounts[lastAnswer.radio] !== undefined) { preferredPositionCounts[lastAnswer.radio]++; }
-    // Data for bar chart for question 1
-    const barChartQuestion1Labels = Object.keys(easyToFindCounts);
-    const barChartQuestion1Data = Object.values(easyToFindCounts);
-    updateLastQuestionsBarChart(barChartQuestion1Labels, barChartQuestion1Data, 'pie-chart');
-    // Data for bar chart for question 2
-    const barChartQuestion2Labels = Object.keys(preferredPositionCounts);
-    const barChartQuestion2Data = Object.values(preferredPositionCounts);
-    updateLastQuestionsBarChart(barChartQuestion2Labels, barChartQuestion2Data, 'bar-chart');
+    if (answersCounts[lastAnswer.radio] !== undefined) { answersCounts[lastAnswer.radio]++; }
+    // Data for bar chart for question 
+    const barChartQuestion1Labels = Object.keys(answersCounts);
+    const barChartQuestion1Data = Object.values(answersCounts);
+    if (activityStepValue === 'step9') { divname = 'pie-chart'; }
+    else { divname = 'bar-chart'; }
+    updateLastQuestionsBarChart(barChartQuestion1Labels, barChartQuestion1Data, divname);
     updateTimer(lastAnswer.time);
-
 }
 
 function updateTimer(time) {
