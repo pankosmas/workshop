@@ -1,10 +1,6 @@
 let submitCounter = 1;
-let activityCounter = 1;
-let stepCounter = 1;
-// Variables to store the start and end times
 let startTime, endTime;
 var progressBar = document.getElementById("progressBar");
-
 const headerText = document.querySelector('h1');
 const titleText = document.querySelector('h2');
 const pageContent = document.querySelector('.content');
@@ -14,7 +10,6 @@ const formContainer = document.getElementById('form-container');
 const navbar = document.querySelector('.navbar,.navoff');
 const backToTests = document.getElementById('backToTests');
 const startTimer = document.getElementById('initialFullScreenImage');
-
 const partIndicator = document.querySelector('.partIndicator');
 const formImage = document.getElementById("form-image");
 const question1 = document.querySelector('label[for="image-reality"]');
@@ -29,18 +24,14 @@ const question2_answer4 = document.querySelector('label[for="Blending"]');
 const question2_answer5 = document.querySelector('label[for="Context"]');
 
 function validateForm(event) {
-    // Determine the current activity number (step)
-    const activityNumber = getActivityNumberNew(); // Implement this function to get the current step
-
     let isValid = true;
     let message = '';
-    
     let isRadioChecked = false;
     let isCheckboxChecked = false;
     let isEasyToFindChecked = false;
     let isPreferredPositionChecked = false;
 
-    if (activityNumber <= 8) {
+    if (submitCounter <= 8) {
         // For steps 1 to 8: Validate radio buttons and checkboxes
         const radioButtons = document.querySelectorAll('input[name="image-reality"]');
         isRadioChecked = Array.from(radioButtons).some(radio => radio.checked);
@@ -84,10 +75,9 @@ function validateForm(event) {
             confirmButtonText: 'Okay'
         }).then(() => {
             // Optionally focus on the first unchecked field
-            if (activityNumber <= 8) {
+            if (submitCounter <= 8) {
                 const radioButtons = document.querySelectorAll('input[name="image-reality"]');
                 const checkboxes = document.querySelectorAll('input[name="details"]');
-
                 if (!isRadioChecked) {
                     radioButtons[0].focus();
                 } else if (!isCheckboxChecked) {
@@ -96,7 +86,6 @@ function validateForm(event) {
             } else {
                 const radioButtonsEasyToFind = document.querySelectorAll('input[name="easy-to-find"]');
                 const radioButtonsPreferredPosition = document.querySelectorAll('input[name="preferred-position"]');
-
                 if (!isEasyToFindChecked) {
                     radioButtonsEasyToFind[0].focus();
                 } else if (!isPreferredPositionChecked) {
@@ -112,7 +101,6 @@ function validateForm(event) {
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form');
     form.addEventListener('submit', async (event) => {
-        const activityNumber = getActivityNumberNew();
         if (!validateForm(event)) {
             // Prevent form from being submitted if validation fails
             event.preventDefault();
@@ -124,11 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault(); // Prevent form submission
         const timeDiff = ((new Date()) - startTime) / 1000;
         const formData = new FormData(form);
-
         let data = {};
         let currentStep = {};
-
-        if (activityNumber <= 9) {
+        if (submitCounter <= 9) {
             const imageReality = formData.get('image-reality');
             const details = [];
             formData.getAll('details').forEach(value => {
@@ -179,11 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.answers = JSON.parse(localStorage.getItem('answers')) || [];
         window.answers.push(currentStep);
         localStorage.setItem('answers', JSON.stringify(window.answers));
-
         try {
-            console.log(submitCounter);
-            console.log(getActivityNumber());
-            console.log(getActivityNumberNew());
             const response = await fetch('/api/form', {
                 method: 'POST',
                 headers: {
@@ -383,7 +365,6 @@ function handleStepNavigation(submitCounter){
             '<input type="checkbox" id="Spatial" name="details" value="Spatial"> Spatial inconsistencies are present in the image.',
             '<input type="checkbox" id="Colour" name="details" value="Colour"> Colour inconsistencies present in the heatmap raise suspicions about the image.',
         );
-        stepCounter = 2;
     }
     if (submitCounter == 3) {
         // Experiment with the progress bar
@@ -401,7 +382,6 @@ function handleStepNavigation(submitCounter){
             '<input type="checkbox" id="Forgery" name="details" value="Forgery"> The indicated forgery probability.',
             '<input type="checkbox" id="Combination" name="details" value="Combination"> Combined inspection of image, heatmaps, fusion map and forgery probability.',
         );
-        stepCounter = 3;
     }
     if (submitCounter == 4) {
         // Experiment with the progress bar
@@ -419,7 +399,6 @@ function handleStepNavigation(submitCounter){
             '<input type="checkbox" id="Context" name="details" value="Context"> The image and/or its variants have been used in different contexts.',
             '<input type="checkbox" id="Fact Checked" name="details" value="Fact Checked"> Search results indicate that the image has been already fact checked.',
         );
-        stepCounter = 4;
     }
     if (submitCounter == 5) { 
         Swal.fire({
@@ -444,8 +423,6 @@ function handleStepNavigation(submitCounter){
                 '<input type="checkbox" id="Edges-Blending" name="details" value="Edges-Blending"> Poor edges and blending around the objects are present.',
                 '<input type="checkbox" id="Context" name="details" value="Context"> The image context does not fit with the displayed persona.',
             );
-            activityCounter = 2;
-            stepCounter = 1;
         })
     }
     if (submitCounter == 6) {
@@ -464,7 +441,6 @@ function handleStepNavigation(submitCounter){
             '<input type="checkbox" id="Spatial" name="details" value="Spatial"> Spatial inconsistencies are present in the image.',
             '<input type="checkbox" id="Colour" name="details" value="Colour"> Colour inconsistencies present in the heatmap raise suspicions about the image.',
         );
-        stepCounter = 2;
     }
     if (submitCounter == 7) {
         // Experiment with the progress bar
@@ -482,8 +458,6 @@ function handleStepNavigation(submitCounter){
             '<input type="checkbox" id="Forgery" name="details" value="Forgery"> The indicated forgery probability.',
             '<input type="checkbox" id="Combination" name="details" value="Combination"> Combined inspection of image, heatmaps, fusion map and forgery probability.',
         );
-        activityCounter = 3;
-        stepCounter = 1;
     }
     if (submitCounter == 8) {
         // Experiment with the progress bar
@@ -501,7 +475,6 @@ function handleStepNavigation(submitCounter){
             '<input type="checkbox" id="Unique" name="details" value="Unique"> The image seems unique, like it has been created to serve a very specific purpose.',
             '<input type="checkbox" id="DF Algorithms" name="details" value="DF Algorithms"> The deep fake detection algorithms points to an AI Generated image.',
         );
-        stepCounter = 2;
     }
     if (submitCounter == 9) { 
         Swal.fire({
@@ -554,7 +527,6 @@ function handleStepNavigation(submitCounter){
                 window.location.href = 'my_results.html'; // Replace with your target HTML page
             }
         }).then(() => {
-            // Experiment with the progress bar
             editProgress(progressBar, 100);
         })
     }
