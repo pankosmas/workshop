@@ -241,14 +241,6 @@ function updateForm(stepTitle, imgSrc, question1, radio1Yes, radio1No, question2
     document.getElementById('form-image').src = imgSrc;
     const form = document.getElementById('form');
     form.innerHTML = ''; // Remove all old form elements
-    // Reset the form validation
-    form.reset(); // Reset form state, clears validation
-    form.noValidate = true; // Disable built-in browser validation
-    // Remove any lingering event listeners that might have been set earlier
-    form.querySelectorAll('*').forEach(el => {
-        el.removeEventListener('invalid', preventValidation, true);
-    });
-    // Build the new form content for steps 9 and 10
     form.innerHTML = `
         <label for="easy-to-find">${question1}</label>
         <div class="radio-group" required>
@@ -264,11 +256,6 @@ function updateForm(stepTitle, imgSrc, question1, radio1Yes, radio1No, question2
     `;
 }
 
-// Optional helper to prevent default form validation on submit
-function preventValidation(event) {
-    event.preventDefault(); // Prevents form validation error display
-}
-
 function showFullImage() {
     if (submitCounter == 1) { url = "../images/step1.png"; }
     else if (submitCounter == 2) { url = "../images/step2.png"; }
@@ -279,7 +266,6 @@ function showFullImage() {
     else if (submitCounter == 7) { url = "../images/step7.png"; }
     else if (submitCounter == 8) { url = "../images/step8.png"; }
     else { url = "../images/calibration/calibration.png"; }
-
     pageContent.style.display = "none";
     navbar.style.display = "none";
     backToTests.style.display = "block";
@@ -300,19 +286,6 @@ function getActivityNumber() {
     else if (submitCounter == 9) { return 'step8'; }
     else if (submitCounter == 10) { return 'step9'; }
     else { return 'step10'; }
-}
-
-function getActivityNumberNew() {
-    if (submitCounter == 1) { return 1; }
-    else if (submitCounter == 2) { return 2; }
-    else if (submitCounter == 3) { return 3; }
-    else if (submitCounter == 4) { return 4; }
-    else if (submitCounter == 5) { return 5; }
-    else if (submitCounter == 6) { return 6; }
-    else if (submitCounter == 7) { return 7; }
-    else if (submitCounter == 8) { return 8; }
-    else if (submitCounter == 9) { return 9; }
-    else { return 10; }
 }
 
 function loadNextStep(url, title) {
