@@ -60,6 +60,10 @@ function processPersonalFinalQuestionsCharts(answers) {
     const barChartData = Object.values(positionCounts);
     const pieChartLabels = Object.keys(easytofindCounts);
     const pieChartData = Object.values(easytofindCounts);
+
+    console.log(pieChartLabels);
+    console.log(pieChartData);
+
     updateLastQuestionsPieChart(pieChartLabels, pieChartData);
     updateLastQuestionsBarChart(barChartLabels, barChartData, 'bar-chart');
     updateTimer(lastAnswer.time);
