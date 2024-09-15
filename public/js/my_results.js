@@ -48,9 +48,13 @@ function processPersonalFinalQuestionsCharts(answers) {
     if (easytofindCounts[lastAnswer.radio['easy-to-find']] !== undefined) {
         easytofindCounts[lastAnswer.radio['easy-to-find']]++;
     }
-    if (positionCounts[lastAnswer.radio['easy-to-find']] !== undefined) {
-        positionCounts[lastAnswer.radio['easy-to-find']]++;
+    if (positionCounts[lastAnswer.radio['preferred-position']] !== undefined) {
+        positionCounts[lastAnswer.radio['preferred-position']]++;
     }
+
+    console.log(lastAnswer.radio);
+    console.log(lastAnswer.radio['easy-to-find']);
+    console.log(easytofindCounts);
 
     const barChartLabels = Object.keys(positionCounts);
     const barChartData = Object.values(positionCounts);
