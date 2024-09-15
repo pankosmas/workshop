@@ -319,7 +319,7 @@ function updateBackToTestsStyles(top, right, opacity, width, height) {
 }
 
 function handleStepNavigation(submitCounter){
-    if (submitCounter == 1) {
+    if (submitCounter == 2) {
         // Experiment with the progress bar
         editProgress(progressBar, 10);
         loadNextStep("../images/step2.png", 'Step 2: Uncover the Truth by using Forensic Heatmaps');
@@ -337,7 +337,7 @@ function handleStepNavigation(submitCounter){
         );
         stepCounter = 2;
     }
-    if (submitCounter == 2) {
+    if (submitCounter == 3) {
         // Experiment with the progress bar
         editProgress(progressBar, 20);
         loadNextStep("../images/step3.png", 'Step 3: Confirm your findings with Fusion (probability) mapping');
@@ -355,7 +355,7 @@ function handleStepNavigation(submitCounter){
         );
         stepCounter = 3;
     }
-    if (submitCounter == 3) {
+    if (submitCounter == 4) {
         // Experiment with the progress bar
         editProgress(progressBar, 30);
         loadNextStep("../images/step4.png", 'Step 4: Cross-check your findings with Reverse Image Search');
@@ -373,7 +373,7 @@ function handleStepNavigation(submitCounter){
         );
         stepCounter = 4;
     }
-    if (submitCounter == 4) { 
+    if (submitCounter == 5) { 
         Swal.fire({
             title: 'Success!',
             text: ``,
@@ -400,7 +400,7 @@ function handleStepNavigation(submitCounter){
             stepCounter = 1;
         })
     }
-    if (submitCounter == 5) {
+    if (submitCounter == 6) {
         // Experiment with the progress bar
         editProgress(progressBar, 50);
         loadNextStep("../images/step6.png", 'Step 6: Uncover the Truth by using Forensic Heatmaps');
@@ -418,7 +418,7 @@ function handleStepNavigation(submitCounter){
         );
         stepCounter = 2;
     }
-    if (submitCounter == 6) {
+    if (submitCounter == 7) {
         // Experiment with the progress bar
         editProgress(progressBar, 60);
         loadNextStep("../images/step7.png", 'Step 7: Confirm your findings with Fusion (probability) mapping');
@@ -437,7 +437,7 @@ function handleStepNavigation(submitCounter){
         activityCounter = 3;
         stepCounter = 1;
     }
-    if (submitCounter == 7) {
+    if (submitCounter == 8) {
         // Experiment with the progress bar
         editProgress(progressBar, 70);
         loadNextStep("../images/step8.png", 'Step 8: Cross-check your findings with Reverse Image Search');
@@ -455,7 +455,7 @@ function handleStepNavigation(submitCounter){
         );
         stepCounter = 2;
     }
-    if (submitCounter == 8) { 
+    if (submitCounter == 9) { 
         Swal.fire({
             title: 'Success!',
             text: ``,
@@ -480,7 +480,7 @@ function handleStepNavigation(submitCounter){
             );
         })
     }
-    if (submitCounter == 9) { 
+    if (submitCounter == 10) { 
         // Experiment with the progress bar
         editProgress(progressBar, 90);
         updateBackToTestsStyles('32em', '25em', '0', '45vw', '30vh');
@@ -496,7 +496,7 @@ function handleStepNavigation(submitCounter){
             '<label for="No"><input type="radio" id="No" name="preferred-position" value="No" required> No</label>'
         );
     }
-    if (submitCounter == 10) { 
+    if (submitCounter == 11) { 
         Swal.fire({
             title: 'Success!',
             text: `You completed the Survey!`,
