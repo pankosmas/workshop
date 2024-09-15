@@ -259,7 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Experiment with the progress bar
                         editProgress(progressBar, 80);
                         header1 = document.getElementById('h1');
-                        header1.innerHTML = 'News Page Exploration';
+                        header1.innerHTML = 'Observation of News Page';
+                        updateBackToTestsStyles('2em', '2em', '0', '15vw', '10vh');
                         loadNextStep("../images/calibration/calibration.png", 'Step 9: Can you spot the subscription button?');
                         updateForm(
                             'Step 9: Can you spot the subscription button?',
@@ -276,6 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (submitCounter == 9) { 
                     // Experiment with the progress bar
                     editProgress(progressBar, 90);
+                    updateBackToTestsStyles('32em', '25em', '0', '45vw', '30vh');
                     loadNextStep("../images/calibration/calibration.png", 'Step 10: Can you spot an advertisement?');
                     updateForm(
                         'Step 10: Can you spot an advertisement?',
@@ -469,3 +471,12 @@ backToTests.addEventListener('click', function () {
 startTimer.addEventListener('click', function () {
     startTime = new Date();
 });
+
+function updateBackToTestsStyles(top, right, opacity, width, height) {
+    const backToTests = document.getElementById('backToTests');
+    backToTests.style.top = top;
+    backToTests.style.right = right;
+    backToTests.style.opacity = opacity;
+    backToTests.style.width = width;
+    backToTests.style.height = height;
+}
