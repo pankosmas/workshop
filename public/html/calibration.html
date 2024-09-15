@@ -25,7 +25,7 @@
         <div class="nav-links">
             <!-- Accuracy -->
             <a id="Accuracy">Not yet Calibrated</a>
-            <a onclick="restartCalibration();" >Recalibrate</a>
+            <a id="recalibrateBtn" onclick="restartCalibration();" >Recalibrate</a>
             <a id="helpBtn">Help</a>
         </div>
 		<div style="margin-right: 180px;"></div>
@@ -37,47 +37,47 @@
     <div class="calibrationContainer" id="Container1">
         <input type="button" class="Calibration" id="Pt1">
         <img src="../images/green_pin.png" class="bounce red-pin" id="Pin1">
-        <div class="speech speech-left">Click on the center of your webcam feed!</div>
+        <div class="speech speech-left" id="Speech1">Click on the center of your webcam feed!</div>
     </div>
-    <div class="calibrationContainer" id="Container2">
+    <div class="calibrationContainer invisible" id="Container2">
         <input type="button" class="Calibration" id="Pt2">
         <img src="../images/green_pin.png" class="bounce red-pin" id="Pin2">
-        <div class="speech speech-left">Click here!</div>
+        <div class="speech speech-left">Click on the "SUBSCRIBE" button!</div>
     </div>
-    <div class="calibrationContainer" id="Container3">
-        <input type="button" class="Calibration" id="Pt3">
-        <img src="../images/green_pin.png" class="bounce red-pin" id="Pin3">
-        <div class="speech speech-right">Click on the center of your webcam feed!</div>
+    <div class="calibrationContainer invisible" id="Container3">
+        <input type="button" class="Calibration Calibration-right" id="Pt3">
+        <img src="../images/green_pin.png" class="bounce red-pin right-pin" id="Pin3">
+        <div class="speech speech-right">Click on the Date!</div>
     </div>
-    <div class="calibrationContainer" id="Container4">
+    <div class="calibrationContainer invisible" id="Container4">
         <input type="button" class="Calibration" id="Pt4">
         <img src="../images/green_pin.png" class="bounce red-pin" id="Pin4">
-        <div class="speech speech-left">Click here!</div>
+        <div class="speech speech-left">Click on the No.3 listed news!</div>
     </div>
-    <div class="calibrationContainer" id="Container5">
+    <div class="calibrationContainer invisible" id="Container5">
         <input type="button" class="Calibration" id="Pt5">
         <img src="../images/green_pin.png" class="bounce red-pin" id="Pin5">
-        <div class="speech speech-left">Click on the center of your webcam feed!</div>
+        <div class="speech speech-left">Click on the middle point!</div>
     </div>
-    <div class="calibrationContainer" id="Container6">
-        <input type="button" class="Calibration" id="Pt6">
-        <img src="../images/green_pin.png" class="bounce red-pin" id="Pin6">
-        <div class="speech speech-right">Click here!</div>
+    <div class="calibrationContainer invisible" id="Container6">
+        <input type="button" class="Calibration Calibration-right" id="Pt6">
+        <img src="../images/green_pin.png" class="bounce red-pin right-pin" id="Pin6">
+        <div class="speech speech-right">Click on the comments' section!</div>
     </div>
-    <div class="calibrationContainer" id="Container7">
+    <div class="calibrationContainer invisible" id="Container7">
         <input type="button" class="Calibration" id="Pt7">
         <img src="../images/green_pin.png" class="bounce red-pin" id="Pin7">
-        <div class="speech speech-left">Click on the center of your webcam feed!</div>
+        <div class="speech speech-left">Click on the iMedD logo!</div>
     </div>
-    <div class="calibrationContainer" id="Container8">
+    <div class="calibrationContainer invisible" id="Container8">
         <input type="button" class="Calibration" id="Pt8">
         <img src="../images/green_pin.png" class="bounce red-pin" id="Pin8">
-        <div class="speech speech-left">Click here!</div>
+        <div class="speech speech-left">Click on the Copyright!</div>
     </div>
-    <div class="calibrationContainer" id="Container9">
-        <input type="button" class="Calibration" id="Pt9">
-        <img src="../images/green_pin.png" class="bounce red-pin" id="Pin9">
-        <div class="speech speech-right">Click on the center of your webcam feed!</div>
+    <div class="calibrationContainer invisible" id="Container9">
+        <input type="button" class="Calibration Calibration-right" id="Pt9">
+        <img src="../images/green_pin.png" class="bounce red-pin right-pin" id="Pin9">
+        <div class="speech speech-right">Click on the Cookie Settings!</div>
     </div>
 
     <!-- Help Modal -->

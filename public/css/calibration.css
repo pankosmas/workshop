@@ -94,13 +94,18 @@ body {
     cursor: pointer;
     position: relative;
 }
+.Calibration-right {
+    right: -22vw;
+}
 .calibrationContainer {
     position: absolute;
+    width: 450px; /* Set a reasonable width */
+    height: auto; /* Set a reasonable height */
     z-index: 2;
 }
 #Container1 {
-    top: 6vw;
-    left: 8vw;
+    top: 4vw;
+    left: 5.5vw;
 }
 #Container2 {
     top: 7vh;
@@ -134,14 +139,19 @@ body {
     bottom: 1vh;
     right: 2vw;
 }
-
+.invisible {
+    display: none;
+}
 .red-pin {
     width: 35px;
     height: 35px;
     position: absolute;
-    top: -40px; /* Adjust as needed */
-    left: -5px; /* Adjust as needed */
+    top: -4vh; /* Adjust as needed */
+    right: 21.85vw; /* Adjust as needed */
     z-index: 3;
+}
+.right-pin {
+    right: -0.15vw;
 }
 .bounce {
     animation: bounce 2s infinite;
@@ -273,14 +283,15 @@ body {
 .speech {
     background-color: #fff;
     border: 1px solid #000;
-    z-index: 100;
     border-radius: 10px;
     box-shadow: 10px 10px 20px #11819b;
     padding: 10px;
-    width: 350px;
+    max-width: 350px; /* You can adjust this value */
+    width: auto; /* Allow width to adjust based on content */
     text-align: center;
-    z-index: 4;
     font-weight: bold;
+    position: absolute;
+    box-sizing: border-box;
 }
 .speech::after {
     content: "";

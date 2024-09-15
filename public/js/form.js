@@ -44,28 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentStep = {};
 
         if (activityStep <= 8) {
-            // Validate checkboxes for steps 1-8
-            const checkboxes = document.querySelectorAll('input[name="details"]');
-            let isChecked = false;
-
-            // Check if at least one checkbox is selected
-            checkboxes.forEach((checkbox) => {
-                if (checkbox.checked) {
-                    isChecked = true;
-                }
-            });
-
-            if (!isChecked) {
-                alert('Please select at least one option in the second question.');
-                return; // Prevent form submission if validation fails
-            }
-            
             const imageReality = formData.get('image-reality');
             const details = [];
             formData.getAll('details').forEach(value => {
                 details.push(value);
             });
-
             data = {
                 activityStep: getActivityNumber(),
                 imageReality: imageReality,
@@ -76,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 gazeCoordinates: window.dataArray, // Initialize with actual data as needed
                 time: timeDiff.toFixed(2)
             };
-
             currentStep = {
                 step: getActivityNumber(),
                 radio: imageReality,
