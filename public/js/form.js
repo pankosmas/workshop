@@ -28,9 +28,7 @@ const question2_answer3 = document.querySelector('label[for="Lighting"]');
 const question2_answer4 = document.querySelector('label[for="Blending"]');
 const question2_answer5 = document.querySelector('label[for="Context"]');
 
-function validateForm(event) {
-    var activityNumber = getActivityNumberNew();
-
+function validateForm(event, activityNumber) {
     if (activityNumber === 9 || activityNumber === 10) {
         // Check if at least one radio button is selected in the first group
         const firstGroupRadios = document.querySelectorAll('input[name="easy-to-find"]');
@@ -105,7 +103,8 @@ function validateForm(event) {
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form');
     form.addEventListener('submit', async (event) => {
-        if (!validateForm(event)) {
+        const activityNumber = getActivityNumberNew();
+        if (!validateForm(event, activityNumber)) {
             // Prevent form from being submitted if validation fails
             event.preventDefault();
             return;
@@ -114,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault(); // Prevent form submission
         const timeDiff = ((new Date()) - startTime) / 1000;
         const formData = new FormData(form);
-        const activityNumber = getActivityNumberNew();
 
         let data = {};
         let currentStep = {};
