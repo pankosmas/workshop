@@ -228,7 +228,7 @@ function updateLastQuestionsBarChart(labels, data, divname) {
     });
 }
 
-function updateLastQuestionsPieChart(labels, data) {
+function updatePieChart(labels, data) {
     const ctx1 = document.getElementById('pie-chart').getContext('2d');
 
     // Destroy existing pie chart instance if it exists
@@ -238,22 +238,21 @@ function updateLastQuestionsPieChart(labels, data) {
 
     // Define colors for the pie chart
     const colors = {
-        "Yes": '#4CAF50', // Green for Yes
-        "No": '#36A2EB'  // Blue for No
+        Yes: '#4CAF50', // Green for Yes
+        No: '#36A2EB'  // Blue for No
     };
 
-    // Prepare data for pie chart
-    const datasetData = labels.map(label => data[label] || 0);
+    // Map background colors to the labels provided
     const backgroundColor = labels.map(label => colors[label] || '#CCCCCC'); // Default color if label not found
 
     // Create or update pie chart
     pieChartInstance = new Chart(ctx1, {
         type: 'pie',
         data: {
-            labels: labels,
+            labels: labels, // ['Yes', 'No']
             datasets: [{
-                data: datasetData,
-                backgroundColor: backgroundColor
+                data: data,     // [1, 0]
+                backgroundColor: backgroundColor // ['#4CAF50', '#36A2EB']
             }]
         },
         options: {
