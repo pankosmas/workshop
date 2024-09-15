@@ -29,23 +29,29 @@ const question2_answer4 = document.querySelector('label[for="Blending"]');
 const question2_answer5 = document.querySelector('label[for="Context"]');
 
 function validateForm(event) {
-    const checkboxes = document.querySelectorAll('input[name="details"]');
-    const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+    const activityNumber = getActivityNumberNew();
 
-    if (!isChecked) {
-        event.preventDefault(); // Prevent form submission
-        Swal.fire({
-            icon: 'warning',
-            title: 'Oops!',
-            text: 'Please select at least one option in the second question.',
-            confirmButtonText: 'Okay'
-        }).then(() => {
-            // You can focus on the first unchecked checkbox if you like
-            checkboxes[0].focus();
-        });
-        return false;
+    if (activityNumber === 'step9' || activityNumber === 'step10') {
+        return true;
+    } else {
+        const checkboxes = document.querySelectorAll('input[name="details"]');
+        const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+        if (!isChecked) {
+            event.preventDefault(); // Prevent form submission
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops!',
+                text: 'Please select at least one option in the second question.',
+                confirmButtonText: 'Okay'
+            }).then(() => {
+                // You can focus on the first unchecked checkbox if you like
+                checkboxes[0].focus();
+            });
+            return false;
+        }
+        return true;
     }
-    return true;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
