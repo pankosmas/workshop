@@ -17,223 +17,98 @@ function getActivityStepValue(){
     return selectedText.toLowerCase().replace(" ", "");
 }
 
-function updatePieChart(labels, data) {
-    const ctx1 = document.getElementById('pie-chart').getContext('2d');
-    if (pieChartInstance) {
-        pieChartInstance.destroy(); // Destroy the old instance
+// Global object to store charts
+const charts = {};
+
+// Function to update or create a chart
+function updateChart(chartId, chartType, labels, data) {
+    const ctx = document.getElementById(chartId).getContext('2d');
+    
+    // Check if chart already exists
+    if (charts[chartId]) {
+        // Destroy existing chart
+        charts[chartId].destroy();
     }
-    pieChartInstance = new Chart(ctx1, {
-        type: 'pie',
+
+    // Create new chart
+    charts[chartId] = new Chart(ctx, {
+        type: chartType,
         data: {
             labels: labels,
             datasets: [{
+                label: chartType === 'bar' ? 'Details Counts' : '',
                 data: data,
-                backgroundColor: ['#4CAF50', '#F44336', '#36A2EB']  // FF9800
+                backgroundColor: chartType === 'pie' ? ['#4CAF50', '#F44336', '#36A2EB'] : '#36A2EB'
             }]
         },
         options: {
+            responsive: true,
             plugins: {
                 datalabels: {
-                    color: '#fff',
+                    color: '#000',
                     formatter: function(value, context) {
                         let total = context.chart.data.datasets[0].data.reduce((acc, val) => acc + val, 0);
                         let percentage = ((value / total) * 100).toFixed(2);
                         return `${value}\n(${percentage}%)`;
                     },
-                    anchor: 'center',
-                    align: 'center',
+                    anchor: chartType === 'pie' ? 'center' : 'end',
+                    align: chartType === 'pie' ? 'center' : 'top',
                     font: {
                         weight: 'bold',
                         size: 14
                     }
                 }
+            },
+            scales: {
+                x: {
+                    stacked: chartType === 'bar' ? true : undefined,
+                    title: {
+                        display: chartType === 'bar',
+                        text: 'Details'
+                    }
+                },
+                y: {
+                    stacked: chartType === 'bar' ? true : undefined,
+                    beginAtZero: true,
+                    title: {
+                        display: chartType === 'bar',
+                        text: 'Counts'
+                    }
+                }
             }
         }
     });
+}
+
+// Function to clear all charts
+function clearAllCharts() {
+    for (const chartId in charts) {
+        if (charts[chartId]) {
+            charts[chartId].destroy();
+        }
+    }
+    // Clear the charts object
+    for (const chartId in charts) {
+        delete charts[chartId];
+    }
+}
+
+// Update or create specific charts
+function updatePieChart(labels, data) {
+    updateChart('pie-chart', 'pie', labels, data);
 }
 
 function updateBarChart(labels, data) {
-    const ctx2 = document.getElementById('bar-chart').getContext('2d');
-    if (barChartInstance) {
-        barChartInstance.destroy(); // Destroy the old instance
-    }
-    barChartInstance = new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Details Counts',
-                data: data,
-                backgroundColor: '#36A2EB'
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                datalabels: {
-                    color: '#000',
-                    formatter: function(value, context) {
-                        let total = context.chart.data.datasets[0].data.reduce((acc, val) => acc + val, 0);
-                        let percentage = ((value / total) * 100).toFixed(2);
-                        return `${value}\n(${percentage}%)`;
-                    },
-                    anchor: 'end',
-                    align: 'top',
-                    font: {
-                        weight: 'bold',
-                        size: 14
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+    updateChart('bar-chart', 'bar', labels, data);
 }
 
 function updateGlobalBarChart(labels, data) {
-    const ctx2 = document.getElementById('bar-chart').getContext('2d');
-
-    if (barChartInstance) {
-        barChartInstance.destroy(); // Destroy the old instance
-    }
-    // Assuming radio buttons determine the color for each image reality type
-    // Get colors based on selected radio buttons
-    const colors = {
-        Real: '#4CAF50',        // Green for Real
-        Tampered: '#F44336',    // Red for Tampered
-        Deepfake: '#36A2EB'     // Blue for Deepfake
-    };
-    // Prepare datasets for the stacked bar chart
-    const datasets = Object.keys(colors).map(category => ({
-        label: category,
-        data: labels.map((_, index) => data[index][category] || 0),
-        backgroundColor: colors[category],
-        stack: 'stack1' // Ensure bars are stacked
-    }));
-
-    barChartInstance = new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: datasets
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                datalabels: {
-                    color: '#000',
-                    formatter: function(value, context) {
-                        let total = context.chart.data.datasets[context.datasetIndex].data.reduce((acc, val) => acc + val, 0);
-                        let percentage = ((value / total) * 100).toFixed(2);
-                        return `${value}\n(${percentage}%)`;
-                    },
-                    anchor: 'end',
-                    align: 'top',
-                    font: {
-                        weight: 'bold',
-                        size: 14
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                    title: {
-                        display: true,
-                        text: 'Details'
-                    }
-                },
-                y: {
-                    stacked: true,
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Counts'
-                    }
-                }
-            }
-        }
-    });
+    updateChart('bar-chart', 'bar', labels, data);
 }
-
-function updateLastQuestionsBarChart(labels, data, divname) {
-    const ctx = document.getElementById(divname).getContext('2d');
-
-    if (divname === 'pie-chart') {
-        if (pieChartInstance) {
-            pieChartInstance.destroy();
-        }
-    } else if (divname === 'bar-chart') {
-        if (barChartInstance) {
-            barChartInstance.destroy();
-        }
-    }
-
-    const colors = {
-        Yes: '#4CAF50',   // Green for Yes
-        No: '#36A2EB'     // Blue for No
-    };
-
-    const datasets = Object.keys(colors).map(category => ({
-        label: category,
-        data: labels.map((_, index) => data[index][category] || 0),
-        backgroundColor: colors[category],
-        stack: 'stack1'
-    }));
-
-    const newBarChartInstance = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: datasets
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                datalabels: {
-                    color: '#000',
-                    formatter: function (value, context) {
-                        let total = context.chart.data.datasets[context.datasetIndex].data.reduce((acc, val) => acc + val, 0);
-                        let percentage = ((value / total) * 100).toFixed(2);
-                        return `${value}\n(${percentage}%)`;
-                    },
-                    anchor: 'end',
-                    align: 'top',
-                    font: {
-                        weight: 'bold',
-                        size: 14
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                    title: {
-                        display: true,
-                        text: 'Details'
-                    }
-                },
-                y: {
-                    stacked: true,
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Counts'
-                    }
-                }
-            }
-        }
-    });
-
-    if (divname === 'pie-chart') {
-        barChartInstance1 = newBarChartInstance;
-    } else if (divname === 'bar-chart') {
-        barChartInstance2 = newBarChartInstance;
-    }
+// Example usage for the last questions bar chart
+function updateLastQuestionsBarChart(labels, data, divName) {
+    const chartType = divName === 'pie-chart' ? 'pie' : 'bar';
+    updateChart(divName, chartType, labels, data);
 }
 
 function adjustHeatmapSize(imagePath) {
