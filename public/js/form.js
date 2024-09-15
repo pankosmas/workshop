@@ -174,15 +174,14 @@ function updateForm(stepTitle, imgSrc, question1, radio1Yes, radio1No, question2
     form.querySelectorAll('*').forEach(el => {
         el.removeEventListener('invalid', preventValidation, true);
     });
-
     // Build the new form content for steps 9 and 10
     form.innerHTML = `
-        <label>${question1}</label>
+        <label for="easy-to-find">${question1}</label>
         <div class="radio-group" required>
             ${radio1Yes}
             ${radio1No}
         </div>
-        <label>${question2}</label>
+        <label for="preferred-position">${question2}</label>
         <div class="radio-group" required>
             ${radio2Yes}
             ${radio2No}
@@ -429,11 +428,11 @@ function handleStepNavigation(submitCounter){
                 'Step 9: Can you spot the subscription button?',
                 '../images/calibration/calibration.png',
                 '1. Was it easy for you to locate it?',
-                '<input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes',
-                '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
+                '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes</label>',
+                '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No" required> No</label>',
                 '2. Would you prefer a different position?',
-                '<input type="radio" id="Yes" name="preferred-position" value="Yes" required> Yes',
-                '<input type="radio" id="No" name="preferred-position" value="No" required> No'
+                '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes" required> Yes</label>',
+                '<label for="No"><input type="radio" id="No" name="preferred-position" value="No" required> No</label>'
             );
         })
     }
@@ -446,11 +445,11 @@ function handleStepNavigation(submitCounter){
             'Step 10: Can you spot an advertisement?',
             '../images/calibration/calibration.png',
             '1. Was it easy for you to locate it?',
-            '<input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes',
-            '<input type="radio" id="No" name="easy-to-find" value="No" required> No',
+            '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes" required> Yes</label>',
+            '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No" required> No</label>',
             '2. Would you prefer a different position?',
-            '<input type="radio" id="Yes" name="preferred-position" value="Yes" required> Yes',
-            '<input type="radio" id="No" name="preferred-position" value="No" required> No'
+            '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes" required> Yes</label>',
+            '<label for="No"><input type="radio" id="No" name="preferred-position" value="No" required> No</label>'
         );
     }
     if (submitCounter == 10) { 
