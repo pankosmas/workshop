@@ -183,7 +183,6 @@ function updateLastQuestionsBarChart(labels, data, question) {
         data: {
             labels: labels, // ['Yes', 'No'] will be shown on the x-axis
             datasets: [{
-                label: 'Responses',   // Add a label for the dataset (entire dataset label)
                 data: data,           // [1, 0]
                 backgroundColor: backgroundColor // ['#4CAF50', '#36A2EB']
             }]
