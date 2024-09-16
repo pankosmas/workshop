@@ -62,6 +62,7 @@ function processFinalQuestionsCharts(users) {
     // Prepare data for pie chart and bar chart
     const easytofindCounts = { "Yes": 0, "No": 0 };
     const positionCounts = { "Yes": 0, "No": 0 };
+    let totalTime = 0.0;
     users.forEach(user => {
         // Count imageReality
         if (easytofindCounts[user.easyToFindd] !== undefined) {
