@@ -101,9 +101,9 @@ function validateForm(event) {
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form');
     form.addEventListener('submit', async (event) => {
+        event.preventDefault();  // Prevent default form submission
         if (!validateForm(event)) {
             // Prevent form from being submitted if validation fails
-            event.preventDefault();
             return;
         }
         var submitButton = document.getElementById('submitButton');
@@ -115,10 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentStep = {};
         if (submitCounter <= 9) {
             const imageReality = formData.get('image-reality');
-            const details = [];
-            formData.getAll('details').forEach(value => {
-                details.push(value);
-            });
+            const details = formData.getAll('details');
             data = {
                 activityStep: getActivityNumber(),
                 imageReality: imageReality,
@@ -165,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.answers.push(currentStep);
         localStorage.setItem('answers', JSON.stringify(window.answers));
         try {
-            const response = await fetch('/api/form', {
+            const response = await fetch('/.netlify/functions/form', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
