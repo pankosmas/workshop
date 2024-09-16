@@ -4,7 +4,7 @@ async function fetchData() {
         const response = await fetch(`https://imedius-workshop.netlify.app/.netlify/functions/data?activityStep=${activityStepValue}`);
         const data = await response.json();
         if (activityStepValue === 'step9' || activityStepValue === 'step10') {
-            processFinalCharts(data);
+            processFinalQuestionsCharts(data);
         } else { processCharts(data); }
         let gazeCoordinates = [];
         let mouseCoordinates = [];
@@ -60,9 +60,39 @@ function processCharts(users) {
 
 function processFinalQuestionsCharts(users) {
     // Prepare data for pie chart and bar chart
-    const easyToFind = { Yes: 0, No: 0 };
-    const preferredPosition = { Yes: 0, No: 0 };
-   
+    const easytofindCounts = { "Yes": 0, "No": 0 };
+    const positionCounts = { "Yes": 0, "No": 0 };
+    users.forEach(user => {
+        // Count imageReality
+        if (easytofindCounts[user.easyToFindd] !== undefined) {
+            easytofindCounts[user.imageReality]++;
+        }
+        if (positionCounts[user.preferredPosition] !== undefined){
+            positionCounts[user.preferredPosition] ++;
+        }
+        totalTime += user.time;
+    });
+    // Calculate average time
+    let avgTime = totalTime / users.length;
+    // Calculate variance
+    let variance = 0.0;
+    users.forEach(user => {
+        variance += Math.pow(user.time - avgTime, 2);
+    });
+    // Calculate std
+    variance /= users.length;
+    let stdDev = Math.sqrt(variance);
+    // Data for pie chart
+    const pieChartLabels = Object.keys(easytofindCounts);
+    const pieChartData = Object.values(easytofindCounts);
+    // Data for bar chart
+    const barChartLabels = Object.keys(positionCounts);
+    const barChartData = Object.values(positionCounts);
+    // Update Charts
+    updateLastQuestionsPieChart(pieChartLabels, pieChartData, 'Was it is to locate it?');
+    updateLastQuestionsBarChart(barChartLabels, barChartData, 'Would you prefer a different position?');
+    // Update timer average
+    updateTimer(avgTime.toFixed(2), stdDev.toFixed(2));
 }
 
 function updateSubmissionCount(count) {

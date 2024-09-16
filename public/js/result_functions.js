@@ -96,7 +96,6 @@ function updateBarChart(labels, data) {
 
 function updateGlobalBarChart(labels, data) {
     const ctx2 = document.getElementById('bar-chart').getContext('2d');
-
     if (barChartInstance) {
         barChartInstance.destroy(); // Destroy the old instance
     }
@@ -114,7 +113,6 @@ function updateGlobalBarChart(labels, data) {
         backgroundColor: colors[category],
         stack: 'stack1' // Ensure bars are stacked
     }));
-
     barChartInstance = new Chart(ctx2, {
         type: 'bar',
         data: {
@@ -162,21 +160,17 @@ function updateGlobalBarChart(labels, data) {
 
 function updateLastQuestionsBarChart(labels, data, question) {
     const ctx1 = document.getElementById('bar-chart').getContext('2d');
-
     // Destroy existing bar chart instance if it exists
     if (barChartInstance) {
         barChartInstance.destroy();
     }
-
     // Define colors for the bar chart
     const colors = {
         Yes: '#4CAF50', // Green for Yes
         No: '#36A2EB'  // Blue for No
     };
-
     // Map background colors to the labels provided
     const backgroundColor = labels.map(label => colors[label] || '#CCCCCC'); // Default color if label not found
-
     // Create or update bar chart
     barChartInstance = new Chart(ctx1, {
         type: 'bar',
@@ -235,21 +229,17 @@ function updateLastQuestionsBarChart(labels, data, question) {
 
 function updateLastQuestionsPieChart(labels, data, question) {
     const ctx1 = document.getElementById('pie-chart').getContext('2d');
-
     // Destroy existing pie chart instance if it exists
     if (pieChartInstance) {
         pieChartInstance.destroy();
     }
-
     // Define colors for the pie chart
     const colors = {
         Yes: '#4CAF50', // Green for Yes
         No: '#36A2EB'  // Blue for No
     };
-
     // Map background colors to the labels provided
     const backgroundColor = labels.map(label => colors[label] || '#CCCCCC'); // Default color if label not found
-
     // Create or update pie chart
     pieChartInstance = new Chart(ctx1, {
         type: 'pie',
@@ -295,9 +285,7 @@ function adjustHeatmapSize(imagePath) {
     const rightDiv = document.querySelector('.right');
     const leftDiv = document.querySelector('.left');
     const img = new Image();
-
     img.src = imagePath;
-
     img.onload = function () {
         const imgWidth = img.naturalWidth;
         const imgHeight = img.naturalHeight;
@@ -347,7 +335,6 @@ dropdown3.addEventListener('change', function () {
 function getDetailsArray() {
     // Get the selected option's text
     var activityStepValue = getActivityStepValue();
-
     if (activityStepValue == 'step1') { return { 'Normal': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Awareness': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Lighting-Shadow': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Edges-Blending': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Context': { Real: 0, Tampered: 0, Deepfake: 0 } }; }
     else if (activityStepValue == 'step2') { return { 'Normal': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Awareness': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Heatmap': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Spatial': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Colour': { Real: 0, Tampered: 0, Deepfake: 0 } }; }
     else if (activityStepValue == 'step3') { return { 'Awareness': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Heatmap': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Fusion': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Forgery': { Real: 0, Tampered: 0, Deepfake: 0 }, 'Combination': { Real: 0, Tampered: 0, Deepfake: 0 } }; }
