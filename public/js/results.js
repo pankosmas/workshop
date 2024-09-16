@@ -66,7 +66,7 @@ function processFinalQuestionsCharts(users) {
     users.forEach(user => {
         // Count imageReality
         if (easytofindCounts[user.easyToFindd] !== undefined) {
-            easytofindCounts[user.imageReality]++;
+            easytofindCounts[user.easyToFindd]++;
         }
         if (positionCounts[user.preferredPosition] !== undefined){
             positionCounts[user.preferredPosition] ++;
