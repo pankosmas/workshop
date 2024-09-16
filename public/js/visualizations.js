@@ -437,7 +437,7 @@ function rescaleHeatmapData(dataset) {
     var type = getTypeValue();
     if (type === "gaze-") {
         return dataset.map(entry => {
-            return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), 1.5];
+            return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), 1.25];
         });
     } else if (type === "mouse-") {
         return dataset.map(entry => {
