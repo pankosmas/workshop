@@ -126,6 +126,8 @@ function aggregateData(allUsersData) {
                 });
             }
         });
+    });
+    allUsersData.forEach(userData => {
         userData.mouseMovements.forEach(point => {
             // Check if a similar point already exists in aggregatedGazeData
             const existingPoint = aggregatedMouseData.find(p => p.x === point.x && p.y === point.y);
