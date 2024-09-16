@@ -283,7 +283,8 @@ input[type="submit"]:hover {
     background: linear-gradient(120deg, #10cc9d 0%, #14cba0 25%, #1fb3af 50%, #0995e6 75%, #11819b 100%);
 }
 #gaze {
-	display: block;
+	/*display: block;*/
+    display: none;
 	z-index: 100;
 	opacity: 0.7;
 	position: fixed;
