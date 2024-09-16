@@ -384,7 +384,7 @@ function getVizTypeAggregated(gazedata, mousedata){
     const selectedText = dropdown3.options[dropdown3.selectedIndex].text;
     var type = getTypeValue();
 
-    if (type === '-gaze') {
+    if (type === 'gaze-') {
         data = gazedata;
     } else {
         data = mousedata;
