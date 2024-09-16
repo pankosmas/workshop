@@ -109,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
         var submitButton = document.getElementById('submitButton');
         submitButton.disabled = true; // Disable the button
         submitCounter ++;
-        event.preventDefault(); // Prevent form submission
         const timeDiff = ((new Date()) - startTime) / 1000;
         const formData = new FormData(form);
         let data = {};
