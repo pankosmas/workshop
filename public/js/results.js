@@ -1,7 +1,7 @@
 async function fetchData() {
     try {
         activityStepValue = getActivityStepValue();
-        const response = await fetch(`https://inquisitive-moxie-cf6310.netlify.app/.netlify/functions/data?activityStep=${activityStepValue}`);
+        const response = await fetch(`https://imedius-workshop.netlify.app/.netlify/functions/data?activityStep=${activityStepValue}`);
         const data = await response.json();
         if (activityStepValue === 'step9' || activityStepValue === 'step10') {
             processFinalCharts(data);
