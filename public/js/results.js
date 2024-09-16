@@ -6,8 +6,9 @@ async function fetchData() {
         if (activityStepValue === 'step9' || activityStepValue === 'step10') {
             processFinalQuestionsCharts(data);
         } else { processCharts(data); }
-        var aggrdata = [];
-        aggrdata = aggregateGazeData(data);
+        var aggrgazedata = [];
+        var aggrmousedata = [];
+        aggrgazedata, aggrmousedata = aggregateData(data);
         getVizTypeAggregated(aggrdata);
         updateSubmissionCount(data.length); // Update submission count
     } catch (error) {
@@ -105,10 +106,11 @@ function updateTimer(time, std) {
 // Set up auto-refresh every 30 seconds
 setInterval(fetchData, 20000); // 30,000 milliseconds = 30 seconds
 
-function aggregateGazeData(allUsersGazeData) {
+function aggregateData(allUsersData) {
     const aggregatedGazeData = [];
-    allUsersGazeData.forEach(userGazeData => {
-        userGazeData.gazeCoordinates.forEach(point => {
+    const aggregatedMouseData = [];
+    allUsersData.forEach(userData => {
+        userData.gazeCoordinates.forEach(point => {
             // Check if a similar point already exists in aggregatedGazeData
             const existingPoint = aggregatedGazeData.find(p => p.x === point.x && p.y === point.y);
             if (existingPoint) {
@@ -123,6 +125,21 @@ function aggregateGazeData(allUsersGazeData) {
                 });
             }
         });
+        userData.mouseCoordinates.forEach(point => {
+            // Check if a similar point already exists in aggregatedGazeData
+            const existingPoint = aggregatedMouseData.find(p => p.x === point.x && p.y === point.y);
+            if (existingPoint) {
+                // If a similar point exists, aggregate the duration
+                existingPoint.duration += point.duration;
+            } else {
+                // Otherwise, add the point as a new entry
+                aggregatedMouseData.push({
+                    x: point.x,
+                    y: point.y,
+                    duration: point.duration
+                });
+            }
+        });
     });
-    return aggregatedGazeData;
+    return aggregatedGazeData, aggregatedMouseData;
 }

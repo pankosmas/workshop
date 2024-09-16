@@ -377,11 +377,19 @@ function getVizType() {
     }
 }
 
-function getVizTypeAggregated(data){
+function getVizTypeAggregated(gazedata, mousedata){
     const dropdown3 = document.getElementById('dropdown3');
     // Get the selected option's text and value
     reshapeContent();
     const selectedText = dropdown3.options[dropdown3.selectedIndex].text;
+    var type = getTypeValue();
+
+    if (type === '-gaze') {
+        data = gazedata;
+    } else {
+        data = mousedata;
+    }
+
     if (selectedText === "Data Points") {
         plotDataPoints(null, data);
     } else if (selectedText === "Scanpath") {
