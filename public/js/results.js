@@ -9,7 +9,7 @@ async function fetchData() {
         var aggrgazedata = [];
         var aggrmousedata = [];
         aggrgazedata, aggrmousedata = aggregateData(data);
-        getVizTypeAggregated(aggrdata);
+        getVizTypeAggregated(aggrgazedata, aggrmousedata);
         updateSubmissionCount(data.length); // Update submission count
     } catch (error) {
         console.error('Error fetching data:', error);
