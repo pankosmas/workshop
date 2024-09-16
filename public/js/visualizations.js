@@ -278,9 +278,6 @@ function drawCircles(canvas, circles, ctx) {
     ctx.stroke();
 }
 
-
-
-
 // Main function to plot fixation map
 function plotFixationMap(filename) {
     const data = loadDatasetFromLocal(filename);

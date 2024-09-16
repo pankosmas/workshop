@@ -6,11 +6,8 @@ async function fetchData() {
         if (activityStepValue === 'step9' || activityStepValue === 'step10') {
             processFinalQuestionsCharts(data);
         } else { processCharts(data); }
-        let gazeCoordinates = [];
-        let mouseCoordinates = [];
-        gazeCoordinates, mouseCoordinates = aggregatePoints(gazeCoordinates, mouseCoordinates, data);
-        console.log(gazeCoordinates.length);
-        //plotAggregatedPoints(gazeCoordinates);
+        const aggrdata = aggregateGazeData();
+        console.log(aggrdata.length);
         getVizType();
         updateSubmissionCount(data.length); // Update submission count
     } catch (error) {
@@ -91,7 +88,7 @@ function processFinalQuestionsCharts(users) {
     const barChartLabels = Object.keys(positionCounts);
     const barChartData = Object.values(positionCounts);
     // Update Charts
-    updateLastQuestionsPieChart(pieChartLabels, pieChartData, 'Was it is to locate it?');
+    updateLastQuestionsPieChart(pieChartLabels, pieChartData, 'Was it easy to locate it?');
     updateLastQuestionsBarChart(barChartLabels, barChartData, 'Would you prefer a different position?');
     // Update timer average
     updateTimer(avgTime.toFixed(2), stdDev.toFixed(2));
@@ -108,9 +105,24 @@ function updateTimer(time, std) {
 // Set up auto-refresh every 30 seconds
 setInterval(fetchData, 20000); // 30,000 milliseconds = 30 seconds
 
-function aggregatePoints(gazeCoordinates, mouseCoordinates, data) {
-    data.forEach( record => {
-        gazeCoordinates = gazeCoordinates.concat(record.gazeCoordinates);        
-        mouseCoordinates = mouseCoordinates.concat(record.mouseCoordinates);        
-    })
+function aggregateGazeData(allUsersGazeData) {
+    const aggregatedGazeData = [];
+    allUsersGazeData.forEach(userGazeData => {
+        userGazeData.gazeCoordinates.forEach(point => {
+            // Check if a similar point already exists in aggregatedGazeData
+            const existingPoint = aggregatedGazeData.find(p => p.x === point.x && p.y === point.y);
+            if (existingPoint) {
+                // If a similar point exists, aggregate the duration
+                existingPoint.duration += point.duration;
+            } else {
+                // Otherwise, add the point as a new entry
+                aggregatedGazeData.push({
+                    x: point.x,
+                    y: point.y,
+                    duration: point.duration
+                });
+            }
+        });
+    });
+    return aggregatedGazeData;
 }
