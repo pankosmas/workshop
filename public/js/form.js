@@ -248,7 +248,7 @@ function updateForm(stepTitle, imgSrc, question1, radio1Yes, radio1No, question2
             ${radio2Yes}
             ${radio2No}
         </div>
-        <input type="submit" value="Submit">
+        <input type="submit" id="submitButton" value="Submit">
     `;
 }
 
