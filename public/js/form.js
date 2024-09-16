@@ -12,6 +12,16 @@ const backToTests = document.getElementById('backToTests');
 const startTimer = document.getElementById('initialFullScreenImage');
 const partIndicator = document.querySelector('.partIndicator');
 const formImage = document.getElementById("form-image");
+const question1 = document.querySelector('label[for="image-reality"]');
+const question1_answer1 = document.querySelector('label[for="Real"]');
+const question1_answer2 = document.querySelector('label[for="Tampered"]');
+const question1_answer3 = document.querySelector('label[for="Deepfake"]');
+const question2 = document.querySelector('label[for="details"]');
+const question2_answer1 = document.querySelector('label[for="Normal"]');
+const question2_answer2 = document.querySelector('label[for="Awareness"]');
+const question2_answer3 = document.querySelector('label[for="Lighting"]');
+const question2_answer4 = document.querySelector('label[for="Blending"]');
+const question2_answer5 = document.querySelector('label[for="Context"]');
 
 // Helper functions for validation
 function isAnyChecked(name) {
