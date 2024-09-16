@@ -6,9 +6,9 @@ async function fetchData() {
         if (activityStepValue === 'step9' || activityStepValue === 'step10') {
             processFinalQuestionsCharts(data);
         } else { processCharts(data); }
-        const aggrdata = aggregateGazeData(data);
-        console.log(aggrdata.length);
-        getVizType();
+        var aggrdata = [];
+        aggrdata = aggregateGazeData(data);
+        getVizTypeAggregated(aggrdata);
         updateSubmissionCount(data.length); // Update submission count
     } catch (error) {
         console.error('Error fetching data:', error);

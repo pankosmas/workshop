@@ -13,12 +13,14 @@ function loadDatasetFromLocal(filename) {
 
 // ============================== Gaze Viz =========================================
 // ============================== Visualization No.1 plot gaze data points
-function plotDataPoints(filename) {
+function plotDataPoints(filename, data) {
     // Load data points from local storage or return if not available
-    const data = loadDatasetFromLocal(filename);
-    if (!data) {
-        console.error(`No data found in local storage with filename: ${filename}`);
-        return;
+    if (data === null) {
+        const data = loadDatasetFromLocal(filename);
+        if (!data) {
+            console.error(`No data found in local storage with filename: ${filename}`);
+            return;
+        }
     }
     // Transform the dataset
     const transformedData = data.map(({ x, y }) => ({ x, y }));
@@ -45,8 +47,14 @@ function plotDataPoints(filename) {
 }
 
 // ============================== Visualization No.2 plot Heatmap
-function plotHeatMap(filename) {
-	const data = loadDatasetFromLocal(filename);
+function plotHeatMap(filename, data) {
+	if (data === null) {
+        const data = loadDatasetFromLocal(filename);
+        if (!data) {
+            console.error(`No data found in local storage with filename: ${filename}`);
+            return;
+        }
+    }
     // Transform the dataset
     const transformedData = data.map(({ x, y }) => ({ x, y }));
     const finalData = rescaleHeatmapData(transformedData);
@@ -279,8 +287,14 @@ function drawCircles(canvas, circles, ctx) {
 }
 
 // Main function to plot fixation map
-function plotFixationMap(filename) {
-    const data = loadDatasetFromLocal(filename);
+function plotFixationMap(filename, data) {
+    if (data === null) {
+        const data = loadDatasetFromLocal(filename);
+        if (!data) {
+            console.error(`No data found in local storage with filename: ${filename}`);
+            return;
+        }
+    }
     const finalData = rescaleFixationData(data);
     const gridSize = 150;
     const canvas = document.getElementById('heatmap');
@@ -351,15 +365,31 @@ function getVizType() {
     var step = getStepValue();
     var filename = type + step;
     if (selectedText === "Data Points") {
-        plotDataPoints(filename);
+        plotDataPoints(filename, null);
     } else if (selectedText === "Scanpath") {
         return 'step2';
     } else if (selectedText === "Fixation Map") {
-        console.log('ena');
-        plotFixationMap(filename);
-        console.log('duo');
+        plotFixationMap(filename, null);
     } else if (selectedText === "Heatmap") {
-        plotHeatMap(filename);
+        plotHeatMap(filename, null);
+    } else if (selectedText === "Areas of Interest") {
+        return 'step5';
+    }
+}
+
+function getVizTypeAggregated(data){
+    const dropdown3 = document.getElementById('dropdown3');
+    // Get the selected option's text and value
+    reshapeContent();
+    const selectedText = dropdown3.options[dropdown3.selectedIndex].text;
+    if (selectedText === "Data Points") {
+        plotDataPoints(null, data);
+    } else if (selectedText === "Scanpath") {
+        return 'step2';
+    } else if (selectedText === "Fixation Map") {
+        plotFixationMap(null, data);
+    } else if (selectedText === "Heatmap") {
+        plotHeatMap(null, data);
     } else if (selectedText === "Areas of Interest") {
         return 'step5';
     }
