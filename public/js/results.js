@@ -8,7 +8,7 @@ async function fetchData() {
         } else { processCharts(data); }
         var aggrgazedata = [];
         var aggrmousedata = [];
-        aggrgazedata, aggrmousedata = aggregateData(data);
+        [aggrgazedata, aggrmousedata] = aggregateData(data);
         getVizTypeAggregated(aggrgazedata, aggrmousedata);
         updateSubmissionCount(data.length); // Update submission count
     } catch (error) {
