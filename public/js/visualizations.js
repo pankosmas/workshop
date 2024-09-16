@@ -455,3 +455,24 @@ function rescaleFixationData(dataset) {
         duration: entry.duration,
     }));
 }
+
+function updateOpacity(value) {
+    const heatmap = document.getElementById('heatmap');
+    const ctx = heatmap.getContext('2d');
+    const heat = simpleheat(heatmap);
+
+    // Update heatmap opacity
+    heat.data(rescaleHeatmapData(data));
+    heat.radius(35, 50);
+    heat.max(5);
+    heat.draw();
+    
+    ctx.globalAlpha = value; // Adjust opacity
+    heat.draw(); // Redraw heatmap with new opacity
+}
+
+document.getElementById('opacity-slider').addEventListener('input', function(event) {
+    const opacityValue = event.target.value;
+    document.getElementById('opacity-value').textContent = opacityValue;
+    updateOpacity(opacityValue);
+});

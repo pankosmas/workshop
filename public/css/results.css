@@ -80,7 +80,13 @@ canvas, #heatmap {
     background-position: center;
     background-repeat: no-repeat;
 }
+#opacity-control {
+    margin-left: 20px;
+}
 
+#opacity-slider {
+    width: 150px;
+}
 .submission-count, .my-timer, .global-timer {
     width: auto;
     padding: 10px;
