@@ -16,7 +16,7 @@ function loadDatasetFromLocal(filename) {
 function plotDataPoints(filename, data) {
     // Load data points from local storage or return if not available
     if (data === null) {
-        const data = loadDatasetFromLocal(filename);
+        data = loadDatasetFromLocal(filename);
         if (!data) {
             console.error(`No data found in local storage with filename: ${filename}`);
             return;
@@ -49,7 +49,7 @@ function plotDataPoints(filename, data) {
 // ============================== Visualization No.2 plot Heatmap
 function plotHeatMap(filename, data) {
 	if (data === null) {
-        const data = loadDatasetFromLocal(filename);
+        data = loadDatasetFromLocal(filename);
         if (!data) {
             console.error(`No data found in local storage with filename: ${filename}`);
             return;
@@ -289,7 +289,7 @@ function drawCircles(canvas, circles, ctx) {
 // Main function to plot fixation map
 function plotFixationMap(filename, data) {
     if (data === null) {
-        const data = loadDatasetFromLocal(filename);
+        data = loadDatasetFromLocal(filename);
         if (!data) {
             console.error(`No data found in local storage with filename: ${filename}`);
             return;
