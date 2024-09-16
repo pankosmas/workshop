@@ -69,7 +69,7 @@ window.onload = function() {
 			let duration = msDuration / 1000; // duration in sec
 			previousTime = currentTime; 
             //  Calculate data points 		
-			let dataPoint = { x: Math.round(gazeX), y: Math.round(gazeY), duration: parseFloat(duration.toFixed(2)) };
+			let dataPoint = { x: Math.round(gazeX), y: Math.round(gazeY), duration: parseFloat(duration.toFixed(2)), timestamp: parseFloat((currentTime/1000).toFixed(4)) };
 
             if (step1) {
                 window.dataArray.push(dataPoint);

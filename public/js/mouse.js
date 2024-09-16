@@ -11,7 +11,7 @@ document.addEventListener('mousemove', (event) => {
         if (lastEventTime !== null) { 
             const msduration = currentTime - lastEventTime;
             const duration = msduration / 1000;
-            window.mouseArray.push({"x": event.clientX, "y": event.clientY, "duration": duration});
+            window.mouseArray.push({"x": event.clientX, "y": event.clientY, "duration": duration, "timestamp": parseFloat((currentTime/1000).toFixed(4)) });
         }
         lastEventTime = currentTime;
 
