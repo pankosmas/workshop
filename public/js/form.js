@@ -23,10 +23,89 @@ const question2_answer3 = document.querySelector('label[for="Lighting"]');
 const question2_answer4 = document.querySelector('label[for="Blending"]');
 const question2_answer5 = document.querySelector('label[for="Context"]');
 
+function validateForm(event) {
+    let isValid = true;
+    let message = '';
+    let isRadioChecked = false;
+    let isCheckboxChecked = false;
+    let isEasyToFindChecked = false;
+    let isPreferredPositionChecked = false;
+
+    if (submitCounter <= 8) {
+        // For steps 1 to 8: Validate radio buttons and checkboxes
+        const radioButtons = document.querySelectorAll('input[name="image-reality"]');
+        isRadioChecked = Array.from(radioButtons).some(radio => radio.checked);
+
+        const checkboxes = document.querySelectorAll('input[name="details"]');
+        isCheckboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+        if (!isRadioChecked && !isCheckboxChecked) {
+            message = 'Please select one option from the first question and at least one option from the second question.';
+            isValid = false;
+        } else if (!isRadioChecked) {
+            message = 'Please select one option from the first question.';
+            isValid = false;
+        } else if (!isCheckboxChecked) {
+            message = 'Please select at least one option from the second question.';
+            isValid = false;
+        }
+    } else {
+        // For steps 9 and 10: Validate the new set of radio buttons
+        const radioButtonsEasyToFind = document.querySelectorAll('input[name="easy-to-find"]');
+        isEasyToFindChecked = Array.from(radioButtonsEasyToFind).some(radio => radio.checked);
+
+        const radioButtonsPreferredPosition = document.querySelectorAll('input[name="preferred-position"]');
+        isPreferredPositionChecked = Array.from(radioButtonsPreferredPosition).some(radio => radio.checked);
+
+        if (!isEasyToFindChecked) {
+            message = 'Please select one option for the "Was it easy for you to locate it?" question.';
+            isValid = false;
+        } else if (!isPreferredPositionChecked) {
+            message = 'Please select one option for the "Would you prefer a different position?" question.';
+            isValid = false;
+        }
+    }
+
+    if (!isValid) {
+        event.preventDefault(); // Prevent form submission
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oops!',
+            text: message,
+            confirmButtonText: 'Okay'
+        }).then(() => {
+            // Optionally focus on the first unchecked field
+            if (submitCounter <= 8) {
+                const radioButtons = document.querySelectorAll('input[name="image-reality"]');
+                const checkboxes = document.querySelectorAll('input[name="details"]');
+                if (!isRadioChecked) {
+                    radioButtons[0].focus();
+                } else if (!isCheckboxChecked) {
+                    checkboxes[0].focus();
+                }
+            } else {
+                const radioButtonsEasyToFind = document.querySelectorAll('input[name="easy-to-find"]');
+                const radioButtonsPreferredPosition = document.querySelectorAll('input[name="preferred-position"]');
+                if (!isEasyToFindChecked) {
+                    radioButtonsEasyToFind[0].focus();
+                } else if (!isPreferredPositionChecked) {
+                    radioButtonsPreferredPosition[0].focus();
+                }
+            }
+        });
+        return false; // Prevent further form processing
+    }
+    return true; // Allow form submission if valid
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form');
     form.addEventListener('submit', async (event) => {
-        
+        if (!validateForm(event)) {
+            // Prevent form from being submitted if validation fails
+            event.preventDefault();
+            return;
+        }
         var submitButton = document.getElementById('submitButton');
         submitButton.disabled = true; // Disable the button
         submitCounter ++;
