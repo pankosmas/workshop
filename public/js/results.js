@@ -8,7 +8,8 @@ async function fetchData() {
         } else { processCharts(data); }
         var aggrgazedata = [];
         var aggrmousedata = [];
-        [aggrgazedata, aggrmousedata] = aggregateData(data);
+        aggrgazedata = aggregateGazeData(data);
+        aggrmousedata = aggregateMouseData(data);
         console.log(aggrgazedata, aggrmousedata);
         getVizTypeAggregated(aggrgazedata, aggrmousedata);
         updateSubmissionCount(data.length); // Update submission count
@@ -107,9 +108,8 @@ function updateTimer(time, std) {
 // Set up auto-refresh every 30 seconds
 setInterval(fetchData, 20000); // 30,000 milliseconds = 30 seconds
 
-function aggregateData(allUsersData) {
+function aggregateGazeData(allUsersData) {
     const aggregatedGazeData = [];
-    const aggregatedMouseData = [];
     allUsersData.forEach(userData => {
         userData.gazeCoordinates.forEach(point => {
             // Check if a similar point already exists in aggregatedGazeData
@@ -127,9 +127,14 @@ function aggregateData(allUsersData) {
             }
         });
     });
+    return aggregatedGazeData;
+}
+
+function aggregateMouseData(allUsersData) {
+    const aggregatedMouseData = [];
     allUsersData.forEach(userData => {
         userData.mouseMovements.forEach(point => {
-            // Check if a similar point already exists in aggregatedGazeData
+            // Check if a similar point already exists in aggregatedMouseData
             const existingPoint = aggregatedMouseData.find(p => p.x === point.x && p.y === point.y);
             if (existingPoint) {
                 // If a similar point exists, aggregate the duration
@@ -144,5 +149,5 @@ function aggregateData(allUsersData) {
             }
         });
     });
-    return aggregatedGazeData, aggregatedMouseData;
+    return aggregatedMouseData;
 }
