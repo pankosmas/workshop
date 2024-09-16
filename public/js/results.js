@@ -10,7 +10,6 @@ async function fetchData() {
         var aggrmousedata = [];
         aggrgazedata = aggregateGazeData(data);
         aggrmousedata = aggregateMouseData(data);
-        console.log(aggrgazedata, aggrmousedata);
         getVizTypeAggregated(aggrgazedata, aggrmousedata);
         updateSubmissionCount(data.length); // Update submission count
     } catch (error) {
