@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 console.log('Form submission successful');  // Log successful submission
-                handleStepNavigation(submitCounter);
+                loadFormStep();
                 submitButton.disabled = false;
             } else {
                 console.error('Error submitting form:', response.status);  // Log errors
@@ -317,134 +317,31 @@ function updateBackToTestsStyles(top, right, opacity, width, height) {
     backToTests.style.height = height;
 }
 
-function handleStepNavigation(submitCounter){
-    if (submitCounter == 2) {
-        // Experiment with the progress bar
-        editProgress(progressBar, 10);
-        loadNextStep("../images/step2.png", 'Step 2: Uncover the Truth by using Forensic Heatmaps');
-        changeFormContent('Step 2: Uncover the Truth by using Forensic Heatmaps', "../images/step2.png", 
-            '1. I believe this image is: ', 
-            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)', 
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
-            '2. What led you to your decision?', 
-            '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
-            '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
-            '<input type="checkbox" id="Heatmap" name="details" value="Heatmap">  Heatmap areas of uniform color indicate that there is no processing.',
-            '<input type="checkbox" id="Spatial" name="details" value="Spatial"> Spatial inconsistencies are present in the image.',
-            '<input type="checkbox" id="Colour" name="details" value="Colour"> Colour inconsistencies present in the heatmap raise suspicions about the image.',
-        );
-    }
-    if (submitCounter == 3) {
-        // Experiment with the progress bar
-        editProgress(progressBar, 20);
-        loadNextStep("../images/step3.png", 'Step 3: Confirm your findings with Fusion (probability) mapping');
-        changeFormContent('Step 3: Confirm your findings with Fusion (probability) mapping', "../images/step3.png",
-            '1. I believe this image is: ',
-            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
-            '2. What led you to your decision?',
-            '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
-            '<input type="checkbox" id="Heatmap" name="details" value="Heatmap"> Visual inspection of image and heatmaps.',
-            '<input type="checkbox" id="Fusion" name="details" value="Fusion"> Visual inspection of fusion map.',
-            '<input type="checkbox" id="Forgery" name="details" value="Forgery"> The indicated forgery probability.',
-            '<input type="checkbox" id="Combination" name="details" value="Combination"> Combined inspection of image, heatmaps, fusion map and forgery probability.',
-        );
-    }
-    if (submitCounter == 4) {
-        // Experiment with the progress bar
-        editProgress(progressBar, 30);
-        loadNextStep("../images/step4.png", 'Step 4: Cross-check your findings with Reverse Image Search');
-        changeFormContent('Step 4: Cross-check your findings with Reverse Image Search', "../images/step4.png", 
-            '1. I believe this image is: ',
-            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
-            '2. What led you to your decision?',
-            '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
-            '<input type="checkbox" id="Identical" name="details" value="Identical"> Search results point to a single identical image.',
-            '<input type="checkbox" id="Variants" name="details" value="Variants"> Search results revealed multiple variants of the image components.',
-            '<input type="checkbox" id="Context" name="details" value="Context"> The image and/or its variants have been used in different contexts.',
-            '<input type="checkbox" id="Fact Checked" name="details" value="Fact Checked"> Search results indicate that the image has been already fact checked.',
-        );
-    }
-    if (submitCounter == 5) { 
-        Swal.fire({
-            title: 'Success!',
-            text: ``,
-            icon: 'success',
-            confirmButtonText: 'Go Next'
-        }).then(() => {
-            // Experiment with the progress bar
-            // Eisodos experiment 2
-            editProgress(progressBar, 40);
-            loadNextStep("../images/step5.png", 'Step 5: A challenge to Identify Real vs. Fake Images');
-            changeFormContent('Step 5: A challenge to Identify Real vs. Fake Images', "../images/step5.png", 
-                '1. I believe this image is: ',
-                '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
-                '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
-                '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
-                '2. What led you to your decision?',
-                '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
-                '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
-                '<input type="checkbox" id="Lighting-Shadow" name="details" value="Lighting-Shadow"> Lighting and shadow inconsistencies are present.',
-                '<input type="checkbox" id="Edges-Blending" name="details" value="Edges-Blending"> Poor edges and blending around the objects are present.',
-                '<input type="checkbox" id="Context" name="details" value="Context"> The image context does not fit with the displayed persona.',
-            );
+function loadFormStep() {
+    fetch('../json/questions1-8.json')
+        .then(response => response.json())
+        .then(data => {
+            const stepData = data.steps[currentStep];
+            // Update the partIndicator
+            document.querySelector('.partIndicator').textContent = stepData.partIndicator;
+            // Update the image
+            document.getElementById('form-image').src = stepData.imageSrc;
+            // Clear the checkbox group and populate with new checkboxes
+            const checkboxGroup = document.querySelector('.checkbox-group');
+            checkboxGroup.innerHTML = '';
+            stepData.checkboxes.forEach(checkbox => {
+                checkboxGroup.innerHTML += `
+                    <label for="${checkbox.id}">
+                        <input type="checkbox" id="${checkbox.id}" name="${checkbox.name}" value="${checkbox.value}">
+                        ${checkbox.label}
+                    </label>
+                `;
+            });
         })
-    }
-    if (submitCounter == 6) {
-        // Experiment with the progress bar
-        editProgress(progressBar, 50);
-        loadNextStep("../images/step6.png", 'Step 6: Uncover the Truth by using Forensic Heatmaps');
-        changeFormContent('Step 6: Uncover the Truth by using Forensic Heatmaps', "../images/step6.png", 
-            '1. I believe this image is: ',
-            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
-            '2. What led you to your decision?',
-            '<input type="checkbox" id="Normal" name="details" value="Normal"> Everything seems smooth and normal.',
-            '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
-            '<input type="checkbox" id="Heatmap" name="details" value="Heatmap"> Heatmap areas of uniform color indicate that there is no processing.',
-            '<input type="checkbox" id="Spatial" name="details" value="Spatial"> Spatial inconsistencies are present in the image.',
-            '<input type="checkbox" id="Colour" name="details" value="Colour"> Colour inconsistencies present in the heatmap raise suspicions about the image.',
-        );
-    }
-    if (submitCounter == 7) {
-        // Experiment with the progress bar
-        editProgress(progressBar, 60);
-        loadNextStep("../images/step7.png", 'Step 7: Confirm your findings with Fusion (probability) mapping');
-        changeFormContent('Step 7: Confirm your findings with Fusion (probability) mapping', "../images/step7.png", 
-            '1. I believe this image is: ',
-            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
-            '2. What led you to your decision?',
-            '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
-            '<input type="checkbox" id="Heatmap" name="details" value="Heatmap"> Visual inspection of image and heatmaps.',
-            '<input type="checkbox" id="Fusion" name="details" value="Fusion"> Visual inspection of fusion map.',
-            '<input type="checkbox" id="Forgery" name="details" value="Forgery"> The indicated forgery probability.',
-            '<input type="checkbox" id="Combination" name="details" value="Combination"> Combined inspection of image, heatmaps, fusion map and forgery probability.',
-        );
-    }
-    if (submitCounter == 8) {
-        // Experiment with the progress bar
-        editProgress(progressBar, 70);
-        loadNextStep("../images/step8.png", 'Step 8: Cross-check your findings with Reverse Image Search');
-        changeFormContent('Step 8: Cross-check your findings with Reverse Image Search', "../images/step8.png", 
-            '1. I believe this image is: ',
-            '<input type="radio" id="Real" name="image-reality" value="Real"> Authentic (Real)',
-            '<input type="radio" id="Tampered" name="image-reality" value="Tampered"> Tampered (Digitally Manipulated)',
-            '<input type="radio" id="Deepfake" name="image-reality" value="Deepfake"> Deepfake (AI Generated)',
-            '2. What led you to your decision?',
-            '<input type="checkbox" id="Awareness" name="details" value="Awareness"> I am aware of this specific image.',
-            '<input type="checkbox" id="Synthetically Produced" name="details" value="Synthetically Produced"> Search results pointed out the image has been synthetically produced by other documents.',
-            '<input type="checkbox" id="Variants" name="details" value="Variants"> Search results revealed multiple variants of the image components.',
-            '<input type="checkbox" id="Unique" name="details" value="Unique"> The image seems unique, like it has been created to serve a very specific purpose.',
-            '<input type="checkbox" id="DF Algorithms" name="details" value="DF Algorithms"> The deep fake detection algorithms points to an AI Generated image.',
-        );
-    }
+        .catch(error => console.error('Error loading form step:', error));
+}
+
+/*
     if (submitCounter == 9) { 
         Swal.fire({
             title: 'Success!',
@@ -499,4 +396,4 @@ function handleStepNavigation(submitCounter){
             editProgress(progressBar, 100);
         })
     }
-}
+*/
