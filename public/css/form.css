@@ -110,7 +110,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: auto; /* Limits the maximum width to 90% of the viewport width */
+    max-width: 90%; /* Limits the maximum width to 90% of the viewport width */
     height: auto; /* Limits the maximum height to 90% of the viewport height */
     box-sizing: border-box; /* Ensures padding is included in the div�s total width */
     position: absolute;
@@ -122,8 +122,7 @@ body {
     margin-bottom: 20px;
 }
 .initial-container img {
-    width: auto;
-    height: auto;
+    width: -webkit-fill-available;
     height: auto;
     display: block; /* Ensures the image takes up its own line */
     margin-bottom: 20px; /* Adds space between the image and the button */
