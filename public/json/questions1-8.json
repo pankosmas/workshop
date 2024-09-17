@@ -6,8 +6,8 @@
             "checkboxes": [
                 { "id": "Normal", "name": "details", "value": "Normal", "label": "Everything seems smooth and normal." },
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
-                { "id": "Lighting", "name": "details", "value": "Lighting-Shadow", "label": "Lighting and shadow inconsistencies are present." },
-                { "id": "Blending", "name": "details", "value": "Edges-Blending", "label": "Poor edges and blending around the objects are present." },
+                { "id": "Lighting-Shadow", "name": "details", "value": "Lighting-Shadow", "label": "Lighting and shadow inconsistencies are present." },
+                { "id": "Edges-Blending", "name": "details", "value": "Edges-Blending", "label": "Poor edges and blending around the objects are present." },
                 { "id": "Context", "name": "details", "value": "Context", "label": "The image context does not fit with the displayed persona." }
             ]
         },
@@ -29,7 +29,7 @@
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
                 { "id": "Heatmap", "name": "details", "value": "Heatmap", "label": "Visual inspection of image and heatmaps." },
                 { "id": "Fusion", "name": "details", "value": "Fusion", "label": "Visual inspection of fusion map." },
-                { "id": "Forgery", "name": "details", "value": "Forgery", "label": "The indicated forgery probability." }
+                { "id": "Forgery", "name": "details", "value": "Forgery", "label": "The indicated forgery probability." },
                 { "id": "Combination", "name": "details", "value": "Combination", "label": "Combined inspection of image, heatmaps, fusion map and forgery probability." }
             ]
         },
@@ -40,7 +40,7 @@
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
                 { "id": "Identical", "name": "details", "value": "Identical", "label": "Search results point to a single identical image." },
                 { "id": "Variants", "name": "details", "value": "Variants", "label": "Search results revealed multiple variants of the image components." },
-                { "id": "Context", "name": "details", "value": "Context", "label": "The image and/or its variants have been used in different contexts." }
+                { "id": "Context", "name": "details", "value": "Context", "label": "The image and/or its variants have been used in different contexts." },
                 { "id": "Fact Checked", "name": "details", "value": "Fact Checked", "label": "Search results indicate that the image has been already fact checked." }
             ]
         },
@@ -62,7 +62,7 @@
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
                 { "id": "Heatmap", "name": "details", "value": "Heatmap", "label": "Heatmap areas of uniform color indicate that there is no processing." },
                 { "id": "Spatial", "name": "details", "value": "Spatial", "label": "Spatial inconsistencies are present in the image." },
-                { "id": "Colour", "name": "details", "value": "Colour", "label": "Colour inconsistencies present in the heatmap raise suspicions about the image." }
+                { "id": "Colour", "name": "details", "value": "Colour", "label": "Colour inconsistencies present in the heatmap raise suspicions about the image." },
                 { "id": "No Further Insights", "name": "details", "value": "No Further Insights", "label": "Heatmaps do not provide further insights." }
             ]
         },
@@ -73,7 +73,7 @@
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
                 { "id": "Heatmap", "name": "details", "value": "Heatmap", "label": "Visual inspection of image and heatmaps." },
                 { "id": "Fusion", "name": "details", "value": "Fusion", "label": "Visual inspection of fusion map." },
-                { "id": "Forgery", "name": "details", "value": "Forgery", "label": "The indicated forgery probability." }
+                { "id": "Forgery", "name": "details", "value": "Forgery", "label": "The indicated forgery probability." },
                 { "id": "Combination", "name": "details", "value": "Combination", "label": "Combined inspection of image, heatmaps, fusion map and forgery probability." }
             ]
         },
@@ -84,7 +84,7 @@
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
                 { "id": "Synthetically Produced", "name": "details", "value": "Synthetically Produced", "label": "Search results pointed out the image has been synthetically produced by other documents." },
                 { "id": "Variants", "name": "details", "value": "Variants", "label": "Search results revealed multiple variants of the image components." },
-                { "id": "Unique", "name": "details", "value": "Unique", "label": "The image seems unique, like it has been created to serve a very specific purpose." }
+                { "id": "Unique", "name": "details", "value": "Unique", "label": "The image seems unique, like it has been created to serve a very specific purpose." },
                 { "id": "DF Algorithms", "name": "details", "value": "DF Algorithms", "label": "The deep fake detection algorithms points to an AI Generated image." }
             ]
         }
