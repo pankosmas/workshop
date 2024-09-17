@@ -317,7 +317,7 @@ function updateBackToTestsStyles(top, right, opacity, width, height) {
     backToTests.style.height = height;
 }
 
-function loadFormStep() {
+function loadFormStep(currentStep) {
     fetch('../json/questions1-8.json')
         .then(response => response.json())
         .then(data => {
