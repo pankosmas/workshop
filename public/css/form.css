@@ -152,7 +152,7 @@ body {
     padding: 10px;
     background: white;
     box-shadow: 5px 5px 10px #16c7a6;
-    margin: 0;
+    margin: 0 5%;
 }
 #left-div {
     flex: 1 1 auto;
