@@ -288,6 +288,12 @@ function getActivityNumber() {
 
 function loadNextStepFromJSON(submitCounter) {
     fetchStepData(submitCounter-1); // Fetch data for the current step
+    if (submitCounter > 8) { 
+        header1 = document.getElementById('h1');
+        header1.innerHTML = 'Observation of News Page';
+        if (submitCounter === 9) { updateBackToTestsStyles('2em', '50em', '0', '15vw', '10vh'); }
+        if (submitCounter === 10) { updateBackToTestsStyles('32em', '25em', '0', '45vw', '30vh'); }
+    }
 }
 
 function fetchStepData(step) {
