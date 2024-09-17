@@ -104,34 +104,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include Select2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#reasons').select2({
-                placeholder: "Select reasons",
-                allowClear: true
-            });
-        });
-        const img = document.getElementById('form-image');
-        const leftdiv = document.getElementById('left-div');
-
-        img.onload = function() {
-            if (img.naturalHeight > img.naturalWidth) {
-                initialContainer.style.width = '70%';
-                initialContainer.style.height = 'auto';
-                initialImage.style.maxWidth = '35%';
-                leftdiv.style.maxWidth = "41%";
-                if (document.body.style.width > 1400) { img.style.maxWidth = "97%"; }
-                else { img.style.maxWidth = "85%"; }
-            } else {
-                initialContainer.style.width = '85%';
-                initialContainer.style.height = 'auto';
-                initialImage.style.maxWidth = '85%';
-                leftdiv.style.maxWidth = "41%";
-                if (document.body.style.width > 1400) { img.style.maxWidth = "97%"; }
-                else { img.style.maxWidth = "85%"; }
-            }
-        }
-    </script>
     <script src="../js/form.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/mouse.js"></script>
