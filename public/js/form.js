@@ -291,7 +291,7 @@ function loadNextStepFromJSON(submitCounter) {
     if (submitCounter > 8) { 
         header1 = document.getElementById('h1');
         header1.innerHTML = 'Observation of News Page';
-        if (submitCounter === 9) { updateBackToTestsStyles('2em', '50em', '0', '15vw', '10vh'); }
+        if (submitCounter === 9) { updateBackToTestsStyles('5%', '42%', '0', '15%', '11%'); }
         if (submitCounter === 10) { updateBackToTestsStyles('32em', '25em', '0', '45vw', '30vh'); }
     }
 }
@@ -381,7 +381,7 @@ function loadFormStep(currentStep) {
         fetch('../json/questions9-10.json')
         .then(response => response.json())
         .then(data => {
-            const stepData = data.steps[currentStep-1];
+            const stepData = data.steps[currentStep-9];
             // Update the partIndicator
             document.querySelector('.partIndicator').textContent = stepData.partIndicator;
             // Update the image
