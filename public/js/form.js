@@ -378,49 +378,28 @@ function loadFormStep(currentStep) {
             });
         })
         .catch(error => console.error('Error loading form step:', error));
+    } else if (currentStep === 8) {
+        updateForm(
+            'Step 9: Can you spot the subscription button?',
+            '../images/calibration/calibration.png',
+            '1. Was it easy for you to locate the subscription button?',
+            '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes"> Yes</label>',
+            '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No"> No</label>',
+            '2. Would you prefer a different position?',
+            '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes"> Yes</label>',
+            '<label for="No"><input type="radio" id="No" name="preferred-position" value="No"> No</label>'
+        );
     } else {
-        fetch('../json/questions9-10.json')
-        .then(response => response.json())
-        .then(data => {
-            const stepData = data.steps[currentStep-9];
-            // Update the partIndicator
-            document.querySelector('.partIndicator').textContent = stepData.partIndicator;
-            // Update the image
-            document.getElementById('form-image').src = stepData.imgSrc;
-            // Clear the form and populate with new radio buttons
-            const form = document.getElementById('form');
-            form.innerHTML = ''; // Clear existing content
-            // Populate with new questions and radio buttons
-            stepData.questions.forEach((question, index) => {
-                // Create a container for each question
-                const questionContainer = document.createElement('div');
-                questionContainer.classList.add('questionContainer');
-                // Create and append the question label
-                const questionLabel = document.createElement('label');
-                questionLabel.setAttribute('for', question.questionId);
-                questionLabel.textContent = `${index + 1}. ${question.questionText}`;
-                questionContainer.appendChild(questionLabel);
-                // Add the radio buttons for each option
-                question.options.forEach(option => {
-                    const optionLabel = document.createElement('label');
-                    optionLabel.setAttribute('for', `${option.value}${index + 1}`);
-                    optionLabel.innerHTML = `
-                        <input type="radio" id="${option.value}${index + 1}" name="question${index + 1}" value="${option.value}">
-                        ${option.label}
-                    `;
-                    questionContainer.appendChild(optionLabel);
-                });
-                // Append the question container to the form
-                form.appendChild(questionContainer);
-            });
-            // Add a submit button at the end
-            const submitButton = document.createElement('input');
-            submitButton.type = 'submit';
-            submitButton.id = 'submitButton';
-            submitButton.value = 'Submit';
-            form.appendChild(submitButton);
-        })
-        .catch(error => console.error('Error loading form step:', error));
+        updateForm(
+            'Step 10: Can you spot an advertisement?',
+            '../images/calibration/calibration.png',
+            '1. Was it easy for you to locate it?',
+            '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes"> Yes</label>',
+            '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No"> No</label>',
+            '2. Would you prefer a different position?',
+            '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes"> Yes</label>',
+            '<label for="No"><input type="radio" id="No" name="preferred-position" value="No"> No</label>'
+        );
     }
     
 }
