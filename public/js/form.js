@@ -172,6 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 console.log('Form submission successful');  // Log successful submission
+                editProgress(progressBar, 10 * submitCounter);
+                loadNextStepFromJSON(submitCounter);
                 loadFormStep(submitCounter);
                 submitButton.disabled = false;
             } else {
@@ -284,6 +286,24 @@ function getActivityNumber() {
     else { return 'step10'; }
 }
 
+function loadNextStepFromJSON(submitCounter) {
+    fetchStepData(submitCounter); // Fetch data for the current step
+}
+
+function fetchStepData(step) {
+    fetch('stepsTitles.json')
+        .then(response => response.json())
+        .then(data => {
+            const stepData = data.steps[step];
+            if (stepData) {
+                loadNextStep(stepData.imageSrc, stepData.title);
+            } else {
+                console.log('No more steps available.');
+            }
+        })
+        .catch(error => console.error('Error fetching step data:', error));
+}
+
 function loadNextStep(url, title) {
     initialImage.src = url;
     titleText.textContent = title;
@@ -369,7 +389,7 @@ function loadFormStep(currentStep) {
             updateForm(
                 'Step 9: Can you spot the subscription button?',
                 '../images/calibration/calibration.png',
-                '1. Was it easy for you to locate it?',
+                '1. Was it easy for you to locate the subscription button?',
                 '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes"> Yes</label>',
                 '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No"> No</label>',
                 '2. Would you prefer a different position?',

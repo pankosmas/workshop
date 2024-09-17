@@ -1,0 +1,44 @@
+{
+    "steps": [
+        {
+            "imageSrc": "../images/step1.png",
+            "title": "Step 1: A challenge to Identify Real vs. Fake Images"
+        },
+        {
+            "imageSrc": "../images/step2.png",
+            "title": "Step 2: Uncover the Truth by using Forensic Heatmaps"
+        },
+        {
+            "imageSrc": "../images/step3.png",
+            "title": "Step 3: Confirm your findings with Fusion (probability) mapping"
+        },
+        {
+            "imageSrc": "../images/step4.png",
+            "title": "Step 4: Cross-check your findings with Reverse Image Search"
+        },
+        {
+            "imageSrc": "../images/step5.png",
+            "title": "Step 5: A challenge to Identify Real vs. Fake Images"
+        },
+        {
+            "imageSrc": "../images/step6.png",
+            "title": "Step 6: Uncover the Truth by using Forensic Heatmaps"
+        },
+        {
+            "imageSrc": "../images/step7.png",
+            "title": "Step 7: Confirm your findings with Fusion (probability) mapping"
+        },
+        {
+            "imageSrc": "../images/step8.png",
+            "title": "Step 8: Cross-check your findings with Reverse Image Search"
+        },
+        {
+            "imageSrc": "../images/calibration/calibration.png",
+            "title": "Step 9: Can you spot the subscription button?"
+        },
+        {
+            "imageSrc": "../images/calibration/calibration.png",
+            "title": "Step 10: Can you spot an advertisement?"
+        }
+    ]
+}
