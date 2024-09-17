@@ -391,8 +391,6 @@ function loadFormStep(currentStep) {
             const form = document.getElementById('form');
             form.innerHTML = ''; // Header label
             stepData.questions.forEach((question, index) => {
-                const questionContainer = document.createElement('div');
-                questionContainer.classList.add('question-container');
                 const questionLabel = document.createElement('label');
                 questionLabel.setAttribute('for', question.questionId);
                 questionLabel.textContent = `${index + 1}. ${question.questionText}`;
