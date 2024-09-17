@@ -163,7 +163,7 @@ body {
     flex: 1 1 auto; /* Allows question to grow and fit content */
     padding: 20px; /* Adjust as necessary */
     border: none;
-    max-width: 60%; /* Prevents shrinking beyond content size */
+    max-width: fit-content; /* Prevents shrinking beyond content size */
 }
 form {
     width: fit-content;
@@ -331,7 +331,6 @@ input[type="submit"]:hover {
     #form-image { max-width: 85%;}
 }
 @media (min-width: 1439px) {
-    .container { height: auto; }
     .content h1 { margin: 12vh 0vw 5vh 0vw; }
 }
 @media (min-width: 1919px) {

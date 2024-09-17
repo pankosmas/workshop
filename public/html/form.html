@@ -113,7 +113,6 @@
         });
         const img = document.getElementById('form-image');
         const leftdiv = document.getElementById('left-div');
-        const questiondiv = document.querySelector('.question');
 
         img.onload = function() {
             const container = document.getElementById('form-container');
@@ -125,7 +124,6 @@
                 leftdiv.style.maxWidth = "41%";
                 if (document.body.style.width > 1400) { img.style.maxWidth = "97%"; }
                 else { img.style.maxWidth = "85%"; }
-                questiondiv.style.maxWidth = '60%';
             } else {
                 container.classList.add('left-image');
                 initialContainer.style.width = '85%';
@@ -134,7 +132,6 @@
                 leftdiv.style.maxWidth = "41%";
                 if (document.body.style.width > 1400) { img.style.maxWidth = "97%"; }
                 else { img.style.maxWidth = "85%"; }
-                questiondiv.style.maxWidth = '55%';
             }
         }
     </script>
