@@ -169,10 +169,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(data)
             });
-
             if (response.ok) {
                 console.log('Form submission successful');  // Log successful submission
-                editProgress(progressBar, 10 * submitCounter);
+                editProgress(progressBar, 10 * (submitCounter - 1));
                 loadNextStepFromJSON(submitCounter);
                 loadFormStep(submitCounter);
                 submitButton.disabled = false;
@@ -399,9 +398,9 @@ function loadFormStep(currentStep) {
                 // Add the radio buttons for each option
                 question.options.forEach(option => {
                     const optionLabel = document.createElement('label');
-                    optionLabel.setAttribute('for', option.value);
+                    optionLabel.setAttribute('for', `${option.value}${index + 1}`);
                     optionLabel.innerHTML = `
-                        <input type="radio" id="${option.value}" name="question${index + 1}" value="${option.value}">
+                        <input type="radio" id="${option.value}${index + 1}" name="question${index + 1}" value="${option.value}">
                         ${option.label}
                     `;
                     questionContainer.appendChild(optionLabel);
