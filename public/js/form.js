@@ -341,7 +341,7 @@ function loadFormStep(currentStep) {
     fetch('../json/questions1-8.json')
         .then(response => response.json())
         .then(data => {
-            const stepData = data.steps[currentStep];
+            const stepData = data.steps[currentStep-1];
             // Update the partIndicator
             document.querySelector('.partIndicator').textContent = stepData.partIndicator;
             // Update the image
