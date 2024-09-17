@@ -293,7 +293,7 @@ function loadNextStepFromJSON(submitCounter) {
         header1 = document.getElementById('h1');
         header1.innerHTML = 'Observation of News Page';
         if (submitCounter === 9) { updateBackToTestsStyles('5%', '42%', '0', '15%', '11%'); }
-        if (submitCounter === 10) { updateBackToTestsStyles('32em', '25em', '0', '45vw', '30vh'); }
+        if (submitCounter === 10) { updateBackToTestsStyles('50%', '20%', '0', '50%', '30%'); }
     }
 }
 
@@ -378,7 +378,7 @@ function loadFormStep(currentStep) {
             });
         })
         .catch(error => console.error('Error loading form step:', error));
-    } else if (currentStep === 8) {
+    } else if (currentStep === 9) {
         updateForm(
             'Step 9: Can you spot the subscription button?',
             '../images/calibration/calibration.png',
@@ -397,7 +397,7 @@ function loadFormStep(currentStep) {
         updateForm(
             'Step 10: Can you spot an advertisement?',
             '../images/calibration/calibration.png',
-            '1. Was it easy for you to locate it?',
+            '1. Was it easy for you to locate an advertisement?',
             '<label for="Yes1"><input type="radio" id="Yes1" name="easy-to-find" value="Yes"> Yes</label>',
             '<label for="No1"><input type="radio" id="No1" name="easy-to-find" value="No"> No</label>',
             '2. Would you prefer a different position?',
