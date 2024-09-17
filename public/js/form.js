@@ -404,6 +404,10 @@ function loadFormStep(currentStep) {
             '<label for="Yes2"><input type="radio" id="Yes2" name="preferred-position" value="Yes"> Yes</label>',
             '<label for="No2"><input type="radio" id="No2" name="preferred-position" value="No"> No</label>'
         );
+        document.querySelectorAll('.radio-group label').forEach(function(label) {
+            label.style.justifyContent = 'center';
+            label.style.alignItems = 'center';
+        });
     }
 }
 
