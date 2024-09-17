@@ -386,14 +386,20 @@ function loadFormStep(currentStep) {
             // Update the partIndicator
             document.querySelector('.partIndicator').textContent = stepData.partIndicator;
             // Update the image
-            document.getElementById('form-image').src = stepData.imageSrc;
-            // Clear the radio group and populate with new radio buttons
+            document.getElementById('form-image').src = stepData.imgSrc;
+            // Clear the form and populate with new radio buttons
             const form = document.getElementById('form');
-            form.innerHTML = ''; // Header label
+            form.innerHTML = ''; // Clear existing content
+            // Populate with new questions and radio buttons
             stepData.questions.forEach((question, index) => {
+                // Create a container for each question
+                const questionContainer = document.createElement('div');
+                questionContainer.classList.add('questionContainer');
+                // Create and append the question label
                 const questionLabel = document.createElement('label');
                 questionLabel.setAttribute('for', question.questionId);
                 questionLabel.textContent = `${index + 1}. ${question.questionText}`;
+                questionContainer.appendChild(questionLabel);
                 // Add the radio buttons for each option
                 question.options.forEach(option => {
                     const optionLabel = document.createElement('label');
@@ -402,17 +408,17 @@ function loadFormStep(currentStep) {
                         <input type="radio" id="${option.value}${index + 1}" name="question${index + 1}" value="${option.value}">
                         ${option.label}
                     `;
+                    questionContainer.appendChild(optionLabel);
                 });
-                // Append the question to the form
+                // Append the question container to the form
                 form.appendChild(questionContainer);
-            })
+            });
             // Add a submit button at the end
             const submitButton = document.createElement('input');
             submitButton.type = 'submit';
             submitButton.id = 'submitButton';
             submitButton.value = 'Submit';
             form.appendChild(submitButton);
-
         })
         .catch(error => console.error('Error loading form step:', error));
     }
