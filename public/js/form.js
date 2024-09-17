@@ -338,7 +338,8 @@ function updateBackToTestsStyles(top, right, opacity, width, height) {
 }
 
 function loadFormStep(currentStep) {
-    fetch('../json/questions1-8.json')
+    if (currentStep <= 8) {
+        fetch('../json/questions1-8.json')
         .then(response => response.json())
         .then(data => {
             const stepData = data.steps[currentStep-1];
@@ -370,6 +371,48 @@ function loadFormStep(currentStep) {
             });
         })
         .catch(error => console.error('Error loading form step:', error));
+    } else {
+        fetch('../json/questions9-10.json')
+        .then(response => response.json())
+        .then(data => {
+            const stepData = data.steps[currentStep-1];
+            // Update the partIndicator
+            document.querySelector('.partIndicator').textContent = stepData.partIndicator;
+            // Update the image
+            document.getElementById('form-image').src = stepData.imageSrc;
+            // Clear the radio group and populate with new radio buttons
+            const form = document.querySelector('.form');
+            form.innerHTML = ''; // Header label
+            stepData.questions.forEach((question, index) => {
+                const questionContainer = document.createElement('div');
+                questionContainer.classList.add('question-container');
+                const questionLabel = document.createElement('label');
+                questionLabel.textContent = `${index + 1}. ${question.questionText}`;
+                questionContainer.appendChild(questionLabel);
+                // Add the radio buttons for each option
+                question.options.forEach(option => {
+                    const optionLabel = document.createElement('label');
+                    optionLabel.setAttribute('for', option.id);
+                    optionLabel.innerHTML = `
+                        <input type="radio" id="${option.id}" name="question${index + 1}" value="${option.value}">
+                        ${option.label}
+                    `;
+                    questionContainer.appendChild(optionLabel);
+                });
+                // Append the question to the form
+                formElement.appendChild(questionContainer);
+            })
+            // Add a submit button at the end
+            const submitButton = document.createElement('input');
+            submitButton.type = 'submit';
+            submitButton.id = 'submitButton';
+            submitButton.value = 'Submit';
+            formElement.appendChild(submitButton);
+
+        })
+        .catch(error => console.error('Error loading form step:', error));
+    }
+    
 }
 
 /*

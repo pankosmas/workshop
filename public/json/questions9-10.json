@@ -1,0 +1,22 @@
+{
+    "steps": [
+        {
+            "questions": [
+                {
+                    "questionText": "Was it easy for you to locate the subscription button?",
+                    "options": [
+                        { "id": "easy-to-find", "value": "Yes", "label": "Yes" },
+                        { "id": "easy-to-find", "value": "No", "label": "No" }
+                    ]
+                },
+                {
+                    "questionText": "Would you prefer a different position?",
+                    "options": [
+                        { "id": "preferred-position", "value": "Yes", "label": "Yes" },
+                        { "id": "preferred-position", "value": "No", "label": "No" }
+                    ]
+                }
+            ]
+        }
+    ]
+}
