@@ -287,7 +287,7 @@ function getActivityNumber() {
 }
 
 function loadNextStepFromJSON(submitCounter) {
-    fetchStepData(submitCounter); // Fetch data for the current step
+    fetchStepData(submitCounter-1); // Fetch data for the current step
 }
 
 function fetchStepData(step) {
