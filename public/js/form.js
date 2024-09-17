@@ -326,6 +326,17 @@ function loadFormStep(currentStep) {
             document.querySelector('.partIndicator').textContent = stepData.partIndicator;
             // Update the image
             document.getElementById('form-image').src = stepData.imageSrc;
+            // Clear the radio group and populate with new radio buttons
+            const radioGroup = document.querySelector('.radio-group');
+            radioGroup.innerHTML = '<label for="image-reality">1. I believe this image is: </label>'; // Header label
+            stepData.radioButtons.forEach(radio => {
+                radioGroup.innerHTML += `
+                    <label for="${radio.id}">
+                        <input type="radio" id="${radio.id}" name="${radio.name}" value="${radio.value}">
+                        ${radio.label}
+                    </label>
+                `;
+            });
             // Clear the checkbox group and populate with new checkboxes
             const checkboxGroup = document.querySelector('.checkbox-group');
             checkboxGroup.innerHTML = '';

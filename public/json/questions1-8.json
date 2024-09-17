@@ -3,6 +3,11 @@
         {
             "partIndicator": "Step 1: A challenge to Identify Real vs. Fake Images",
             "imageSrc": "../images/step1.png",
+            "radioButtons": [
+                { "id": "Real", "name": "image-reality", "value": "Real", "label": "Authentic (Real)" },
+                { "id": "Tampered", "name": "image-reality", "value": "Tampered", "label": "Tampered (Digitally Manipulated)" },
+                { "id": "Deepfake", "name": "image-reality", "value": "Deepfake", "label": "Deepfake (AI Generated)" }
+            ],
             "checkboxes": [
                 { "id": "Normal", "name": "details", "value": "Normal", "label": "Everything seems smooth and normal." },
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
@@ -14,6 +19,11 @@
         {
             "partIndicator": "Step 2: Uncover the Truth by using Forensic Heatmaps",
             "imageSrc": "../images/step2.png",
+            "radioButtons": [
+                { "id": "Real", "name": "image-reality", "value": "Real", "label": "Authentic (Real)" },
+                { "id": "Tampered", "name": "image-reality", "value": "Tampered", "label": "Tampered (Digitally Manipulated)" },
+                { "id": "Deepfake", "name": "image-reality", "value": "Deepfake", "label": "Deepfake (AI Generated)" }
+            ],
             "checkboxes": [
                 { "id": "Normal", "name": "details", "value": "Normal", "label": "Everything seems smooth and normal." },
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
@@ -25,6 +35,11 @@
 		{
             "partIndicator": "Step 3: Confirm your findings with Fusion (probability) mapping",
             "imageSrc": "../images/step3.png",
+            "radioButtons": [
+                { "id": "Real", "name": "image-reality", "value": "Real", "label": "Authentic (Real)" },
+                { "id": "Tampered", "name": "image-reality", "value": "Tampered", "label": "Tampered (Digitally Manipulated)" },
+                { "id": "Deepfake", "name": "image-reality", "value": "Deepfake", "label": "Deepfake (AI Generated)" }
+            ],
             "checkboxes": [
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
                 { "id": "Heatmap", "name": "details", "value": "Heatmap", "label": "Visual inspection of image and heatmaps." },
@@ -36,6 +51,11 @@
         {
             "partIndicator": "Step 4: Cross-check your findings with Reverse Image Search",
             "imageSrc": "../images/step4.png",
+            "radioButtons": [
+                { "id": "Real", "name": "image-reality", "value": "Real", "label": "Authentic (Real)" },
+                { "id": "Tampered", "name": "image-reality", "value": "Tampered", "label": "Tampered (Digitally Manipulated)" },
+                { "id": "Deepfake", "name": "image-reality", "value": "Deepfake", "label": "Deepfake (AI Generated)" }
+            ],
             "checkboxes": [
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
                 { "id": "Identical", "name": "details", "value": "Identical", "label": "Search results point to a single identical image." },
@@ -47,6 +67,11 @@
 		{
             "partIndicator": "Step 5: A challenge to Identify Real vs. Fake Images",
             "imageSrc": "../images/step5.png",
+            "radioButtons": [
+                { "id": "Real", "name": "image-reality", "value": "Real", "label": "Authentic (Real)" },
+                { "id": "Tampered", "name": "image-reality", "value": "Tampered", "label": "Tampered (Digitally Manipulated)" },
+                { "id": "Deepfake", "name": "image-reality", "value": "Deepfake", "label": "Deepfake (AI Generated)" }
+            ],
             "checkboxes": [
                 { "id": "Normal", "name": "details", "value": "Normal", "label": "Everything seems smooth and normal." },
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
@@ -57,7 +82,12 @@
         },
         {
             "partIndicator": "Step 6: Uncover the Truth by using Forensic Heatmaps",
-            "imageSrc": "../images/step2.png",
+            "imageSrc": "../images/step6.png",
+            "radioButtons": [
+                { "id": "Real", "name": "image-reality", "value": "Real", "label": "Authentic (Real)" },
+                { "id": "Tampered", "name": "image-reality", "value": "Tampered", "label": "Tampered (Digitally Manipulated)" },
+                { "id": "Deepfake", "name": "image-reality", "value": "Deepfake", "label": "Deepfake (AI Generated)" }
+            ],
             "checkboxes": [
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
                 { "id": "Heatmap", "name": "details", "value": "Heatmap", "label": "Heatmap areas of uniform color indicate that there is no processing." },
@@ -68,7 +98,12 @@
         },
 		{
             "partIndicator": "Step 7: Confirm your findings with Fusion (probability) mapping",
-            "imageSrc": "../images/step3.png",
+            "imageSrc": "../images/step7.png",
+            "radioButtons": [
+                { "id": "Real", "name": "image-reality", "value": "Real", "label": "Authentic (Real)" },
+                { "id": "Tampered", "name": "image-reality", "value": "Tampered", "label": "Tampered (Digitally Manipulated)" },
+                { "id": "Deepfake", "name": "image-reality", "value": "Deepfake", "label": "Deepfake (AI Generated)" }
+            ],
             "checkboxes": [
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
                 { "id": "Heatmap", "name": "details", "value": "Heatmap", "label": "Visual inspection of image and heatmaps." },
@@ -79,7 +114,12 @@
         },
         {
             "partIndicator": "Step 8: Cross-check your findings with Reverse Image Search",
-            "imageSrc": "../images/step4.png",
+            "imageSrc": "../images/step8.png",
+            "radioButtons": [
+                { "id": "Real", "name": "image-reality", "value": "Real", "label": "Authentic (Real)" },
+                { "id": "Tampered", "name": "image-reality", "value": "Tampered", "label": "Tampered (Digitally Manipulated)" },
+                { "id": "Deepfake", "name": "image-reality", "value": "Deepfake", "label": "Deepfake (AI Generated)" }
+            ],
             "checkboxes": [
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
                 { "id": "Synthetically Produced", "name": "details", "value": "Synthetically Produced", "label": "Search results pointed out the image has been synthetically produced by other documents." },
