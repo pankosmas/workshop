@@ -247,10 +247,11 @@ label {
     transition: color 0.2s ease;
 }
 .radio-group label {
-    justify-content: center; /* Ensure the label and radio button are centered together */
+    justify-content: left; /* Ensure the label and radio button are centered together */
     margin-bottom: 5px;
     display: flex;
     align-items: center;
+    color: #666;
 }
 
 .checkbox-group label {
