@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 console.log('Form submission successful');  // Log successful submission
-                loadFormStep();
+                loadFormStep(submitCounter);
                 submitButton.disabled = false;
             } else {
                 console.error('Error submitting form:', response.status);  // Log errors
