@@ -58,7 +58,9 @@ function validateForm(event) {
         isPreferredPositionChecked = Array.from(radioButtonsPreferredPosition).some(radio => radio.checked);
 
         if (!isEasyToFindChecked) {
-            message = 'Please select one option for the "Was it easy for you to locate it?" question.';
+            if (submitCounter === 9) { var word = "the subscription button"; }
+            if (submitCounter === 10) { var word = "an advertisement"; }
+            message = `Please select one option for the "Was it easy for you to locate ${word}?" question.`;
             isValid = false;
         } else if (!isPreferredPositionChecked) {
             message = 'Please select one option for the "Would you prefer a different position?" question.';
