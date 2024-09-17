@@ -166,7 +166,7 @@ body {
     max-width: 60%; /* Prevents shrinking beyond content size */
 }
 form {
-    max-width: 100%;
+    width: fit-content;
     height: auto;
     margin: 30px 0 0 0;
     padding: 20px;
