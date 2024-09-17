@@ -393,14 +393,15 @@ function loadFormStep(currentStep) {
                 const questionContainer = document.createElement('div');
                 questionContainer.classList.add('question-container');
                 const questionLabel = document.createElement('label');
+                questionLabel.setAttribute('for', question.questionId);
                 questionLabel.textContent = `${index + 1}. ${question.questionText}`;
                 questionContainer.appendChild(questionLabel);
                 // Add the radio buttons for each option
                 question.options.forEach(option => {
                     const optionLabel = document.createElement('label');
-                    optionLabel.setAttribute('for', option.id);
+                    optionLabel.setAttribute('for', option.value);
                     optionLabel.innerHTML = `
-                        <input type="radio" id="${option.id}" name="question${index + 1}" value="${option.value}">
+                        <input type="radio" id="${option.value}" name="question${index + 1}" value="${option.value}">
                         ${option.label}
                     `;
                     questionContainer.appendChild(optionLabel);

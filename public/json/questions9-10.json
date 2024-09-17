@@ -4,14 +4,16 @@
             "partIndicator": "Step 9: Can you spot the subscription button?",
             "imageSrc": "../images/step9.png",
             "questions": [
-                {
+                {   
+                    "questionId": "easy-to-find",
                     "questionText": "Was it easy for you to locate the subscription button?",
                     "options": [
                         { "id": "easy-to-find", "value": "Yes", "label": "Yes" },
                         { "id": "easy-to-find", "value": "No", "label": "No" }
                     ]
                 },
-                {
+                {   
+                    "questionId": "preferred-position",
                     "questionText": "Would you prefer a different position?",
                     "options": [
                         { "id": "preferred-position", "value": "Yes", "label": "Yes" },
@@ -25,6 +27,7 @@
             "imageSrc": "../images/step10.png",
             "questions": [
                 {
+                    "questionId": "easy-to-find",
                     "questionText": "Was it easy for you to locate an advertisement?",
                     "options": [
                         { "id": "easy-to-find", "value": "Yes", "label": "Yes" },
@@ -32,6 +35,7 @@
                     ]
                 },
                 {
+                    "questionId": "preferred-position",
                     "questionText": "Would you prefer a different position?",
                     "options": [
                         { "id": "preferred-position", "value": "Yes", "label": "Yes" },

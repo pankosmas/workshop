@@ -55,7 +55,7 @@ function helpModalShow() {
 function calcAccuracy() {
   swal({
     title: "Calculating measurement",
-    text: "Please don't move your mouse & stare at the middle dot for the next 5 seconds. This will allow us to calculate the accuracy of our predictions.",
+    text: "Please move your mouse over the middle circle and stare at it for the next 5 seconds. This will allow us to calculate the accuracy of our predictions.",
     closeOnEsc: false,
     allowOutsideClick: false,
     closeModal: true
@@ -69,7 +69,7 @@ function calcAccuracy() {
       var accuracyLabel = "<a>Accuracy | " + precision_measurement + "%</a>";
       document.getElementById("Accuracy").innerHTML = accuracyLabel; // Show accuracy
 
-      if (precision_measurement > 70) {
+      if (precision_measurement > 65) {
         swal({
           title: "Congratulations, you completed the calibration process!",
           buttons: {
