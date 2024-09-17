@@ -383,25 +383,28 @@ function loadFormStep(currentStep) {
             'Step 9: Can you spot the subscription button?',
             '../images/calibration/calibration.png',
             '1. Was it easy for you to locate the subscription button?',
-            '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes"> Yes</label>',
-            '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No"> No</label>',
+            '<label for="Yes1"><input type="radio" id="Yes1" name="easy-to-find" value="Yes"> Yes</label>',
+            '<label for="No1"><input type="radio" id="No1" name="easy-to-find" value="No"> No</label>',
             '2. Would you prefer a different position?',
-            '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes"> Yes</label>',
-            '<label for="No"><input type="radio" id="No" name="preferred-position" value="No"> No</label>'
+            '<label for="Yes2"><input type="radio" id="Yes2" name="preferred-position" value="Yes"> Yes</label>',
+            '<label for="No2"><input type="radio" id="No2" name="preferred-position" value="No"> No</label>'
         );
+        document.querySelectorAll('.radio-group label').forEach(function(label) {
+            label.style.justifyContent = 'center';
+            label.style.alignItems = 'center';
+        });
     } else {
         updateForm(
             'Step 10: Can you spot an advertisement?',
             '../images/calibration/calibration.png',
             '1. Was it easy for you to locate it?',
-            '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes"> Yes</label>',
-            '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No"> No</label>',
+            '<label for="Yes1"><input type="radio" id="Yes1" name="easy-to-find" value="Yes"> Yes</label>',
+            '<label for="No1"><input type="radio" id="No1" name="easy-to-find" value="No"> No</label>',
             '2. Would you prefer a different position?',
-            '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes"> Yes</label>',
-            '<label for="No"><input type="radio" id="No" name="preferred-position" value="No"> No</label>'
+            '<label for="Yes2"><input type="radio" id="Yes2" name="preferred-position" value="Yes"> Yes</label>',
+            '<label for="No2"><input type="radio" id="No2" name="preferred-position" value="No"> No</label>'
         );
     }
-    
 }
 
 /*
