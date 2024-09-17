@@ -291,7 +291,7 @@ function loadNextStepFromJSON(submitCounter) {
 }
 
 function fetchStepData(step) {
-    fetch('stepsTitles.json')
+    fetch('../json/stepsTitles.json')
         .then(response => response.json())
         .then(data => {
             const stepData = data.steps[step];
