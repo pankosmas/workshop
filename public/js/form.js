@@ -406,14 +406,14 @@ function loadFormStep(currentStep) {
                     questionContainer.appendChild(optionLabel);
                 });
                 // Append the question to the form
-                formElement.appendChild(questionContainer);
+                form.appendChild(questionContainer);
             })
             // Add a submit button at the end
             const submitButton = document.createElement('input');
             submitButton.type = 'submit';
             submitButton.id = 'submitButton';
             submitButton.value = 'Submit';
-            formElement.appendChild(submitButton);
+            form.appendChild(submitButton);
 
         })
         .catch(error => console.error('Error loading form step:', error));
