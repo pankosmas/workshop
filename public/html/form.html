@@ -115,9 +115,7 @@
         const leftdiv = document.getElementById('left-div');
 
         img.onload = function() {
-            const container = document.getElementById('form-container');
             if (img.naturalHeight > img.naturalWidth) {
-                container.classList.add('left-image');
                 initialContainer.style.width = '70%';
                 initialContainer.style.height = 'auto';
                 initialImage.style.maxWidth = '35%';
@@ -125,7 +123,6 @@
                 if (document.body.style.width > 1400) { img.style.maxWidth = "97%"; }
                 else { img.style.maxWidth = "85%"; }
             } else {
-                container.classList.add('left-image');
                 initialContainer.style.width = '85%';
                 initialContainer.style.height = 'auto';
                 initialImage.style.maxWidth = '85%';

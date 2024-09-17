@@ -147,8 +147,8 @@ body {
     flex-wrap: wrap;
     border: none;
     border-radius: 5px;
-    max-width: 95vw;
-    height: 75%;
+    max-width: fit-content;
+    height: auto;
     padding: 10px;
     background: white;
     box-shadow: 5px 5px 10px #16c7a6;
@@ -187,11 +187,7 @@ form {
 #white-space {
     margin-top: 50px;
 }
-.left-image {
-    border-right: 1px solid #ccc;
-    flex-basis: auto; /* The item will take up the space of its content */
-    padding: 20px;
-}
+
 .image {
     text-align: left;
 }
