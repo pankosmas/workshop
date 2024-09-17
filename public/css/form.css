@@ -231,10 +231,6 @@ label {
     margin-top: 10px;
 }
 
-.radio-group {
-    align-items: center;
-}
-
 .radio-group input, .checkbox-group input {
     margin-right: 10px;
     cursor: pointer;
