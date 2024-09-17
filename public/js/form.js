@@ -387,7 +387,7 @@ function loadFormStep(currentStep) {
             // Update the image
             document.getElementById('form-image').src = stepData.imageSrc;
             // Clear the radio group and populate with new radio buttons
-            const form = document.querySelector('.form');
+            const form = document.getElementById('form');
             form.innerHTML = ''; // Header label
             stepData.questions.forEach((question, index) => {
                 const questionContainer = document.createElement('div');
