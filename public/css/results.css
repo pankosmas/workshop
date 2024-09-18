@@ -97,17 +97,28 @@ canvas, #heatmap {
 }
 
 #opacity-slider {
-    -webkit-appearance: none; /* Remove default styling in WebKit browsers */
     width: 200px; /* Adjust width as needed */
     height: 8px;
     background: #ddd; /* Track color */
     border-radius: 5px; /* Rounded corners */
     outline: none;
     cursor: pointer;
+    -moz-appearance: none; /* Firefox */
+    appearance: none; /* Standard */
 }
 
 #opacity-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #007bff; /* Handle color */
+    border-radius: 50%;
+    cursor: pointer;
+    /* Ensure that the handle is draggable */
+    cursor: grab;
+    cursor: -webkit-grab;
+}
+
+#opacity-slider::-moz-range-thumb {
     width: 20px;
     height: 20px;
     background: #007bff; /* Handle color */
@@ -115,7 +126,7 @@ canvas, #heatmap {
     cursor: pointer;
 }
 
-#opacity-slider::-moz-range-thumb {
+#opacity-slider::-ms-thumb {
     width: 20px;
     height: 20px;
     background: #007bff; /* Handle color */

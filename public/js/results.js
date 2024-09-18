@@ -1,3 +1,5 @@
+import { DBSCAN } from 'density-clustering';
+
 async function fetchData() {
     try {
         activityStepValue = getActivityStepValue();
@@ -6,11 +8,23 @@ async function fetchData() {
         if (activityStepValue === 'step9' || activityStepValue === 'step10') {
             processFinalQuestionsCharts(data);
         } else { processCharts(data); }
+
         var aggrgazedata = [];
         var aggrmousedata = [];
-        aggrgazedata = aggregateGazeData(data);
+
+        // Event listener για αλλαγές στο slider
+        const epsilonSlider = document.getElementById('opacity-slider');
+        const epsilonValueSpan = document.getElementById('opacity-value');
         aggrmousedata = aggregateMouseData(data);
-        getVizTypeAggregated(aggrgazedata, aggrmousedata);
+        epsilonSlider.addEventListener('input', () => {
+            const epsilon = parseInt(epsilonSlider.value);
+            epsilonValueSpan.textContent = epsilon;
+        
+            // Ανανέωση των δεδομένων με την νέα τιμή του epsilon
+            const minPts = 5; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
+            aggrgazedata = aggregateGazeData(data, epsilon, minPts); // Αντικατέστησε με τις σωστές τιμές
+            getVizTypeAggregated(aggrgazedata, aggrmousedata);
+        });
         updateSubmissionCount(data.length); // Update submission count
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -107,17 +121,45 @@ function updateTimer(time, std) {
 // Set up auto-refresh every 30 seconds
 setInterval(fetchData, 20000); // 30,000 milliseconds = 30 seconds
 
-function aggregateGazeData(allUsersData) {
+function convertToPoints(data) {
+    return data.map(point => [point.x, point.y]);
+}
+
+// Συνάρτηση για να υπολογίσεις το κεντρικό σημείο κάθε cluster
+function calculateClusterCenters(clusters) {
+    return clusters.map(cluster => {
+        const xSum = cluster.reduce((sum, point) => sum + point.x, 0);
+        const ySum = cluster.reduce((sum, point) => sum + point.y, 0);
+        const durationSum = cluster.reduce((sum, point) => sum + point.duration, 0);
+        const count = cluster.length;
+        return {
+            x: xSum / count,
+            y: ySum / count,
+            duration: durationSum / count
+        };
+    });
+}
+
+// Συνάρτηση συγχώνευσης δεδομένων
+function aggregateGazeData(allUsersData, epsilon, minPts) {
     const aggregatedGazeData = [];
     allUsersData.forEach(userData => {
-        userData.gazeCoordinates.forEach(point => {
-            // Check if a similar point already exists in aggregatedGazeData
+        // Μετατροπή δεδομένων σε μορφή [[x, y, duration]]
+        const points = convertToPoints(userData.gazeCoordinates);
+        // Δημιουργία μοντέλου DBSCAN
+        const dbscan = new DBSCAN(epsilon, minPts);
+        const clusters = dbscan.fit(points);
+        // Υπολογισμός κεντρικών σημείων για κάθε cluster
+        const clusterCenters = calculateClusterCenters(clusters, points);
+        // Ενσωμάτωση κεντρικών σημείων στον τελικό πίνακα
+        clusterCenters.forEach(point => {
+            // Ελέγχουμε αν υπάρχει ήδη ένα παρόμοιο σημείο στον τελικό πίνακα
             const existingPoint = aggregatedGazeData.find(p => p.x === point.x && p.y === point.y);
             if (existingPoint) {
-                // If a similar point exists, aggregate the duration
+                // Αν υπάρχει, αθροίζουμε τη διάρκεια
                 existingPoint.duration += point.duration;
             } else {
-                // Otherwise, add the point as a new entry
+                // Διαφορετικά, προσθέτουμε το νέο σημείο
                 aggregatedGazeData.push({
                     x: point.x,
                     y: point.y,
@@ -129,6 +171,42 @@ function aggregateGazeData(allUsersData) {
     return aggregatedGazeData;
 }
 
+/*
+// Συνάρτηση για DBSCAN clustering (υλοποιημένη έκδοση ή να χρήση μιας βιβλιοθήκης)
+function dbscan(data, epsilon, minPts) {
+    // Εδώ πρόσθεσε ή κάλεσε τη βιβλιοθήκη DBSCAN
+    // Επιστρέφει clusters
+    return clusters;
+}
+
+function aggregateGazeData(allUsersData, epsilon, minPts) {
+    const aggregatedGazeData = [];
+
+    allUsersData.forEach(userData => {
+        // Εφαρμόζουμε DBSCAN σε κάθε χρήστη
+        const clusters = dbscan(userData.gazeCoordinates, epsilon, minPts);
+        // Υπολογίζουμε τα κεντρικά σημεία για κάθε cluster
+        const clusterCenters = calculateClusterCenters(clusters);
+        // Ενσωματώνω όλα τα αποτελέσματα σε έναν συγκεντρωτικό πίνακα για οπτικοποίηση
+        clusterCenters.forEach(point => {
+            // Ελέγχουμε αν υπάρχει ήδη ένα παρόμοιο σημείο στον τελικό πίνακα
+            const existingPoint = aggregatedGazeData.find(p => p.x === point.x && p.y === point.y);
+            if (existingPoint) {
+                // Αν υπάρχει, αθροίζουμε τη διάρκεια
+                existingPoint.duration += point.duration;
+            } else {
+                // Διαφορετικά, προσθέτουμε το νέο σημείο
+                aggregatedGazeData.push({
+                    x: point.x,
+                    y: point.y,
+                    duration: point.duration
+                });
+            }
+        });
+    });
+    return aggregatedGazeData;
+}
+*/
 function aggregateMouseData(allUsersData) {
     const aggregatedMouseData = [];
     allUsersData.forEach(userData => {
