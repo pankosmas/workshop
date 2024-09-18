@@ -143,7 +143,6 @@ body {
 }
 .container {
     display: flex;
-    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: flex-start;
     border: none;
@@ -155,10 +154,13 @@ body {
     box-shadow: 10px 10px 10px #16c7a6;
 }
 #left-div {
-    width: 50%;
+    flex-grow: 1; /* Take up the remaining space */
+    margin-right: 10px; /* Add some space between the left and the question div */
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
 }
 #left-div img {
     max-width: 100%;
@@ -166,11 +168,11 @@ body {
     margin: 10px 0;
 }
 .question {
-    width: 50%;
-    padding: 20px;
+    flex-grow: 0; /* Ensure it only takes the space of its contents */
+    padding: 10px;
 }
 form {
-    width: 100%;
+    width: fit-content;
     height: auto;
     margin: 30px 0 0 0;
     padding: 20px;
