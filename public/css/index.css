@@ -21,7 +21,7 @@ body {
     box-sizing: border-box;
     position: fixed; /* Fixed position keeps it visible */
     width: 100%;
-	max-height: 6vh;
+	max-height: 6%;
 }
 .navoff {
     width: calc(100% - 240px);
@@ -63,7 +63,7 @@ body {
     background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
 }
 .logo {
-	width: 5vw;
+	width: 10%;
 }
 .main-logo {
     position: absolute;
@@ -86,7 +86,7 @@ body {
 }
 .text-container {
     text-align: center;
-    max-width: 90vw;
+    max-width: 90%;
     margin: 0 auto; /* Center horizontally */
     flex: 1; /* Take up remaining vertical space */
     display: flex;
@@ -94,18 +94,18 @@ body {
     justify-content: center; /* Center vertically */
 }
 .text-container h1 {
-	font-size: 2vw;
-    margin-top: 50px; /* Add margin to create space below the logo */
+	font-size: 2em;
+    margin-top: 4%; /* Add margin to create space below the logo */
     position: absolute;
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 .text-container p {
-    margin-top: 3vh; /* Add margin to create space below the logo */
+    margin-top: 2%; /* Add margin to create space below the logo */
 }
 .gradient-text {
-    font-size: 3vw; /* Responsive font size */
+    font-size: 3em; /* Responsive font size */
     font-weight: bold;
     background: linear-gradient(90deg, #0999e1, #1ba0a7, #16c7a6);
     background-clip: text;
@@ -124,6 +124,7 @@ footer {
 	position: fixed; /* Fixed position keeps it visible */
 	left: 0%;
 	width: 100%;
+    max-height: 4%;
 	bottom: 0%;
 	font-size: 1em;
     margin-top: auto; /* Push footer to the bottom */
@@ -137,26 +138,19 @@ footer a:hover {
 }
 
 @media (min-width: 1919px) {
-	.text-container h1 { top: 60%; }
-    .gradient-text { top: 70%; }
     .nav-button { font-size: 1.3rem; top: 82%; }
     .nav-links, footer { font-size: 1.1rem; }
-    .logo { width: 5vw; }
 }
 @media (min-width: 2159px) {
-	.text-container h1 { top: 60%; }
-    .gradient-text { top: 70%; }
-    .nav-button { font-size: 2rem; top: 82%; }
-    .nav-links, footer { font-size: 1.5rem; }
-    .main-logo { max-width: 23vw; }
-    .logo { width: 7vw; }
+    .nav-button { font-size: 2em; top: 82%; }
+    .nav-links, footer { font-size: 1.5em; }
 }
 @media (min-width: 2559px) {
-    .nav-button { font-size: 2.5rem; }
+    .nav-button { font-size: 2.5em; }
 }
 @media (min-width: 2879px) {
-    .nav-links, footer { font-size: 1.8rem; }
+    .nav-links, footer { font-size: 1.8em; }
 }
 @media (min-width: 2999px) {
-    .nav-button { font-size: 3rem;}
+    .nav-button { font-size: 3em;}
 }
