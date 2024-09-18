@@ -52,6 +52,10 @@ body, html {
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Prevent content overflow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .right-container {
     width: 100%;
@@ -67,6 +71,7 @@ body, html {
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Prevent content overflow */
+    margin: 5% 0;
 }
 canvas, #heatmap {
     width: 100%;
@@ -85,7 +90,8 @@ canvas, #heatmap {
 }
 
 #opacity-slider {
-    width: 150px;
+    width: 200px;
+    margin: 10px 0;
 }
 .submission-count, .my-timer, .global-timer {
     width: auto;
