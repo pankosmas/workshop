@@ -17,7 +17,6 @@ async function fetchData() {
         epsilonSlider.addEventListener('input', () => {
             const epsilon = parseInt(epsilonSlider.value);
             epsilonValueSpan.textContent = epsilon;
-        
             // Ανανέωση των δεδομένων με την νέα τιμή του epsilon
             const minPts = 5; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
             aggrgazedata = aggregateGazeData(data, epsilon, minPts); // Αντικατέστησε με τις σωστές τιμές
@@ -146,10 +145,10 @@ function aggregateGazeData(allUsersData, epsilon, minPts) {
         const points = convertToPoints(userData.gazeCoordinates);
         // Δημιουργία μοντέλου DBSCAN
         const dbscan = new jDBSCAN();
-        // Set epsilon and minPts
         dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN').data(points);
         // Υπολογισμός κεντρικών σημείων για κάθε cluster
         const clusterCenters = dbscan.getClusters();
+        console.log(clusterCenters);
         // Ενσωμάτωση κεντρικών σημείων στον τελικό πίνακα
         clusterCenters.forEach(point => {
             // Ελέγχουμε αν υπάρχει ήδη ένα παρόμοιο σημείο στον τελικό πίνακα
@@ -170,42 +169,6 @@ function aggregateGazeData(allUsersData, epsilon, minPts) {
     return aggregatedGazeData;
 }
 
-/*
-// Συνάρτηση για DBSCAN clustering (υλοποιημένη έκδοση ή να χρήση μιας βιβλιοθήκης)
-function dbscan(data, epsilon, minPts) {
-    // Εδώ πρόσθεσε ή κάλεσε τη βιβλιοθήκη DBSCAN
-    // Επιστρέφει clusters
-    return clusters;
-}
-
-function aggregateGazeData(allUsersData, epsilon, minPts) {
-    const aggregatedGazeData = [];
-
-    allUsersData.forEach(userData => {
-        // Εφαρμόζουμε DBSCAN σε κάθε χρήστη
-        const clusters = dbscan(userData.gazeCoordinates, epsilon, minPts);
-        // Υπολογίζουμε τα κεντρικά σημεία για κάθε cluster
-        const clusterCenters = calculateClusterCenters(clusters);
-        // Ενσωματώνω όλα τα αποτελέσματα σε έναν συγκεντρωτικό πίνακα για οπτικοποίηση
-        clusterCenters.forEach(point => {
-            // Ελέγχουμε αν υπάρχει ήδη ένα παρόμοιο σημείο στον τελικό πίνακα
-            const existingPoint = aggregatedGazeData.find(p => p.x === point.x && p.y === point.y);
-            if (existingPoint) {
-                // Αν υπάρχει, αθροίζουμε τη διάρκεια
-                existingPoint.duration += point.duration;
-            } else {
-                // Διαφορετικά, προσθέτουμε το νέο σημείο
-                aggregatedGazeData.push({
-                    x: point.x,
-                    y: point.y,
-                    duration: point.duration
-                });
-            }
-        });
-    });
-    return aggregatedGazeData;
-}
-*/
 function aggregateMouseData(allUsersData) {
     const aggregatedMouseData = [];
     allUsersData.forEach(userData => {
