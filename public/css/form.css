@@ -9,8 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Ensure body covers entire viewport height */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    overflow: hidden;
 }
 .navbar {
     display: flex;
@@ -22,9 +21,6 @@ body {
     position: fixed; /* Fixed position keeps it visible */
     width: 100%;
 	min-height: 6vh;
-    position: fixed;
-    top: 0;
-    left: 0;
 }
 .nav-links {
     margin-left: 175px;
@@ -93,46 +89,43 @@ body {
 	width: 5vw;
 }
 .content {
+    text-align: center;
+    width: 100vw; /* Adjust as needed */
+    height: 100vh; /* Adjust as needed */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center the content vertically */
-    max-width: 90vw; /* Prevent the content from becoming too wide */
-    max-height: 90vh; /* Prevent the content from exceeding viewport height */
-    overflow: hidden; /* Prevent any overflow */
 }
 .content h1 {
     font-size: 2vw;
     margin: 9vh 0vw 3vh 0vw;
 }
 .initial-container {
+    margin: 3vh 0vw 4vh 0vw;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #16c7a6;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px #16c7a6;
-    max-width: 90%; /* Container max width */
-    max-height: 80vh; /* Container max height */
-    overflow: hidden; /* Prevent overflow */
-    text-align: center;
-    /*
-    margin: 3vh 0vw 4vh 0vw;
+    max-width: 90%; /* Limits the maximum width to 90% of the viewport width */
+    height: auto; /* Limits the maximum height to 90% of the viewport height */
+    box-sizing: border-box; /* Ensures padding is included in the div�s total width */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    */
 }
 .initial-container h2 {
     margin-bottom: 20px;
 }
 .initial-container img {
-    max-width: 100%; /* Ensures the image doesn't exceed the container width */
-    max-height: 60vh; /* Prevents the image from overflowing vertically */
-    object-fit: contain; /* Ensures the image is scaled correctly */
+    width: -webkit-fill-available;
+    height: auto;
+    display: block; /* Ensures the image takes up its own line */
+    margin-bottom: 20px; /* Adds space between the image and the button */
 }
 .initial-container button {
     padding: 10px 20px;
@@ -150,36 +143,27 @@ body {
 }
 .container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     width: auto;
     height: auto;
-    padding: 20px;
+    padding: 10px;
     background: white;
     box-shadow: 5px 5px 10px #16c7a6;
     margin: 0 5%;
 }
 #left-div {
-    display: block;
-    padding-right: 20px;
-    margin-top: 1.2em;
+    flex: 1 1 auto;
+    max-width: 41%;
+    padding: 0;
 }
-
-#left-div img {
-    max-width: 100%; /* Ensures the image fits within the container */
-    height: auto; /* Maintain image aspect ratio */
-}
-
 .question {
-    flex: 1; /* Ensures it takes up equal space */
-    padding-left: 20px; /* Adds space between the left div and question div */
-    background-color: white;
-    padding: 10px;
-    border-radius: 5px;
+    flex: 1 1 auto; /* Allows question to grow and fit content */
+    padding: 20px; /* Adjust as necessary */
+    border: none;
+    max-width: fit-content; /* Prevents shrinking beyond content size */
 }
-
 form {
     width: fit-content;
     height: auto;
@@ -191,12 +175,12 @@ form {
     background-color: #f9f9f9; /* Ensure the form has a background color */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add a transition for smooth effects */
     font-family: 'Open Sans', sans-serif;
-    text-align: center;
 }
 
 .container img {
-    max-width: 100%; /* Ensures the image fits within the container */
-    height: auto; /* Maintain image aspect ratio */
+    max-width: 80%;
+    height: auto;
+    margin-left: 1rem;
 }
 
 #white-space {
@@ -211,6 +195,7 @@ form {
     background: white;
     border: none;
     color: #0995e6;
+    margin-left: 0.5rem;
 }
 .image-button:hover {
     color: #094c74;
@@ -220,10 +205,11 @@ form {
 .partIndicator {
     margin-left: 1rem;
     font-size: 1rem;
-    display: contents;
+    display: flex;
     font-weight: bold;
 }
 hr {
+    margin-left: 1rem;
     border-top: 1px solid gray;
 }
 
