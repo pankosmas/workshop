@@ -122,8 +122,6 @@ body {
     margin-bottom: 20px;
 }
 .initial-container img {
-    width: -webkit-fill-available;
-    height: auto;
     display: block; /* Ensures the image takes up its own line */
     margin-bottom: 20px; /* Adds space between the image and the button */
 }
