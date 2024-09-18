@@ -147,10 +147,9 @@ function aggregateGazeData(allUsersData, epsilon, minPts) {
         // Δημιουργία μοντέλου DBSCAN
         const dbscan = new jDBSCAN();
         // Set epsilon and minPts
-        dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN');
-        const clusters = dbscan.run(points);
+        dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN').data(points);
         // Υπολογισμός κεντρικών σημείων για κάθε cluster
-        const clusterCenters = calculateClusterCenters(clusters, points);
+        const clusterCenters = dbscan.getClusters();
         // Ενσωμάτωση κεντρικών σημείων στον τελικό πίνακα
         clusterCenters.forEach(point => {
             // Ελέγχουμε αν υπάρχει ήδη ένα παρόμοιο σημείο στον τελικό πίνακα
