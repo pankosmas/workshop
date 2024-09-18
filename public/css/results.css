@@ -141,7 +141,7 @@ canvas, #heatmap {
 #controller-div {
     display: flex;
 }
-.controller {
+#controller {
     display: flex;
     margin: 20px;
 }
