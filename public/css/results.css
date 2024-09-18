@@ -87,12 +87,47 @@ canvas, #heatmap {
 }
 #opacity-control {
     margin-left: 20px;
+    font-family: Arial, sans-serif;
+}
+
+#slider-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 #opacity-slider {
-    width: 200px;
-    margin: 10px 0;
+    -webkit-appearance: none; /* Remove default styling in WebKit browsers */
+    width: 200px; /* Adjust width as needed */
+    height: 8px;
+    background: #ddd; /* Track color */
+    border-radius: 5px; /* Rounded corners */
+    outline: none;
+    cursor: pointer;
 }
+
+#opacity-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #007bff; /* Handle color */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#opacity-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #007bff; /* Handle color */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#opacity-value {
+    min-width: 40px;
+    text-align: center;
+}
+
 .submission-count, .my-timer, .global-timer {
     width: auto;
     padding: 10px;
