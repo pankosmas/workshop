@@ -65,7 +65,6 @@ function plotHeatMap(filename, data) {
 	heat.data(finalData);
 	heat.radius(35, 50);
 	heat.max(5);
-    ctx.globalAlpha = value; // Adjust opacity
 	heat.draw();
 }
 // ============================== Visualization No.3 Plot Fixation Map
