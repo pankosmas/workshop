@@ -139,6 +139,18 @@ canvas, #heatmap {
     text-align: center;
 }
 
+.controller {
+    margin: 20px;
+}
+.option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.option input[type="radio"] {
+    margin-right: 10px; /* Space between radio button and label */
+}
+
 .submission-count, .my-timer, .global-timer {
     width: auto;
     padding: 10px;

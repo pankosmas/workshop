@@ -11,8 +11,8 @@
             "checkboxes": [
                 { "id": "Normal", "name": "details", "value": "Normal", "label": "Everything seems smooth and normal." },
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
-                { "id": "Lighting-Shadow", "name": "details", "value": "Lighting-Shadow", "label": "Lighting and shadow inconsistencies are present." },
-                { "id": "Edges-Blending", "name": "details", "value": "Edges-Blending", "label": "Poor edges and blending around the objects are present." },
+                { "id": "Lighting Shadow", "name": "details", "value": "Lighting Shadow", "label": "Lighting and shadow inconsistencies are present." },
+                { "id": "Edges Blending", "name": "details", "value": "Edges Blending", "label": "Poor edges and blending around the objects are present." },
                 { "id": "Context", "name": "details", "value": "Context", "label": "The image context does not fit with the displayed persona." }
             ]
         },
@@ -75,8 +75,8 @@
             "checkboxes": [
                 { "id": "Normal", "name": "details", "value": "Normal", "label": "Everything seems smooth and normal." },
                 { "id": "Awareness", "name": "details", "value": "Awareness", "label": "I am aware of this specific image." },
-                { "id": "Lighting", "name": "details", "value": "Lighting-Shadow", "label": "Lighting and shadow inconsistencies are present." },
-                { "id": "Blending", "name": "details", "value": "Edges-Blending", "label": "Poor edges and blending around the objects are present." },
+                { "id": "Lighting Shadow", "name": "details", "value": "Lighting Shadow", "label": "Lighting and shadow inconsistencies are present." },
+                { "id": "Edges Blending", "name": "details", "value": "Edges Blending", "label": "Poor edges and blending around the objects are present." },
                 { "id": "Context", "name": "details", "value": "Context", "label": "The image context does not fit with the displayed persona." }
             ]
         },

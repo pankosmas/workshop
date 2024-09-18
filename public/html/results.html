@@ -57,11 +57,24 @@
             </div>
         </div>
         <div class="right">
-            <div id="opacity-control">
-                <label for="opacity-slider">Epsilon:</label>
-                <div id="slider-container">
-                    <input type="range" id="opacity-slider" min="2" max="200" step="2" value="20">
-                    <span id="opacity-value">20</span>
+            <div id="controller-div">
+                <div id="controller">
+                    <h3>Select Option</h3>
+                    <label class="option">
+                        <input type="radio" name="option" value="simple-aggregate" checked>
+                        Simple Aggregate
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="option" value="dbscan">
+                        DBSCAN
+                    </label>
+                </div>
+                <div id="opacity-control">
+                    <label for="opacity-slider">Epsilon:</label>
+                    <div id="slider-container">
+                        <input type="range" id="opacity-slider" min="2" max="200" step="2" value="20">
+                        <span id="opacity-value">20</span>
+                    </div>
                 </div>
             </div>
             <div class="heatmap-container">

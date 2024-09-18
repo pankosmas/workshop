@@ -13,14 +13,25 @@ async function fetchData() {
         // Event listener για αλλαγές στο slider
         const epsilonSlider = document.getElementById('opacity-slider');
         const epsilonValueSpan = document.getElementById('opacity-value');
-        aggrmousedata = aggregateMouseData(data);
-        epsilonSlider.addEventListener('input', () => {
-            const epsilon = parseInt(epsilonSlider.value);
-            epsilonValueSpan.textContent = epsilon;
-            // Ανανέωση των δεδομένων με την νέα τιμή του epsilon
-            const minPts = 2; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
-            aggrgazedata = aggregateGazeData(data, epsilon, minPts); // Αντικατέστησε με τις σωστές τιμές
-            getVizTypeAggregated(aggrgazedata, aggrmousedata);
+        const radioButtons = document.querySelectorAll('input[name="option"]');
+        radioButtons.forEach(button => {
+            button.addEventListener('change', () => {
+                const selectedOption = document.querySelector('input[name="option"]:checked').value;
+                if (selectedOption === 'simple-aggregate') {
+                    aggrmousedata = aggregateSimpleData(data, mouseMovements);
+                    aggrgazedata = aggregateSimpleData(data, gazeCoordinates);
+                } else if (selectedOption === 'dbscan') {
+                    epsilonSlider.addEventListener('input', () => {
+                        const epsilon = parseInt(epsilonSlider.value);
+                        epsilonValueSpan.textContent = epsilon;
+                        // Ανανέωση των δεδομένων με την νέα τιμή του epsilon
+                        const minPts = 2; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
+                        aggrgazedata = aggregateMultiData(data, epsilon, minPts, gazeCoordinates); // Αντικατέστησε με τις σωστές τιμές
+                        aggrmousedata = aggregateMultiData(data, epsilon, minPts, mouseMovements);
+                        getVizTypeAggregated(aggrgazedata, aggrmousedata);
+                    });
+                }
+            });
         });
         updateSubmissionCount(data.length); // Update submission count
     } catch (error) {
@@ -154,12 +165,12 @@ function customDistance(point1, point2) {
 }
 
 // Συνάρτηση συγχώνευσης δεδομένων
-function aggregateGazeData(allUsersData, epsilon, minPts) {
-    const aggregatedGazeData = [];
+function aggregateMultiData(allUsersData, epsilon, minPts, dataset) {
+    const aggregatedData = [];
     allUsersData.forEach(userData => {
         // Μετατροπή δεδομένων σε μορφή [[x, y, duration]]
         const keysToKeep = ["x", "y"];
-        const mappedArray = mapArray(userData.gazeCoordinates, keysToKeep);
+        const mappedArray = mapArray(userData.dataset, keysToKeep);
         // Δημιουργία μοντέλου DBSCAN
         const dbscan = new jDBSCAN();
         dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN').data(mappedArray)
@@ -173,13 +184,13 @@ function aggregateGazeData(allUsersData, epsilon, minPts) {
         // Ενσωμάτωση κεντρικών σημείων στον τελικό πίνακα
         clusterCenters.forEach(point => {
             // Ελέγχουμε αν υπάρχει ήδη ένα παρόμοιο σημείο στον τελικό πίνακα
-            const existingPoint = aggregatedGazeData.find(p => p.x === point.x && p.y === point.y);
+            const existingPoint = aggregatedData.find(p => p.x === point.x && p.y === point.y);
             if (existingPoint) {
                 // Αν υπάρχει, αθροίζουμε τη διάρκεια
                 existingPoint.duration += point.duration;
             } else {
                 // Διαφορετικά, προσθέτουμε το νέο σημείο
-                aggregatedGazeData.push({
+                aggregatedData.push({
                     x: point.x,
                     y: point.y,
                     duration: point.duration
@@ -187,21 +198,21 @@ function aggregateGazeData(allUsersData, epsilon, minPts) {
             }
         });
     });
-    return aggregatedGazeData;
+    return aggregatedData;
 }
 
-function aggregateMouseData(allUsersData) {
-    const aggregatedMouseData = [];
+function aggregateSimpleData(allUsersData, dataset) {
+    const aggregatedSimpleData = [];
     allUsersData.forEach(userData => {
-        userData.mouseMovements.forEach(point => {
-            // Check if a similar point already exists in aggregatedMouseData
-            const existingPoint = aggregatedMouseData.find(p => p.x === point.x && p.y === point.y);
+        userData.dataset.forEach(point => {
+            // Check if a similar point already exists in aggregatedSimpleData
+            const existingPoint = aggregatedSimpleData.find(p => p.x === point.x && p.y === point.y);
             if (existingPoint) {
                 // If a similar point exists, aggregate the duration
                 existingPoint.duration += point.duration;
             } else {
                 // Otherwise, add the point as a new entry
-                aggregatedMouseData.push({
+                aggregatedSimpleData.push({
                     x: point.x,
                     y: point.y,
                     duration: point.duration
@@ -209,5 +220,5 @@ function aggregateMouseData(allUsersData) {
             }
         });
     });
-    return aggregatedMouseData;
+    return aggregatedSimpleData;
 }
