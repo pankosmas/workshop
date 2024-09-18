@@ -147,20 +147,18 @@ body {
     align-items: stretch; /* Stretch items to have equal height */
     border: none;
     border-radius: 10px;
-    width: auto;
-    height: auto;
     padding: 10px;
     background: white;
     box-shadow: 10px 10px 10px #16c7a6;
 }
 #left-div {
-    flex: 1; /* Take up the remaining space */
-    margin-right: 10px; /* Add some space between the left and the question div */
+    flex-shrink: 1; /* Allow to shrink if needed */
+    margin-right: 10px; /* Space between left and question divs */
     padding: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: flex-start;
+    align-items: center;
 }
 #left-div img {
     max-width: 100%;
@@ -168,11 +166,8 @@ body {
     margin: 10px 0;
 }
 .question {
-    flex: 1; /* Ensure it only takes the space of its contents */
+    flex-grow: 1; /* Take up the remaining space in the container */
     padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; /* Stretch items to have equal height */
 }
 form {
     width: fit-content;
