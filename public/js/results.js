@@ -133,15 +133,37 @@ function calculateClusterCenters(clusters) {
     });
 }
 
+function mapArray(dataArray, keys) {
+    return dataArray.map(item => {
+        const mappedItem = {};
+        keys.forEach(key => {
+        if (key in item) {
+            mappedItem[key] = item[key];
+        }
+        });
+        return mappedItem;
+    });
+}
+function customDistance(point1, point2) {
+    // Calculate Euclidean distance
+    var euclideanDist = Math.sqrt(Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2));
+    // Optionally use timestamp if needed
+    var timeDiff = Math.abs(new Date(point2.timestamp) - new Date(point1.timestamp));
+    // Combine distances (e.g., add them)
+    return euclideanDist + timeDiff;
+}
+
 // Συνάρτηση συγχώνευσης δεδομένων
 function aggregateGazeData(allUsersData, epsilon, minPts) {
     const aggregatedGazeData = [];
     allUsersData.forEach(userData => {
         // Μετατροπή δεδομένων σε μορφή [[x, y, duration]]
-        console.log(userData.gazeCoordinates);
+        const keysToKeep = ["x", "y"];
+        const mappedArray = mapArray(userData.gazeCoordinates, keysToKeep);
+        console.log(mappedArray);
         // Δημιουργία μοντέλου DBSCAN
         const dbscan = new jDBSCAN();
-        var dbscanner = dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN').data(userData.gazeCoordinates);
+        var dbscanner = dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN').data(mappedArray);
         // Υπολογισμός κεντρικών σημείων για κάθε cluster
         const clusterCenters = dbscanner.getClusters();
         console.log(clusterCenters);
