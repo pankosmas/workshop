@@ -118,10 +118,6 @@ function updateTimer(time, std) {
 // Set up auto-refresh every 30 seconds
 setInterval(fetchData, 20000); // 30,000 milliseconds = 30 seconds
 
-function convertToPoints(data) {
-    return data.map(point => [point.x, point.y, point.duration]);
-}
-
 // Συνάρτηση για να υπολογίσεις το κεντρικό σημείο κάθε cluster
 function calculateClusterCenters(clusters) {
     return clusters.map(cluster => {
@@ -142,11 +138,10 @@ function aggregateGazeData(allUsersData, epsilon, minPts) {
     const aggregatedGazeData = [];
     allUsersData.forEach(userData => {
         // Μετατροπή δεδομένων σε μορφή [[x, y, duration]]
-        const points = convertToPoints(userData.gazeCoordinates);
-        console.log(points);
+        console.log(userData.gazeCoordinates);
         // Δημιουργία μοντέλου DBSCAN
         const dbscan = new jDBSCAN();
-        dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN').data(points);
+        dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN').data(userData.gazeCoordinates);
         // Υπολογισμός κεντρικών σημείων για κάθε cluster
         const clusterCenters = dbscan.getClusters();
         console.log(clusterCenters);
