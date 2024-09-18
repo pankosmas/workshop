@@ -1,5 +1,3 @@
-import { DBSCAN } from 'density-clustering';
-
 async function fetchData() {
     try {
         activityStepValue = getActivityStepValue();
