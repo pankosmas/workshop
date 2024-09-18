@@ -105,7 +105,7 @@ body {
     background-color: white;
     padding: 15px;
     border-radius: 5px;
-    box-shadow: 5px 5px 10px #16c7a6;
+    box-shadow: 10px 10px 10px #16c7a6;
     text-align: center;
     display: flex;
     flex-direction: column;
