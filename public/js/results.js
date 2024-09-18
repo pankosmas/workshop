@@ -11,8 +11,6 @@ async function fetchData() {
         var aggrmousedata = [];
 
         // Event listener για αλλαγές στο slider
-        const epsilonSlider = document.getElementById('opacity-slider');
-        const epsilonValueSpan = document.getElementById('opacity-value');
         const radioButtons = document.querySelectorAll('input[name="option"]');
         radioButtons.forEach(button => {
             button.addEventListener('change', () => {
@@ -20,7 +18,10 @@ async function fetchData() {
                 if (selectedOption === 'simple-aggregate') {
                     aggrmousedata = aggregateSimpleData(data, 'mouseMovements');
                     aggrgazedata = aggregateSimpleData(data, 'gazeCoordinates');
+                    getVizTypeAggregated(aggrgazedata, aggrmousedata);
                 } else if (selectedOption === 'dbscan') {
+                    const epsilonSlider = document.getElementById('opacity-slider');
+                    const epsilonValueSpan = document.getElementById('opacity-value');
                     epsilonSlider.addEventListener('input', () => {
                         const epsilon = parseInt(epsilonSlider.value);
                         epsilonValueSpan.textContent = epsilon;
