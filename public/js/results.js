@@ -18,16 +18,16 @@ async function fetchData() {
             button.addEventListener('change', () => {
                 const selectedOption = document.querySelector('input[name="option"]:checked').value;
                 if (selectedOption === 'simple-aggregate') {
-                    aggrmousedata = aggregateSimpleData(data, 'mouseMovements');
-                    aggrgazedata = aggregateSimpleData(data, 'gazeCoordinates');
+                    aggrmousedata = aggregateSimpleData(data, mouseMovements);
+                    aggrgazedata = aggregateSimpleData(data, gazeCoordinates);
                 } else if (selectedOption === 'dbscan') {
                     epsilonSlider.addEventListener('input', () => {
                         const epsilon = parseInt(epsilonSlider.value);
                         epsilonValueSpan.textContent = epsilon;
                         // Ανανέωση των δεδομένων με την νέα τιμή του epsilon
                         const minPts = 2; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
-                        aggrgazedata = aggregateMultiData(data, epsilon, minPts, 'gazeCoordinates'); // Αντικατέστησε με τις σωστές τιμές
-                        aggrmousedata = aggregateMultiData(data, epsilon, minPts, 'mouseMovements');
+                        aggrgazedata = aggregateMultiData(data, epsilon, minPts, gazeCoordinates); // Αντικατέστησε με τις σωστές τιμές
+                        aggrmousedata = aggregateMultiData(data, epsilon, minPts, mouseMovements);
                         getVizTypeAggregated(aggrgazedata, aggrmousedata);
                     });
                 }
@@ -170,7 +170,7 @@ function aggregateMultiData(allUsersData, epsilon, minPts, dataset) {
     allUsersData.forEach(userData => {
         // Μετατροπή δεδομένων σε μορφή [[x, y, duration]]
         const keysToKeep = ["x", "y"];
-        const mappedArray = mapArray(userData.dataset, keysToKeep);
+        const mappedArray = mapArray(userData[dataset], keysToKeep);
         // Δημιουργία μοντέλου DBSCAN
         const dbscan = new jDBSCAN();
         dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN').data(mappedArray)
@@ -204,7 +204,7 @@ function aggregateMultiData(allUsersData, epsilon, minPts, dataset) {
 function aggregateSimpleData(allUsersData, dataset) {
     const aggregatedSimpleData = [];
     allUsersData.forEach(userData => {
-        userData.dataset.forEach(point => {
+        userData[dataset].forEach(point => {
             // Check if a similar point already exists in aggregatedSimpleData
             const existingPoint = aggregatedSimpleData.find(p => p.x === point.x && p.y === point.y);
             if (existingPoint) {
