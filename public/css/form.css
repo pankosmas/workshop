@@ -152,7 +152,6 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     border: none;
     border-radius: 10px;
     width: auto;
@@ -163,8 +162,9 @@ body {
     margin: 0 5%;
 }
 #left-div {
-    display: 1;
+    display: block;
     padding-right: 20px;
+    margin-top: 1.2em;
 }
 
 #left-div img {
@@ -191,6 +191,7 @@ form {
     background-color: #f9f9f9; /* Ensure the form has a background color */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add a transition for smooth effects */
     font-family: 'Open Sans', sans-serif;
+    text-align: center;
 }
 
 .container img {
@@ -210,7 +211,6 @@ form {
     background: white;
     border: none;
     color: #0995e6;
-    margin-left: 0.5rem;
 }
 .image-button:hover {
     color: #094c74;
@@ -220,11 +220,10 @@ form {
 .partIndicator {
     margin-left: 1rem;
     font-size: 1rem;
-    display: flex;
+    display: contents;
     font-weight: bold;
 }
 hr {
-    margin-left: 1rem;
     border-top: 1px solid gray;
 }
 
