@@ -22,6 +22,9 @@ body {
     position: fixed; /* Fixed position keeps it visible */
     width: 100%;
 	min-height: 6vh;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 .nav-links {
     margin-left: 175px;
