@@ -472,8 +472,3 @@ function updateOpacity(value) {
     heat.draw(); // Redraw heatmap with new opacity
 }
 
-document.getElementById('opacity-slider').addEventListener('input', function(event) {
-    const opacityValue = event.target.value;
-    document.getElementById('opacity-value').textContent = opacityValue;
-    updateOpacity(opacityValue);
-});
