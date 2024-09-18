@@ -144,7 +144,7 @@ body {
 .container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch; /* Stretch items to have equal height */
     border: none;
     border-radius: 10px;
     width: auto;
@@ -154,7 +154,7 @@ body {
     box-shadow: 10px 10px 10px #16c7a6;
 }
 #left-div {
-    flex-grow: 1; /* Take up the remaining space */
+    flex: 1; /* Take up the remaining space */
     margin-right: 10px; /* Add some space between the left and the question div */
     padding: 10px;
     display: flex;
@@ -168,12 +168,14 @@ body {
     margin: 10px 0;
 }
 .question {
-    flex-grow: 0; /* Ensure it only takes the space of its contents */
+    flex: 1; /* Ensure it only takes the space of its contents */
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Stretch items to have equal height */
 }
 form {
     width: fit-content;
-    height: auto;
     margin: 30px 0 0 0;
     padding: 20px;
     border: none; /* Remove the solid border */
