@@ -145,8 +145,10 @@ function aggregateGazeData(allUsersData, epsilon, minPts) {
         // Μετατροπή δεδομένων σε μορφή [[x, y, duration]]
         const points = convertToPoints(userData.gazeCoordinates);
         // Δημιουργία μοντέλου DBSCAN
-        const dbscan = new ML.DBSCAN();
-        const clusters = dbscan.run(points, epsilon, minPts);
+        const dbscan = new jDBSCAN();
+        // Set epsilon and minPts
+        dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN');
+        const clusters = dbscan.run(points);
         // Υπολογισμός κεντρικών σημείων για κάθε cluster
         const clusterCenters = calculateClusterCenters(clusters, points);
         // Ενσωμάτωση κεντρικών σημείων στον τελικό πίνακα
