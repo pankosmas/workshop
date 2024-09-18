@@ -21,7 +21,7 @@ body {
     box-sizing: border-box;
     position: fixed; /* Fixed position keeps it visible */
     width: 100%;
-	min-height: 6vh;
+	min-height: 6%;
 }
 .nav-links {
     display: flex;
@@ -51,7 +51,7 @@ body {
 	background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
 }
 .logo {
-	width: 5vw;
+	width: 6%;
 }
 .content {
     text-align: center;
@@ -62,11 +62,11 @@ body {
     align-items: center;
 }
 .content h1 {
-	font-size: 2vw;
+	font-size: 2em;
 	margin: 100px 0 25px 0;
 }
 .instructions-container {
-    width: 60vw;
+    width: 60%;
     margin: 20px 0 20px 0;
     background-color: #f9f9f9; /*, #1ba0a7, #16c7a6); /*#f9f9f9;*/
     /*box-shadow: 10px 20px 40px #16c7a6;*/
@@ -230,17 +230,14 @@ footer a:hover {
 	.logo { width: 5vw; }
 	.instruction p { font-size: 0.9em;}
 	.instructions-container  { width: 65vw;}
-	footer { font-size: 0.85em; }
 }
 @media (min-width: 1880px) {
-	.logo { width: 5vw; }
-	.content h1 { margin: 150px 0 25px 0; font-size: 2.2vw; }
+	.logo { width: 6%; }
+	.content h1 { margin: 100px 0 25px 0; font-size: 2.5em; }
 	.instructions-container { font-size: 1.1em; }
-	.nav-button { font-size: 1.4em;}
-	.nav-links, footer { font-size: 1.4em; }
 }
 @media (min-width: 2159px) {
-	.content h1 { margin: 200px 0 25px 0; font-size: 2.2vw; }
+	.content h1 { margin: 170px 0 25px 0; font-size: 2.5em; }
 	.instructions-container { font-size: 1.4em; width: 68vw; }
 	.nav-button { margin-top: 2%; font-size: 2em; border-radius: 10px; box-shadow: 0 16px 16px rgba(0, 0, 0, 0.5);}
 }

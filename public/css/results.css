@@ -140,6 +140,7 @@ canvas, #heatmap {
 }
 #controller-div {
     display: flex;
+    align-items: center;
 }
 #controller {
     display: flex;
@@ -148,6 +149,7 @@ canvas, #heatmap {
 .option {
     display: flex;
     align-items: center;
+    width: max-content;
 }
 .option input[type="radio"] {
     margin-right: 10px; /* Space between radio button and label */

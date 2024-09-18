@@ -222,11 +222,13 @@ label {
     margin-top: 15px;
     font-size: 1.1em;
     color: #333;
+    width: max-content;
 }
 .radio-group, .checkbox-group {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+    width: max-content;
 }
 
 .radio-group input, .checkbox-group input {
