@@ -18,16 +18,16 @@ async function fetchData() {
             button.addEventListener('change', () => {
                 const selectedOption = document.querySelector('input[name="option"]:checked').value;
                 if (selectedOption === 'simple-aggregate') {
-                    aggrmousedata = aggregateSimpleData(data, mouseMovements);
-                    aggrgazedata = aggregateSimpleData(data, gazeCoordinates);
+                    aggrmousedata = aggregateSimpleData(data, 'mouseMovements');
+                    aggrgazedata = aggregateSimpleData(data, 'gazeCoordinates');
                 } else if (selectedOption === 'dbscan') {
                     epsilonSlider.addEventListener('input', () => {
                         const epsilon = parseInt(epsilonSlider.value);
                         epsilonValueSpan.textContent = epsilon;
                         // Ανανέωση των δεδομένων με την νέα τιμή του epsilon
                         const minPts = 2; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
-                        aggrgazedata = aggregateMultiData(data, epsilon, minPts, gazeCoordinates); // Αντικατέστησε με τις σωστές τιμές
-                        aggrmousedata = aggregateMultiData(data, epsilon, minPts, mouseMovements);
+                        aggrgazedata = aggregateMultiData(data, epsilon, minPts, 'gazeCoordinates'); // Αντικατέστησε με τις σωστές τιμές
+                        aggrmousedata = aggregateMultiData(data, epsilon, minPts, 'mouseMovements');
                         getVizTypeAggregated(aggrgazedata, aggrmousedata);
                     });
                 }

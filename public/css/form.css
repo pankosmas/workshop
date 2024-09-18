@@ -150,6 +150,7 @@ body {
     padding: 10px;
     background: white;
     box-shadow: 10px 10px 10px #16c7a6;
+    margin: 0 10%;
 }
 #left-div {
     flex-shrink: 1; /* Allow to shrink if needed */
@@ -161,7 +162,7 @@ body {
     align-items: center;
 }
 #left-div img {
-    max-width: 100%;
+    max-width: 70%;
     height: auto;
     margin: 10px 0;
 }
