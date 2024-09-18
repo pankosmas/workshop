@@ -18,7 +18,7 @@ async function fetchData() {
             const epsilon = parseInt(epsilonSlider.value);
             epsilonValueSpan.textContent = epsilon;
             // Ανανέωση των δεδομένων με την νέα τιμή του epsilon
-            const minPts = 3; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
+            const minPts = 2; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
             aggrgazedata = aggregateGazeData(data, epsilon, minPts); // Αντικατέστησε με τις σωστές τιμές
             getVizTypeAggregated(aggrgazedata, aggrmousedata);
         });
@@ -160,19 +160,16 @@ function aggregateGazeData(allUsersData, epsilon, minPts) {
         // Μετατροπή δεδομένων σε μορφή [[x, y, duration]]
         const keysToKeep = ["x", "y"];
         const mappedArray = mapArray(userData.gazeCoordinates, keysToKeep);
-        console.log(mappedArray);
         // Δημιουργία μοντέλου DBSCAN
         const dbscan = new jDBSCAN();
         dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN').data(mappedArray)
         try {
             dbscan();
-            console.log("DBSCAN executed.");
         } catch (error) {
             console.error("Error executing DBSCAN:", error);
         }
         // Υπολογισμός κεντρικών σημείων για κάθε cluster
         const clusterCenters = dbscan.getClusters();
-        console.log(clusterCenters);
         // Ενσωμάτωση κεντρικών σημείων στον τελικό πίνακα
         clusterCenters.forEach(point => {
             // Ελέγχουμε αν υπάρχει ήδη ένα παρόμοιο σημείο στον τελικό πίνακα
