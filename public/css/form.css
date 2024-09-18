@@ -150,22 +150,21 @@ body {
 }
 .container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     width: auto;
     height: auto;
-    padding: 10px;
+    padding: 20px;
     background: white;
     box-shadow: 5px 5px 10px #16c7a6;
     margin: 0 5%;
 }
 #left-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+    display: 1;
+    padding-right: 20px;
 }
 
 #left-div img {
@@ -174,11 +173,13 @@ body {
 }
 
 .question {
-    flex: 1 1 auto; /* Allows question to grow and fit content */
-    padding: 20px; /* Adjust as necessary */
-    border: none;
-    max-width: fit-content; /* Prevents shrinking beyond content size */
+    flex: 1; /* Ensures it takes up equal space */
+    padding-left: 20px; /* Adds space between the left div and question div */
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
 }
+
 form {
     width: fit-content;
     height: auto;
