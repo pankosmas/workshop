@@ -18,7 +18,7 @@ async function fetchData() {
             const epsilon = parseInt(epsilonSlider.value);
             epsilonValueSpan.textContent = epsilon;
             // Ανανέωση των δεδομένων με την νέα τιμή του epsilon
-            const minPts = 5; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
+            const minPts = 3; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
             aggrgazedata = aggregateGazeData(data, epsilon, minPts); // Αντικατέστησε με τις σωστές τιμές
             getVizTypeAggregated(aggrgazedata, aggrmousedata);
         });
