@@ -345,6 +345,40 @@ function updateBackToTestsStyles(top, right, opacity, width, height) {
 }
 
 function loadFormStep(currentStep) {
+    const showPopupSteps = [4, 8, 10]; // Steps where the popup should appear
+
+    // Check if the current step is in the popup steps array
+    if (showPopupSteps.includes(currentStep)) {
+        if (currentStep === 10) {
+            // Special popup for step 10
+            Swal.fire({
+                title: 'Congratulations!',
+                text: 'You completed the survey!',
+                icon: 'success',
+                confirmButtonText: 'Check Results'
+            }).then(() => {
+                // Proceed to load the final step content or show results
+                loadStepContent(currentStep);
+            });
+        } else {
+            // Regular popup for other steps
+            Swal.fire({
+                title: 'Success!',
+                text: '',
+                icon: 'success',
+                confirmButtonText: 'Go Next'
+            }).then(() => {
+                // Proceed with the rest of the logic after the popup is confirmed
+                loadStepContent(currentStep);
+            });
+        }
+    } else {
+        // Proceed directly without a popup
+        loadStepContent(currentStep);
+    }
+}
+
+function loadStepContent(currentStep) {
     if (currentStep <= 8) {
         fetch('../json/questions1-8.json')
         .then(response => response.json())
