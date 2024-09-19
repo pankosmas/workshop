@@ -174,9 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 console.log('Form submission successful');  // Log successful submission
                 editProgress(progressBar, 10 * (submitCounter - 1));
-                loadNextStepFromJSON(submitCounter);
-                loadFormStep(submitCounter);
                 submitButton.disabled = false;
+                loadFormStep(submitCounter);
+                loadNextStepFromJSON(submitCounter);
             } else {
                 console.error('Error submitting form:', response.status);  // Log errors
                 alert('Error submitting form');
