@@ -97,8 +97,8 @@ body {
     align-items: center;
 }
 .content h1 {
-    font-size: 2vw;
-    margin: 9vh 0vw 3vh 0vw;
+    font-size: 2em;
+    margin: 11vh 0vw 4vh 0vw;
 }
 .initial-container {
     margin: 3vh 0vw 4vh 0vw;
@@ -122,8 +122,6 @@ body {
     font-size: 1.3em;
 }
 .initial-container img {
-    max-width: 100%;
-    height: auto;
     display: block; /* Ensures the image takes up its own line */
     margin-bottom: 20px; /* Adds space between the image and the button */
 }
@@ -173,17 +171,18 @@ body {
 form {
     width: fit-content;
     margin: 30px 0 0 0;
-    padding: 20px;
+    padding: 1em;
     border: none; /* Remove the solid border */
     border-radius: 10px; /* Add rounded corners */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Add a subtle shadow to create a floating effect */
     background-color: #f9f9f9; /* Ensure the form has a background color */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add a transition for smooth effects */
     font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
 }
 .partIndicator {
     margin-bottom: 10px;
-    font-size: 1rem;
+    font-size: 1em;
     font-weight: bold;
     text-align: center;
 }
@@ -210,6 +209,7 @@ hr {
     background: white;
     border: none;
     color: #0995e6;
+    font-size: 1em;
     margin-left: 0.5rem;
 }
 .image-button:hover {
@@ -220,15 +220,14 @@ hr {
 label {
     font-weight: 600;
     display: block;
-    margin-top: 15px;
-    font-size: 1.1em;
+    margin-top: 1em;
+    font-size: 1em;
     color: #333;
     width: max-content;
 }
 .radio-group, .checkbox-group {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
     width: max-content;
 }
 
@@ -237,7 +236,6 @@ label {
     cursor: pointer;
 }
 .checkbox-group label {
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
     color: #666;
@@ -272,7 +270,7 @@ input[type="submit"] {
     background: linear-gradient(120deg, #10cc9d 0%, #14cba0 25%, #1fb3af 50%, #0995e6 75%, #11819b 100%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
     overflow: visible; /* Ensure that any overflow is visible */
-    font-size: 1rem;
+    font-size: 1em;
     cursor: pointer;
 }
 input[type="submit"]:hover {
@@ -286,11 +284,11 @@ input[type="submit"]:hover {
     right: 1em;
     background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
     color: white;
-    font-size: 1rem;
+    font-size: 1em;
     font-weight: bold;
     justify-content: center;
-    height: 4vh;
-    width: 2vw;
+    height: 4%;
+    width: 3%;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
     overflow: visible; /* Ensure that any overflow is visible */

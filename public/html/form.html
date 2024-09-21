@@ -35,7 +35,7 @@
 
         <div class="initial-container">
             <h2>Step 1: A challenge to Identify Real vs. Fake Images</h2>
-            <img id="initial-image" class="initial-image" src="../images/step1.png" alt="Image Here">
+            <img id="initial-image" class="image1" src="../images/step1.png" alt="Image Here">
             <button id="initialFullScreenImage" onclick="showFullImage()">Inspect in Full-Size</button>
         </div>
 
@@ -43,7 +43,7 @@
             <div id="left-div" class="image">
                 <p class="partIndicator">Step 1: A challenge to Identify Real vs. Fake Images</p>
                 <hr>
-                <img id="form-image" src="../images/step1.png" alt="Form Image">
+                <img id="form-image" class="left-image" src="../images/step1.png" alt="Form Image">
                 <button id="fullscreenImage" class="image-button" onclick="showFullImage();">Not sure? Click here to inspect the image in full-size again!</button>
             </div>
             <div class="question">
@@ -97,23 +97,27 @@
 
         <canvas id="plotting_canvas" width="0" height="0" style="display:none;"></canvas>
     </div>
-    
-    
-
-    <!-- Include jQuery (necessary for Select2) -->
-    <script>
-        const img = document.querySelector('.initial-image');    
-        img.onload = function() {
-            if (img.height > img.width) {
-                img.style.maxWidth = '45% !important';
-            } else {
-                img.style.maxWidth = '85% !important';
-            }
-        };
-    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Include Select2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        const img = document.querySelector('.image1');    
+        const img2 = document.querySelector('.left-image');
+        img.onload = function() {
+            if (img.naturalHeight > img.naturalWidth) {
+                img.style.maxWidth = '60%';
+            } else {
+                img.style.maxWidth = '85%';
+            }
+        };
+        img2.onload = function() {
+            if (img2.naturalHeight > img2.naturalWidth) {
+                img2.style.maxWidth = '55%';
+            } else {
+                img2.style.maxWidth = '85%';
+            }
+        };
+    </script>
     <script src="../js/form.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/mouse.js"></script>
