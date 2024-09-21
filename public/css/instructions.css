@@ -1,16 +1,19 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: Open Sans, Arial, sans-serif;
     font-size: 16px;
-	background: #fff;
-	background: url('../images/pixels.png') repeat fixed;
-    background-size: cover; 
+    background: #fff;
+    background: url('../images/pixels.png') repeat fixed;
+    background-size: cover;
     min-height: 100vh; /* Ensure body covers entire viewport height */
-	display: flex;
+    display: flex;
     flex-direction: column;
-	overflow: hidden;
 }
 .navbar {
     display: flex;
@@ -18,58 +21,67 @@ body {
     justify-content: space-between;
     background-color: #333;
     padding: 10px 20px;
-    box-sizing: border-box;
-    position: fixed; /* Fixed position keeps it visible */
     width: 100%;
-	min-height: 6%;
+    height: auto;
+    position: fixed;
+    box-sizing: border-box;
+}
+.navoff {
+    width: calc(100% - 240px);
+    margin-left: 240px;
+}
+.logo {
+    width: 10%;
+    position: relative; /* Ensure it stays in the top left */
+    left: 0;
 }
 .nav-links {
     display: flex;
-	font-size: 1em;
-    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Center the links horizontally */
+    font-size: 1em;
 }
 .nav-links a {
     color: #7A7A7A;
-    margin: 0 20px;
-	text-decoration: none;
+    margin: 0 1em;
+    text-decoration: none;
 }
 .nav-links a:hover {
     color: #fff;
 }
 .nav-button {
-	background: linear-gradient(120deg, #10cc9d 0%, #14cba0 25%, #1fb3af 50%, #0995e6 75%, #11819b 100%);
-	color: #fff;
-	border: none;
-	padding: 10px 20px;
-	cursor: pointer;
-	border-radius: 5px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
-	overflow: visible; /* Ensure that any overflow is visible */
-	font-size: 1em;
+    background: linear-gradient(120deg, #10cc9d 0%, #14cba0 25%, #1fb3af 50%, #0995e6 75%, #11819b 100%);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 0.3em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .nav-button:hover {
-	background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
-}
-.logo {
-	width: 6%;
+    background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
 }
 .content {
     text-align: center;
-    width: 100vw; /* Adjust as needed */
-    height: 100vh; /* Adjust as needed */
+    width: 100%; /* Adjust as needed */
+    height: 115vh; /* Adjust as needed */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .content h1 {
 	font-size: 2em;
-	margin: 100px 0 25px 0;
+	margin: 4em 0 1em 0;
 }
 .instructions-container {
     width: 60%;
-    margin: 20px 0 20px 0;
+    margin: 1em 0 1em 0;
     background-color: #f9f9f9; /*, #1ba0a7, #16c7a6); /*#f9f9f9;*/
-    /*box-shadow: 10px 20px 40px #16c7a6;*/
     border-radius: 5px;
 }
 .instruction {
@@ -80,8 +92,6 @@ body {
 	margin: 15px 0px;
 	box-shadow: 5px 5px 10px #16c7a6;
     border-radius: 5px;
-	/*border: 1px solid #0999e1;
-	border-radius: 5px;*/
 }
 .instruction p {
 	justify-content: center;
@@ -98,19 +108,6 @@ body {
 .emoji-container {
 	text-align: right;
 	width: 10%;
-}
-.explanation-container {
-	width: 75%;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #fff; /*, #1ba0a7, #16c7a6); /*#f9f9f9;*/
-    box-shadow: 5px 5px 10px #16c7a6;
-	/*10px 20px 40px #0994e9;*/
-    border-radius: 5px;
-	font-size: 1.5em;
-}
-.explanation1-image {
-	width: 50%;
 }
 .invisible {
 	display: none;
@@ -129,7 +126,7 @@ input[type="checkbox"] {
 	border-radius: 3px;
     width: 2em; /* Adjust as needed */
     height: 2em; /* Adjust as needed */
-    margin-right: 40px; /* Optional: Space between checkbox and label */
+    margin: 0 2em; /* Optional: Space between checkbox and label */
     vertical-align: middle; /* Aligns checkbox vertically with the label */
 }
 input[type="checkbox"]::after {
@@ -154,12 +151,12 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 20px;
-	position: fixed; /* Fixed position keeps it visible */
-	left: 0%;
-	width: 100%;
-	bottom: 0%;
-	font-size: 1em;
-    margin-top: auto; /* Push footer to the bottom */
+    position: fixed;
+    left: 0%;
+    width: 100%;
+    height: auto; /* Adjust height dynamically */
+    bottom: 0;
+    font-size: 0.9em;
 }
 footer a {
     color: #4CAF50;
@@ -169,117 +166,32 @@ footer a:hover {
     text-decoration: underline;
 }
 
-@media (max-width: 479px) {
-	.logo { width: 11vw; }
-	.nav-links { font-size: 0.5em; }
-	.nav-links a { margin: 0 10px;}
-	footer { font-size: 0.5em; }
-	.content h1 { font-size: 5vw; }
-	.instruction p { font-size: 0.5em;}
-	.instruction-number { font-size: 0.5em; }
-	.emoji-container { font-size: 0.5em; }
-	.instructions-container  { width: 65vw;}
-	.explanation-container  { font-size: 0.5em;}
-	.nav-button { font-size: 0.8em; }
-	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */}
-	input[type="checkbox"]::after { font-size: 0.75em; }
+
+@media (max-width: 1600px) {
+    body {
+        font-size: 16px; /* Μείωση για μικρότερες οθόνες */
+    }
 }
-@media (min-width: 480px) and (max-width: 735px) {
-	.logo { width: 10vw; }
-	.nav-links { font-size: 0.75em; }
-	.nav-links a { margin: 0 10px;}
-	footer { font-size: 0.75em; }
-	.content h1 { font-size: 3vw; }
-	.instruction p { font-size: 0.5em; width: 60%;}
-	.instruction-number { font-size: 0.5em; }
-	.instructions-container  { width: 65vw;}
-	.explanation-container  { font-size: 0.75em;}
-	.nav-button { font-size: 0.8em; }
-	.emoji-container { font-size: 0.5em; }
-	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */}
-	input[type="checkbox"]::after { font-size: 0.75em; }
-}
-@media (min-width: 736px) and (max-width: 879px) {
-	.logo { width: 8vw; }
-	.nav-links { font-size: 0.75em; }
-	footer { font-size: 0.75em; }
-	.content h1 { font-size: 3vw; }
-	.instructions-container  { width: 65vw;}
-	.explanation-container  { font-size: 1em; }
-	.nav-button { font-size: 0.8em; }
-	.instruction p { font-size: 0.7em;}
-	.instruction-number { font-size: 0.7em; }
-	.emoji-container { font-size: 0.7em; }
-	input[type="checkbox"] { width: 1.25em; height: 1.25em; /* Adjust as needed */}
-	input[type="checkbox"]::after { font-size: 1.25em; }
-}
-@media (min-width: 880px) and (max-width: 1379px) {
-	.logo { width: 7vw; }
-	footer { font-size: 0.75em; }
-	.content h1 { font-size: 3vw; }
-	.instruction p { font-size: 0.75em;}
-	.instruction-number { font-size: 0.75em; }
-	.instructions-container  { width: 65vw;}
-	.explanation-container  { font-size: 1.25em; }
-	.nav-button { font-size: 0.8em; }
-	.emoji-container { font-size: 0.75em; }
-	input[type="checkbox"] { width: 1.5em; height: 1.5em; /* Adjust as needed */}
-	input[type="checkbox"]::after { font-size: 1.5em; }
-}
-@media (min-width: 1380px) and (max-width: 1879px) {
-	.logo { width: 5vw; }
-	.instruction p { font-size: 0.9em;}
-	.instructions-container  { width: 65vw;}
-}
-@media (min-width: 1880px) {
-	.logo { width: 6%; }
-	.content h1 { margin: 100px 0 25px 0; font-size: 2.5em; }
-	.instructions-container { font-size: 1.1em; }
-}
-@media (min-width: 2159px) {
-	.content h1 { margin: 170px 0 25px 0; font-size: 2.5em; }
-	.instructions-container { font-size: 1.4em; width: 68vw; }
-	.nav-button { margin-top: 2%; font-size: 2em; border-radius: 10px; box-shadow: 0 16px 16px rgba(0, 0, 0, 0.5);}
-}
-@media (min-width: 2302px) {
-	.instructions-container { margin: 60px 0 20px 0; }
-}
-@media (min-width: 2559px) {
-	.instruction { font-size: 1.7em;}
-	.nav-button { margin-top: 3%; font-size: 2.5em;}
-	.nav-links, footer { font-size: 1.5em; }
-	.instruction input[type="checkbox"] { transform: scale(1.5); }
-}
-@media (min-width: 2879px) {
-	.nav-links, footer { font-size: 1.8em; }
-	.nav-button { font-size: 3em; }
+@media (max-width: 1200px) {
+    body {
+        font-size: 14px; /* Μείωση για μικρότερες οθόνες */
+    }
 }
 
-
-
-
-
-
-
-@media (max-height: 760px) {
-	.instruction p { font-size: 0.5em;}
-	.instruction-number { font-size: 0.5em; }
-	.emoji-container { font-size: 0.5em; }
-	.instructions-container  { width: 65vw; margin: 5px 0px 5px 0px;}
-	input[type="checkbox"] { width: 1em; height: 1em; /* Adjust as needed */ margin-right: 20px;}
-	input[type="checkbox"]::after { font-size: 0.75em; }
+@media (max-width: 992px) {
+    body {
+        font-size: 12px; /* Ακόμη μικρότερο για tablet */
+    }
 }
-@media (min-height: 1599px) {
-	.content h1 { margin: 220px 0 25px 0; font-size: 2.4vw; }
-	.instructions-container { margin: 120px 0 20px 0; font-size: 1.4em;  }
-	.nav-button { margin-top: 3%; }
+
+@media (max-width: 768px) {
+    body {
+        font-size: 10px; /* Ακόμη μικρότερο για κινητά */
+    }
 }
-@media (min-height: 1799px) {
-	.content h1 { margin: 260px 0 25px 0; font-size: 2.4vw; }
-	.instructions-container { margin: 140px 0 20px 0; font-size: 1.6em;  }
-	.nav-button { margin-top: 3%; }
-}
-@media (min-height: 1919px) {
-	.content h1 { margin: 260px 0 25px 0; font-size: 2.4vw; }
-	.instructions-container { margin: 140px 0 20px 0; font-size: 1.6em;  }
+
+@media (max-width: 480px) {
+    body {
+        font-size: 8px; /* Πολύ μικρό για πολύ μικρές οθόνες */
+    }
 }

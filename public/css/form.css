@@ -110,16 +110,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 90%; /* Limits the maximum width to 90% of the viewport width */
+    max-width: 85%; /* Limits the maximum width to 90% of the viewport width */
     box-sizing: border-box; /* Ensures padding is included in the div�s total width */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: auto;
 }
 .initial-container h2 {
     margin-bottom: 20px;
+    font-size: 1.3em;
 }
 .initial-container img {
     max-width: 100%;
@@ -136,7 +136,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
     overflow: visible; /* Ensure that any overflow is visible */
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1em;
 }
 .initial-container button:hover {
     background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
@@ -328,13 +328,31 @@ input[type="submit"]:hover {
     display: none;
 }
 
-@media (min-width: 1365px) {
-    #form-image { max-width: 85%;}
+@media (max-width: 1600px) {
+    body {
+        font-size: 16px; /* Μείωση για μικρότερες οθόνες */
+    }
 }
-@media (min-width: 1439px) {
-    .content h1 { margin: 12vh 0vw 5vh 0vw; }
+@media (max-width: 1200px) {
+    body {
+        font-size: 14px; /* Μείωση για μικρότερες οθόνες */
+    }
 }
-@media (min-width: 1919px) {
-    /*.content h1 { margin: 130px 0px 60px 0px; }*/
-    input[type="submit"], #form { font-size: 1.1em; }
+
+@media (max-width: 992px) {
+    body {
+        font-size: 12px; /* Ακόμη μικρότερο για tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 10px; /* Ακόμη μικρότερο για κινητά */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 8px; /* Πολύ μικρό για πολύ μικρές οθόνες */
+    }
 }
