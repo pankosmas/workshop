@@ -370,7 +370,7 @@ function loadFormStep(currentStep) {
             }).then((result) => {
                 // Proceed with the rest of the logic after the popup is confirmed
                 if (result.isConfirmed) {
-                    loadStepContent(currentStep);
+                    loadStepContent(() => currentStep);
                 }
             });
         }
