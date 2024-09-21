@@ -376,7 +376,7 @@ function loadFormStep(currentStep) {
         }
     } else {
         // Proceed directly without a popup
-        loadStepContent(urrentStep);
+        loadStepContent(currentStep);
         loadNextStepFromJSON(submitCounter);
     }
 }
