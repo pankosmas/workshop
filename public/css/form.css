@@ -326,6 +326,13 @@ input[type="submit"]:hover {
     display: none;
 }
 
+
+@media (max-width: 2000px) {
+    body {
+        font-size: 20px; /* Μείωση για μικρότερες οθόνες */
+    }
+}
+
 @media (max-width: 1600px) {
     body {
         font-size: 16px; /* Μείωση για μικρότερες οθόνες */

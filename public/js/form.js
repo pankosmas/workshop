@@ -367,9 +367,11 @@ function loadFormStep(currentStep) {
                 text: '',
                 icon: 'success',
                 confirmButtonText: 'Go Next'
-            }).then(() => {
+            }).then((result) => {
                 // Proceed with the rest of the logic after the popup is confirmed
-                loadStepContent(currentStep);
+                if (result.isConfirmed) {
+                    loadStepContent(currentStep);
+                }
             });
         }
     } else {
