@@ -176,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 editProgress(progressBar, 10 * (submitCounter - 1));
                 submitButton.disabled = false;
                 loadFormStep(submitCounter);
-                loadNextStepFromJSON(submitCounter);
             } else {
                 console.error('Error submitting form:', response.status);  // Log errors
                 alert('Error submitting form');
@@ -370,13 +369,15 @@ function loadFormStep(currentStep) {
             }).then((result) => {
                 // Proceed with the rest of the logic after the popup is confirmed
                 if (result.isConfirmed) {
-                    loadStepContent(() => currentStep);
+                    loadStepContent(currentStep);
+                    loadNextStepFromJSON(submitCounter);
                 }
             });
         }
     } else {
         // Proceed directly without a popup
-        loadStepContent(currentStep);
+        loadStepContent(urrentStep);
+        loadNextStepFromJSON(submitCounter);
     }
 }
 
@@ -447,59 +448,3 @@ function loadStepContent(currentStep) {
     }
 }
 
-/*
-    if (submitCounter == 9) { 
-        Swal.fire({
-            title: 'Success!',
-            text: ``,
-            icon: 'success',
-            confirmButtonText: 'Go Next'
-        }).then(() => {
-            // Experiment with the progress bar
-            editProgress(progressBar, 80);
-            header1 = document.getElementById('h1');
-            header1.innerHTML = 'Observation of News Page';
-            updateBackToTestsStyles('2em', '50em', '0', '15vw', '10vh');
-            loadNextStep("../images/calibration/calibration.png", 'Step 9: Can you spot the subscription button?');
-            updateForm(
-                'Step 9: Can you spot the subscription button?',
-                '../images/calibration/calibration.png',
-                '1. Was it easy for you to locate the subscription button?',
-                '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes"> Yes</label>',
-                '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No"> No</label>',
-                '2. Would you prefer a different position?',
-                '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes"> Yes</label>',
-                '<label for="No"><input type="radio" id="No" name="preferred-position" value="No"> No</label>'
-            );
-        })
-    }
-    if (submitCounter == 10) { 
-        // Experiment with the progress bar
-        editProgress(progressBar, 90);
-        updateBackToTestsStyles('32em', '25em', '0', '45vw', '30vh');
-        loadNextStep("../images/calibration/calibration.png", 'Step 10: Can you spot an advertisement?');
-        updateForm(
-            'Step 10: Can you spot an advertisement?',
-            '../images/calibration/calibration.png',
-            '1. Was it easy for you to locate it?',
-            '<label for="Yes"><input type="radio" id="Yes" name="easy-to-find" value="Yes"> Yes</label>',
-            '<label for="No"><input type="radio" id="No" name="easy-to-find" value="No"> No</label>',
-            '2. Would you prefer a different position?',
-            '<label for="Yes"><input type="radio" id="Yes" name="preferred-position" value="Yes"> Yes</label>',
-            '<label for="No"><input type="radio" id="No" name="preferred-position" value="No"> No</label>'
-        );
-    }
-    if (submitCounter == 11) { 
-        Swal.fire({
-            title: 'Success!',
-            text: `You completed the Survey!`,
-            icon: 'success',
-            confirmButtonText: 'Check Results',
-            preConfirm: () => {
-                window.location.href = 'my_results.html'; // Replace with your target HTML page
-            }
-        }).then(() => {
-            editProgress(progressBar, 100);
-        })
-    }
-*/
