@@ -14,6 +14,7 @@ const formResponseSchema = new Schema({
     preferredPosition: String, // for steps 9 and 10
     mouseMovements: Array,
     gazeCoordinates: Array,
+    sourceCoords: Array,
     time: Number,
     createdAt: { type: Date, default: Date.now }
 });

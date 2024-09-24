@@ -11,53 +11,39 @@ async function fetchData() {
             
             if (activityStepValue === 'step9' || activityStepValue === 'step10') {
                 processFinalQuestionsCharts(data);
-            } else { 
-                processCharts(data); 
-            }
+            } else { processCharts(data); }
             
             var aggrgazedata = [];
             var aggrmousedata = [];
-    
+
+            // Event listener για αλλαγές στο slider
             const epsilonSlider = document.getElementById('opacity-slider');
             const epsilonValueSpan = document.getElementById('opacity-value');
             const radioButtons = document.querySelectorAll('input[name="option"]');
-
-            // Function to update the visualization based on the selected option
-            const updateVisualization = () => {
-                const selectedOption = document.querySelector('input[name="option"]:checked').value;
-                const heatmapslider = document.querySelector('#opacitySlider');
-
-                if (selectedOption === 'simple-aggregate') {
-                    epsilonSlider.disabled = true;
-                    epsilonSlider.style.opacity = 0.5;
-                    aggrmousedata = aggregateSimpleData(data, 'mouseMovements');
-                    aggrgazedata = aggregateSimpleData(data, 'gazeCoordinates');
-                    getVizTypeAggregated(aggrgazedata, aggrmousedata, heatmapslider.value);
-                } else if (selectedOption === 'dbscan') {
-                    epsilonSlider.disabled = false;
-                    epsilonSlider.style.opacity = 1;
-
-                    // Trigger the slider's input event to display the default epsilon value
-                    const epsilon = parseInt(epsilonSlider.value);
-                    epsilonValueSpan.textContent = epsilon;
-
-                    // Default epsilon-related logic
-                    const minPts = 2; // Adjust as needed
-                    aggrgazedata = aggregateMultiData(data, epsilon, minPts, 'gazeCoordinates');
-                    aggrmousedata = aggregateMultiData(data, epsilon, minPts, 'mouseMovements');
-                    getVizTypeAggregated(aggrgazedata, aggrmousedata, heatmapslider.value);
-                }
-            };
-
-            // Add event listener for radio button change
             radioButtons.forEach(button => {
-                button.addEventListener('change', updateVisualization);
+                button.addEventListener('change', () => {
+                    const selectedOption = document.querySelector('input[name="option"]:checked').value;
+                    if (selectedOption === 'simple-aggregate') {
+                        epsilonSlider.disabled = true;
+                        epsilonSlider.style.opacity = 0.5;
+                        aggrmousedata = aggregateSimpleData(data, 'mouseMovements');
+                        aggrgazedata = aggregateSimpleData(data, 'gazeCoordinates');
+                        getVizTypeAggregated(aggrgazedata, aggrmousedata);
+                    } else if (selectedOption === 'dbscan') {
+                        epsilonSlider.disabled = false;
+                        epsilonSlider.style.opacity = 1;
+                        epsilonSlider.addEventListener('input', () => {
+                            const epsilon = parseInt(epsilonSlider.value);
+                            epsilonValueSpan.textContent = epsilon;
+                            // Ανανέωση των δεδομένων με την νέα τιμή του epsilon
+                            const minPts = 2; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
+                            aggrgazedata = aggregateMultiData(data, epsilon, minPts, 'gazeCoordinates'); // Αντικατέστησε με τις σωστές τιμές
+                            aggrmousedata = aggregateMultiData(data, epsilon, minPts, 'mouseMovements');
+                            getVizTypeAggregated(aggrgazedata, aggrmousedata);
+                        });
+                    }
+                });
             });
-
-            // Call the function to apply the default visualization on load
-            updateVisualization();
-            console.log('change');
-
             updateSubmissionCount(data.length); // Update submission count
         }
     } catch (error) {
@@ -181,6 +167,7 @@ function mapArray(dataArray, keys) {
         return mappedItem;
     });
 }
+
 function customDistance(point1, point2) {
     // Calculate Euclidean distance
     var euclideanDist = Math.sqrt(Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2));
@@ -194,12 +181,20 @@ function customDistance(point1, point2) {
 function aggregateMultiData(allUsersData, epsilon, minPts, dataset) {
     const aggregatedData = [];
     allUsersData.forEach(userData => {
+        const originalSize = userData['sourceCoords'];
+        const scaleX = window.innerWidth / originalSize[0];
+        const scaleY = window.innerHeight / originalSize[1];
         // Μετατροπή δεδομένων σε μορφή [[x, y, duration]]
         const keysToKeep = ["x", "y"];
         const mappedArray = mapArray(userData[dataset], keysToKeep);
+        // Transform coordinates after mapping
+        const transformedArray = mappedArray.map(point => ({
+            x: Math.min(point.x * scaleX, window.innerWidth),
+            y: Math.min(point.y * scaleY, window.innerHeight),
+        }));
         // Δημιουργία μοντέλου DBSCAN
         const dbscan = new jDBSCAN();
-        dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN').data(mappedArray)
+        dbscan.eps(epsilon).minPts(minPts).distance('EUCLIDEAN').data(transformedArray)
         try {
             dbscan();
         } catch (error) {
@@ -229,18 +224,25 @@ function aggregateMultiData(allUsersData, epsilon, minPts, dataset) {
 
 function aggregateSimpleData(allUsersData, dataset) {
     const aggregatedSimpleData = [];
+    
     allUsersData.forEach(userData => {
+        const originalSize = userData['sourceCoords'];
+        const scaleX = window.innerWidth / originalSize[0];
+        const scaleY = window.innerHeight / originalSize[1];
         userData[dataset].forEach(point => {
+            // Transform coordinates
+            const xTransformed = Math.min(point.x * scaleX, window.innerWidth);
+            const yTransformed = Math.min(point.y * scaleY, window.innerHeight);
             // Check if a similar point already exists in aggregatedSimpleData
-            const existingPoint = aggregatedSimpleData.find(p => p.x === point.x && p.y === point.y);
+            const existingPoint = aggregatedSimpleData.find(p => p.x === xTransformed && p.y === yTransformed);
             if (existingPoint) {
                 // If a similar point exists, aggregate the duration
                 existingPoint.duration += point.duration;
             } else {
                 // Otherwise, add the point as a new entry
                 aggregatedSimpleData.push({
-                    x: point.x,
-                    y: point.y,
+                    x: xTransformed,
+                    y: yTransformed,
                     duration: point.duration
                 });
             }
@@ -279,4 +281,3 @@ function getVizTypeMulti(heatmapopacity) {
         });
     }
 }
-

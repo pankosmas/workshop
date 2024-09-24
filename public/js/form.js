@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 preferredPosition: null,
                 mouseMovements: window.mouseArray, // Initialize with actual data as needed
                 gazeCoordinates: window.dataArray, // Initialize with actual data as needed
+                sourceCoords: [window.innerWidth, window.innerHeight],
                 time: timeDiff.toFixed(2)
             };
             currentStep = {
@@ -148,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 preferredPosition: preferredPosition,
                 mouseMovements: window.mouseArray,
                 gazeCoordinates: window.dataArray,
+                sourceCoords: [window.innerWidth, window.innerHeight],
                 time: timeDiff.toFixed(2)
             };
             currentStep = {

@@ -11,6 +11,7 @@ const formResponseSchema = new Schema({
     details: Array,
     mouseMovements: Array,
     gazeCoordinates: Array,
+    sourceCoords: Array,
     time: Number,
     createdAt: { type: Date, default: Date.now }
 });
