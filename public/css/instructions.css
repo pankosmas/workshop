@@ -166,32 +166,134 @@ footer a:hover {
     text-decoration: underline;
 }
 
-
-@media (max-width: 1600px) {
+/* Ultra-large desktops (min-width: 2000px) */
+@media (min-width: 2000px) {
     body {
-        font-size: 16px; /* Μείωση για μικρότερες οθόνες */
+        font-size: 18px;
     }
-}
-@media (max-width: 1200px) {
-    body {
-        font-size: 14px; /* Μείωση για μικρότερες οθόνες */
+    .logo {
+        width: 12%; /* Adjust logo size */
     }
-}
-
-@media (max-width: 992px) {
-    body {
-        font-size: 12px; /* Ακόμη μικρότερο για tablet */
+    .content h1 {
+        font-size: 1.8em; /* Smaller heading */
     }
-}
-
-@media (max-width: 768px) {
-    body {
-        font-size: 10px; /* Ακόμη μικρότερο για κινητά */
+    .instruction {
+        font-size: 1.1em; /* Slightly smaller instruction text */
     }
 }
 
-@media (max-width: 480px) {
+/* Large desktops and 4K screens (1600px to 1999px) */
+@media (min-width: 1600px) and (max-width: 1999px) {
     body {
-        font-size: 8px; /* Πολύ μικρό για πολύ μικρές οθόνες */
+        font-size: 16px;
+    }
+    .content h1 {
+        font-size: 1.8em; /* Smaller heading */
+    }
+    .instruction {
+        font-size: 1.1em; /* Slightly smaller instruction text */
     }
 }
+
+/* Standard desktops (1200px to 1599px) */
+@media (min-width: 1200px) and (max-width: 1599px) {
+    body {
+        font-size: 14px;
+    }
+    .navbar {
+        padding: 10px 15px; /* Reduce navbar padding */
+    }
+    .content h1 {
+        font-size: 1.6em;
+    }
+    .instruction {
+        font-size: 1em;
+    }
+    .instructions-container {
+        width: 75%;
+    }
+    .instruction p {
+        width: 70%; /* Reduce paragraph width */
+    }
+}
+
+/* Laptops and small desktops (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    body {
+        font-size: 12px;
+    }
+    .nav-links {
+        left: 40%; /* Adjust navbar alignment */
+    }
+    .content h1 {
+        font-size: 1.4em;
+    }
+    .instructions-container {
+        width: 80%;
+    }
+    .instruction {
+        font-size: 0.9em;
+    }
+    .emoji-container {
+        width: 15%;
+    }
+}
+
+/* Small laptops and large tablets (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    body {
+        font-size: 11px;
+    }
+    .navbar {
+        padding: 8px 10px;
+    }
+    .nav-links {
+        display: none; /* Hide links on small screens */
+    }
+    .content h1 {
+        font-size: 1.2em;
+    }
+    .instructions-container {
+        width: 90%;
+    }
+    .instruction p {
+        width: 75%;
+    }
+    .emoji-container {
+        width: 20%;
+    }
+}
+
+/* Tablets and very small laptops (480px to 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+    body {
+        font-size: 10px;
+    }
+    .navbar {
+        flex-direction: column;
+        padding: 5px 10px; /* Stack navbar elements */
+    }
+    .content h1 {
+        font-size: 1.1em;
+    }
+    .instructions-container {
+        width: 100%; /* Full width on small screens */
+    }
+    .instruction {
+        font-size: 0.8em;
+        flex-direction: column; /* Stack instruction elements */
+        text-align: center;
+    }
+    .instruction p {
+        width: 90%;
+        text-align: center;
+    }
+    .emoji-container {
+        width: 25%; /* Adjust emoji width */
+    }
+    .nav-button {
+        font-size: 0.9em; /* Smaller button text */
+    }
+}
+
+
