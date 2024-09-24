@@ -430,7 +430,8 @@ function loadStepContent(currentStep) {
             '<label for="No2"><input type="radio" id="No2" name="preferred-position" value="No"> No</label>'
         );
         document.querySelectorAll('.radio-group').forEach(function(label) {
-            label.style.width = '';
+            label.style.alignItems = 'center';
+            label.style.width = 'auto';
         });
 
     } else {
@@ -445,7 +446,8 @@ function loadStepContent(currentStep) {
             '<label for="No2"><input type="radio" id="No2" name="preferred-position" value="No"> No</label>'
         );
         document.querySelectorAll('.radio-group').forEach(function(label) {
-            label.style.width = '';
+            label.style.alignItems = 'center';
+            label.style.width = 'auto';
         });
     }
 }
