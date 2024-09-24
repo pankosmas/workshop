@@ -67,7 +67,7 @@ body {
     background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
 }
 .main-logo {
-    max-width: 25%; /* Responsive width */
+    max-width: 35%; /* Responsive width */
     user-select: none; /* Disable text selection */
 }
 .content {
@@ -123,22 +123,22 @@ footer a:hover {
     text-decoration: underline;
 }
 
-
 @media (min-width: 2000px) {
     body {
-        font-size: 20px;
+        font-size: 18px;
     }
     .logo {
-        width: 8%; /* Adjust logo size */
+        width: 10%; /* Adjust logo size */
     }
     .main-logo {
-        max-width: 40%; /* Adjust main logo size */
+        max-width: 45%; /* Adjust main logo size */
     }
 }
+
 /* Large desktops and 4K screens (1600px and up) */
-@media (min-width: 1600px) {
+@media (min-width: 1600px) and (max-width: 1999px) {
     body {
-        font-size: 18px;
+        font-size: 16px;
     }
     .logo {
         width: 8%; /* Adjust logo size */
