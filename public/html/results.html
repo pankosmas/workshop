@@ -96,13 +96,13 @@
         });
     </script>    
     <script>
-        const slider = document.querySelector('input');
+        const heatmapslider = document.querySelector('input');
         const opacityValue = document.querySelector('span');
-        opacityValue.innerText = slider.value; // Initial value
-        slider.addEventListener('input', (event) => {
+        opacityValue.innerText = heatmapslider.value; // Initial value
+        heatmapslider.addEventListener('input', (event) => {
             const opacity = parseFloat(event.target.value);
             opacityValue.innerText = opacity; // Update displayed value
-            getVizType(opacity); // Call your function with the new opacity
+            getVizTypeAggregated(aggrgazedata, aggrmousedata, opacity);
         });
     </script>    
     <script src="../js/dbscan.js"></script>

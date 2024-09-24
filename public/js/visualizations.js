@@ -377,7 +377,7 @@ function getVizType(opacity) {
     }
 }
 
-function getVizTypeAggregated(gazedata, mousedata){
+function getVizTypeAggregated(gazedata, mousedata, opacity){
     const dropdown3 = document.getElementById('dropdown3');
     // Get the selected option's text and value
     reshapeContent();
