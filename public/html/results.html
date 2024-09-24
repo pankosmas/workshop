@@ -77,6 +77,11 @@
                     </div>
                 </div>
             </div>
+            <div class="slider-container invisible" >
+                <label for="opacitySlider">Opacity: </label>
+                <input type="range" id="opacitySlider" min="0.0" max="1.0" step="0.1" value="1.0">
+                <span>1</span>
+            </div>
             <div class="heatmap-container">
                 <canvas id="heatmap"></canvas>
             </div>
@@ -88,6 +93,16 @@
 
         slider.addEventListener('input', function () {
             valueDisplay.textContent = slider.value;
+        });
+    </script>    
+    <script>
+        const slider = document.querySelector('input');
+        const opacityValue = document.querySelector('span');
+        opacityValue.innerText = slider.value; // Initial value
+        slider.addEventListener('input', (event) => {
+            const opacity = parseFloat(event.target.value);
+            opacityValue.innerText = opacity; // Update displayed value
+            getVizType(opacity); // Call your function with the new opacity
         });
     </script>    
     <script src="../js/dbscan.js"></script>
