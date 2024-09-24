@@ -279,3 +279,15 @@ async function getVizTypeMulti(heatmapopacity) {
         });
     }
 }
+
+// Add an event listener for the 'change' event
+dropdown2.addEventListener('change', function () {
+    // Fetch data again
+    fetchData();
+});
+
+// Add an event listener for the 'change' event
+dropdown3.addEventListener('change', function () {
+   // Fetch data again
+   fetchData();
+});
