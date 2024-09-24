@@ -85,7 +85,7 @@ canvas, #heatmap {
     background-position: center;
     background-repeat: no-repeat;
 }
-#opacity-control {
+#opacity-control, .slider-container {
     margin-left: 20px;
     font-family: Arial, sans-serif;
 }
