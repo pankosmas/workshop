@@ -102,7 +102,7 @@
         heatmapslider.addEventListener('input', (event) => {
             const opacity = parseFloat(event.target.value);
             opacityValue.innerText = opacity; // Update displayed value
-            getVizTypeAggregated(aggrgazedata, aggrmousedata, opacity);
+            getVizTypeMulti(opacity);
         });
     </script>    
     <script src="../js/dbscan.js"></script>
