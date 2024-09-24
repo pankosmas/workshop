@@ -124,23 +124,34 @@ footer a:hover {
 }
 
 
+@media (min-width: 2000px) {
+    body {
+        font-size: 20px;
+    }
+    .logo {
+        width: 8%; /* Adjust logo size */
+    }
+    .main-logo {
+        max-width: 40%; /* Adjust main logo size */
+    }
+}
 /* Large desktops and 4K screens (1600px and up) */
 @media (min-width: 1600px) {
     body {
         font-size: 18px;
     }
     .logo {
-        width: 6%; /* Adjust logo size */
+        width: 8%; /* Adjust logo size */
     }
     .main-logo {
-        max-width: 20%; /* Adjust main logo size */
+        max-width: 30%; /* Adjust main logo size */
     }
 }
 
 /* Standard desktops (1200px to 1599px) */
 @media (min-width: 1200px) and (max-width: 1599px) {
     body {
-        font-size: 16px;
+        font-size: 14px;
     }
     .logo {
         width: 7%; /* Adjust logo size */
