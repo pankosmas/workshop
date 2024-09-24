@@ -31,7 +31,7 @@ body {
     margin-left: 240px;
 }
 .logo {
-    width: 10%;
+    width: 8%;
     position: relative; /* Ensure it stays in the top left */
     left: 0;
 }
@@ -67,7 +67,7 @@ body {
     background: linear-gradient(120deg, #11819b 0%, #0995e6 25%, #1fb3af 50%, #14cba0 75%, #10cc9d 100%);
 }
 .main-logo {
-    max-width: 30%; /* Responsive width */
+    max-width: 25%; /* Responsive width */
     user-select: none; /* Disable text selection */
 }
 .content {
@@ -124,31 +124,94 @@ footer a:hover {
 }
 
 
-@media (max-width: 1600px) {
+/* Large desktops and 4K screens (1600px and up) */
+@media (min-width: 1600px) {
     body {
-        font-size: 16px; /* Μείωση για μικρότερες οθόνες */
+        font-size: 18px;
     }
-}
-@media (max-width: 1200px) {
-    body {
-        font-size: 14px; /* Μείωση για μικρότερες οθόνες */
+    .logo {
+        width: 6%; /* Adjust logo size */
     }
-}
-
-@media (max-width: 992px) {
-    body {
-        font-size: 12px; /* Ακόμη μικρότερο για tablet */
+    .main-logo {
+        max-width: 20%; /* Adjust main logo size */
     }
 }
 
-@media (max-width: 768px) {
+/* Standard desktops (1200px to 1599px) */
+@media (min-width: 1200px) and (max-width: 1599px) {
     body {
-        font-size: 10px; /* Ακόμη μικρότερο για κινητά */
+        font-size: 16px;
+    }
+    .logo {
+        width: 7%; /* Adjust logo size */
+    }
+    .main-logo {
+        max-width: 22%;
     }
 }
 
+/* Laptops and small desktops (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    body {
+        font-size: 14px;
+    }
+    .logo {
+        width: 8%;
+    }
+    .main-logo {
+        max-width: 25%;
+    }
+    .nav-links {
+        font-size: 0.9em; /* Slightly smaller links for smaller screens */
+    }
+}
+
+/* Small laptops and large tablets (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    body {
+        font-size: 12px;
+    }
+    .logo {
+        width: 8%;
+    }
+    .main-logo {
+        max-width: 30%;
+    }
+    .nav-links {
+        font-size: 0.8em;
+    }
+}
+
+/* Media Queries for Mobile and Small Tablets */
+
+/* Tablets and very small laptops (480px to 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+    body {
+        font-size: 10px;
+    }
+    .logo {
+        width: 8%;
+    }
+    .main-logo {
+        max-width: 25%;
+    }
+    .nav-links {
+        font-size: 0.7em;
+    }
+}
+
+/* Small devices (below 480px) */
 @media (max-width: 480px) {
     body {
-        font-size: 8px; /* Πολύ μικρό για πολύ μικρές οθόνες */
+        font-size: 8px;
+    }
+    .logo {
+        width: 8%;
+    }
+    .main-logo {
+        max-width: 40%;
+    }
+    .nav-links {
+        font-size: 0.6em;
     }
 }
