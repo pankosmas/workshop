@@ -249,10 +249,10 @@ function aggregateSimpleData(allUsersData, dataset) {
     return aggregatedSimpleData;
 }
 
-async function getVizTypeMulti(heatmapopacity) {
+function getVizTypeMulti(heatmapopacity) {
     activityStepValue = getActivityStepValue();
-    const response = await fetch(`https://imedius-workshop.netlify.app/.netlify/functions/data?activityStep=${activityStepValue}`);
-    const data = await response.json();
+    const response = fetch(`https://imedius-workshop.netlify.app/.netlify/functions/data?activityStep=${activityStepValue}`);
+    const data = response.json();
     var aggrgazedata = [];
     var aggrmousedata = [];
     // Event listener για αλλαγές στο slider
@@ -280,14 +280,3 @@ async function getVizTypeMulti(heatmapopacity) {
     }
 }
 
-// Add an event listener for the 'change' event
-dropdown2.addEventListener('change', function () {
-    // Fetch data again
-    fetchData();
-});
-
-// Add an event listener for the 'change' event
-dropdown3.addEventListener('change', function () {
-   // Fetch data again
-   fetchData();
-});
