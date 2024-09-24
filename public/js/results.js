@@ -11,39 +11,51 @@ async function fetchData() {
             
             if (activityStepValue === 'step9' || activityStepValue === 'step10') {
                 processFinalQuestionsCharts(data);
-            } else { processCharts(data); }
+            } else { 
+                processCharts(data); 
+            }
             
             var aggrgazedata = [];
             var aggrmousedata = [];
     
-            // Event listener για αλλαγές στο slider
             const epsilonSlider = document.getElementById('opacity-slider');
             const epsilonValueSpan = document.getElementById('opacity-value');
             const radioButtons = document.querySelectorAll('input[name="option"]');
+
+            // Function to update the visualization based on the selected option
+            const updateVisualization = () => {
+                const selectedOption = document.querySelector('input[name="option"]:checked').value;
+
+                if (selectedOption === 'simple-aggregate') {
+                    epsilonSlider.disabled = true;
+                    epsilonSlider.style.opacity = 0.5;
+                    aggrmousedata = aggregateSimpleData(data, 'mouseMovements');
+                    aggrgazedata = aggregateSimpleData(data, 'gazeCoordinates');
+                    getVizTypeAggregated(aggrgazedata, aggrmousedata);
+                } else if (selectedOption === 'dbscan') {
+                    epsilonSlider.disabled = false;
+                    epsilonSlider.style.opacity = 1;
+
+                    // Trigger the slider's input event to display the default epsilon value
+                    const epsilon = parseInt(epsilonSlider.value);
+                    epsilonValueSpan.textContent = epsilon;
+
+                    // Default epsilon-related logic
+                    const minPts = 2; // Adjust as needed
+                    aggrgazedata = aggregateMultiData(data, epsilon, minPts, 'gazeCoordinates');
+                    aggrmousedata = aggregateMultiData(data, epsilon, minPts, 'mouseMovements');
+                    getVizTypeAggregated(aggrgazedata, aggrmousedata);
+                }
+            };
+
+            // Add event listener for radio button change
             radioButtons.forEach(button => {
-                button.addEventListener('change', () => {
-                    const selectedOption = document.querySelector('input[name="option"]:checked').value;
-                    if (selectedOption === 'simple-aggregate') {
-                        epsilonSlider.disabled = true;
-                        epsilonSlider.style.opacity = 0.5;
-                        aggrmousedata = aggregateSimpleData(data, 'mouseMovements');
-                        aggrgazedata = aggregateSimpleData(data, 'gazeCoordinates');
-                        getVizTypeAggregated(aggrgazedata, aggrmousedata);
-                    } else if (selectedOption === 'dbscan') {
-                        epsilonSlider.disabled = false;
-                        epsilonSlider.style.opacity = 1;
-                        epsilonSlider.addEventListener('input', () => {
-                            const epsilon = parseInt(epsilonSlider.value);
-                            epsilonValueSpan.textContent = epsilon;
-                            // Ανανέωση των δεδομένων με την νέα τιμή του epsilon
-                            const minPts = 2; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
-                            aggrgazedata = aggregateMultiData(data, epsilon, minPts, 'gazeCoordinates'); // Αντικατέστησε με τις σωστές τιμές
-                            aggrmousedata = aggregateMultiData(data, epsilon, minPts, 'mouseMovements');
-                            getVizTypeAggregated(aggrgazedata, aggrmousedata);
-                        });
-                    }
-                });
+                button.addEventListener('change', updateVisualization);
             });
+
+            // Call the function to apply the default visualization on load
+            updateVisualization();
+
             updateSubmissionCount(data.length); // Update submission count
         }
     } catch (error) {
