@@ -318,18 +318,21 @@ dropdown.addEventListener('change', function() {
     heatmapCanvas.style.backgroundRepeat = 'no-repeat';
     // Fetch data again
     fetchData();
+    fetchData2();
 });
 
 // Add an event listener for the 'change' event
 dropdown2.addEventListener('change', function () {
     // Fetch data again
     fetchData();
+    fetchData2();
 });
 
 // Add an event listener for the 'change' event
 dropdown3.addEventListener('change', function () {
    // Fetch data again
    fetchData();
+   fetchData2();
 });
 
 function getDetailsArray() {

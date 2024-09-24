@@ -51,6 +51,53 @@ async function fetchData() {
     }
 }
 
+async function fetchData2() {
+    try {
+        activityStepValue = getActivityStepValue();
+        const response = await fetch(`https://imedius-workshop.netlify.app/.netlify/functions/data?activityStep=${activityStepValue}`);
+        const data = await response.json();
+            
+        if (activityStepValue === 'step9' || activityStepValue === 'step10') {
+            processFinalQuestionsCharts(data);
+        } else { processCharts(data); }
+        
+        var aggrgazedata = [];
+        var aggrmousedata = [];
+
+        // Event listener για αλλαγές στο slider
+        const epsilonSlider = document.getElementById('opacity-slider');
+        const epsilonValueSpan = document.getElementById('opacity-value');
+        const radioButtons = document.querySelectorAll('input[name="option"]');
+        radioButtons.forEach(button => {
+            button.addEventListener('change', () => {
+                const selectedOption = document.querySelector('input[name="option"]:checked').value;
+                if (selectedOption === 'simple-aggregate') {
+                    epsilonSlider.disabled = true;
+                    epsilonSlider.style.opacity = 0.5;
+                    aggrmousedata = aggregateSimpleData(data, 'mouseMovements');
+                    aggrgazedata = aggregateSimpleData(data, 'gazeCoordinates');
+                    getVizTypeAggregated(aggrgazedata, aggrmousedata);
+                } else if (selectedOption === 'dbscan') {
+                    epsilonSlider.disabled = false;
+                    epsilonSlider.style.opacity = 1;
+                    epsilonSlider.addEventListener('input', () => {
+                        const epsilon = parseInt(epsilonSlider.value);
+                        epsilonValueSpan.textContent = epsilon;
+                        // Ανανέωση των δεδομένων με την νέα τιμή του epsilon
+                        const minPts = 2; // Ορισμός του minPts (μπορείς να το ρυθμίσεις όπως θέλεις)
+                        aggrgazedata = aggregateMultiData(data, epsilon, minPts, 'gazeCoordinates'); // Αντικατέστησε με τις σωστές τιμές
+                        aggrmousedata = aggregateMultiData(data, epsilon, minPts, 'mouseMovements');
+                        getVizTypeAggregated(aggrgazedata, aggrmousedata);
+                    });
+                }
+            });
+        });
+        updateSubmissionCount(data.length); // Update submission count
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
 function processCharts(users) {
     // Prepare data for pie chart and bar chart
     const imageRealityCounts = { Real: 0, Tampered: 0, Deepfake: 0 };
