@@ -29,7 +29,7 @@ function plotDataPoints(filename, data) {
     // Check if the canvas is available
     if (canvas.getContext) {
         // Get the 2D drawing context
-        var ctx = canvas.getContext('2d');
+        var ctx = canvas.getContext('2d', { willReadFrequently: true });
         // Set the canvas dimensions (if necessary)
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
@@ -59,7 +59,7 @@ function plotHeatMap(filename, data, opacity = 1) {
     const transformedData = data.map(({ x, y }) => ({ x, y }));
     const finalData = rescaleHeatmapData(transformedData, opacity);
     const heatmap = document.getElementById('heatmap');
-    var ctx = heatmap.getContext('2d');
+    var ctx = heatmap.getContext('2d', { willReadFrequently: true });
     reshapeContent(ctx);
     const heat = simpleheat(heatmap);
 	heat.data(finalData);
@@ -300,7 +300,7 @@ function plotFixationMap(filename, data) {
     const canvas = document.getElementById('heatmap');
 
     if (canvas.getContext) {
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
         const grid1 = groupGazeData(finalData, gridSize);
@@ -414,7 +414,7 @@ function reshapeContent() {
     // Check if the canvas is available
     if (canvas.getContext) {
         // Get the 2D drawing context
-        var ctx = canvas.getContext('2d');
+        var ctx = canvas.getContext('2d', { willReadFrequently: true });
         // Set the canvas dimensions (if necessary)
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
@@ -463,7 +463,7 @@ function rescaleFixationData(dataset) {
 
 function updateOpacity(value) {
     const heatmap = document.getElementById('heatmap');
-    const ctx = heatmap.getContext('2d');
+    const ctx = heatmap.getContext('2d', { willReadFrequently: true });
     const heat = simpleheat(heatmap);
 
     // Update heatmap opacity
