@@ -322,32 +322,105 @@ body {
     border-color: transparent transparent transparent #000;
 }
 
-
-@media (max-width: 1600px) {
+/* Ultra-large desktops (min-width: 2000px) */
+@media (min-width: 2000px) {
     body {
-        font-size: 16px; /* Μείωση για μικρότερες οθόνες */
+        font-size: 18px;
+    }
+    .Calibration {
+        width: 40px;
+        height: 40px;
+    }
+    .speech {
+        max-width: 450px;
+    }
+    .red-pin {
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        top: -43px;
+        left: -3px;
+        z-index: 3;
+    }
+    .speech-left {
+        margin-right: auto;
+        position: absolute;
+        top: -3px;
+        left: 53px;
+        order: 1;
+    }
+    .right-pin {
+        left: 419px;
+    }
+    .speech-right {
+        top: -3px;
+    }
+    .Calibration-right {
+        right: -93.5%;
     }
 }
-@media (max-width: 1200px) {
+
+/* Large desktops and 4K screens (1600px to 1999px) */
+@media (min-width: 1600px) and (max-width: 1999px) {
     body {
-        font-size: 14px; /* Μείωση για μικρότερες οθόνες */
+        font-size: 16px;
     }
 }
 
-@media (max-width: 992px) {
+/* Standard desktops (1200px to 1599px) */
+@media (min-width: 1200px) and (max-width: 1599px) {
     body {
-        font-size: 12px; /* Ακόμη μικρότερο για tablet */
+        font-size: 14px;
     }
 }
 
-@media (max-width: 768px) {
+/* Laptops and small desktops (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
     body {
-        font-size: 10px; /* Ακόμη μικρότερο για κινητά */
+        font-size: 14px;
     }
 }
 
+/* Small laptops and large tablets (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    body {
+        font-size: 12px;
+    }
+    .logo {
+        width: 10%;
+    }
+}
+
+/* Tablets and very small laptops (480px to 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+    body {
+        font-size: 10px;
+    }
+    .logo {
+        width: 12%;
+    }
+    .calibrate-btn {
+        font-size: 0.9em;
+    }
+    #webgazerVideoContainer {
+        width: 200px;
+        height: 150px;
+    }
+}
+
+/* Small devices (below 480px) */
 @media (max-width: 480px) {
     body {
-        font-size: 8px; /* Πολύ μικρό για πολύ μικρές οθόνες */
+        font-size: 8px;
+    }
+    .logo {
+        width: 15%;
+    }
+    .calibrate-btn {
+        font-size: 0.8em;
+    }
+    #webgazerVideoContainer {
+        width: 180px;
+        height: 130px;
     }
 }

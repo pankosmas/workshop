@@ -7,6 +7,7 @@ const pageContent = document.querySelector('.content');
 const initialContainer = document.querySelector('.initial-container');
 const initialImage = document.getElementById('initial-image');
 const formContainer = document.getElementById('form-container');
+const titleContainer = document.getElementById('step-title');
 const navbar = document.querySelector('.navbar,.navoff');
 const backToTests = document.getElementById('backToTests');
 const startTimer = document.getElementById('initialFullScreenImage');
@@ -315,6 +316,7 @@ function loadNextStep(url, title) {
     titleText.textContent = title;
     initialContainer.classList.remove('invisible');
     formContainer.classList.add('invisible');
+    titleContainer.classList.add('invisible');
     headerText.classList.add('invisible');
 }
 
@@ -327,6 +329,7 @@ backToTests.addEventListener('click', function () {
 
     initialContainer.classList.add('invisible');
     formContainer.classList.remove('invisible');
+    titleContainer.classList.remove('invisible');
     headerText.classList.remove('invisible');
 });
 

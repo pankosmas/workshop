@@ -69,34 +69,34 @@ function calcAccuracy() {
       var accuracyLabel = "<a>Accuracy | " + precision_measurement + "%</a>";
       document.getElementById("Accuracy").innerHTML = accuracyLabel; // Show accuracy
 
-      if (precision_measurement > 65) {
-        swal({
-          title: "Congratulations, you completed the calibration process!",
-          buttons: {
-            confirm: "Enter the Survey",
-          }
-        }).then(isConfirm => {
-          if (isConfirm) {
-            ClearCanvas();
-            window.location.href = "form.html";
-          } else {
-            restartCalibration();
-          }
-        });
+      let textMessage = "";
+      
+      if (precision_measurement > 70) {
+        textMessage = "Your accuracy score is high.";
+      } else if (precision_measurement > 45 && precision_measurement <= 70) {
+        textMessage = "Your accuracy is medium.";
       } else {
-        swal({
-          title: "Unfortunately, your accuracy score is low!",
-          text: "You need to recalibrate.",
-          buttons: {
-            confirm: "Recalibrate",
-          }
-        }).then(() => {
-          restartCalibration();
-        });
+        textMessage = "Your accuracy is low.";
       }
+
+      swal({
+        title: "Congratulations, you completed the calibration process!",
+        text: textMessage,
+        buttons: {
+          confirm: "Enter the Survey",
+        }
+      }).then(isConfirm => {
+        if (isConfirm) {
+          ClearCanvas();
+          window.location.href = "form.html";
+        } else {
+          restartCalibration();
+        }
+      });
     });
   });
 }
+
 
 /**
  * Function to restart calibration process.

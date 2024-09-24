@@ -169,16 +169,14 @@ footer a:hover {
 /* Ultra-large desktops (min-width: 2000px) */
 @media (min-width: 2000px) {
     body {
-        font-size: 18px;
+        font-size: 20px; /* Increase base font size */
     }
     .logo {
-        width: 12%; /* Adjust logo size */
-    }
-    .content h1 {
-        font-size: 1.8em; /* Smaller heading */
+        width: 15%; /* Increase logo size */
     }
     .instruction {
-        font-size: 1.1em; /* Slightly smaller instruction text */
+        transform: scale(1.3); /* Make checkboxes larger */
+        margin: 30px 0;
     }
 }
 
