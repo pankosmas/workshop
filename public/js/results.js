@@ -25,13 +25,14 @@ async function fetchData() {
             // Function to update the visualization based on the selected option
             const updateVisualization = () => {
                 const selectedOption = document.querySelector('input[name="option"]:checked').value;
+                const heatmapslider = document.querySelector('#opacitySlider');
 
                 if (selectedOption === 'simple-aggregate') {
                     epsilonSlider.disabled = true;
                     epsilonSlider.style.opacity = 0.5;
                     aggrmousedata = aggregateSimpleData(data, 'mouseMovements');
                     aggrgazedata = aggregateSimpleData(data, 'gazeCoordinates');
-                    getVizTypeAggregated(aggrgazedata, aggrmousedata);
+                    getVizTypeAggregated(aggrgazedata, aggrmousedata, heatmapslider.value);
                 } else if (selectedOption === 'dbscan') {
                     epsilonSlider.disabled = false;
                     epsilonSlider.style.opacity = 1;
@@ -44,7 +45,7 @@ async function fetchData() {
                     const minPts = 2; // Adjust as needed
                     aggrgazedata = aggregateMultiData(data, epsilon, minPts, 'gazeCoordinates');
                     aggrmousedata = aggregateMultiData(data, epsilon, minPts, 'mouseMovements');
-                    getVizTypeAggregated(aggrgazedata, aggrmousedata);
+                    getVizTypeAggregated(aggrgazedata, aggrmousedata, heatmapslider.value);
                 }
             };
 
