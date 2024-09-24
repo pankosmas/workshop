@@ -56,6 +56,7 @@ async function fetchData() {
 
             // Call the function to apply the default visualization on load
             updateVisualization();
+            console.log('change');
 
             updateSubmissionCount(data.length); // Update submission count
         }
