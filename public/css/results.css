@@ -154,6 +154,13 @@ canvas, #heatmap {
 .option input[type="radio"] {
     margin-right: 10px; /* Space between radio button and label */
 }
+ /* ============================================================================= my results controller */
+ .invisible {
+    display: none;
+ }
+ .slider-container {
+    align-items: center;
+ }
 
 .submission-count, .my-timer, .global-timer {
     width: auto;

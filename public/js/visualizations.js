@@ -47,7 +47,7 @@ function plotDataPoints(filename, data) {
 }
 
 // ============================== Visualization No.2 plot Heatmap
-function plotHeatMap(filename, data) {
+function plotHeatMap(filename, data, opacity = 1) {
 	if (data === null) {
         data = loadDatasetFromLocal(filename);
         if (!data) {
@@ -57,7 +57,7 @@ function plotHeatMap(filename, data) {
     }
     // Transform the dataset
     const transformedData = data.map(({ x, y }) => ({ x, y }));
-    const finalData = rescaleHeatmapData(transformedData);
+    const finalData = rescaleHeatmapData(transformedData, opacity);
     const heatmap = document.getElementById('heatmap');
     var ctx = heatmap.getContext('2d');
     reshapeContent(ctx);
@@ -303,13 +303,9 @@ function plotFixationMap(filename, data) {
         const ctx = canvas.getContext('2d');
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
-
         const grid1 = groupGazeData(finalData, gridSize);
         const grid2 = clusterGazeData(finalData);
         const grid3 = clusterAndGroupGazeData(finalData);
-        console.log(grid1);
-        console.log(grid2);
-        console.log(grid3);
         const circles = calculateCircles(grid3);
         drawCircles(canvas, circles, ctx);
     }
@@ -356,22 +352,26 @@ function getTypeValue() {
     }
 }
 
-function getVizType() {
+function getVizType(opacity) {
     const dropdown3 = document.getElementById('dropdown3');
     // Get the selected option's text and value
     reshapeContent();
     const selectedText = dropdown3.options[dropdown3.selectedIndex].text;
+    const sliderOpacity = document.querySelector('.slider-container');
     var type = getTypeValue();
     var step = getStepValue();
     var filename = type + step;
     if (selectedText === "Data Points") {
         plotDataPoints(filename, null);
+        sliderOpacity.style.display = 'none';
     } else if (selectedText === "Scanpath") {
         return 'step2';
     } else if (selectedText === "Fixation Map") {
         plotFixationMap(filename, null);
+        sliderOpacity.style.display = 'none';
     } else if (selectedText === "Heatmap") {
-        plotHeatMap(filename, null);
+        plotHeatMap(filename, null, opacity);
+        sliderOpacity.style.display = 'flex';
     } else if (selectedText === "Areas of Interest") {
         return 'step5';
     }
@@ -390,14 +390,19 @@ function getVizTypeAggregated(gazedata, mousedata){
         data = mousedata;
     }
 
+    const sliderOpacity = document.querySelector('.slider-container');
+
     if (selectedText === "Data Points") {
         plotDataPoints(null, data);
+        sliderOpacity.style.display = 'none';
     } else if (selectedText === "Scanpath") {
         return 'step2';
     } else if (selectedText === "Fixation Map") {
         plotFixationMap(null, data);
+        sliderOpacity.style.display = 'none';
     } else if (selectedText === "Heatmap") {
-        plotHeatMap(null, data);
+        sliderOpacity.style.display = 'flex';
+        plotHeatMap(null, data, opacity);
     } else if (selectedText === "Areas of Interest") {
         return 'step5';
     }
@@ -431,17 +436,17 @@ function rescaleGazeData(dataset) {
 }
 
 // Function to rescale gaze data dynamically
-function rescaleHeatmapData(dataset) {
+function rescaleHeatmapData(dataset, opacity) {
     const scaleX = 0.65;
     const scaleY = 0.65;
     var type = getTypeValue();
     if (type === "gaze-") {
         return dataset.map(entry => {
-            return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), 1.25];
+            return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), 1.5 * opacity];
         });
     } else if (type === "mouse-") {
         return dataset.map(entry => {
-            return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), 0.75];
+            return [Math.round(entry.x * scaleX), Math.round(entry.y * scaleY), 0.85 * opacity];
         });
     }
 }
