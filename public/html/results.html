@@ -80,7 +80,7 @@
                 <div class="slider-container invisible" >
                     <label for="opacitySlider">Opacity: </label>
                     <input type="range" id="opacitySlider" min="0.0" max="1.0" step="0.1" value="1.0">
-                    <span>1</span>
+                    <span id="heatmap-value">1</span>
                 </div>
             </div>
             <div class="heatmap-container">
@@ -98,7 +98,7 @@
     </script>    
     <script>
         const heatmapslider = document.querySelector('input');
-        const opacityValue = document.querySelector('span');
+        const opacityValue = document.querySelector('#heatmap-value');
         opacityValue.innerText = heatmapslider.value; // Initial value
         heatmapslider.addEventListener('input', (event) => {
             const opacity = parseFloat(event.target.value);
