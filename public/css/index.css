@@ -1,3 +1,20 @@
+/**
+ * This application uses WebGazer.js, licensed under the GNU General Public License v3.0.
+ * This application is distributed under the GPLv3 license. See LICENSE.txt for details.
+ * 
+ * As required by the GPLv3 license, this application is also distributed under the GPLv3.
+ * You are free to use, modify, and distribute this software under the terms of the GPLv3.
+ * 
+ * The full text of the license is available in the LICENSE.txt file included with this application.
+ * For more details about the GPLv3, visit: https://www.gnu.org/licenses/gpl-3.0.en.html
+ * 
+ * WebGazer.js is developed by the Brown HCI group. For more information, visit their GitHub repository: https://github.com/brownhci/WebGazer
+ * Acknowledgements
+ * Webgazer is based on the research originally done at Brown University, with recent work and maintenance jointly between Pomona College and Brown University. 
+   
+ */ 
+
+
 *,
 *::before,
 *::after {
