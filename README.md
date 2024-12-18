@@ -1,4 +1,6 @@
 # Workshop
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fpankosmas%2Fworkshop.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fpankosmas%2Fworkshop?ref=badge_shield)
+
 
 ## About This Project
 
@@ -18,9 +20,11 @@ This application uses the [WebGazer.js library](https://github.com/brownhci/WebG
 ## License
 This application is distributed under the GPLv3 license. See `LICENSE.txt` for details.
 
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fpankosmas%2Fworkshop.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fpankosmas%2Fworkshop?ref=badge_large)
+
 ## Source Code
 The full source code for this application is available in this repository.
 
 ## Attribution
 WebGazer.js is developed by the Brown HCI group. See their [GitHub repository](https://github.com/brownhci/WebGazer) for details.
-
