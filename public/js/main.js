@@ -2,6 +2,10 @@
  * This application uses WebGazer.js, licensed under the GNU General Public License v3.0.
  * This application is distributed under the GPLv3 license. See LICENSE.txt for details.
  * 
+ * This project is created for educational and research purposes. It extends WebGazer.js by implementing custom solutions to:
+ * - "improve gaze prediction accuracy", "support new device calibration", etc.
+ * 
+ * All modifications are made in compliance with the GPLv3 license.
  * As required by the GPLv3 license, this application is also distributed under the GPLv3.
  * You are free to use, modify, and distribute this software under the terms of the GPLv3.
  * 
@@ -12,7 +16,7 @@
  * Acknowledgements
  * Webgazer is based on the research originally done at Brown University, with recent work and maintenance jointly between Pomona College and Brown University. 
    
- */ 
+ */
 
 // define data array
 window.dataArray = [];
