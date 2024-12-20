@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://pkosmass:PyO6QhNjBofAi5fP@cluster0.9g1qy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { 
+mongoose.connect(process.env.MONGODB_URI, { 
     useNewUrlParser: true, useUnifiedTopology: true 
 });
 
